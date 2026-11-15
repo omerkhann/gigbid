@@ -2,7 +2,7 @@
 
 **A multi-agent copilot for freelancers.** GigBid reads new marketplace jobs, skips the scams and the ones you can't win, and drafts a proposal for the rest, with every claim backed by your own portfolio. Nothing is sent and no Connects are spent until you approve it.
 
-> Demo GIF: _pending (recorded with the 3-minute demo video)._ · Live URL: _pending (VM deploy)._ · Reviewer login: `reviewer@gigbid.dev` / `gigbid-review` (ML-engineer persona).
+> **Live:** https://throat-operations-principle-harvard.trycloudflare.com (Cloudflare tunnel to the author's machine; the Oracle Cloud free-tier VM had no capacity at submission, see [docs/RUNBOOK.md](docs/RUNBOOK.md)) · Reviewer login: `reviewer@gigbid.dev` / `gigbid-review` · Demo GIF: _with the 3-minute demo video._
 
 ![Approval studio: draft, evidence behind each claim, risk report, price and Connects](docs/images/studio.png)
 
