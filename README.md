@@ -47,7 +47,7 @@ START ─┬─► job_analyst ──┐
 
 Why each agent exists, and the alternatives considered: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/BID_GRAPH_DESIGN.md](docs/BID_GRAPH_DESIGN.md), [docs/adr/](docs/adr/).
 
-- R&D report: [docs/REPORT.md](docs/REPORT.md)
+- R&D report (PDF, LaTeX source and generated tables): [docs/report/](docs/report/)
 - Signature extension (X3: GitHub repos to verified case studies): [docs/EXTENSION.md](docs/EXTENSION.md)
 - Free-tier limits and how they shaped the evals: [docs/RUNBOOK.md](docs/RUNBOOK.md#free-tier-caps-measured-2026-11-15)
 
