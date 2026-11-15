@@ -20,7 +20,7 @@ from rag.index.vector import FastEmbedEmbedder, HashEmbedder, OllamaEmbedder
 from rag.ingest.loaders import Document, load_portfolio
 
 ROOT = Path(__file__).resolve().parents[1]
-RERANKER = "BAAI/bge-reranker-v2-m3-int8"
+RERANKER = os.environ.get("RERANKER", "Xenova/ms-marco-MiniLM-L-12-v2")
 # Every variant is a set of pipeline switches (rag/pipeline.py). "best" is chosen by rag_eval.
 VARIANTS: dict[str, dict] = {
     "v0_naive": {},
