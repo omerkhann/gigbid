@@ -60,7 +60,15 @@ Two hand-built LangGraph \code{StateGraph}s run in an Arq worker, reach the outs
 %=====================================================================================================
 \section{R\&D question A: tool granularity}
 
-\textbf{Not run.} The planned setup: 40 tasks with known correct calls, comparing many fine-grained tools, a few coarse tools, and the current set with rewritten descriptions, measuring tool-selection accuracy, argument accuracy and tokens per task. It was dropped for time and quota. The only related evidence is an observation from \S5 (the prebuilt supervisor often answered without calling any tool), which is not a measured answer to this question.
+\textbf{Hypothesis.} Fine-grained tools with precise descriptions beat both terse fine-grained tools and a few coarse dispatcher tools on argument accuracy, at a higher token cost per task.
+
+\textbf{Setup} (\code{evals/runners/tool\_granularity.py}). 24 requests with a known correct call, using real job, client and case ids from the dev data (the assignment asked for 40; reduced to 24 by the hosted quota). Three tool sets, all read from the real MCP servers so the comparison tracks the code: \emph{fine\_terse}, the 14 Marketplace and Portfolio tools with descriptions cut to their name and no parameter descriptions; \emph{coarse}, two dispatcher tools \code{marketplace(action, args)} and \code{portfolio(action, args)}; \emph{fine\_full}, the 14 tools exactly as shipped, with our rewritten descriptions. Same model and system prompt (\code{agent/prompts/tool\_router.md}); one call per task; the first tool call is scored. \emph{Unsafe} counts irreversible \code{submit\_proposal}/\code{send\_message} calls the task did not ask for.
+
+\IfFileExists{tables/tools.tex}{\tbl{Tool granularity: 24 known-call tasks, same model.}{tools}}{}
+
+\pending{RESULTS-A}
+
+A related observation from \S5: the prebuilt supervisor often answered without calling any tool, which suggests routing matters as much as the tool list itself.
 
 %=====================================================================================================
 \section{R\&D question B: retrieval variants, claim verification, ablation}

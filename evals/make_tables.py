@@ -129,6 +129,18 @@ def orchestration_table() -> list[str]:
                     "Unsupported claims / draft", "Tokens / job", "p95 (s)", "Tool calls / job"], rows)]
 
 
+def tools_table() -> list[str]:
+    d = load("tool_granularity.json")
+    if not d:
+        return ["_Not run yet: `python -m evals.runners.tool_granularity`._"]
+    names = {"fine_terse": "Fine-grained, terse descriptions", "coarse": "Coarse (2 dispatcher tools)",
+             "fine_full": "Fine-grained, full descriptions (shipped)"}
+    rows = [[names.get(k, k), s["tools_offered"], s["tasks"], s["tool_selection_accuracy"], s["argument_accuracy"],
+             s["unsafe_calls"], s["tokens_per_task"]] for k, s in d["summary"].items()]
+    return [f"Source: `evals/results/tool_granularity.json` (model `{d['model']}`).", "",
+            *table(["Tool set", "Tools", "Tasks", "Tool selection", "Arguments", "Unsafe calls", "Tokens / task"], rows)]
+
+
 def x3_table() -> list[str]:
     d = load("x3_eval.json")
     if not d:
@@ -144,6 +156,7 @@ def render() -> str:
     lines = ["### Headline (assignment B5)", "", *main_table(), "",
              "### Retrieval variants and ablation", "", *retrieval_tables(), "",
              "### Decisions (two open-model configurations)", "", *decision_table(), "",
+             "### Tool granularity (R&D question A)", "", *tools_table(), "",
              "### Multi-agent comparison (R&D question C)", "", *orchestration_table(), "",
              "### Signature extension X3: portfolio builder", "", *x3_table(), "",
              "### LLM-judge calibration", "", *judge_table()]

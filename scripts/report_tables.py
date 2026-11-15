@@ -146,6 +146,21 @@ def x3() -> None:
           r"Source: \texttt{evals/results/x3\_eval.json}; model \texttt{" + tex(d["model"]) + "}.")
 
 
+def tools() -> None:
+    d = load("tool_granularity.json")
+    if not d:
+        return
+    names = {"fine_terse": "Fine-grained, terse descriptions", "coarse": "Coarse (2 dispatcher tools)",
+             "fine_full": "Fine-grained, full descriptions (shipped)"}
+    rows = [[names[k], str(s["tools_offered"]), str(s["tasks"]), f(s["tool_selection_accuracy"]),
+             f(s["argument_accuracy"]), str(s["unsafe_calls"]), str(s["no_call"]), str(s["tokens_per_task"])]
+            for k, s in d["summary"].items()]
+    write("tools", "lrrrrrrr", ["Tool set", "Tools", "Tasks", "Tool selection", "Arguments", "Unsafe calls",
+                                "No call", "Tokens/task"], rows,
+          r"Source: \texttt{evals/results/tool\_granularity.json}; model \texttt{" + tex(d["model"]) + "}; "
+          "unsafe = an irreversible send/submit the task did not ask for.")
+
+
 def judge() -> None:
     j = load("judge_calibration.json")
     write("judge", "rrrr", ["Items", r"Quadratic-weighted $\kappa$", "Exact agreement", "Within one"],
@@ -178,7 +193,7 @@ def failures() -> None:
 
 
 if __name__ == "__main__":
-    for fn in (rag, breakdown, decisions, orchestration, outcomes, x3, judge, failures):
+    for fn in (rag, breakdown, decisions, orchestration, outcomes, x3, tools, judge, failures):
         try:
             fn()
         except (TypeError, KeyError, StopIteration) as exc:
