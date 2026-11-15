@@ -7,7 +7,7 @@ Two ways to run it:
       python -m mcp_servers.portfolio.server --stdio --portfolio-dir path/to/portfolio
 
 Settings (environment): PORTFOLIO_USERS (JSON [{token, user_id, portfolio_dir}]), PORTFOLIO_LOCAL_USER,
-PORTFOLIO_DIR (stdio), PORTFOLIO_VARIANT (default v0_naive), PORTFOLIO_EMBEDDER
+PORTFOLIO_DIR (stdio), PORTFOLIO_VARIANT (default: agent/config.yaml rag.variant), PORTFOLIO_EMBEDDER
 (default ollama:nomic-embed-text; "hash" for offline tests), PORTFOLIO_DB, PORTFOLIO_HOST / PORTFOLIO_PORT
 (default 127.0.0.1:8203).
 """
@@ -38,11 +38,19 @@ DEV_USERS = [{"token": f"dev-pf-{p.replace('_', '-')}", "user_id": f"u-{p.replac
              for p in ("ml_engineer", "fullstack_dev", "data_analyst")]
 
 
+def shipped_variant() -> str:
+    """The retrieval variant chosen by evaluation: agent/config.yaml rag.variant (v0_naive if absent)."""
+    cfg = ROOT / "agent/config.yaml"
+    if cfg.exists():
+        return (yaml.safe_load(cfg.read_text(encoding="utf-8")).get("rag") or {}).get("variant", "v0_naive")
+    return "v0_naive"
+
+
 @dataclass
 class Settings:
     users: list[dict] = field(default_factory=lambda: [dict(u) for u in DEV_USERS])
     local_user: str | None = None
-    variant: str = "v0_naive"
+    variant: str = field(default_factory=shipped_variant)
     embedder: str = "ollama:nomic-embed-text"
     db_path: Path = ROOT / "data/processed/portfolio_mcp.sqlite3"
     cache_root: Path = ROOT / "data/processed/rag_cache"

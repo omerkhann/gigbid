@@ -136,11 +136,12 @@ async def run(variant: str, limit: int | None, embedder: str) -> dict:
 if __name__ == "__main__":
     load_dotenv(ROOT / ".env")
     ap = argparse.ArgumentParser()
-    ap.add_argument("--variant", default=os.environ.get("PORTFOLIO_VARIANT", "v0_naive"))
+    ap.add_argument("--variant", default=None, help="default: agent/config.yaml rag.variant")
     ap.add_argument("--limit", type=int, default=None, help="bid jobs per persona")
     ap.add_argument("--embedder", default="ollama:nomic-embed-text")
     a = ap.parse_args()
-    coro = run(a.variant, a.limit, a.embedder)
+    from mcp_servers.portfolio.server import shipped_variant
+    coro = run(a.variant or os.environ.get("PORTFOLIO_VARIANT") or shipped_variant(), a.limit, a.embedder)
     if sys.platform == "win32":
         asyncio.run(coro, loop_factory=asyncio.SelectorEventLoop)
     else:

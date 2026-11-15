@@ -82,6 +82,7 @@ async def run(limit: int | None, out_path: Path | None = None) -> dict:
     from mcp_servers.marketplace.server import build_server as build_marketplace
     from mcp_servers.portfolio.server import Settings as PSettings
     from mcp_servers.portfolio.server import build_server as build_portfolio
+    from mcp_servers.portfolio.server import shipped_variant
 
     tmp = Path(tempfile.mkdtemp(prefix="gigbid-deval-"))
     sim = create_gigsim({"db_path": str(tmp / "g.sqlite3"), "faults": {"error_rate": 0, "latency_ms": [0, 0], "seed": 1},
@@ -107,7 +108,7 @@ async def run(limit: int | None, out_path: Path | None = None) -> dict:
                                              limits={"read": 10**6, "submit": 10**6, "write": 10**6}),
                                    GigSimBackend("http://gigsim", client=http))
         portfolio = build_portfolio(PSettings(db_path=tmp / f"p-{persona}.sqlite3", local_user=f"u-{slug}",
-                                              variant=os.environ.get("PORTFOLIO_VARIANT", "v0_naive"),
+                                              variant=os.environ.get("PORTFOLIO_VARIANT") or shipped_variant(),
                                               embedder=os.environ.get("PORTFOLIO_EMBEDDER", "ollama:nomic-embed-text")))
         gateway = McpGateway({"marketplace": factory(market), "portfolio": factory(portfolio)})
         graph = build_bid_graph(InMemorySaver())
