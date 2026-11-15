@@ -1,0 +1,86 @@
+{
+  "counts": {
+    "missed_evidence": 9,
+    "wrong_skip": 1
+  },
+  "total": 10,
+  "failures": {
+    "wrong_skip": [
+      {
+        "source": "decision_eval_open_hosted.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-f2e36585c835",
+        "title": "Shopify CODING Expert!",
+        "fit": 0.214,
+        "risk": 0.0,
+        "flags": [],
+        "detail": "predicted skip on a bid-worthy job"
+      }
+    ],
+    "missed_evidence": [
+      {
+        "source": "rag_eval.json",
+        "persona": "ml_engineer",
+        "job_id": "job-02a9e1095359",
+        "title": "Google Cloud Data Catalog Expert for Proof-of-Concept Development",
+        "detail": "v2_v4: Recall@5 0.0, MRR 0.0"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "ml_engineer",
+        "job_id": "job-2a924fc7bc6c",
+        "title": "Website",
+        "detail": "v2_v4: Recall@5 0.2, MRR 0.3333"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "ml_engineer",
+        "job_id": "job-386cc6e843b7",
+        "title": "Xls spreedsheet",
+        "detail": "v2_v4: Recall@5 0.2, MRR 0.5"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-182a728e08ef",
+        "title": "Full stack developer needed for entry level project",
+        "detail": "v2_v4: Recall@5 0.2, MRR 0.3333"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-33bb91fbb239",
+        "title": "Senior Javascript Developer to help scale my MVP (No Agencies Please)",
+        "detail": "v2_v4: Recall@5 0.2, MRR 0.2"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-3ebd01ec20c4",
+        "title": "generate a front-end web UI and backe-end based on the OpenAPI spec",
+        "detail": "v2_v4: Recall@5 0.2, MRR 0.2"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-5e18b8ab43f0",
+        "title": "Tourism e-commerce (Aggregator website)",
+        "detail": "v2_v4: Recall@5 0.0, MRR 0.1667"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "data_analyst",
+        "job_id": "job-01c6acb86f4c",
+        "title": "Data Analyst - Dashboard Design",
+        "detail": "v2_v4: Recall@5 0.2, MRR 1.0"
+      },
+      {
+        "source": "rag_eval.json",
+        "persona": "data_analyst",
+        "job_id": "job-276f63f76290",
+        "title": "Looking For A Google Sheets Expert To Create A Marketing Calculator",
+        "detail": "v2_v4: Recall@5 0.2, MRR 1.0"
+      }
+    ]
+  }
+}

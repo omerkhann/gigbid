@@ -31,6 +31,11 @@ models:
       strong: ["groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
       judge: ["groq:qwen/qwen3.8-27b"]
+    open_local:                # everything on the laptop GPU, no hosted quota: used once both hosted
+      small: ["ollama:qwen3:4b"]   # gpt-oss models hit Groq's free daily cap (docs/RUNBOOK.md)
+      strong: ["ollama:qwen3:4b"]
+      critic: ["ollama:qwen3:4b"]
+      judge: ["groq:qwen/qwen3.8-27b"]
   # Per-model call options. qwen3 "thinking" adds ~800 hidden tokens per call; off for small tasks.
   options:
     "ollama:qwen3:4b": {reasoning_effort: none, temperature: 0}

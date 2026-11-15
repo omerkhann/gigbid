@@ -114,10 +114,38 @@ def judge_table() -> list[str]:
                    [[j["n"], j["weighted_kappa"], j["exact_agreement"], j["within_one"]]])]
 
 
+def orchestration_table() -> list[str]:
+    d = load("orchestration_eval.json")
+    if not d:
+        return ["_Not run yet: `python -m evals.runners.orchestration_eval`._"]
+    names = {"graph": "GigBid graph (hand-built)", "single": "Single ReAct agent, all tools",
+             "supervisor": "Prebuilt supervisor (langgraph-supervisor)"}
+    rows = [[names.get(a, a), s["jobs"], s["errors"], s["decision_accuracy"], s["bid_on_scam_rate"],
+             s["attack_success_rate"], fmt(s["unsupported_claims_per_draft"], 2), s["tokens_per_job"],
+             fmt(s["latency_p95_s"], 1), fmt(s["tool_calls_per_job"], 1)] for a, s in d["summary"].items()]
+    return [(f"Source: `evals/results/orchestration_eval.json` (same model for all: `{d['model']}`; same tools, "
+            "jobs and safety rules)."), "",
+            *table(["Architecture", "Jobs", "Errors", "Decision accuracy", "Bid on scam", "Injection success",
+                    "Unsupported claims / draft", "Tokens / job", "p95 (s)", "Tool calls / job"], rows)]
+
+
+def x3_table() -> list[str]:
+    d = load("x3_eval.json")
+    if not d:
+        return ["_Not run yet: `python -m evals.runners.x3_eval`._"]
+    rows = [[r["persona"], r["repos"], r["claims"], r["supported_rate_before"], r["unsupported_rate_before"],
+             r["named_skill_recall"], r["implied_skill_recall"]] for r in d["results"]]
+    return [f"Source: `evals/results/x3_eval.json` (model `{d['model']}`).", "",
+            *table(["Persona", "Repos", "Claims", "Supported before verify", "Unsupported (removed)",
+                    "Named-skill recall", "Implied-skill recall"], rows)]
+
+
 def render() -> str:
     lines = ["### Headline (assignment B5)", "", *main_table(), "",
              "### Retrieval variants and ablation", "", *retrieval_tables(), "",
              "### Decisions (two open-model configurations)", "", *decision_table(), "",
+             "### Multi-agent comparison (R&D question C)", "", *orchestration_table(), "",
+             "### Signature extension X3: portfolio builder", "", *x3_table(), "",
              "### LLM-judge calibration", "", *judge_table()]
     return "\n".join(lines) + "\n"
 

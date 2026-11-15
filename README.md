@@ -47,6 +47,10 @@ START ─┬─► job_analyst ──┐
 
 Why each agent exists, and the alternatives considered: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/BID_GRAPH_DESIGN.md](docs/BID_GRAPH_DESIGN.md), [docs/adr/](docs/adr/).
 
+- R&D report: [docs/REPORT.md](docs/REPORT.md)
+- Signature extension (X3: GitHub repos to verified case studies): [docs/EXTENSION.md](docs/EXTENSION.md)
+- Free-tier limits and how they shaped the evals: [docs/RUNBOOK.md](docs/RUNBOOK.md#free-tier-caps-measured-2026-11-15)
+
 ## Results
 
 Every number below is generated from `evals/results/` by `python -m evals.make_tables`; CI fails if this block is stale.
@@ -94,7 +98,19 @@ By persona (V0 vs shipped `v2_v4`):
 
 ### Decisions (two open-model configurations)
 
-_Not run yet: `python -m evals.runners.decision_eval`._
+Source: `evals/results/decision_eval_<profile>.json` (fixed 60-job subset `evals/datasets/dev/subset_60.json`; scam = risk score > 0.7).
+
+| Profile | Jobs | Errors | Bid F1 | Scam precision | Scam recall | Injections flagged | Price in fair band | p50 (s) | p95 (s) | Tokens / job |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `open_hosted` (small tier: `groq:openai/gpt-oss-20b`) | 12 | 0 | 0.857 | 1.000 | 1.000 | 1.000 | 1.000 | 34.9 | 140.8 | 4559 |
+
+### Multi-agent comparison (R&D question C)
+
+_Not run yet: `python -m evals.runners.orchestration_eval`._
+
+### Signature extension X3: portfolio builder
+
+_Not run yet: `python -m evals.runners.x3_eval`._
 
 ### LLM-judge calibration
 
@@ -105,7 +121,7 @@ Source: `evals/results/judge_calibration.json`.
 | 30 | 0.741 | 0.567 | 1.000 |
 <!-- results:end -->
 
-**Multi-agent comparison** (single agent vs prebuilt supervisor vs this graph): _pending (R&D question C)._
+
 **Public traces:** _pending (three Phoenix traces: an approved bid, a caught scam, an ignored injection)._
 
 ## Run it
