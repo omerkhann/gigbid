@@ -83,6 +83,10 @@ def main() -> None:
                     metadata={"ssh_authorized_keys": ssh})
                 try:
                     inst = compute.launch_instance(details).data
+                except (oci.exceptions.ConnectTimeout, oci.exceptions.RequestException) as e:
+                    print(f"[{time.strftime('%H:%M:%S')}] network error, retrying: {str(e)[:80]}", flush=True)
+                    time.sleep(30)
+                    continue
                 except oci.exceptions.ServiceError as e:
                     msg = f"{e.code} {e.message}".lower()
                     if any(r in msg for r in RETRYABLE) or e.status in (429, 500):
