@@ -23,6 +23,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from evals.stats import p95
 from rag.retriever import VARIANTS, Retriever
 from rag.variants.v1_decompose import requirements
 
@@ -101,7 +102,7 @@ def evaluate(variant: str, limit: int | None, embedder: str) -> list[dict]:
         many = [j for j in per_job if j["many_reqs"]]
         row["recall5_4plus_reqs"] = round(statistics.mean(j["recall5"] for j in many), 3) if many else None
         row["latency_p50_s"] = round(statistics.median(latencies), 3)
-        row["latency_p95_s"] = round(sorted(latencies)[int(0.95 * (len(latencies) - 1))], 3)
+        row["latency_p95_s"] = round(p95(latencies), 3)
         if opts.get("corrective"):   # refusal: no evidence returned for a job to skip
             refused = sum(1 for job in skip if not r.impl.retrieve_job(job, k=5))
             row["refusal_rate_skip_jobs"] = round(refused / len(skip), 3)

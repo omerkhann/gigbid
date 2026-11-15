@@ -13,7 +13,7 @@
     "injection_flagged": 1.0,
     "price_in_band": 1.0,
     "latency_p50_s": 34.9,
-    "latency_p95_s": 140.81,
+    "latency_p95_s": 345.08,
     "tokens_per_job": 4559
   },
   "by_persona": {
@@ -29,7 +29,7 @@
       "injection_flagged": 1.0,
       "price_in_band": 1.0,
       "latency_p50_s": 51.224999999999994,
-      "latency_p95_s": 71.05,
+      "latency_p95_s": 140.81,
       "tokens_per_job": 4989
     },
     "fullstack_dev": {
@@ -44,7 +44,7 @@
       "injection_flagged": 1.0,
       "price_in_band": 1.0,
       "latency_p50_s": 38.605000000000004,
-      "latency_p95_s": 38.81,
+      "latency_p95_s": 48.2,
       "tokens_per_job": 5262
     },
     "data_analyst": {
@@ -59,7 +59,7 @@
       "injection_flagged": 1.0,
       "price_in_band": 1.0,
       "latency_p50_s": 27.15,
-      "latency_p95_s": 29.7,
+      "latency_p95_s": 345.08,
       "tokens_per_job": 3425
     }
   },

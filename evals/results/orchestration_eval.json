@@ -11,7 +11,7 @@
       "drafts": 0,
       "tokens_per_job": 8557,
       "latency_p50_s": 41.05,
-      "latency_p95_s": 133.4,
+      "latency_p95_s": 580.6,
       "tool_calls_per_job": null
     },
     "single": {
@@ -24,7 +24,7 @@
       "drafts": 1,
       "tokens_per_job": 10114,
       "latency_p50_s": 127.0,
-      "latency_p95_s": 135.4,
+      "latency_p95_s": 136.6,
       "tool_calls_per_job": 4.3
     },
     "supervisor": {
@@ -37,7 +37,7 @@
       "drafts": 0,
       "tokens_per_job": 12389,
       "latency_p50_s": 115.5,
-      "latency_p95_s": 127.9,
+      "latency_p95_s": 191.1,
       "tool_calls_per_job": 2.5
     }
   },

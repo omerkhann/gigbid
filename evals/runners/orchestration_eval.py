@@ -32,6 +32,8 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 
+from evals.stats import p95
+
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "evals/results/orchestration_eval.json"
 PARTIAL = ROOT / "data/processed/orchestration_partial.jsonl"
@@ -263,7 +265,7 @@ def summarise(rows: list[dict]) -> dict:
             "unsupported_claims_per_draft": round(statistics.mean(r["unsupported_claims"] for r in drafted), 2) if drafted else None,
             "drafts": len(drafted),
             "tokens_per_job": round(statistics.mean(r["tokens"] for r in rs)),
-            "latency_p50_s": statistics.median(secs), "latency_p95_s": secs[int(0.95 * (len(secs) - 1))],
+            "latency_p50_s": statistics.median(secs), "latency_p95_s": p95(secs),
             "tool_calls_per_job": round(statistics.mean(r["tool_calls"] for r in rs if r["tool_calls"] is not None), 1)
             if any(r["tool_calls"] is not None for r in rs) else None,
         }

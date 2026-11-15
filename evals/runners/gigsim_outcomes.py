@@ -27,6 +27,8 @@ from pathlib import Path
 import httpx
 from dotenv import load_dotenv
 
+from evals.stats import p95
+
 ROOT = Path(__file__).resolve().parents[2]
 ADMIN = {"Authorization": "Bearer dev-admin"}
 
@@ -126,7 +128,7 @@ async def run(variant: str, limit: int | None, embedder: str) -> dict:
         "judge_score": round(statistics.mean(r["judge"] for r in sent), 2) if sent else None,
         "critic_revisions_avg": round(statistics.mean(r["critic_revisions"] for r in sent), 2) if sent else None,
         "latency_p50_s": statistics.median(secs) if secs else None,
-        "latency_p95_s": secs[int(0.95 * (len(secs) - 1))] if secs else None,
+        "latency_p95_s": p95(secs),
         "tokens_per_proposal": round(statistics.mean(r["tokens"] for r in sent)) if sent else None,
         "usd_per_proposal": 0.0, "usd_note": "open models on free tiers (Groq, local Ollama)",
     }

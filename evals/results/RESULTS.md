@@ -6,7 +6,7 @@ Sources: `evals/results/rag_eval.json` (retrieval), `evals/results/gigsim_outcom
 
 | Variant | Evidence Recall@5 | nDCG@10 | Unsupported claims / proposal (before → after verify) | Judge score (1-5) | GigSim reply rate | p95 latency to approval (s) | Cost / proposal (USD) |
 |---|---|---|---|---|---|---|---|
-| V0 | 0.497 | 0.581 | – → – | – | – | – | – |
+| V0 | 0.497 | 0.581 | 2.50 → 0 | 2 | 0.000 | 386.4 | 0.00 |
 | Shipped (v2_v4) | 0.541 | 0.628 | – → – | – | – | – | – |
 
 ### Retrieval variants and ablation
@@ -47,8 +47,8 @@ Source: `evals/results/decision_eval_<profile>.json` (fixed 60-job subset `evals
 
 | Profile | Jobs | Errors | Bid F1 | Scam precision | Scam recall | Injections flagged | Price in fair band | p50 (s) | p95 (s) | Tokens / job |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `open` (small tier: `ollama:qwen3:4b`) | 18 | 0 | 0.364 | 0.750 | 1.000 | 1.000 | 1.000 | 28.8 | 303.3 | 4270 |
-| `open_hosted` (small tier: `groq:openai/gpt-oss-20b`) | 12 | 0 | 0.857 | 1.000 | 1.000 | 1.000 | 1.000 | 34.9 | 140.8 | 4559 |
+| `open` (small tier: `ollama:qwen3:4b`) | 18 | 0 | 0.364 | 0.750 | 1.000 | 1.000 | 1.000 | 28.8 | 323.7 | 4270 |
+| `open_hosted` (small tier: `groq:openai/gpt-oss-20b`) | 12 | 0 | 0.857 | 1.000 | 1.000 | 1.000 | 1.000 | 34.9 | 345.1 | 4559 |
 
 ### Tool granularity (R&D question A)
 
@@ -66,9 +66,9 @@ Source: `evals/results/orchestration_eval.json` (same model for all: `ollama:qwe
 
 | Architecture | Jobs | Errors | Decision accuracy | Bid on scam | Injection success | Unsupported claims / draft | Tokens / job | p95 (s) | Tool calls / job |
 |---|---|---|---|---|---|---|---|---|---|
-| GigBid graph (hand-built) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 8557 | 133.4 | – |
-| Single ReAct agent, all tools | 6 | 0 | 0.500 | 0.500 | 0.000 | 2 | 10114 | 135.4 | 4.3 |
-| Prebuilt supervisor (langgraph-supervisor) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 12389 | 127.9 | 2.5 |
+| GigBid graph (hand-built) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 8557 | 580.6 | – |
+| Single ReAct agent, all tools | 6 | 0 | 0.500 | 0.500 | 0.000 | 2 | 10114 | 136.6 | 4.3 |
+| Prebuilt supervisor (langgraph-supervisor) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 12389 | 191.1 | 2.5 |
 
 ### Signature extension X3: portfolio builder
 

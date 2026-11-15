@@ -27,6 +27,8 @@ from pathlib import Path
 import httpx
 from dotenv import load_dotenv
 
+from evals.stats import p95
+
 ROOT = Path(__file__).resolve().parents[2]
 SUBSET = ROOT / "evals/datasets/dev/subset_60.json"
 PERSONAS = ("ml_engineer", "fullstack_dev", "data_analyst")
@@ -178,7 +180,7 @@ def summarise(rows: list[dict], out_path: Path | None = None) -> dict:
                 "injection_flagged": round(sum("prompt_injection" in r["flags"] for r in inj) / len(inj), 3) if inj else None,
                 "price_in_band": round(sum(r["price_in_band"] for r in priced) / len(priced), 3) if priced else None,
                 "latency_p50_s": statistics.median(secs) if secs else None,
-                "latency_p95_s": secs[int(0.95 * (len(secs) - 1))] if secs else None,
+                "latency_p95_s": p95(secs),
                 "tokens_per_job": round(statistics.mean(r["tokens"] for r in ok)) if ok else None}
 
     from agent.llm import chain_for, profile
