@@ -9,6 +9,7 @@ Embedders:
 from __future__ import annotations
 
 import hashlib
+import os
 import re
 from pathlib import Path
 from typing import ClassVar
@@ -51,7 +52,7 @@ class FastEmbedEmbedder:
         from fastembed import TextEmbedding
 
         self.name = f"fastembed:{model}"
-        self.model = TextEmbedding(model, cache_dir=cache_dir)
+        self.model = TextEmbedding(model, cache_dir=cache_dir or os.environ.get("FASTEMBED_CACHE_PATH"))
 
     def embed_documents(self, texts: list[str]) -> np.ndarray:
         return np.asarray(list(self.model.passage_embed(texts)), dtype=np.float32)

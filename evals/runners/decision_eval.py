@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import os
 import random
 import statistics
 import sys
@@ -65,7 +66,7 @@ def f1(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
     return round(p, 3), round(r, 3), round(2 * p * r / (p + r), 3) if p + r else 0.0
 
 
-async def run(limit: int | None) -> dict:
+async def run(limit: int | None, out_path: Path | None = None) -> dict:
     from langgraph.checkpoint.memory import InMemorySaver
     from mcp.shared.memory import create_connected_server_and_client_session as connect
 
@@ -105,7 +106,9 @@ async def run(limit: int | None) -> dict:
         market = build_marketplace(MSettings(db_path=tmp / f"m-{persona}.sqlite3", local_user=f"u-{slug}",
                                              limits={"read": 10**6, "submit": 10**6, "write": 10**6}),
                                    GigSimBackend("http://gigsim", client=http))
-        portfolio = build_portfolio(PSettings(db_path=tmp / f"p-{persona}.sqlite3", local_user=f"u-{slug}"))
+        portfolio = build_portfolio(PSettings(db_path=tmp / f"p-{persona}.sqlite3", local_user=f"u-{slug}",
+                                              variant=os.environ.get("PORTFOLIO_VARIANT", "v0_naive"),
+                                              embedder=os.environ.get("PORTFOLIO_EMBEDDER", "ollama:nomic-embed-text")))
         gateway = McpGateway({"marketplace": factory(market), "portfolio": factory(portfolio)})
         graph = build_bid_graph(InMemorySaver())
         graph.interrupt_before_nodes = ["pricing"]   # stop before any drafting: decisions only
@@ -133,10 +136,10 @@ async def run(limit: int | None) -> dict:
                          "status": out.get("status"), "errors": out.get("errors") or []})
             print(json.dumps({k: rows[-1][k] for k in ("persona", "job_id", "gold_bid", "pred", "gold_scam", "risk",
                                                         "fit", "seconds")}), flush=True)
-    return summarise(rows)
+    return summarise(rows, out_path)
 
 
-def summarise(rows: list[dict]) -> dict:
+def summarise(rows: list[dict], out_path: Path | None = None) -> dict:
     def block(rs: list[dict]) -> dict:
         ok = [r for r in rs if r["pred"] != "error"]
         tp = sum(r["gold_bid"] and r["pred"] == "bid" for r in ok)
@@ -163,7 +166,8 @@ def summarise(rows: list[dict]) -> dict:
 
     out = {"profile": profile(), "small_model": chain_for("job_analyst")[0], "overall": block(rows),
            "by_persona": {p: block([r for r in rows if r["persona"] == p]) for p in PERSONAS}, "rows": rows}
-    path = ROOT / f"evals/results/decision_eval_{profile()}.json"
+    path = out_path or ROOT / f"evals/results/decision_eval_{profile()}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"profile": out["profile"], **out["overall"]}, indent=2))
     return out
@@ -173,8 +177,9 @@ if __name__ == "__main__":
     load_dotenv(ROOT / ".env")
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None, help="jobs per persona")
+    ap.add_argument("--out", type=Path, default=None)
     a = ap.parse_args()
     if sys.platform == "win32":
-        asyncio.run(run(a.limit), loop_factory=asyncio.SelectorEventLoop)
+        asyncio.run(run(a.limit, a.out), loop_factory=asyncio.SelectorEventLoop)
     else:
-        asyncio.run(run(a.limit))
+        asyncio.run(run(a.limit, a.out))

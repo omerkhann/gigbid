@@ -113,19 +113,20 @@ def main() -> None:
     ap.add_argument("--variants", nargs="+", default=CHEAP)
     ap.add_argument("--limit", type=int, default=None, help="max bid jobs per persona")
     ap.add_argument("--embedder", default="ollama:nomic-embed-text")
+    ap.add_argument("--out", type=Path, default=RESULTS / "rag_eval.json", help="CI smoke runs write elsewhere")
     a = ap.parse_args()
-    out = RESULTS / "rag_eval.json"
+    out = a.out
     previous = json.loads(out.read_text(encoding="utf-8"))["by_persona"] if out.exists() else []
     rows = [r for r in previous if r["variant"] not in a.variants]
     for v in a.variants:
         rows += evaluate(v, a.limit, a.embedder)
     summary = summarise(rows)
-    RESULTS.mkdir(parents=True, exist_ok=True)
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"embedder": a.embedder, "summary": summary, "by_persona": rows}, indent=2) + "\n",
                    encoding="utf-8", newline="\n")
     keys = ["variant", "persona", "jobs", "recall5", "mrr", "ndcg10", "recall5_4plus_reqs", "latency_p50_s",
             "latency_p95_s", "refusal_rate_skip_jobs"]
-    with (RESULTS / "rag_eval.csv").open("w", newline="", encoding="utf-8") as f:
+    with out.with_suffix(".csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=keys, extrasaction="ignore")
         w.writeheader()
         w.writerows(summary + rows)

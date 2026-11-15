@@ -1,0 +1,41 @@
+name: Eval
+# Smoke evals on every PR (and on demand): retrieval quality without any LLM, then decision quality
+# on 30 fixed jobs with hosted open models when the GROQ_API_KEY secret exists. Fails when a metric
+# drops below evals/thresholds.yaml.
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    env:
+      FASTEMBED_CACHE_PATH: ${{ github.workspace }}/.cache/fastembed
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --locked --extra dev --extra data
+      - uses: actions/cache@v4
+        with:
+          path: .cache/fastembed
+          key: fastembed-bge-small-en-v1.5
+      - name: RAG smoke (10 bid jobs per persona, fastembed)
+        run: |
+          uv run python -m evals.runners.rag_eval --variants v0_naive v2_hybrid --limit 10 \
+            --embedder fastembed:BAAI/bge-small-en-v1.5 --out evals/results/ci/rag_eval.json
+          uv run python -m evals.check_thresholds rag evals/results/ci/rag_eval.json
+      - name: Decision smoke (30 jobs, hosted open models)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MODEL_PROFILE: open_hosted
+          PORTFOLIO_EMBEDDER: fastembed:BAAI/bge-small-en-v1.5
+        run: |
+          if [ -z "$GROQ_API_KEY" ]; then echo "No GROQ_API_KEY secret; skipping"; exit 0; fi
+          uv run python -m evals.runners.decision_eval --limit 10 --out evals/results/ci/decision_eval.json
+          uv run python -m evals.check_thresholds decision evals/results/ci/decision_eval.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: evals/results/ci/

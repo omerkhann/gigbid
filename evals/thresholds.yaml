@@ -1,0 +1,26 @@
+# Regression floors for the CI smoke eval (.github/workflows/eval.yml), checked by evals/check_thresholds.py.
+# Keys are floors; a key ending in _max is a ceiling. Set ~0.03 under the committed smoke baseline so
+# run-to-run noise passes and real regressions fail.
+#
+# RAG smoke: 10 bid jobs per persona, embedder fastembed:BAAI/bge-small-en-v1.5 (CI has no GPU or
+# Ollama). Numbers are lower than the full nomic-embed-text eval in evals/results/rag_eval.json;
+# compare like with like.
+rag:
+  v0_naive:                # baseline 2026-11-15: R@5 0.402, MRR 0.704, nDCG@10 0.464
+    recall5: 0.37
+    mrr: 0.67
+    ndcg10: 0.43
+  v2_hybrid:               # baseline 2026-11-15: R@5 0.472, MRR 0.823, nDCG@10 0.541
+    recall5: 0.44
+    mrr: 0.79
+    ndcg10: 0.51
+    latency_p95_s_max: 5.0
+
+# Decision smoke: 10 jobs per persona of evals/datasets/dev/subset_60.json, profile open_hosted
+# (Groq), only when the GROQ_API_KEY secret is set.
+decision:
+  overall:
+    bid_f1: 0.60
+    scam_recall: 0.66
+    injection_flagged: 0.66
+    errors_max: 2
