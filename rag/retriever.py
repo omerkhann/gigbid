@@ -16,11 +16,21 @@ from pathlib import Path
 
 # Imported eagerly (it loads numpy): on Windows, importing numpy for the first time from a worker
 # thread while a stdio MCP server is blocked reading stdin deadlocks. Load it before serving.
-from rag.index.vector import HashEmbedder, OllamaEmbedder
+from rag.index.vector import FastEmbedEmbedder, HashEmbedder, OllamaEmbedder
 from rag.ingest.loaders import Document, load_portfolio
 
 ROOT = Path(__file__).resolve().parents[1]
-VARIANTS = {"v0_naive": "rag.variants.v0_naive:V0Naive"}
+RERANKER = "BAAI/bge-reranker-v2-m3-int8"
+# Every variant is a set of pipeline switches (rag/pipeline.py). "best" is chosen by rag_eval.
+VARIANTS: dict[str, dict] = {
+    "v0_naive": {},
+    "v1_decompose": {"decompose": True},
+    "v2_hybrid": {"hybrid": True},
+    "v3_rerank": {"hybrid": True, "rerank": RERANKER},
+    "v4_outcome": {"hybrid": True, "rerank": RERANKER, "outcome": True},
+    "v8_corrective": {"decompose": True, "hybrid": True, "rerank": RERANKER, "corrective": True},
+    "v1_v2_v3": {"decompose": True, "hybrid": True, "rerank": RERANKER},
+}
 
 
 @dataclass
@@ -43,21 +53,34 @@ class Filters:
 def make_embedder(spec: str):
     if spec == "hash":
         return HashEmbedder()
+    if spec.startswith("fastembed:"):
+        return FastEmbedEmbedder(spec.split(":", 1)[1], os.environ.get("RERANKER_CACHE", str(ROOT / "data/processed/models")))
     if spec.startswith("ollama:"):
-        return OllamaEmbedder(spec.split(":", 1)[1], os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434"))
+        return OllamaEmbedder(spec.split(":", 1)[1], os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434"))
     raise ValueError(f"Unknown embedder {spec!r}")
 
 
+def corrective_ask(name: str, schema):
+    """The V8 grader / rewriter: the small model tier (config node rag_grader)."""
+    from agent.llm import structured
+
+    call = structured("rag_grader", schema)
+    return lambda messages: call(messages)[0]
+
+
 class Retriever:
-    def __init__(self, portfolio_dir: Path, variant: str, embedder_spec: str, cache_root: Path):
+    def __init__(self, portfolio_dir: Path, variant: str, embedder_spec: str, cache_root: Path,
+                 options: dict | None = None):
+        from rag.pipeline import Pipeline
+
         self.docs = load_portfolio(portfolio_dir)
         self.by_id = {d.doc_id: d for d in self.docs}
-        mod, cls = VARIANTS[variant].split(":")
-        import importlib
-
+        opts = dict(VARIANTS[variant] if options is None else options)
+        if opts.pop("corrective", False):
+            opts["corrective"] = corrective_ask
         corpus_key = hashlib.sha1(str(Path(portfolio_dir).resolve()).encode()).hexdigest()[:10]
         cache = cache_root / f"{self.docs[0].persona if self.docs else 'empty'}_{corpus_key}"
-        self.impl = getattr(importlib.import_module(mod), cls)(self.docs, make_embedder(embedder_spec), cache)
+        self.impl = Pipeline(self.docs, make_embedder(embedder_spec), cache, name=variant, **opts)
         self.variant = variant
 
     def search(self, query: str, k: int = 5, filters: Filters | None = None) -> list[dict]:

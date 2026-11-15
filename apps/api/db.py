@@ -72,7 +72,7 @@ CREATE INDEX IF NOT EXISTS runs_user ON runs (user_id, updated_at DESC);
 
 
 def database_url() -> str:
-    return os.environ.get("DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5433/gigbid")
+    return os.environ.get("DATABASE_URL", "postgresql://gigbid:gigbid@127.0.0.1:5433/gigbid")
 
 
 class Db:

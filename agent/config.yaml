@@ -7,7 +7,7 @@ marketplace:
   max_requests_per_minute: 20
 
 providers:                     # all speak the OpenAI chat API
-  ollama: {base_url_env: OLLAMA_BASE_URL, base_url_default: "http://localhost:11434", path: /v1, api_key: ollama}
+  ollama: {base_url_env: OLLAMA_BASE_URL, base_url_default: "http://127.0.0.1:11434", path: /v1, api_key: ollama}
   groq: {base_url_default: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
   openrouter: {base_url_default: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
 
@@ -20,15 +20,18 @@ models:
       small: ["ollama:qwen3:4b", "groq:openai/gpt-oss-20b"]
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
+      judge: ["groq:qwen/qwen3.8-27b"]
     open_hosted:               # variant of "open" with no GPU (the deployed VM): small tier hosted too
       small: ["groq:openai/gpt-oss-20b", "ollama:qwen3:4b"]
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
+      judge: ["groq:qwen/qwen3.8-27b"]
   # Per-model call options. qwen3 "thinking" adds ~800 hidden tokens per call; off for small tasks.
   options:
     "ollama:qwen3:4b": {reasoning_effort: none, temperature: 0}
     "groq:openai/gpt-oss-20b": {reasoning_effort: low, temperature: 0}
     "groq:openai/gpt-oss-120b": {reasoning_effort: medium, temperature: 0.4}
+    "groq:qwen/qwen3.8-27b": {reasoning_effort: none, temperature: 0}
   nodes:
     job_analyst: small
     risk_assessor: small
@@ -40,11 +43,13 @@ models:
     compliance: small
     client_liaison: strong
     intent: small
+    rag_grader: small
+    judge: judge                 # eval-only LLM judge: a different family from the Writer
   embeddings: nomic-embed-text
   reranker: bge-reranker-v2-m3
 
 rag:
-  variant: v0_naive            # chosen by evaluation in Phase 4
+  variant: v0_naive            # chosen by evaluation (evals/runners/rag_eval.py)
   evidence_per_requirement: 4
 
 budgets:

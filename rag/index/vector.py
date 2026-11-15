@@ -1,8 +1,8 @@
 """Embedders and an in-memory cosine index with an on-disk embedding cache.
 
 Embedders:
-  OllamaEmbedder - open models served by Ollama (nomic-embed-text, bge-m3); runs on GPU locally
-                   and on CPU in deployment (assignment: embeddings are open models in both profiles).
+  OllamaEmbedder    - open models served by Ollama (nomic-embed-text, bge-m3); GPU locally.
+  FastEmbedEmbedder - open ONNX models on CPU (bge-small-en-v1.5 by default): CI and GPU-less hosts.
   HashEmbedder   - deterministic bag-of-words hashing; no model needed. Only for CI and unit tests.
 """
 
@@ -21,16 +21,18 @@ class OllamaEmbedder:
     # nomic-embed-text was trained with task prefixes; other models get none.
     PREFIXES: ClassVar[dict[str, tuple[str, str]]] = {"nomic-embed-text": ("search_document: ", "search_query: ")}
 
-    def __init__(self, model: str = "nomic-embed-text", base_url: str = "http://localhost:11434", batch: int = 32):
+    def __init__(self, model: str = "nomic-embed-text", base_url: str = "http://127.0.0.1:11434", batch: int = 32):
         self.model, self.base_url, self.batch = model, base_url.rstrip("/"), batch
         self.name = f"ollama:{model}"
+        # One persistent connection: a new TCP connection per query added ~0.5 s on Windows.
+        self.http = httpx.Client(timeout=300)
         self.doc_prefix, self.query_prefix = self.PREFIXES.get(model.split(":")[0], ("", ""))
 
     def _embed(self, texts: list[str]) -> np.ndarray:
         out = []
         for i in range(0, len(texts), self.batch):
-            r = httpx.post(f"{self.base_url}/api/embed", json={"model": self.model, "input": texts[i:i + self.batch]},
-                           timeout=300)
+            r = self.http.post(f"{self.base_url}/api/embed",
+                               json={"model": self.model, "input": texts[i:i + self.batch], "keep_alive": "30m"})
             r.raise_for_status()
             out.extend(r.json()["embeddings"])
         return np.asarray(out, dtype=np.float32)
@@ -40,6 +42,22 @@ class OllamaEmbedder:
 
     def embed_query(self, text: str) -> np.ndarray:
         return self._embed([self.query_prefix + text])[0]
+
+
+class FastEmbedEmbedder:
+    """ONNX models on CPU via fastembed: no Ollama or GPU needed (CI, and a GPU-less deployment)."""
+
+    def __init__(self, model: str = "BAAI/bge-small-en-v1.5", cache_dir: str | None = None):
+        from fastembed import TextEmbedding
+
+        self.name = f"fastembed:{model}"
+        self.model = TextEmbedding(model, cache_dir=cache_dir)
+
+    def embed_documents(self, texts: list[str]) -> np.ndarray:
+        return np.asarray(list(self.model.passage_embed(texts)), dtype=np.float32)
+
+    def embed_query(self, text: str) -> np.ndarray:
+        return np.asarray(next(iter(self.model.query_embed(text))), dtype=np.float32)
 
 
 class HashEmbedder:

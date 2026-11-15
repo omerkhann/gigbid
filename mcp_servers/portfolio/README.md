@@ -62,7 +62,7 @@ python -m mcp_servers.portfolio.server     # Streamable HTTP at http://127.0.0.1
 |---|---|---|
 | `PORTFOLIO_VARIANT` | `v0_naive` | Retrieval design (see `rag/variants/`); chosen by evaluation |
 | `PORTFOLIO_EMBEDDER` | `ollama:nomic-embed-text` | Any Ollama embedding model, or `hash` for offline tests |
-| `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama address |
+| `OLLAMA_BASE_URL` | `http://127.0.0.1:11434` | Ollama address |
 
 ## Design notes
 

@@ -25,6 +25,8 @@ dependencies = [
   "cryptography>=50.0.2",
   "arize-phoenix-otel>=0.17.3",
   "openinference-instrumentation-langchain>=0.1.86",
+  "rank-bm25>=0.2.2",
+  "fastembed>=0.9.1",
 ]
 
 [project.optional-dependencies]

@@ -1,0 +1,51 @@
+{
+  "embedder": "ollama:nomic-embed-text",
+  "summary": [
+    {
+      "variant": "v0_naive",
+      "persona": "all",
+      "jobs": 9,
+      "recall5": 0.533,
+      "mrr": 0.87,
+      "ndcg10": 0.634,
+      "recall5_4plus_reqs": 0.489,
+      "latency_p50_s": 3.363,
+      "latency_p95_s": 3.363
+    }
+  ],
+  "by_persona": [
+    {
+      "variant": "v0_naive",
+      "persona": "ml_engineer",
+      "jobs": 3,
+      "recall5": 0.733,
+      "mrr": 0.833,
+      "ndcg10": 0.679,
+      "recall5_4plus_reqs": 0.6,
+      "latency_p50_s": 3.266,
+      "latency_p95_s": 3.266
+    },
+    {
+      "variant": "v0_naive",
+      "persona": "fullstack_dev",
+      "jobs": 3,
+      "recall5": 0.467,
+      "mrr": 0.778,
+      "ndcg10": 0.672,
+      "recall5_4plus_reqs": 0.467,
+      "latency_p50_s": 3.396,
+      "latency_p95_s": 3.396
+    },
+    {
+      "variant": "v0_naive",
+      "persona": "data_analyst",
+      "jobs": 3,
+      "recall5": 0.4,
+      "mrr": 1.0,
+      "ndcg10": 0.551,
+      "recall5_4plus_reqs": 0.4,
+      "latency_p50_s": 3.426,
+      "latency_p95_s": 3.426
+    }
+  ]
+}

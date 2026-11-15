@@ -101,7 +101,7 @@ def create_app(services: Services | None = None) -> FastAPI:
         from worker.queue import ArqQueue, RedisEvents
 
         db = await Db().open()
-        redis_url = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+        redis_url = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0")
         from arq import create_pool
         from arq.connections import RedisSettings
 

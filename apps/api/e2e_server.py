@@ -41,7 +41,7 @@ from mcp_servers.workspace.server import build_server as build_workspace
 from tests.integration.test_bid_graph import FakeLLM
 from worker.queue import InlineQueue, MemoryEvents
 
-ADMIN_URL = os.environ.get("E2E_ADMIN_DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5433/gigbid")
+ADMIN_URL = os.environ.get("E2E_ADMIN_DATABASE_URL", "postgresql://gigbid:gigbid@127.0.0.1:5433/gigbid")
 E2E_URL = ADMIN_URL.rsplit("/", 1)[0] + "/gigbid_e2e"
 ADMIN = {"Authorization": "Bearer dev-admin"}
 

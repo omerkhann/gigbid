@@ -31,8 +31,8 @@ from tests.integration.test_bid_graph import FakeLLM
 from worker.queue import InlineQueue, MemoryEvents
 
 ROOT = Path(__file__).resolve().parents[2]
-ADMIN_URL = os.environ.get("TEST_ADMIN_DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5433/gigbid")
-TEST_URL = os.environ.get("TEST_DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5433/gigbid_test")
+ADMIN_URL = os.environ.get("TEST_ADMIN_DATABASE_URL", "postgresql://gigbid:gigbid@127.0.0.1:5433/gigbid")
+TEST_URL = os.environ.get("TEST_DATABASE_URL", "postgresql://gigbid:gigbid@127.0.0.1:5433/gigbid_test")
 JOB = "job-0b954e1ba14e"   # a data-analyst "bid" job in the dev pack
 
 

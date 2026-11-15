@@ -51,7 +51,7 @@ class Runtime:
 
     def __init__(self, db_url: str | None = None, gateway_factory: Callable[[dict], McpGateway] | None = None,
                  llm=None, saver=None, store=None):
-        self.db_url = db_url or os.environ.get("DATABASE_URL", "postgresql://gigbid:gigbid@localhost:5433/gigbid")
+        self.db_url = db_url or os.environ.get("DATABASE_URL", "postgresql://gigbid:gigbid@127.0.0.1:5433/gigbid")
         self.gateway_factory = gateway_factory
         self.llm, self.saver, self.store = llm, saver, store
         self._stack = AsyncExitStack()

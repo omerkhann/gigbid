@@ -1,0 +1,5 @@
+variant,persona,jobs,recall5,mrr,ndcg10,recall5_4plus_reqs,latency_p50_s,latency_p95_s,refusal_rate_skip_jobs
+v0_naive,all,9,0.533,0.87,0.634,0.489,3.363,3.363,
+v0_naive,ml_engineer,3,0.733,0.833,0.679,0.6,3.266,3.266,
+v0_naive,fullstack_dev,3,0.467,0.778,0.672,0.467,3.396,3.396,
+v0_naive,data_analyst,3,0.4,1.0,0.551,0.4,3.426,3.426,

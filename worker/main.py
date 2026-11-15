@@ -66,7 +66,7 @@ class WorkerSettings:
                  cron(poll_all_users, minute=set(range(0, 60, 5)), second=30)]
     on_startup = startup
     on_shutdown = shutdown
-    redis_settings = RedisSettings.from_dsn(os.environ.get("REDIS_URL", "redis://localhost:6379/0"))
+    redis_settings = RedisSettings.from_dsn(os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/0"))
     max_jobs = 4
     job_timeout = 900
     max_tries = 3            # a crashed or failed task is retried; checkpoints + idempotency keep it safe
