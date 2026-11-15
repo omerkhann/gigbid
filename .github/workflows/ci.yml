@@ -19,6 +19,6 @@ jobs:
           git diff --exit-code --stat "$tag" HEAD -- gigsim/
       # uv installs from uv.lock and doesn't build the repo as a package
       # (pip -e failed on the multi-folder flat layout).
-      - run: uv sync --locked --extra dev
+      - run: uv sync --locked --extra dev --extra data
       - run: uv run ruff check .
       - run: uv run pytest -q
