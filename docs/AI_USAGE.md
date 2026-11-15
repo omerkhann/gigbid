@@ -28,4 +28,6 @@ Design decisions (what to build, what to cut, what ships) were made by the autho
 3. **It documented behaviour the code doesn't have.** A draft ADR said a dead MCP server moves the run to `needs_attention`; the code uses `waiting_marketplace` (resumable) or `dead_letter`. Caught by checking the claim against `agent/nodes/common.py` before committing.
 4. **It set an option where it had no effect.** In the decision eval, `interrupt_before` was set on a `.with_config(...)` wrapper rather than on the compiled graph, so runs went on to draft proposals. Caught because a "decisions only" run was using Writer tokens.
 
+5. **It computed a percentile wrong.** The eval runners took p95 as `sorted(x)[int(0.95 * (n - 1))]`, which returns the *minimum* when n = 2 and understates the tail for small samples. Caught when a results file showed p95 below p50. Fixed with a nearest-rank helper (`evals/stats.py`); the affected summaries were recomputed from their stored rows before any number was reported.
+
 <!-- Add at least one example from your own review here, in your own words. -->
