@@ -8,6 +8,7 @@
 # environment), starts the full stack (profile app) and puts Caddy in front with automatic HTTPS on
 # https://<ip-with-dashes>.sslip.io (a free wildcard DNS name, so no domain is needed).
 set -euo pipefail
+export DEBIAN_FRONTEND=noninteractive   # iptables-persistent would otherwise prompt
 
 REPO=${REPO:-https://github.com/omerkhann/gigbid.git}
 DIR=${DIR:-/opt/gigbid}
