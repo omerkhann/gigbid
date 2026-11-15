@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned: Playwright does not support ubuntu-latest (26.04) yet
     services:
       postgres:                     # API tests use a real Postgres (gigbid_test is created by the tests)
         image: pgvector/pgvector:pg17
@@ -31,7 +31,7 @@ jobs:
       - run: uv run pytest -q
 
   web:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04            # pinned: Playwright does not support ubuntu-latest (26.04) yet
     services:
       postgres:                     # the e2e backend uses a real Postgres (fresh gigbid_e2e database)
         image: pgvector/pgvector:pg17
