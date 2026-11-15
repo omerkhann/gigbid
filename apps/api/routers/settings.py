@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException
 from agent.llm import config as agent_config
 from agent.memory.store import forget, outcome_stats
 from apps.api.deps import Services, TraceId, User
-from apps.api.schemas import SavedSearch, SavedSearchIn, SettingsIn
+from apps.api.schemas import MarketplaceHealth, Memory, SavedSearch, SavedSearchIn, SettingsIn
 
 router = APIRouter(tags=["settings"])
 LIVE_MIN_INTERVAL = 60
@@ -52,7 +52,7 @@ async def delete_search(search_id: str, user: User, svc: Services):
     await svc.db.run("DELETE FROM saved_searches WHERE search_id = %s AND user_id = %s", search_id, user["user_id"])
 
 
-@router.get("/memory")
+@router.get("/memory", response_model=Memory)
 async def memory(user: User, svc: Services) -> dict:
     store, uid = svc.runtime.store, user["user_id"]
     return {"style_rules": [{"key": i.key, **i.value} for i in store.search(("style", uid), limit=100)],
@@ -67,7 +67,7 @@ async def delete_memory(namespace: str, key: str, user: User, svc: Services):
     forget(svc.runtime.store, user["user_id"], namespace, key)
 
 
-@router.get("/health/marketplace")
+@router.get("/health/marketplace", response_model=MarketplaceHealth)
 async def marketplace_health(user: User, svc: Services, trace_id: TraceId) -> dict:
     try:
         bal = await svc.marketplace(user, "get_connects_balance", {}, trace_id)

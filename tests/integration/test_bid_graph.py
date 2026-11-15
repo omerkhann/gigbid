@@ -61,10 +61,10 @@ class FakeLLM:
         def call(messages):
             self.calls[node] = self.calls.get(node, 0) + 1
             text = "\n".join(m.content for m in messages)
-            return self.answer(node, text), Usage("fake", 100, 50, 0.0, 0)
+            return self.answer(node, text, schema), Usage("fake", 100, 50, 0.0, 0)
         return call
 
-    def answer(self, node, text):
+    def answer(self, node, text, schema=None):
         if node == "job_analyst":
             return JobSpecLLM(deliverables=["dashboard"], requirements=["build dashboards", "SQL"], timeline=None,
                               hidden_needs=[], red_flags=[])
@@ -78,7 +78,7 @@ class FakeLLM:
                 items.append(ItemJudgement(index=idx, coverage="strong" if ids else "missing", evidence_ids=ids,
                                            reason="fake"))
             return FitLLM(items=items)
-        if node == "writer":
+        if node == "writer" and "PARAGRAPH:" not in text:
             ev = re.findall(r"- \[([^\]]+)\]", text)
             first = ev[0] if ev else "none"
             letter = self.writer_text or (f"Your reporting needs a clear, reliable dashboard. I built a Power BI sales "
@@ -93,6 +93,8 @@ class FakeLLM:
         if node == "critic":
             verdict = self.critic_verdicts.pop(0) if self.critic_verdicts else "pass"
             return Critique(verdict=verdict, scores=CritiqueScores(grounding=4, personalisation=4, clarity=4, length=4), issues=["be more specific"] if verdict == "revise" else [])
+        if node == "writer" and "PARAGRAPH:" in text:   # the studio's "regenerate one paragraph"
+            return schema(text="Here is a sharper paragraph about the Power BI dashboard work.")
         raise AssertionError(node)
 
 

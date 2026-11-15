@@ -5,12 +5,13 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from apps.api.deps import Services, TraceId, User
+from apps.api.schemas import Pipeline
 
 router = APIRouter(prefix="/pipeline", tags=["proposals"])
 COLUMNS = ["draft", "submitted", "viewed", "replied", "interview", "hired", "lost"]
 
 
-@router.get("")
+@router.get("", response_model=Pipeline)
 async def pipeline(user: User, svc: Services, trace_id: TraceId) -> dict:
     props = await svc.marketplace(user, "list_proposals", {}, trace_id)
     titles = {r["job_id"]: r["title"] for r in await svc.db.all(

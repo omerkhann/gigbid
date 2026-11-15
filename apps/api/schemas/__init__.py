@@ -85,3 +85,95 @@ class RunDetail(BaseModel):
     events: list[dict[str, Any]]
     state: dict[str, Any]
     pending_approval: dict[str, Any] | None
+
+
+class PipelineCard(BaseModel):
+    proposal_id: str
+    job_id: str
+    title: str | None
+    bid_amount: float
+    bid_type: str
+    thread_id: str | None
+    updated_at: str | None
+    run_thread: str
+
+
+class Pipeline(BaseModel):
+    columns: list[str]
+    board: dict[str, list[PipelineCard]]
+
+
+class ThreadSummary(BaseModel):
+    thread_id: str
+    proposal_id: str
+    job_id: str
+    client_id: str
+    status: str
+    accepting_messages: bool
+    agent_status: str | None = None
+    intent: str | None = None
+
+
+class Threads(BaseModel):
+    threads: list[ThreadSummary]
+
+
+class Message(BaseModel):
+    sender: Literal["client", "freelancer"]
+    body: str
+    at: str
+
+
+class Thread(BaseModel):
+    thread_id: str
+    proposal_id: str
+    job_id: str
+    client_id: str
+    status: str
+    accepting_messages: bool
+    messages: list[Message]
+    run_thread: str
+    pending_reply: dict[str, Any] | None
+
+
+class Analytics(BaseModel):
+    jobs_analysed: int
+    decisions: dict[str, int]
+    proposals_submitted: int
+    connects_spent: int
+    reply_rate: float | None
+    hire_rate: float | None
+    by_category: dict[str, dict[str, int]]
+    per_proposal: dict[str, int]
+    per_job_analysed: dict[str, int]
+    top_skip_reasons: list[tuple[str, int]]
+
+
+class MemoryItem(BaseModel):
+    key: str
+    rule: str | None = None
+    count: int | None = None
+    since: str | None = None
+    evidence_edits: int | None = None
+    examples: list[str] | None = None
+
+
+class Memory(BaseModel):
+    style_rules: list[MemoryItem]
+    style_candidates: list[MemoryItem]
+    outcomes: dict[str, dict[str, int]]
+
+
+class MarketplaceHealth(BaseModel):
+    marketplace: Literal["ok", "unavailable"]
+    connects_balance: int | None = None
+    detail: str | None = None
+
+
+class RegenerateIn(BaseModel):
+    paragraph: str = Field(min_length=1, max_length=3000, description="The paragraph to rewrite, as shown")
+    instruction: str | None = Field(default=None, max_length=300, description="Optional, e.g. 'shorter' or 'more specific'")
+
+
+class RegenerateOut(BaseModel):
+    text: str

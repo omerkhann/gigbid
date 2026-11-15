@@ -9,11 +9,12 @@ from fastapi import APIRouter
 
 from agent.memory.store import outcome_stats
 from apps.api.deps import Services, User
+from apps.api.schemas import Analytics
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 
 
-@router.get("")
+@router.get("", response_model=Analytics)
 async def analytics(user: User, svc: Services) -> dict:
     runs = await svc.db.all("SELECT kind, status, status_reason, summary, tokens, latency_ms FROM runs WHERE user_id = %s",
                             user["user_id"])

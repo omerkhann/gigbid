@@ -112,6 +112,9 @@ async def test_analyze_approve_submit_and_pipeline(api):
     assert detail["pending_approval"]["kind"] == "proposal_approval" and "user" not in detail["state"]
     assert [a["thread_id"] for a in (await c.get("/approvals", headers=h)).json()] == [detail["thread_id"]]
     assert any(e["type"] == "node" for e in api["events"].history["u-reviewer"])     # streamed progress
+    regen = await c.post(f"/approvals/{detail['thread_id']}/regenerate",
+                         json={"paragraph": "Old paragraph.", "instruction": "shorter"}, headers=h)
+    assert regen.status_code == 200 and regen.json()["text"]
     r = await c.post(f"/approvals/{detail['thread_id']}", json={"action": "approve"}, headers=h)
     assert r.status_code == 202
     assert (await c.get(f"/jobs/{JOB}", headers=h)).json()["status"] == "submitted"

@@ -14,7 +14,7 @@ from fastapi import APIRouter, HTTPException
 
 from apps.api.deps import Services, TraceId, User
 from apps.api.routers.runs import run_detail, run_row
-from apps.api.schemas import ApprovalIn, Enqueued, RunDetail, RunRow
+from apps.api.schemas import ApprovalIn, Enqueued, RegenerateIn, RegenerateOut, RunDetail, RunRow
 
 router = APIRouter(prefix="/approvals", tags=["approvals"])
 
@@ -50,3 +50,32 @@ async def decide(thread_id: str, body: ApprovalIn, user: User, svc: Services, tr
     queued = await svc.queue.enqueue(task, user_id=user["user_id"], thread_id=thread_id, decision=decision,
                                      trace_id=trace_id, job_key=f"{task}:{thread_id}:{digest}")
     return Enqueued(queued=queued is not None, thread_id=thread_id, trace_id=trace_id)
+
+
+@router.post("/{thread_id}/regenerate", response_model=RegenerateOut)
+async def regenerate(thread_id: str, body: RegenerateIn, user: User, svc: Services):
+    """Rewrite one paragraph of a pending proposal with the Writer model and the same evidence. Returns
+    text only: the user applies it as an edit, which re-runs compliance before anything is sent."""
+    from langchain_core.messages import HumanMessage, SystemMessage
+    from pydantic import BaseModel
+
+    from agent.llm import prompt, structured
+    from agent.nodes.analyst import job_text
+    from agent.nodes.common import untrusted
+    from agent.nodes.writer import persona_header
+    from agent.runtime import user_profile
+
+    d = await run_detail(svc, user, thread_id)
+    if d.kind != "bid" or d.pending_approval is None:
+        raise HTTPException(409, "Only a proposal waiting for approval can be regenerated")
+
+    class Paragraph(BaseModel):
+        text: str
+
+    name, headline = persona_header(user_profile(user))
+    ev = "\n".join(f"- [{i}] {e['text'][:500]}" for i, e in (d.state.get("evidence") or {}).items())
+    ask = (svc.runtime.llm or structured)("writer", Paragraph)
+    out, _ = ask([SystemMessage(prompt("regenerate").format(name=name, headline=headline)),
+                  HumanMessage(f"{untrusted('job_post', job_text(d.state['job']))}\n\nEVIDENCE:\n{ev}\n\n"
+                               f"PARAGRAPH:\n{body.paragraph}\n\nINSTRUCTION: {body.instruction or 'make it stronger'}")])
+    return RegenerateOut(text=out.text.strip())

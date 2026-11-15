@@ -5,12 +5,12 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from apps.api.deps import Services, TraceId, User
-from apps.api.schemas import Enqueued
+from apps.api.schemas import Enqueued, Thread, Threads
 
 router = APIRouter(prefix="/messages", tags=["messages"])
 
 
-@router.get("")
+@router.get("", response_model=Threads)
 async def threads(user: User, svc: Services, trace_id: TraceId) -> dict:
     t = await svc.marketplace(user, "list_threads", {}, trace_id)
     runs = {r["conversation_id"]: r for r in await svc.db.all(
@@ -22,7 +22,7 @@ async def threads(user: User, svc: Services, trace_id: TraceId) -> dict:
     return t
 
 
-@router.get("/{conversation_id}")
+@router.get("/{conversation_id}", response_model=Thread)
 async def thread(conversation_id: str, user: User, svc: Services, trace_id: TraceId) -> dict:
     t = await svc.marketplace(user, "list_messages", {"thread_id": conversation_id}, trace_id)
     thread_id = f"conv:{user['user_id']}:{conversation_id}"
