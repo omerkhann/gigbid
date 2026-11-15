@@ -87,7 +87,7 @@ def main() -> None:
                     msg = f"{e.code} {e.message}".lower()
                     if any(r in msg for r in RETRYABLE) or e.status in (429, 500):
                         print(f"[{time.strftime('%H:%M:%S')}] #{attempt} {ad} {ocpus}/{gb}GB: {e.message[:80]}", flush=True)
-                        time.sleep(3)
+                        time.sleep(10)   # spaced out: Oracle answers 429 to rapid retries
                         continue
                     raise
                 print(f"LAUNCHED {inst.id} ({ocpus} OCPU / {gb} GB) in {ad}; waiting for RUNNING...", flush=True)
