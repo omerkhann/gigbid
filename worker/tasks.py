@@ -14,6 +14,7 @@ import json
 import uuid
 from datetime import UTC, datetime, timedelta
 
+from agent.llm import config as agent_config
 from agent.memory.store import record_outcome
 from agent.runtime import run_summary
 from apps.api.auth.security import decrypt
@@ -95,7 +96,10 @@ async def scout(ctx: dict, user_id: str) -> dict:
     searches = await db.all("SELECT * FROM saved_searches WHERE user_id = %s", user_id)
     queued, dupes = [], 0
     for s in searches:
-        if s["last_run_at"] and s["last_run_at"] + timedelta(minutes=s["every_minutes"]) > now:
+        every = s["every_minutes"]
+        if agent_config()["marketplace"]["mode"] == "upwork_live":
+            every = max(every, 60)              # live Upwork: at most hourly, whatever is stored
+        if s["last_run_at"] and s["last_run_at"] + timedelta(minutes=every) > now:
             continue
         query = dict(s["query"])
         page = await gateway.call("scout", "marketplace", "search_jobs", {**query, "limit": 20}, trace_id)

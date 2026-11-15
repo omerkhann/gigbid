@@ -7,11 +7,13 @@ import uuid
 
 from fastapi import APIRouter, HTTPException
 
+from agent.llm import config as agent_config
 from agent.memory.store import forget, outcome_stats
 from apps.api.deps import Services, TraceId, User
 from apps.api.schemas import SavedSearch, SavedSearchIn, SettingsIn
 
 router = APIRouter(tags=["settings"])
+LIVE_MIN_INTERVAL = 60
 
 
 @router.get("/settings")
@@ -37,9 +39,12 @@ async def list_searches(user: User, svc: Services):
 async def add_search(body: SavedSearchIn, user: User, svc: Services):
     sid = f"s-{uuid.uuid4().hex[:10]}"
     query = body.model_dump(exclude={"every_minutes"}, exclude_none=True)
+    every = body.every_minutes
+    if agent_config()["marketplace"]["mode"] == "upwork_live":
+        every = max(every, LIVE_MIN_INTERVAL)   # never poll live Upwork more often than hourly (RUNBOOK)
     await svc.db.run("INSERT INTO saved_searches (search_id, user_id, query, every_minutes) VALUES (%s,%s,%s,%s)",
-                     sid, user["user_id"], json.dumps(query), body.every_minutes)
-    return SavedSearch(search_id=sid, last_run_at=None, **body.model_dump())
+                     sid, user["user_id"], json.dumps(query), every)
+    return SavedSearch(search_id=sid, last_run_at=None, **{**body.model_dump(), "every_minutes": every})
 
 
 @router.delete("/settings/searches/{search_id}", status_code=204)
