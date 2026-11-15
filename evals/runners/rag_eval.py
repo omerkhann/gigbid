@@ -3,6 +3,7 @@ per persona, and for jobs with four or more requirements.
 
   python -m evals.runners.rag_eval                          # all cheap variants, every bid job
   python -m evals.runners.rag_eval --variants v8_corrective --limit 20   # LLM-heavy variant on a subset
+  python -m evals.runners.rag_eval --variants v1_v2_v3 --ablate v1_v2_v3  # best, then best minus each part
 
 Gold evidence is at project level (data/personas/<p>/skeleton.yaml projects), so retrieved chunks are
 mapped to their project and de-duplicated in rank order before scoring. Writes
@@ -63,13 +64,29 @@ def load(persona: str):
     return bid, skip
 
 
+def options(variant: str) -> dict:
+    """'v1_v2_v3' -> its config; 'v1_v2_v3-rerank' -> the same with one component removed (ablation)."""
+    base, *drop = variant.split("-")
+    opts = dict(VARIANTS[base])
+    for component in drop:
+        if component not in opts:
+            raise SystemExit(f"{base} has no component {component!r} (has {sorted(opts)})")
+        del opts[component]
+    return opts
+
+
+def ablations(base: str) -> list[str]:
+    return [f"{base}-{c}" for c in VARIANTS[base]]
+
+
 def evaluate(variant: str, limit: int | None, embedder: str) -> list[dict]:
-    rows = []
+    rows, opts = [], options(variant)
     for persona in PERSONAS:
         bid, skip = load(persona)
         if limit:
             bid, skip = bid[:limit], skip[: max(1, limit // 2)]
-        r = Retriever(ROOT / "data/personas" / persona, variant, embedder, ROOT / "data/processed/rag_cache")
+        r = Retriever(ROOT / "data/personas" / persona, variant, embedder, ROOT / "data/processed/rag_cache",
+                      options=opts)
         per_job, latencies = [], []
         for job, gold in bid:
             t = time.time()
@@ -84,7 +101,7 @@ def evaluate(variant: str, limit: int | None, embedder: str) -> list[dict]:
         row["recall5_4plus_reqs"] = round(statistics.mean(j["recall5"] for j in many), 3) if many else None
         row["latency_p50_s"] = round(statistics.median(latencies), 3)
         row["latency_p95_s"] = round(sorted(latencies)[int(0.95 * (len(latencies) - 1))], 3)
-        if VARIANTS[variant].get("corrective"):   # refusal: no evidence returned for a job to skip
+        if opts.get("corrective"):   # refusal: no evidence returned for a job to skip
             refused = sum(1 for job in skip if not r.impl.retrieve_job(job, k=5))
             row["refusal_rate_skip_jobs"] = round(refused / len(skip), 3)
         rows.append(row)
@@ -111,14 +128,16 @@ def main() -> None:
     load_dotenv(ROOT / ".env")
     ap = argparse.ArgumentParser()
     ap.add_argument("--variants", nargs="+", default=CHEAP)
+    ap.add_argument("--ablate", help="also run this variant with each component removed in turn")
     ap.add_argument("--limit", type=int, default=None, help="max bid jobs per persona")
     ap.add_argument("--embedder", default="ollama:nomic-embed-text")
     ap.add_argument("--out", type=Path, default=RESULTS / "rag_eval.json", help="CI smoke runs write elsewhere")
     a = ap.parse_args()
     out = a.out
     previous = json.loads(out.read_text(encoding="utf-8"))["by_persona"] if out.exists() else []
-    rows = [r for r in previous if r["variant"] not in a.variants]
-    for v in a.variants:
+    names = a.variants + (ablations(a.ablate) if a.ablate else [])
+    rows = [r for r in previous if r["variant"] not in names]
+    for v in names:
         rows += evaluate(v, a.limit, a.embedder)
     summary = summarise(rows)
     out.parent.mkdir(parents=True, exist_ok=True)
