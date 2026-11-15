@@ -40,7 +40,7 @@ export default function PipelinePage() {
                       <Link href={`/jobs/${p.job_id}`} className="block rounded-lg bg-white p-2 text-sm shadow-sm hover:ring-1 hover:ring-slate-400">
                         <p className="line-clamp-2 font-medium text-slate-800">{p.title ?? p.job_id}</p>
                         <p className="mt-1 text-xs text-slate-500">{money(p.bid_amount, p.bid_type)} · {when(p.updated_at)}</p>
-                        {p.thread_id && <p className="mt-1 text-xs text-sky-700">Conversation open</p>}
+                        {p.thread_id && <p className="mt-1 text-xs text-emerald-700">Conversation open</p>}
                       </Link>
                     </li>
                   ))}

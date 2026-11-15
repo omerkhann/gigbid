@@ -40,7 +40,7 @@ function Icon({ d }: { d: string }) {
 function Brand() {
   return (
     <Link href="/inbox" className="flex items-center gap-2.5" aria-label="GigBid">
-      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-sm font-bold text-white shadow-sm shadow-indigo-500/30" aria-hidden>
+      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm font-bold text-white shadow-sm shadow-emerald-500/30" aria-hidden>
         G
       </span>
       <span className="leading-tight" aria-hidden>
@@ -101,18 +101,18 @@ export function AppShell({ children }: { children: ReactNode }) {
           className={cx(
             "group flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium transition",
             path.startsWith(n.href)
-              ? "bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-100"
+              ? "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-100"
               : "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
           )}
         >
           <span className="flex items-center gap-2.5">
-            <span className={path.startsWith(n.href) ? "text-indigo-600" : "text-slate-400 group-hover:text-slate-600"}>
+            <span className={path.startsWith(n.href) ? "text-emerald-600" : "text-slate-400 group-hover:text-slate-600"}>
               <Icon d={ICONS[n.href]} />
             </span>
             {n.label}
           </span>
           {n.href === "/inbox" && pending > 0 && (
-            <span className="rounded-full bg-indigo-600 px-2 py-0.5 text-[11px] font-semibold text-white" aria-label={`${pending} awaiting approval`}>
+            <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[11px] font-semibold text-white" aria-label={`${pending} awaiting approval`}>
               {pending}
             </span>
           )}
@@ -144,13 +144,13 @@ export function AppShell({ children }: { children: ReactNode }) {
               {live ? "Live updates on" : "Live updates reconnecting"}
             </p>
             <div className="flex items-center gap-3 rounded-xl border border-slate-200 p-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-700" aria-hidden>
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-sm font-semibold text-emerald-700" aria-hidden>
                 {(me.data.name || "?").slice(0, 1).toUpperCase()}
               </span>
               <div className="min-w-0 text-xs">
                 <p className="truncate font-semibold text-slate-900">{me.data.name}</p>
                 <p className="truncate capitalize text-slate-500">{me.data.persona?.replace("_", " ")}</p>
-                <button onClick={logout} className="mt-0.5 font-medium text-indigo-600 hover:underline">
+                <button onClick={logout} className="mt-0.5 font-medium text-emerald-600 hover:underline">
                   Sign out
                 </button>
               </div>

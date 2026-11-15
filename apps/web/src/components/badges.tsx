@@ -16,7 +16,7 @@ const STATUS: Record<string, [string, Tone]> = {
 };
 
 const ACCENT: Record<Tone, string> = {
-  accent: "bg-indigo-500", good: "bg-emerald-500", bad: "bg-rose-500", warn: "bg-amber-400", info: "bg-sky-500",
+  accent: "bg-emerald-600", good: "bg-emerald-300", bad: "bg-rose-500", warn: "bg-amber-400", info: "bg-slate-400",
   neutral: "bg-slate-300",
 };
 

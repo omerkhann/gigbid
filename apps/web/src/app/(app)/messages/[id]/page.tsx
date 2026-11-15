@@ -43,7 +43,7 @@ export default function ThreadPage() {
         <Card title="Messages" className="lg:col-span-2">
           <ol className="space-y-3">
             {data.messages.map((m, i) => (
-              <li key={i} className={`max-w-[85%] rounded-xl p-3 text-sm ${m.sender === "client" ? "bg-slate-100" : "ml-auto bg-sky-50"}`}>
+              <li key={i} className={`max-w-[85%] rounded-xl p-3 text-sm ${m.sender === "client" ? "bg-slate-100" : "ml-auto bg-emerald-50"}`}>
                 <p className="mb-1 text-xs font-medium text-slate-500">{m.sender === "client" ? "Client" : "You"} · {when(m.at)}</p>
                 <p className="whitespace-pre-wrap text-slate-800">{m.body}</p>
               </li>

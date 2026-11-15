@@ -13,7 +13,7 @@ function Bar({ label, value, max, suffix = "" }: { label: string; value: number;
   return (
     <div className="grid grid-cols-[8rem_1fr_3.5rem] items-center gap-2 text-sm">
       <span className="truncate text-slate-600">{label}</span>
-      <div className="h-2.5 rounded-full bg-slate-100"><div className="h-full rounded-full bg-sky-600" style={{ width: `${max ? (value / max) * 100 : 0}%` }} /></div>
+      <div className="h-2.5 rounded-full bg-slate-100"><div className="h-full rounded-full bg-emerald-600" style={{ width: `${max ? (value / max) * 100 : 0}%` }} /></div>
       <span className="text-right font-medium text-slate-800">{value}{suffix}</span>
     </div>
   );

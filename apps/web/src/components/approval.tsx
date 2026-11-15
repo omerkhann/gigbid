@@ -73,7 +73,7 @@ export function ApprovalPanel({
           ? "Approving submits this proposal to the marketplace and spends the Connects shown."
           : "Approving sends this message to the client."}
       </p>
-      {busy && <p role="status" className="text-sm text-sky-700">Queued. The agents are working on it…</p>}
+      {busy && <p role="status" className="text-sm text-emerald-700">Queued. The agents are working on it…</p>}
       {error && <p role="alert" className="text-sm text-rose-700">{error}</p>}
       <div className="flex flex-wrap gap-2">
         <Button variant="good" disabled={!!busy} onClick={() => decide({ action: "approve" })} data-testid="approve">

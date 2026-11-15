@@ -43,8 +43,8 @@ export default function StudioPage() {
             <StatusBadge status={data.status} /> {outcome[data.status ?? ""] ?? "Nothing waiting for approval on this job."}
           </p>
           <p className="mt-3 flex gap-4 text-sm">
-            <Link className="font-medium text-sky-700 hover:underline" href={`/jobs/${id}`}>Back to the job</Link>
-            {data.status === "submitted" && <Link className="font-medium text-sky-700 hover:underline" href="/pipeline">See it in the pipeline</Link>}
+            <Link className="font-medium text-emerald-700 hover:underline" href={`/jobs/${id}`}>Back to the job</Link>
+            {data.status === "submitted" && <Link className="font-medium text-emerald-700 hover:underline" href="/pipeline">See it in the pipeline</Link>}
           </p>
         </div>
       </>
@@ -98,7 +98,7 @@ export default function StudioPage() {
                   <div key={i} className="group relative">
                     <CitedText text={p} evidence={pending.evidence} order={pending.draft.evidence_ids} />
                     <button onClick={() => regenerate(i)} disabled={regen !== null}
-                            className="mt-1 block text-xs font-medium text-sky-700 opacity-80 hover:underline disabled:text-slate-400">
+                            className="mt-1 block text-xs font-medium text-emerald-700 opacity-80 hover:underline disabled:text-slate-400">
                       {regen === i ? "Regenerating…" : "Regenerate this paragraph"}
                     </button>
                   </div>

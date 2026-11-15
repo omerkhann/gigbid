@@ -36,10 +36,10 @@ export function RunTimeline({ threadId, saved, onFinished }: { threadId: string;
       <ol className="relative space-y-3 border-l border-slate-200 pl-4" aria-label="Agent steps">
         {steps.map((s, i) => (
           <li key={i} className="relative">
-            <span className={`absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full ${s.summary === "failed" ? "bg-rose-500" : s.live ? "bg-sky-500" : "bg-slate-400"}`} aria-hidden />
+            <span className={`absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full ${s.summary === "failed" ? "bg-rose-500" : s.live ? "bg-emerald-500" : "bg-slate-400"}`} aria-hidden />
             <p className="text-sm font-medium text-slate-800">
               {NODE_LABEL[s.node ?? ""] ?? s.node}
-              {s.live && <span className="ml-2 text-xs font-normal text-sky-700">live</span>}
+              {s.live && <span className="ml-2 text-xs font-normal text-emerald-700">live</span>}
             </p>
             <p className="text-xs text-slate-600">{s.summary}</p>
             {(s.ms != null || s.tokens) && (

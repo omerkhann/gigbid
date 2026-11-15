@@ -21,7 +21,7 @@ export function EvidenceChip({ n, id, evidence }: { n: number; id: string; evide
         onMouseLeave={() => setOpen(false)}
         onFocus={() => setOpen(true)}
         onBlur={() => setOpen(false)}
-        className="mx-0.5 rounded bg-sky-100 px-1 text-[11px] font-semibold text-sky-800 hover:bg-sky-200 focus-visible:outline-2 focus-visible:outline-sky-600"
+        className="mx-0.5 rounded bg-emerald-100 px-1 text-[11px] font-semibold text-emerald-800 hover:bg-emerald-200 focus-visible:outline-2 focus-visible:outline-emerald-600"
       >
         {n}
       </button>

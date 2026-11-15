@@ -25,7 +25,7 @@ export default function RunsPage() {
             <tbody>
               {data.map((r) => (
                 <tr key={r.thread_id} className="border-t border-slate-100">
-                  <td className="px-3 py-2"><Link className="font-medium text-sky-700 hover:underline" href={`/runs/${encodeURIComponent(r.thread_id)}`}>{r.title ?? r.thread_id}</Link><span className="block text-xs text-slate-400">{r.kind}</span></td>
+                  <td className="px-3 py-2"><Link className="font-medium text-emerald-700 hover:underline" href={`/runs/${encodeURIComponent(r.thread_id)}`}>{r.title ?? r.thread_id}</Link><span className="block text-xs text-slate-400">{r.kind}</span></td>
                   <td className="px-3 py-2"><StatusBadge status={r.status} /></td>
                   <td className="px-3 py-2">{r.tokens.toLocaleString()}</td>
                   <td className="px-3 py-2">{(r.latency_ms / 1000).toFixed(1)} s</td>

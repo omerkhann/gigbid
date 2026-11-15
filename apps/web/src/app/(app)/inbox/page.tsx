@@ -55,7 +55,7 @@ export default function InboxPage() {
               role="tab"
               aria-selected={filter === f.id}
               onClick={() => setFilter(f.id)}
-              className={`rounded-full px-3 py-1 text-sm ${filter === f.id ? "bg-indigo-600 text-white shadow-sm shadow-indigo-600/20" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100"}`}
+              className={`rounded-full px-3 py-1 text-sm ${filter === f.id ? "bg-emerald-600 text-white shadow-sm shadow-emerald-600/20" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100"}`}
             >
               {f.label}
             </button>
@@ -68,7 +68,7 @@ export default function InboxPage() {
           <Button variant="secondary" type="submit">Analyse</Button>
         </form>
       </div>
-      {note && <p role="status" className="mb-3 rounded-lg bg-sky-50 px-3 py-2 text-sm text-sky-800">{note}</p>}
+      {note && <p role="status" className="mb-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">{note}</p>}
 
       {isLoading && <Spinner />}
       {error && <ErrorState error={error} retry={() => mutate()} />}
