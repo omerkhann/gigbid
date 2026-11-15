@@ -7,7 +7,7 @@ Every tool call goes through `_call()`, which applies, in order:
 
 Settings (environment):
   MARKETPLACE_BACKEND   gigsim | upwork_live              (default gigsim)
-  GIGSIM_URL            GigSim base URL                    (default http://localhost:8100)
+  GIGSIM_BASE_URL       GigSim base URL                    (default http://localhost:8100)
   MARKETPLACE_USERS     JSON [{token, user_id, marketplace_token}]  (default: three dev users)
   MARKETPLACE_LOCAL_USER  user for stdio / in-memory use, where there is no bearer token
   MARKETPLACE_DB        SQLite for idempotency + audit     (default data/processed/marketplace_mcp.sqlite3)
@@ -58,7 +58,7 @@ class Settings:
     def from_env(cls) -> Settings:
         s = cls()
         s.backend = os.environ.get("MARKETPLACE_BACKEND", s.backend)
-        s.gigsim_url = os.environ.get("GIGSIM_URL", s.gigsim_url)
+        s.gigsim_url = os.environ.get("GIGSIM_BASE_URL", os.environ.get("GIGSIM_URL", s.gigsim_url))
         if "MARKETPLACE_USERS" in os.environ:
             s.users = json.loads(os.environ["MARKETPLACE_USERS"])
         s.local_user = os.environ.get("MARKETPLACE_LOCAL_USER", s.local_user)

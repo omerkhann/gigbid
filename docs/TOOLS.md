@@ -31,9 +31,22 @@ Run: `python -m mcp_servers.marketplace.server` (Streamable HTTP at `http://127.
 
 Tests: [tests/integration/test_marketplace_mcp.py](../tests/integration/test_marketplace_mcp.py) (in-memory MCP client against GigSim in-process), [tests/contract/test_tool_schemas.py](../tests/contract/test_tool_schemas.py) (schema snapshot).
 
-## Portfolio server (`mcp_servers/portfolio`, not built yet)
+## Portfolio server (`mcp_servers/portfolio`, built)
 
-Read-only: `search_evidence(requirement, k, filters)`, `get_case_study(id)`, `list_skills()`, resource templates `portfolio://case/{id}` and `portfolio://proposal/{id}`, and prompt templates.
+Run for GigBid: `python -m mcp_servers.portfolio.server` (Streamable HTTP at `http://127.0.0.1:8203/mcp`, bearer auth, one portfolio folder per user).
+Run for any freelancer: `--stdio --portfolio-dir <folder>`, for Claude Desktop or Cursor. Setup is in [mcp_servers/portfolio/README.md](../mcp_servers/portfolio/README.md).
+
+All read-only. Retrieval goes through `rag/retriever.py`, so the RAG variant is chosen by `PORTFOLIO_VARIANT` (default `v0_naive`) without changing the tool.
+
+| Kind | Name | Annotations | Purpose |
+|---|---|---|---|
+| Tool | `search_evidence(requirement, k, filters)` | RO, I | Evidence items with type, source, date, project and (for proposals) outcome. Filters: types, project, since year, outcomes |
+| Tool | `get_case_study(case_id)` | RO, I | Full case study + project facts, client review, linked repo |
+| Tool | `list_skills()` | RO, I | Profile and project-named skills with the projects that show them (implied skills deliberately absent) |
+| Resource | `portfolio://case/{case_id}`, `portfolio://proposal/{proposal_id}`, `portfolio://repo/{repo_name}`, `portfolio://cv` | | Full items for a host to load |
+| Prompt | `answer_screening_question`, `draft_proposal`, `check_fit` | | Templates a freelancer would pick; job posts wrapped as untrusted |
+
+Tests: [tests/integration/test_portfolio_mcp.py](../tests/integration/test_portfolio_mcp.py) (real corpus, offline hash embedder), schema snapshot in [tests/contract/](../tests/contract/).
 
 ## Workspace server (`mcp_servers/workspace`, built)
 

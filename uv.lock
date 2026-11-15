@@ -580,7 +580,10 @@ dependencies = [
     { name = "langchain-mcp-adapters" },
     { name = "langgraph" },
     { name = "mcp" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pydantic" },
+    { name = "pypdf" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "tzdata" },
@@ -610,9 +613,11 @@ requires-dist = [
     { name = "langgraph" },
     { name = "mcp" },
     { name = "mypy", marker = "extra == 'dev'" },
+    { name = "numpy", specifier = ">=2.4.6" },
     { name = "pandas", marker = "extra == 'data'", specifier = ">=3.1.1" },
     { name = "pyarrow", marker = "extra == 'data'", specifier = ">=26.0.1" },
     { name = "pydantic" },
+    { name = "pypdf", specifier = ">=7.1.0" },
     { name = "pytest", marker = "extra == 'dev'" },
     { name = "pytest-asyncio", marker = "extra == 'dev'" },
     { name = "python-dotenv" },
@@ -1960,6 +1965,15 @@ wheels = [
 [package.optional-dependencies]
 crypto = [
     { name = "cryptography" },
+]
+
+[[package]]
+name = "pypdf"
+version = "7.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/60/d3/367aa9baefaededd3321cde46bbcb9f008bb51cef3a6b745608352a99534/pypdf-7.1.0.tar.gz", hash = "sha256:ca3fa902369e98a6d2cb7b56396de902b72ef9bb3c1e8706c1bfc7d8bd0cf0d7", size = 7215190, upload-time = "2026-11-13T12:23:18.629Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ed/4c/d19f91b743c8579b67e3d8b001e095745dec5bb13a9b4b9eadc235a85d9e/pypdf-7.1.0-py3-none-any.whl", hash = "sha256:47cca6b24bdcf4c4d65b5f7b8b972535c61710a061261e737688777cfd9a7bfb", size = 418698, upload-time = "2026-11-13T12:23:16.777Z" },
 ]
 
 [[package]]
