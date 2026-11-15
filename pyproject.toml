@@ -19,6 +19,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest", "pytest-asyncio", "ruff", "mypy"]
 data = [
+    "fpdf2>=2.9.0",
     "pandas>=3.1.1",
     "pyarrow>=26.0.1",
 ]
