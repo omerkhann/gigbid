@@ -35,9 +35,24 @@ Tests: [tests/integration/test_marketplace_mcp.py](../tests/integration/test_mar
 
 Read-only: `search_evidence(requirement, k, filters)`, `get_case_study(id)`, `list_skills()`, resource templates `portfolio://case/{id}` and `portfolio://proposal/{id}`, and prompt templates.
 
-## Workspace server (`mcp_servers/workspace`, not built yet)
+## Workspace server (`mcp_servers/workspace`, built)
 
-Free calendar slots, tentative interview holds, email drafts (local mock).
+Run: `python -m mcp_servers.workspace.server` (Streamable HTTP at `http://127.0.0.1:8202/mcp`).
+
+- **What it is:** a local mock, which the assignment allows. Each user has a timezone, working hours (09:00–17:00) and recurring meetings (daily standup, a Wednesday work block, a Friday review). Holds and drafts live in SQLite.
+- **Never sends anything:** emails stay drafts.
+- **Shared with the Marketplace server:** the same per-call pipeline (bearer auth, per-user rate limit, idempotency, append-only PII-masked audit with trace ids), in `mcp_servers/common/`.
+
+| Tool | R/W | Annotations | Purpose |
+|---|---|---|---|
+| `get_free_slots` | Read | RO, I | Free slots in working hours, at least 2 h from now, at most 2 per day; shown in UTC, local and the client's timezone |
+| `list_holds` | Read | RO, I | Upcoming tentative holds |
+| `list_email_drafts` | Read | RO, I | Saved email drafts |
+| `create_interview_hold` | Write | I | Tentative calendar hold; `slot_unavailable` if busy, too soon or outside hours |
+| `release_hold` | Write | **D**, I | Free a tentative hold |
+| `create_email_draft` | Write | I | Save an email draft; never sends |
+
+Tests: [tests/integration/test_workspace_mcp.py](../tests/integration/test_workspace_mcp.py) (fixed clock), schema snapshot in [tests/contract/](../tests/contract/).
 
 ## Third-party servers (not connected yet)
 

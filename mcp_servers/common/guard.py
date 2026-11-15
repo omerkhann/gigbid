@@ -102,3 +102,67 @@ class GuardStore:
         cur = self.conn.execute("SELECT * FROM audit ORDER BY id")
         cols = [c[0] for c in cur.description]
         return [dict(zip(cols, r, strict=True)) for r in cur.fetchall()]
+
+
+# --- The per-call pipeline shared by every GigBid MCP server --------------------------------
+
+class ToolFailure(Exception):
+    """A definite, reportable failure. Becomes {"error": code, "detail": ..., **extra} for the caller."""
+
+    def __init__(self, code: str, detail: str, status: int | None = None, extra: dict | None = None):
+        super().__init__(f"{code}: {detail}")
+        self.code, self.detail, self.status, self.extra = code, detail, status, extra or {}
+
+
+class ToolGuard:
+    """identity -> trace id -> rate limit -> idempotency replay -> call -> audit.
+
+    `users` maps user_id -> user record. Over HTTP the bearer token picks the user; in stdio or
+    in-memory use there is no token, so `local_user` is used.
+    """
+
+    def __init__(self, store: GuardStore, limiter: RateLimiter, users: dict[str, dict], local_user: str):
+        self.store, self.limiter, self.users, self.local_user = store, limiter, users, local_user
+
+    def identity(self) -> dict:
+        from mcp.server.auth.middleware.auth_context import get_access_token
+        token = get_access_token()
+        return self.users[token.client_id] if token else self.users[self.local_user]
+
+    @staticmethod
+    def trace_id(ctx) -> str:
+        import uuid
+        meta = ctx.request_context.meta
+        return str((meta.model_extra or {}).get("trace_id") if meta else "") or uuid.uuid4().hex
+
+    async def run(self, ctx, tool: str, args: dict, fn, bucket: str = "read", key: str | None = None):
+        from mcp.server.fastmcp.exceptions import ToolError
+        from pydantic import BaseModel
+
+        user, trace = self.identity(), self.trace_id(ctx)
+        uid = user["user_id"]
+        try:
+            await self.limiter.acquire(uid, bucket)
+        except RateLimited as exc:
+            self.store.audit(uid, tool, args, None, "rate_limited", trace)
+            raise ToolError(json.dumps({"error": "rate_limited", "detail": str(exc)})) from exc
+        ahash = args_hash(args)
+        if key:
+            try:
+                stored = self.store.replay(uid, tool, key, ahash)
+            except ValueError as exc:
+                self.store.audit(uid, tool, args, None, "key_reused", trace)
+                raise ToolError(json.dumps({"error": "idempotency_key_reused", "detail": str(exc)})) from exc
+            if stored is not None:
+                self.store.audit(uid, tool, args, stored, "replayed", trace)
+                return stored
+        try:
+            result = await fn(user, trace)
+        except ToolFailure as exc:
+            self.store.audit(uid, tool, args, {"error": exc.code, "detail": exc.detail}, "error", trace)
+            raise ToolError(json.dumps({"error": exc.code, "detail": exc.detail, **exc.extra})) from exc
+        data = result.model_dump() if isinstance(result, BaseModel) else result
+        if key:
+            self.store.remember(uid, tool, key, ahash, data)
+        self.store.audit(uid, tool, args, data, "ok", trace)
+        return result

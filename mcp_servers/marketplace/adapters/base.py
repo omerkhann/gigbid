@@ -5,13 +5,11 @@ from __future__ import annotations
 
 from typing import Any, Protocol
 
+from mcp_servers.common.guard import ToolFailure
 
-class MarketplaceError(Exception):
+
+class MarketplaceError(ToolFailure):
     """A definite answer from the marketplace (e.g. policy violation, not found)."""
-
-    def __init__(self, code: str, detail: str, status: int | None = None, extra: dict | None = None):
-        super().__init__(f"{code}: {detail}")
-        self.code, self.detail, self.status, self.extra = code, detail, status, extra or {}
 
 
 class MarketplaceUnavailable(MarketplaceError):

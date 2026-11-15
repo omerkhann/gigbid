@@ -30,3 +30,16 @@ async def test_marketplace_tool_schemas_match_snapshot(tmp_path):
     saved = json.loads(path.read_text(encoding="utf-8"))
     changed = sorted(n for n in set(saved) | set(current) if saved.get(n) != current.get(n))
     assert not changed, f"Tool schemas changed: {changed}. If intended: UPDATE_SNAPSHOTS=1 pytest tests/contract"
+
+
+async def test_workspace_tool_schemas_match_snapshot(tmp_path):
+    from mcp_servers.workspace.server import Settings as WSettings
+    from mcp_servers.workspace.server import build_server as build_ws
+
+    current = await _surface(build_ws(WSettings(db_path=tmp_path / "w.sqlite3")))
+    path = SNAPSHOTS / "workspace_tools.json"
+    if os.environ.get("UPDATE_SNAPSHOTS") or not path.exists():
+        path.write_text(json.dumps(current, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    saved = json.loads(path.read_text(encoding="utf-8"))
+    changed = sorted(n for n in set(saved) | set(current) if saved.get(n) != current.get(n))
+    assert not changed, f"Tool schemas changed: {changed}. If intended: UPDATE_SNAPSHOTS=1 pytest tests/contract"

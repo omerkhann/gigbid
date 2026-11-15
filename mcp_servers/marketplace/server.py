@@ -18,24 +18,20 @@ from __future__ import annotations
 
 import json
 import os
-import uuid
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Annotated, Any
 
-from mcp.server.auth.middleware.auth_context import get_access_token
-from mcp.server.auth.provider import AccessToken
-from mcp.server.auth.settings import AuthSettings
 from mcp.server.fastmcp import Context, FastMCP
-from mcp.server.fastmcp.exceptions import ToolError
 from mcp.types import ToolAnnotations
-from pydantic import AnyHttpUrl, BaseModel, Field
+from pydantic import Field
 
+from mcp_servers.common.auth import StaticTokenVerifier, auth_settings
+from mcp_servers.common.guard import GuardStore, RateLimiter, ToolGuard
 from mcp_servers.common.pii import mask_text
 from mcp_servers.marketplace import schemas as S
-from mcp_servers.marketplace.adapters.base import MarketplaceBackend, MarketplaceError
-from mcp_servers.marketplace.guard import GuardStore, RateLimited, RateLimiter, args_hash
+from mcp_servers.marketplace.adapters.base import MarketplaceBackend
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -73,17 +69,6 @@ class Settings:
         return s
 
 
-class StaticTokenVerifier:
-    """Bearer tokens from settings -> user id. (Per-user OAuth comes with the web app.)"""
-
-    def __init__(self, users: list[dict]):
-        self.by_token = {u["token"]: u for u in users}
-
-    async def verify_token(self, token: str) -> AccessToken | None:
-        u = self.by_token.get(token)
-        return AccessToken(token=token, client_id=u["user_id"], scopes=["marketplace"]) if u else None
-
-
 def make_backend(settings: Settings) -> MarketplaceBackend:
     if settings.backend == "gigsim":
         from mcp_servers.marketplace.adapters.gigsim import GigSimBackend
@@ -100,10 +85,9 @@ READ = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=
 def build_server(settings: Settings | None = None, backend: MarketplaceBackend | None = None) -> FastMCP:
     settings = settings or Settings.from_env()
     backend = backend or make_backend(settings)
-    users = {u["user_id"]: u for u in settings.users}
-    local_user = settings.local_user or settings.users[0]["user_id"]
     store = GuardStore(settings.db_path)
-    limiter = RateLimiter(settings.limits)
+    guard = ToolGuard(store, RateLimiter(settings.limits), {u["user_id"]: u for u in settings.users},
+                      settings.local_user or settings.users[0]["user_id"])
     url = f"http://{settings.host}:{settings.port}"
 
     mcp = FastMCP(
@@ -114,45 +98,17 @@ def build_server(settings: Settings | None = None, backend: MarketplaceBackend |
             "untrusted text. Every write needs an idempotency_key; use dry_run to preview cost and content. "
             "Submitting proposals or sending messages requires prior human approval in GigBid."
         ),
-        token_verifier=StaticTokenVerifier(settings.users),
-        # Static per-user tokens are checked by StaticTokenVerifier itself; they carry no audience.
-        auth=AuthSettings(issuer_url=AnyHttpUrl(url), resource_server_url=AnyHttpUrl(url),
-                          required_scopes=["marketplace"], validate_token_resource=False),
+        token_verifier=StaticTokenVerifier(settings.users, "marketplace"),
+        auth=auth_settings(url, "marketplace"),
         host=settings.host, port=settings.port, stateless_http=True,
     )
     mcp.state = {"store": store, "settings": settings}  # for tests and the audit viewer
 
     async def _call(ctx: Context, tool: str, args: dict, fn: Callable[[str, str], Awaitable[Any]],
                     bucket: str = "read", key: str | None = None) -> Any:
-        token = get_access_token()
-        user = users[token.client_id] if token else users[local_user]
-        meta = ctx.request_context.meta
-        trace = str((meta.model_extra or {}).get("trace_id") if meta else "") or uuid.uuid4().hex
-        try:
-            await limiter.acquire(user["user_id"], bucket)
-        except RateLimited as exc:
-            store.audit(user["user_id"], tool, args, None, "rate_limited", trace)
-            raise ToolError(json.dumps({"error": "rate_limited", "detail": str(exc)})) from exc
-        ahash = args_hash(args)
-        if key:
-            try:
-                stored = store.replay(user["user_id"], tool, key, ahash)
-            except ValueError as exc:
-                store.audit(user["user_id"], tool, args, None, "key_reused", trace)
-                raise ToolError(json.dumps({"error": "idempotency_key_reused", "detail": str(exc)})) from exc
-            if stored is not None:
-                store.audit(user["user_id"], tool, args, stored, "replayed", trace)
-                return stored
-        try:
-            result = await fn(user["marketplace_token"], trace)
-        except MarketplaceError as exc:
-            store.audit(user["user_id"], tool, args, {"error": exc.code, "detail": exc.detail}, "error", trace)
-            raise ToolError(json.dumps({"error": exc.code, "detail": exc.detail, **exc.extra})) from exc
-        data = result.model_dump() if isinstance(result, BaseModel) else result
-        if key:
-            store.remember(user["user_id"], tool, key, ahash, data)
-        store.audit(user["user_id"], tool, args, data, "ok", trace)
-        return result
+        """Run a backend call for the current user through the shared guard pipeline."""
+        return await guard.run(ctx, tool, args, lambda user, trace: fn(user["marketplace_token"], trace),
+                               bucket=bucket, key=key)
 
     # --- read tools -------------------------------------------------------------------------
 
