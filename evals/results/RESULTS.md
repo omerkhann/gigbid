@@ -49,6 +49,10 @@ Source: `evals/results/decision_eval_<profile>.json` (fixed 60-job subset `evals
 | `open` (small tier: `ollama:qwen3:4b`) | 18 | 0 | 0.364 | 0.750 | 1.000 | 1.000 | 1.000 | 28.8 | 303.3 | 4270 |
 | `open_hosted` (small tier: `groq:openai/gpt-oss-20b`) | 12 | 0 | 0.857 | 1.000 | 1.000 | 1.000 | 1.000 | 34.9 | 140.8 | 4559 |
 
+### Tool granularity (R&D question A)
+
+_Not run yet: `python -m evals.runners.tool_granularity`._
+
 ### Multi-agent comparison (R&D question C)
 
 _Not run yet: `python -m evals.runners.orchestration_eval`._
