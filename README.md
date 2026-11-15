@@ -108,7 +108,13 @@ Source: `evals/results/decision_eval_<profile>.json` (fixed 60-job subset `evals
 
 ### Tool granularity (R&D question A)
 
-_Not run yet: `python -m evals.runners.tool_granularity`._
+Source: `evals/results/tool_granularity.json` (model `groq:qwen/qwen3.8-27b`).
+
+| Tool set | Tools | Tasks | Tool selection | Arguments | Unsafe calls | Tokens / task |
+|---|---|---|---|---|---|---|
+| Fine-grained, terse descriptions | 14 | 24 | 0.875 | 0.833 | 2 | 2108 |
+| Coarse (2 dispatcher tools) | 2 | 24 | 1.000 | 0.917 | 0 | 675 |
+| Fine-grained, full descriptions (shipped) | 14 | 24 | 0.833 | 0.792 | 1 | 3057 |
 
 ### Multi-agent comparison (R&D question C)
 

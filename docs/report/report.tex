@@ -66,7 +66,11 @@ Two hand-built LangGraph \code{StateGraph}s run in an Arq worker, reach the outs
 
 \IfFileExists{tables/tools.tex}{\tbl{Tool granularity: 24 known-call tasks, same model.}{tools}}{}
 
-\pending{RESULTS-A}
+\textbf{Result: the hypothesis is rejected.} The two coarse dispatchers were best on every measure: every tool chosen correctly, the best argument accuracy, no unsafe calls, and a quarter of the tokens, because their schemas are tiny. Our fully described fine-grained set was the \emph{worst} and the most expensive. Longer descriptions did not help this model choose; they added 1k tokens per task of schema it had to read.
+
+\textbf{The failures that matter are unsafe calls.} Both fine-grained sets called \code{send\_message} (irreversible) when asked to ``open'' or ``read'' a conversation (\res{tool\_granularity.json}, tasks 7 and 20), and \code{get\_job} instead of saving a draft. With the coarse set the same model picked \code{list\_messages} every time: one enum field listing the actions side by side made read and send visibly different, where separate tools made \code{send\_message} merely the nearest name.
+
+\textbf{What we keep, and why.} GigBid still exposes fine-grained tools, because per-tool MCP annotations (\code{readOnlyHint}, \code{destructiveHint}) and per-node allowlists by tool name are what stop an unsafe call. A dispatcher would hide both behind one name. This experiment explains why the allowlists matter: no GigBid node ever sees all 14 tools. Analysis nodes get 1--2 read tools, and the send tools exist only on the approval node, after a human approves. Under that design the confusion measured here cannot reach a send. Limits: 24 tasks, one model (\code{qwen3.8-27b}, the only hosted model with quota left), and the first call only.
 
 A related observation from \S5: the prebuilt supervisor often answered without calling any tool, which suggests routing matters as much as the tool list itself.
 

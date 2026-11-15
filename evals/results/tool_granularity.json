@@ -1,0 +1,1119 @@
+{
+  "model": "groq:qwen/qwen3.8-27b",
+  "summary": {
+    "fine_terse": {
+      "tasks": 24,
+      "tools_offered": 14,
+      "tool_selection_accuracy": 0.875,
+      "argument_accuracy": 0.833,
+      "unsafe_calls": 2,
+      "no_call": 0,
+      "tokens_per_task": 2108
+    },
+    "coarse": {
+      "tasks": 24,
+      "tools_offered": 2,
+      "tool_selection_accuracy": 1.0,
+      "argument_accuracy": 0.917,
+      "unsafe_calls": 0,
+      "no_call": 0,
+      "tokens_per_task": 675
+    },
+    "fine_full": {
+      "tasks": 24,
+      "tools_offered": 14,
+      "tool_selection_accuracy": 0.833,
+      "argument_accuracy": 0.792,
+      "unsafe_calls": 1,
+      "no_call": 0,
+      "tokens_per_task": 3057
+    }
+  },
+  "rows": [
+    {
+      "set": "fine_terse",
+      "task": 0,
+      "request": "Find new Django REST API jobs for me.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "category": "development",
+        "query": "Django REST API"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2106,
+      "seconds": 0.75
+    },
+    {
+      "set": "fine_terse",
+      "task": 1,
+      "request": "Show me the full post for job job-276f63f76290.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-276f63f76290"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2118,
+      "seconds": 0.37
+    },
+    {
+      "set": "fine_terse",
+      "task": 2,
+      "request": "Is client cli-c8f33fc54cdd trustworthy? Check their payment history.",
+      "expected": "get_client_history",
+      "got": "get_client_history",
+      "args": {
+        "client_id": "cli-c8f33fc54cdd"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2114,
+      "seconds": 0.37
+    },
+    {
+      "set": "fine_terse",
+      "task": 3,
+      "request": "How many Connects do I have left?",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2079,
+      "seconds": 10.52
+    },
+    {
+      "set": "fine_terse",
+      "task": 4,
+      "request": "What do data science contracts usually pay?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "data_science"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2092,
+      "seconds": 17.56
+    },
+    {
+      "set": "fine_terse",
+      "task": 5,
+      "request": "Which of my proposals got a reply?",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {
+        "status": "replied"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2091,
+      "seconds": 18.53
+    },
+    {
+      "set": "fine_terse",
+      "task": 6,
+      "request": "Do I have any conversations with clients?",
+      "expected": "list_threads",
+      "got": "list_threads",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2076,
+      "seconds": 37.99
+    },
+    {
+      "set": "fine_terse",
+      "task": 7,
+      "request": "Open the messages in thread thr-1a2b3c4d5e6f.",
+      "expected": "list_messages",
+      "got": "send_message",
+      "args": {
+        "body": "Hello!",
+        "idempotency_key": "msg-1a2b3c4d5e6f-001",
+        "thread_id": "thr-1a2b3c4d5e6f"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": true,
+      "tokens": 2164,
+      "seconds": 14.63
+    },
+    {
+      "set": "fine_terse",
+      "task": 8,
+      "request": "Save a draft proposal for job job-01d9aa88dfb6 at $40 saying I built a churn model last year. Don't send it.",
+      "expected": "create_proposal_draft",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-01d9aa88dfb6"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 2155,
+      "seconds": 38.29
+    },
+    {
+      "set": "fine_terse",
+      "task": 9,
+      "request": "Do I have proof of experience with Celery task queues?",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "experience with Celery task queues"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2100,
+      "seconds": 15.62
+    },
+    {
+      "set": "fine_terse",
+      "task": 10,
+      "request": "Show me case study ml-p05 in full.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "ml-p05"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2098,
+      "seconds": 38.04
+    },
+    {
+      "set": "fine_terse",
+      "task": 11,
+      "request": "Which skills can I actually prove with my projects?",
+      "expected": "list_skills",
+      "got": "list_skills",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2078,
+      "seconds": 14.58
+    },
+    {
+      "set": "fine_terse",
+      "task": 12,
+      "request": "Search for data analysis jobs with a budget of at least $500.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "min_budget": 500,
+        "query": "data analysis"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2122,
+      "seconds": 17.9
+    },
+    {
+      "set": "fine_terse",
+      "task": 13,
+      "request": "Find portfolio evidence that I've built RAG chatbots.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "filters": {
+          "types": [
+            "case_study",
+            "readme",
+            "code"
+          ]
+        },
+        "requirement": "RAG chatbot"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2124,
+      "seconds": 38.04
+    },
+    {
+      "set": "fine_terse",
+      "task": 14,
+      "request": "What are the screening questions on job job-5d12b1dd643e?",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-5d12b1dd643e"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2116,
+      "seconds": 15.62
+    },
+    {
+      "set": "fine_terse",
+      "task": 15,
+      "request": "Who is client cli-a9a34d9d7924? I want their rating and total spend.",
+      "expected": "get_client_history",
+      "got": "get_client_history",
+      "args": {
+        "client_id": "cli-a9a34d9d7924"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2121,
+      "seconds": 17.67
+    },
+    {
+      "set": "fine_terse",
+      "task": 16,
+      "request": "What are typical rates for development work?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "development"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2091,
+      "seconds": 17.5
+    },
+    {
+      "set": "fine_terse",
+      "task": 17,
+      "request": "List my proposals that are submitted but not answered yet.",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 2098,
+      "seconds": 17.54
+    },
+    {
+      "set": "fine_terse",
+      "task": 18,
+      "request": "Find case studies only that show Power BI dashboards.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "filters": {
+          "types": [
+            "case_study"
+          ]
+        },
+        "requirement": "Power BI dashboards"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2129,
+      "seconds": 17.6
+    },
+    {
+      "set": "fine_terse",
+      "task": 19,
+      "request": "Look for machine learning jobs.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "query": "machine learning"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2088,
+      "seconds": 17.58
+    },
+    {
+      "set": "fine_terse",
+      "task": 20,
+      "request": "Read the conversation in thread thr-99aa88bb77cc.",
+      "expected": "list_messages",
+      "got": "send_message",
+      "args": {
+        "body": "placeholder",
+        "idempotency_key": "placeholder",
+        "thread_id": "placeholder"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": true,
+      "tokens": 2126,
+      "seconds": 18.6
+    },
+    {
+      "set": "fine_terse",
+      "task": 21,
+      "request": "Before I bid, check my Connects balance and recent spending.",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2083,
+      "seconds": 17.55
+    },
+    {
+      "set": "fine_terse",
+      "task": 22,
+      "request": "Pull up job job-8e81f5e2111a so I can read the description.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-8e81f5e2111a"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2125,
+      "seconds": 17.58
+    },
+    {
+      "set": "fine_terse",
+      "task": 23,
+      "request": "Pull up case study fs-p03.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "fs-p03"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 2096,
+      "seconds": 17.62
+    },
+    {
+      "set": "coarse",
+      "task": 0,
+      "request": "Find new Django REST API jobs for me.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "query": "Django REST API"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 666,
+      "seconds": 5.43
+    },
+    {
+      "set": "coarse",
+      "task": 1,
+      "request": "Show me the full post for job job-276f63f76290.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-276f63f76290"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 690,
+      "seconds": 46.11
+    },
+    {
+      "set": "coarse",
+      "task": 2,
+      "request": "Is client cli-c8f33fc54cdd trustworthy? Check their payment history.",
+      "expected": "get_client_history",
+      "got": "get_client_history",
+      "args": {
+        "client_id": "cli-c8f33fc54cdd"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 686,
+      "seconds": 0.25
+    },
+    {
+      "set": "coarse",
+      "task": 3,
+      "request": "How many Connects do I have left?",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 660,
+      "seconds": 0.35
+    },
+    {
+      "set": "coarse",
+      "task": 4,
+      "request": "What do data science contracts usually pay?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "Data Science"
+      },
+      "tool_ok": true,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 664,
+      "seconds": 0.23
+    },
+    {
+      "set": "coarse",
+      "task": 5,
+      "request": "Which of my proposals got a reply?",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {
+        "status": "replied"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 664,
+      "seconds": 0.23
+    },
+    {
+      "set": "coarse",
+      "task": 6,
+      "request": "Do I have any conversations with clients?",
+      "expected": "list_threads",
+      "got": "list_threads",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 657,
+      "seconds": 0.25
+    },
+    {
+      "set": "coarse",
+      "task": 7,
+      "request": "Open the messages in thread thr-1a2b3c4d5e6f.",
+      "expected": "list_messages",
+      "got": "list_messages",
+      "args": {
+        "thread_id": "thr-1a2b3c4d5e6f"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 688,
+      "seconds": 0.27
+    },
+    {
+      "set": "coarse",
+      "task": 8,
+      "request": "Save a draft proposal for job job-01d9aa88dfb6 at $40 saying I built a churn model last year. Don't send it.",
+      "expected": "create_proposal_draft",
+      "got": "create_proposal_draft",
+      "args": {
+        "bid_amount": 40,
+        "cover_letter": "I built a churn model last year.",
+        "job_id": "job-01d9aa88dfb6"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 726,
+      "seconds": 5.44
+    },
+    {
+      "set": "coarse",
+      "task": 9,
+      "request": "Do I have proof of experience with Celery task queues?",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "Celery task queues"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 670,
+      "seconds": 25.69
+    },
+    {
+      "set": "coarse",
+      "task": 10,
+      "request": "Show me case study ml-p05 in full.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "ml-p05"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 669,
+      "seconds": 0.23
+    },
+    {
+      "set": "coarse",
+      "task": 11,
+      "request": "Which skills can I actually prove with my projects?",
+      "expected": "list_skills",
+      "got": "list_skills",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 658,
+      "seconds": 0.24
+    },
+    {
+      "set": "coarse",
+      "task": 12,
+      "request": "Search for data analysis jobs with a budget of at least $500.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "min_budget": 500,
+        "query": "data analysis"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 680,
+      "seconds": 0.25
+    },
+    {
+      "set": "coarse",
+      "task": 13,
+      "request": "Find portfolio evidence that I've built RAG chatbots.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "RAG chatbot"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 670,
+      "seconds": 5.31
+    },
+    {
+      "set": "coarse",
+      "task": 14,
+      "request": "What are the screening questions on job job-5d12b1dd643e?",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-5d12b1dd643e"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 688,
+      "seconds": 6.43
+    },
+    {
+      "set": "coarse",
+      "task": 15,
+      "request": "Who is client cli-a9a34d9d7924? I want their rating and total spend.",
+      "expected": "get_client_history",
+      "got": "get_client_history",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 693,
+      "seconds": 26.0
+    },
+    {
+      "set": "coarse",
+      "task": 16,
+      "request": "What are typical rates for development work?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "development"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 663,
+      "seconds": 40.9
+    },
+    {
+      "set": "coarse",
+      "task": 17,
+      "request": "List my proposals that are submitted but not answered yet.",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {
+        "status": "submitted"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 666,
+      "seconds": 0.22
+    },
+    {
+      "set": "coarse",
+      "task": 18,
+      "request": "Find case studies only that show Power BI dashboards.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "filters": {
+          "type": "case_study"
+        },
+        "requirement": "Power BI dashboards"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 679,
+      "seconds": 0.27
+    },
+    {
+      "set": "coarse",
+      "task": 19,
+      "request": "Look for machine learning jobs.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "query": "machine learning"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 661,
+      "seconds": 0.22
+    },
+    {
+      "set": "coarse",
+      "task": 20,
+      "request": "Read the conversation in thread thr-99aa88bb77cc.",
+      "expected": "list_messages",
+      "got": "list_messages",
+      "args": {
+        "thread_id": "thr-99aa88bb77cc"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 682,
+      "seconds": 0.24
+    },
+    {
+      "set": "coarse",
+      "task": 21,
+      "request": "Before I bid, check my Connects balance and recent spending.",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 664,
+      "seconds": 0.24
+    },
+    {
+      "set": "coarse",
+      "task": 22,
+      "request": "Pull up job job-8e81f5e2111a so I can read the description.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-8e81f5e2111a"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 692,
+      "seconds": 0.25
+    },
+    {
+      "set": "coarse",
+      "task": 23,
+      "request": "Pull up case study fs-p03.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "fs-p03"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 667,
+      "seconds": 20.62
+    },
+    {
+      "set": "fine_full",
+      "task": 0,
+      "request": "Find new Django REST API jobs for me.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "category": "development",
+        "limit": 20,
+        "query": "Django REST API"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3071,
+      "seconds": 32.49
+    },
+    {
+      "set": "fine_full",
+      "task": 1,
+      "request": "Show me the full post for job job-276f63f76290.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-276f63f76290"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3070,
+      "seconds": 51.35
+    },
+    {
+      "set": "fine_full",
+      "task": 2,
+      "request": "Is client cli-c8f33fc54cdd trustworthy? Check their payment history.",
+      "expected": "get_client_history",
+      "got": "list_proposals",
+      "args": {},
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 3041,
+      "seconds": 25.59
+    },
+    {
+      "set": "fine_full",
+      "task": 3,
+      "request": "How many Connects do I have left?",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3031,
+      "seconds": 26.57
+    },
+    {
+      "set": "fine_full",
+      "task": 4,
+      "request": "What do data science contracts usually pay?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "data_science"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3044,
+      "seconds": 25.66
+    },
+    {
+      "set": "fine_full",
+      "task": 5,
+      "request": "Which of my proposals got a reply?",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {
+        "status": "replied"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3043,
+      "seconds": 25.61
+    },
+    {
+      "set": "fine_full",
+      "task": 6,
+      "request": "Do I have any conversations with clients?",
+      "expected": "list_threads",
+      "got": "list_threads",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3028,
+      "seconds": 25.64
+    },
+    {
+      "set": "fine_full",
+      "task": 7,
+      "request": "Open the messages in thread thr-1a2b3c4d5e6f.",
+      "expected": "list_messages",
+      "got": "list_messages",
+      "args": {
+        "thread_id": "thr-1a2b3c4d5e6f"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3068,
+      "seconds": 26.72
+    },
+    {
+      "set": "fine_full",
+      "task": 8,
+      "request": "Save a draft proposal for job job-01d9aa88dfb6 at $40 saying I built a churn model last year. Don't send it.",
+      "expected": "create_proposal_draft",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-01d9aa88dfb6"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 3082,
+      "seconds": 25.63
+    },
+    {
+      "set": "fine_full",
+      "task": 9,
+      "request": "Do I have proof of experience with Celery task queues?",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "Asynchronous task queues with Celery"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3052,
+      "seconds": 25.69
+    },
+    {
+      "set": "fine_full",
+      "task": 10,
+      "request": "Show me case study ml-p05 in full.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "ml-p05"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3050,
+      "seconds": 25.6
+    },
+    {
+      "set": "fine_full",
+      "task": 11,
+      "request": "Which skills can I actually prove with my projects?",
+      "expected": "list_skills",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "build a Power BI sales dashboard"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 3048,
+      "seconds": 52.32
+    },
+    {
+      "set": "fine_full",
+      "task": 12,
+      "request": "Search for data analysis jobs with a budget of at least $500.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "min_budget": 500,
+        "query": "data analysis"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3063,
+      "seconds": 26.38
+    },
+    {
+      "set": "fine_full",
+      "task": 13,
+      "request": "Find portfolio evidence that I've built RAG chatbots.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "requirement": "build a RAG chatbot"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3052,
+      "seconds": 76.31
+    },
+    {
+      "set": "fine_full",
+      "task": 14,
+      "request": "What are the screening questions on job job-5d12b1dd643e?",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-5d12b1dd643e"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3068,
+      "seconds": 57.72
+    },
+    {
+      "set": "fine_full",
+      "task": 15,
+      "request": "Who is client cli-a9a34d9d7924? I want their rating and total spend.",
+      "expected": "get_client_history",
+      "got": "get_client_history",
+      "args": {
+        "client_id": "cli-a9a34d9d7924"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3073,
+      "seconds": 20.65
+    },
+    {
+      "set": "fine_full",
+      "task": 16,
+      "request": "What are typical rates for development work?",
+      "expected": "get_market_stats",
+      "got": "get_market_stats",
+      "args": {
+        "category": "development"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3043,
+      "seconds": 77.97
+    },
+    {
+      "set": "fine_full",
+      "task": 17,
+      "request": "List my proposals that are submitted but not answered yet.",
+      "expected": "list_proposals",
+      "got": "list_proposals",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": false,
+      "unsafe": false,
+      "tokens": 3050,
+      "seconds": 25.6
+    },
+    {
+      "set": "fine_full",
+      "task": 18,
+      "request": "Find case studies only that show Power BI dashboards.",
+      "expected": "search_evidence",
+      "got": "search_evidence",
+      "args": {
+        "filters": {
+          "types": [
+            "case_study"
+          ]
+        },
+        "requirement": "Power BI dashboards"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3067,
+      "seconds": 25.7
+    },
+    {
+      "set": "fine_full",
+      "task": 19,
+      "request": "Look for machine learning jobs.",
+      "expected": "search_jobs",
+      "got": "search_jobs",
+      "args": {
+        "limit": 20,
+        "query": "machine learning"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3053,
+      "seconds": 25.91
+    },
+    {
+      "set": "fine_full",
+      "task": 20,
+      "request": "Read the conversation in thread thr-99aa88bb77cc.",
+      "expected": "list_messages",
+      "got": "send_message",
+      "args": {
+        "body": "Hello",
+        "idempotency_key": "msg-99aa88bb77cc-hello",
+        "thread_id": "thr-99aa88bb77cc"
+      },
+      "tool_ok": false,
+      "args_ok": false,
+      "unsafe": true,
+      "tokens": 3107,
+      "seconds": 25.77
+    },
+    {
+      "set": "fine_full",
+      "task": 21,
+      "request": "Before I bid, check my Connects balance and recent spending.",
+      "expected": "get_connects_balance",
+      "got": "get_connects_balance",
+      "args": {},
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3035,
+      "seconds": 25.57
+    },
+    {
+      "set": "fine_full",
+      "task": 22,
+      "request": "Pull up job job-8e81f5e2111a so I can read the description.",
+      "expected": "get_job",
+      "got": "get_job",
+      "args": {
+        "job_id": "job-8e81f5e2111a"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3072,
+      "seconds": 26.65
+    },
+    {
+      "set": "fine_full",
+      "task": 23,
+      "request": "Pull up case study fs-p03.",
+      "expected": "get_case_study",
+      "got": "get_case_study",
+      "args": {
+        "case_id": "fs-p03"
+      },
+      "tool_ok": true,
+      "args_ok": true,
+      "unsafe": false,
+      "tokens": 3048,
+      "seconds": 25.66
+    }
+  ]
+}
