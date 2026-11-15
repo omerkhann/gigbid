@@ -25,5 +25,15 @@ COPY data/policy_pack data/policy_pack
 ENV FASTEMBED_CACHE_PATH=/app/data/processed/models RERANKER_CACHE=/app/data/processed/models
 RUN useradd --create-home --uid 1000 gigbid && mkdir -p data/processed && chown -R gigbid data/processed
 USER gigbid
+
+# Standalone Portfolio MCP server for anyone's portfolio folder (mcp_servers/portfolio/README.md):
+#   docker run -i --rm -v ./my-portfolio:/portfolio:ro gigbid-portfolio-mcp
+FROM base AS portfolio-mcp
+ENV PORTFOLIO_EMBEDDER=fastembed:BAAI/bge-small-en-v1.5
+ENTRYPOINT ["python", "-m", "mcp_servers.portfolio.server"]
+CMD ["--stdio", "--portfolio-dir", "/portfolio"]
+
+# Default target (compose): every GigBid service; compose sets the command.
+FROM base AS app
 EXPOSE 8000
 CMD ["python", "-m", "apps.api.serve", "--host", "0.0.0.0", "--port", "8000"]

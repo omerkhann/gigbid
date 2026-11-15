@@ -66,7 +66,7 @@ services:
 
   gigsim:
     <<: *py
-    build: {context: .., dockerfile: infra/docker/python.Dockerfile}   # builds gigsim-py once for all
+    build: {context: .., dockerfile: infra/docker/python.Dockerfile, target: app}   # builds gigbid-py once for all
     command: ["uvicorn", "gigsim.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8100"]
     environment:
       <<: *pyenv

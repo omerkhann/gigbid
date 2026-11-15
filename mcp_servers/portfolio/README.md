@@ -30,7 +30,33 @@ my-portfolio/
 
 Only `skeleton.yaml` is required; every other part is optional. See [`data/personas/data_analyst/`](../../data/personas/data_analyst/) for a complete (synthetic) example.
 
-## Use it from Claude Desktop
+## Install with Docker (no Python or Ollama needed)
+
+```bash
+docker pull ghcr.io/omerkhann/gigbid-portfolio-mcp:latest
+```
+
+Claude Desktop (`claude_desktop_config.json`) or Cursor (`.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "portfolio": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm",
+               "-v", "/path/to/my-portfolio:/portfolio:ro",
+               "-v", "portfolio-mcp-cache:/app/data/processed",
+               "ghcr.io/omerkhann/gigbid-portfolio-mcp:latest"]
+    }
+  }
+}
+```
+
+Your folder is mounted read-only. Embeddings run inside the container (`BAAI/bge-small-en-v1.5`, ONNX on CPU), so nothing about your portfolio leaves your machine. The `portfolio-mcp-cache` volume keeps the model and the embeddings. The first start downloads the model (~130 MB) and embeds the portfolio, which takes a minute or two; later starts take seconds.
+
+To build the image yourself instead: `docker build -f infra/docker/python.Dockerfile --target portfolio-mcp -t gigbid-portfolio-mcp .` from the repo root.
+
+## Use it from Claude Desktop with uv
 
 Prerequisites: Python 3.12, [uv](https://docs.astral.sh/uv/), and [Ollama](https://ollama.com) with `ollama pull nomic-embed-text` (embeddings run locally; nothing about your portfolio leaves your machine).
 
@@ -60,8 +86,8 @@ python -m mcp_servers.portfolio.server     # Streamable HTTP at http://127.0.0.1
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `PORTFOLIO_VARIANT` | `v0_naive` | Retrieval design (see `rag/variants/`); chosen by evaluation |
-| `PORTFOLIO_EMBEDDER` | `ollama:nomic-embed-text` | Any Ollama embedding model, or `hash` for offline tests |
+| `PORTFOLIO_VARIANT` | `rag.variant` in `agent/config.yaml` | Retrieval design (see `rag/pipeline.py`); chosen by evaluation |
+| `PORTFOLIO_EMBEDDER` | `ollama:nomic-embed-text` | `ollama:<model>`, `fastembed:<model>` (ONNX on CPU; the Docker image's default), or `hash` for offline tests |
 | `OLLAMA_BASE_URL` | `http://127.0.0.1:11434` | Ollama address |
 
 ## Design notes
