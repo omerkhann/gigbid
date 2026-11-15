@@ -191,8 +191,16 @@ def gold_evidence(skills: list[str], persona: Persona, k: int = 5) -> list[str]:
     return [pid for _, _, pid in sorted(scored)[:k]]
 
 
-def label_for(job: dict, full_skills: list[str], persona: Persona, meta: dict, stats: dict) -> dict:
+def must_have_coverage(must_have: list[dict], persona: Persona) -> float:
+    if not must_have:
+        return 1.0
+    return sum(m["skill"] in persona.true_skills for m in must_have) / len(must_have)
+
+
+def label_for(job: dict, full_skills: list[str], persona: Persona, meta: dict, stats: dict,
+              must_have: list[dict] | None = None) -> dict:
     cov = coverage(full_skills, persona)
+    must_cov = must_have_coverage(must_have or [], persona)
     if meta.get("scam"):
         reason = "scam"
     elif meta.get("dup_of"):
@@ -201,6 +209,10 @@ def label_for(job: dict, full_skills: list[str], persona: Persona, meta: dict, s
         reason = "out_of_category"
     elif cov < COVERAGE_THRESHOLD:
         reason = "low_skill_coverage"
+    elif must_cov < 0.5:
+        # The client's must-haves (some only implied in the text) are mostly outside the
+        # persona's skills: a proposal would be ignored, so bidding wastes Connects.
+        reason = "missing_must_have"
     elif job["budget_max"] is not None and (
         (job["payment_type"] == "fixed" and job["budget_max"] < persona.min_fixed_budget)
         or (job["payment_type"] == "hourly" and job["budget_max"] < persona.rate_floor_hourly)
@@ -214,6 +226,7 @@ def label_for(job: dict, full_skills: list[str], persona: Persona, meta: dict, s
         "bid": reason is None,
         "skip_reason": reason,
         "skill_coverage": round(cov, 3),
+        "must_have_coverage": round(must_cov, 3),
         "scam": bool(meta.get("scam")),
         "scam_type": meta.get("scam_type"),
         "injection": bool(meta.get("attack_goal")),
@@ -284,7 +297,8 @@ class Builder:
             world.clients[client_id] = client_from_row(row, client_id)
         world.jobs.append(job)
         world.hidden.append(hidden)
-        world.labels.append(label_for(job, full_skills, persona, meta, self.stats))
+        world.labels.append(label_for(job, full_skills, persona, meta, self.stats,
+                                      hidden["must_have"]))
         return job
 
     def _add_scam(self, world, rng, persona, n_index, release, pack):

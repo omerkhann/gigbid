@@ -62,3 +62,12 @@ def test_fair_price_band():
 def test_gold_evidence_ranks_by_overlap_then_recency():
     # p1 covers both skills; p3 covers SQL via an implied skill; p2 covers neither.
     assert gold_evidence(["SQL", "Microsoft Power BI"], PERSONA) == ["p1", "p3"]
+
+
+def test_missing_must_have_skips_even_with_good_coverage():
+    skills = ["SQL", "Microsoft Power BI"]
+    must = [{"skill": "Scrapy", "implied": False}]
+    lab = label_for(job(), skills, PERSONA, {"stratum": "f"}, STATS, must_have=must)
+    assert lab["skip_reason"] == "missing_must_have"
+    half = [{"skill": "SQL", "implied": False}, {"skill": "Scrapy", "implied": True}]
+    assert label_for(job(), skills, PERSONA, {"stratum": "f"}, STATS, must_have=half)["bid"] is True

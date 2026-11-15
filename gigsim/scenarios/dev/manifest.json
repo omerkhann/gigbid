@@ -5,7 +5,7 @@
   "jobs": 600,
   "clients": 570,
   "labels": 600,
-  "labels_sha256": "98361db9c4bc75f8e9c59452418905506ba626663d9e4a13ed49413b09feb0f3",
+  "labels_sha256": "3bfe59a0b43fcbd3728394226d032fd0cb58420cbd5bb422ea624e2415103cf8",
   "files_sha256": {
     "jobs.jsonl": "773b896c0fb88c64f926edaec195f53d991d0cc4d427d2d9cc658b903381123a",
     "clients.jsonl": "400d2cbc73768745635e6aa9ba23227626733a310ee46d5ebc0c62ba7ce8598a",
@@ -17,16 +17,17 @@
     "ml_engineer": 200
   },
   "bid_rate": {
-    "data_analyst": 0.355,
-    "fullstack_dev": 0.36,
-    "ml_engineer": 0.29
+    "data_analyst": 0.315,
+    "fullstack_dev": 0.325,
+    "ml_engineer": 0.24
   },
   "skip_reasons": {
-    "bid": 201,
+    "bid": 176,
     "low_skill_coverage": 155,
     "out_of_category": 90,
-    "budget_below_floor": 76,
+    "budget_below_floor": 67,
     "scam": 48,
+    "missing_must_have": 34,
     "duplicate": 30
   },
   "sources": {

@@ -1,0 +1,60 @@
+# Hand-written proposals for checking GigSim's simulated client BEFORE the freeze.
+# Persona: data_analyst (Bilal Ahmed). Every claim in "good" is backed by his skeleton.
+# "fabricated" = the good proposal plus two claims his profile does not support.
+# Expectation: good > generic, and good > fabricated. Never tuned on GigBid output.
+persona: data_analyst
+fabricated_suffix: >-
+  Before freelancing I spent 8 years as a senior analyst at Google, and I am a certified
+  Tableau Zen Master.
+jobs:
+  - job_id: job-01c6acb86f4c   # Data Analyst - Dashboard Design (commercial real estate)
+    bid: 28
+    good: |-
+      A dashboard that tells a clear story to both your employees and your customers is exactly the kind of work I do. For a pharma distributor I built a Power BI sales dashboard that 40 area managers use, which cut monthly reporting from 3 days to 2 hours, and for a hospital I replaced 6 manual spreadsheets with one daily Tableau occupancy view.
+
+      For your marketplace I'd start with short calls with 2-3 people from each audience, sketch two layouts, then clean and shape the data in Python (pandas) before building. I'd expect views like occupancy, rent per square foot and deal pipeline by property, but your data should decide that.
+    good_answers:
+      - "A Power BI sales performance dashboard for a pharma distributor (SQL data model, 40 managers, reporting time from 3 days to 2 hours)."
+    generic: |-
+      Hello Sir/Madam, I am a highly skilled data analyst with many years of experience. I have read your job post and I am confident I can complete this job to your full satisfaction. I am expert in all data tools and always deliver quality work on time. Please message me to discuss further. Thank you.
+
+  - job_id: job-0b954e1ba14e   # Marketing Agency Data Architect (Facebook, Google Ads, TikTok roll-ups)
+    bid: 35
+    good: |-
+      Rolling Facebook, Google Ads, TikTok and GoHighLevel data up by client and campaign type is very close to the funnel reporting I built for a D2C skincare brand in Google Analytics and Looker Studio, where we found a checkout drop-off and lifted conversion by 0.6 points.
+
+      My plan: land each source in Google Sheets through connectors (GoHighLevel via its API), build one tidy table per client and campaign, then a shared Looker Studio dashboard with your roll-ups. I set up a similar auto-refreshing weekly P&L in Google Sheets for a restaurant chain with 9 branches, and I'd hand over a short doc so your team can run it in-house.
+    good_answers: []
+    generic: |-
+      Dear Hiring Manager, I am very interested in your project and I have extensive experience in data and dashboards. I can do this job perfectly and quickly. I have done many similar projects for clients around the world. Looking forward to working with you. Best regards.
+
+  - job_id: job-24da7222feb9   # Tableau & PowerBI Training
+    bid: 750
+    good: |-
+      I'd be glad to help your clients get value from Power BI and Tableau. I build these dashboards for a living: a Power BI KPI dashboard for a solar installer's field teams that cut average install time by 1.5 days, a Power BI sales dashboard used by 40 area managers, and a Tableau bed-occupancy report for a hospital.
+
+      Because my dashboards are used by non-technical managers, I'm used to explaining both the "how" and the "why" behind a report. I'm available Monday to Friday and can work around your clients' schedules.
+    good_answers:
+      - "A Power BI KPI dashboard for a solar installer: install backlog per team, average install time down 1.5 days."
+    generic: |-
+      Hi, I am an experienced professional and I can help you with this training job. I have good communication skills and I am available. Please consider my proposal. Thanks.
+
+  - job_id: job-27d167db8b63   # Tableau RTB Template Designs (SQL -> Tableau reporting)
+    bid: 30
+    good: |-
+      Moving your daily management reporting from SQL-to-Excel loops into Tableau is work I've done before: for a hospital I connected Microsoft SQL Server to Tableau and replaced 6 manual spreadsheets with one daily occupancy dashboard, and for a subscription box company I built the SQL data model that finance and marketing now both report from.
+
+      I'd start with Backlog (by need, promise and projected date) and On-Time Delivery, since they share most of the same tables, then add Work Center Load and the trailing 10-day order rate. I haven't used Syteline itself, so I'd ask for a short walkthrough of its schema first.
+    good_answers: []
+    generic: |-
+      Hello, I can do your Tableau dashboards. I am expert in Tableau, SQL and Excel with lots of experience. I will give you best quality work at low price. Let's discuss the details in chat.
+
+  - job_id: job-276f63f76290   # Google Sheets marketing calculator
+    bid: 28
+    good: |-
+      A Google Sheets calculator that tells a local business whether it can hit a revenue number is a great fit for me. I built an auto-refreshing weekly P&L in Google Sheets for a restaurant chain with 9 branches, and a price-elasticity study for a grocery delivery app that led to 4 price changes and a 2.1% higher basket margin.
+
+      I'd structure it as an inputs tab (ad spend, lead rate, close rate, average order value), a model tab with the formulas, and a results tab with a clear verdict and a sensitivity table, plus written instructions so you can change variables without breaking anything.
+    good_answers: []
+    generic: |-
+      Hi there! I'm a spreadsheet expert and I have done many Google Sheets projects. I am sure I can complete your calculator perfectly. Kindly give me a chance. Thank you!

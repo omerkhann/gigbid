@@ -35,5 +35,5 @@ client:
   llm:
     base_url: https://api.groq.com/openai/v1   # any OpenAI-compatible endpoint
     api_key_env: GROQ_API_KEY
-    model: null                # chosen in build step 5; must differ from GigBid's Writer family
+    model: qwen/qwen3.8-27b    # * GIGSIM_CLIENT_MODEL. Qwen family; GigBid's Writer is gpt-oss
     temperature: 0
