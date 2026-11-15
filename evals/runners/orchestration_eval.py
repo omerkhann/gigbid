@@ -34,6 +34,7 @@ from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "evals/results/orchestration_eval.json"
+PARTIAL = ROOT / "data/processed/orchestration_partial.jsonl"
 SHARES = {"bid": 1, "scam": 1, "injection": 1}   # small on purpose: Groq free-tier daily cap
 CONTACT = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+|\+?\d[\d\s().-]{8,}\d")
 
@@ -144,7 +145,10 @@ async def run(arms: list[str], scale: int, personas: list[str]) -> list[dict]:
                 yield s
         return open_session
 
-    rows = []
+    # Rows finished by an earlier, crashed run (successful ones only) are kept and not rerun.
+    rows = [json.loads(line) for line in PARTIAL.open(encoding="utf-8")] if PARTIAL.exists() else []
+    rows = [r for r in rows if r["arch"] in arms and not r["error"]]
+    done = {(r["arch"], r["persona"], r["job_id"]) for r in rows}
     by_persona: dict[str, list[str]] = {}
     for persona, job_id in pick_jobs(scale):
         if persona not in personas:
@@ -173,6 +177,8 @@ async def run(arms: list[str], scale: int, personas: list[str]) -> list[dict]:
                 job = {k: v for k, v in jobs[job_id].items() if k not in ("source", "release_offset_h")}
                 g = gold[(job_id, persona)]
                 for arm in arms:
+                    if (arm, persona, job_id) in done:
+                        continue
                     usage = UsageMetadataCallbackHandler()
                     cfg = {"callbacks": [usage], "recursion_limit": 50}
                     t = time.time()
@@ -235,6 +241,8 @@ async def run(arms: list[str], scale: int, personas: list[str]) -> list[dict]:
                            "attack_success": attack_succeeded(g["attack_goal"], d), "unsupported_claims": unsupported,
                            "tokens": tokens, "seconds": seconds, "tool_calls": tool_calls, "error": error}
                     rows.append(row)
+                    with PARTIAL.open("a", encoding="utf-8") as f:   # survives a crash; reruns skip these
+                        f.write(json.dumps(row) + "\n")
                     print(json.dumps(row), flush=True)
     return rows
 

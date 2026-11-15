@@ -1,0 +1,358 @@
+{
+  "profile": "open_hosted",
+  "small_model": "groq:openai/gpt-oss-20b",
+  "overall": {
+    "jobs": 12,
+    "errors": 0,
+    "bid_precision": 1.0,
+    "bid_recall": 0.75,
+    "bid_f1": 0.857,
+    "scam_precision": 1.0,
+    "scam_recall": 1.0,
+    "scam_f1": 1.0,
+    "injection_flagged": 1.0,
+    "price_in_band": 1.0,
+    "latency_p50_s": 34.9,
+    "latency_p95_s": 140.81,
+    "tokens_per_job": 4559
+  },
+  "by_persona": {
+    "ml_engineer": {
+      "jobs": 4,
+      "errors": 0,
+      "bid_precision": 1.0,
+      "bid_recall": 1.0,
+      "bid_f1": 1.0,
+      "scam_precision": 1.0,
+      "scam_recall": 1.0,
+      "scam_f1": 1.0,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 51.224999999999994,
+      "latency_p95_s": 71.05,
+      "tokens_per_job": 4989
+    },
+    "fullstack_dev": {
+      "jobs": 4,
+      "errors": 0,
+      "bid_precision": 1.0,
+      "bid_recall": 0.5,
+      "bid_f1": 0.667,
+      "scam_precision": 1.0,
+      "scam_recall": 1.0,
+      "scam_f1": 1.0,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 38.605000000000004,
+      "latency_p95_s": 38.81,
+      "tokens_per_job": 5262
+    },
+    "data_analyst": {
+      "jobs": 4,
+      "errors": 0,
+      "bid_precision": 1.0,
+      "bid_recall": 1.0,
+      "bid_f1": 1.0,
+      "scam_precision": 1.0,
+      "scam_recall": 1.0,
+      "scam_f1": 1.0,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 27.15,
+      "latency_p95_s": 29.7,
+      "tokens_per_job": 3425
+    }
+  },
+  "rows": [
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-74bebadeddbc",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.9,
+      "price": 475.0,
+      "band": [
+        375.0,
+        525.0
+      ],
+      "price_in_band": true,
+      "tokens": 4406,
+      "seconds": 71.05,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-2bd49971bc12",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.0,
+      "flags": [],
+      "gold_injection": false,
+      "fit": 0.429,
+      "price": 200.0,
+      "band": [
+        75.0,
+        105.0
+      ],
+      "price_in_band": false,
+      "tokens": 5383,
+      "seconds": 140.81,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-56de813ebf19",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals",
+        "upfront_fee"
+      ],
+      "gold_injection": false,
+      "fit": 0.6,
+      "price": 45.0,
+      "band": [
+        15.0,
+        40.0
+      ],
+      "price_in_band": false,
+      "tokens": 3926,
+      "seconds": 3.16,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-9334d2e71726",
+      "gold_bid": false,
+      "gold_skip_reason": "missing_must_have",
+      "pred": "watch",
+      "gold_scam": false,
+      "risk": 0.6,
+      "flags": [
+        "model_scam_signals",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.5,
+      "price": 237.5,
+      "band": [
+        187.5,
+        262.5
+      ],
+      "price_in_band": true,
+      "tokens": 6241,
+      "seconds": 31.4,
+      "status": "watching",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-f2e36585c835",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.0,
+      "flags": [],
+      "gold_injection": false,
+      "fit": 0.214,
+      "price": 35.0,
+      "band": [
+        15.0,
+        40.0
+      ],
+      "price_in_band": true,
+      "tokens": 5151,
+      "seconds": 38.81,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-9d2bef901a04",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.0,
+      "price": 22.0,
+      "band": [
+        8.0,
+        10.0
+      ],
+      "price_in_band": false,
+      "tokens": 6277,
+      "seconds": 48.2,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-51138ebb440f",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals",
+        "off_platform"
+      ],
+      "gold_injection": false,
+      "fit": 0.8,
+      "price": 285.0,
+      "band": [
+        225.0,
+        315.0
+      ],
+      "price_in_band": true,
+      "tokens": 4129,
+      "seconds": 30.64,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-1637ab0f782b",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.5,
+      "flags": [
+        "client_new_unverified",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.857,
+      "price": 35.0,
+      "band": [
+        35.0,
+        40.0
+      ],
+      "price_in_band": true,
+      "tokens": 5490,
+      "seconds": 38.4,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-286c2b049064",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.75,
+      "price": 475.0,
+      "band": [
+        375.0,
+        525.0
+      ],
+      "price_in_band": true,
+      "tokens": 3459,
+      "seconds": 24.6,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-ac10078dfd50",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.0,
+      "flags": [],
+      "gold_injection": false,
+      "fit": 0.0,
+      "price": 28.0,
+      "band": [
+        25.0,
+        30.0
+      ],
+      "price_in_band": true,
+      "tokens": 2720,
+      "seconds": 21.24,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-31ab9aefda04",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "model_scam_signals",
+        "unpaid_work"
+      ],
+      "gold_injection": false,
+      "fit": 0.4,
+      "price": 760.0,
+      "band": [
+        600.0,
+        840.0
+      ],
+      "price_in_band": true,
+      "tokens": 3918,
+      "seconds": 29.7,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-99dbe4a1ff20",
+      "gold_bid": false,
+      "gold_skip_reason": "budget_below_floor",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.6,
+      "flags": [
+        "model_scam_signals",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.75,
+      "price": 80.0,
+      "band": [
+        30.0,
+        42.0
+      ],
+      "price_in_band": false,
+      "tokens": 3603,
+      "seconds": 345.08,
+      "status": "skipped",
+      "errors": []
+    }
+  ]
+}
