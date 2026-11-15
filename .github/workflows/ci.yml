@@ -3,6 +3,13 @@ on: [push, pull_request]
 jobs:
   checks:
     runs-on: ubuntu-latest
+    services:
+      postgres:                     # API tests use a real Postgres (gigbid_test is created by the tests)
+        image: pgvector/pgvector:pg17
+        env: {POSTGRES_USER: gigbid, POSTGRES_PASSWORD: gigbid, POSTGRES_DB: gigbid}
+        ports: ["5433:5432"]
+        options: >-
+          --health-cmd "pg_isready -U gigbid" --health-interval 5s --health-timeout 3s --health-retries 20
     steps:
       - uses: actions/checkout@v4
         with:
