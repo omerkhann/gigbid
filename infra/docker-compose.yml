@@ -1,3 +1,30 @@
-# TODO: Define web, API, worker, MCP servers, GigSim, Postgres, Redis,
-# vector store and local model service as appropriate.
-services: {}
+# GigBid services. Grows phase by phase; `docker compose -f infra/docker-compose.yml up -d` from the repo root.
+# Today: Postgres (LangGraph checkpointer + store, later pgvector) and Redis (later: Arq worker queue).
+name: gigbid
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: gigbid
+      POSTGRES_PASSWORD: gigbid          # dev only; deployments override via env
+      POSTGRES_DB: gigbid
+    ports: ["5433:5432"]   # 5433 on the host: a native Windows Postgres already uses 5432
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gigbid -d gigbid"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:

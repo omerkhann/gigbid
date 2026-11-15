@@ -1,26 +1,65 @@
+# GigBid agent configuration. Every model, threshold and budget lives here, never in code.
+# MODEL_PROFILE (env) picks a profile; each node names a tier; each tier is a fallback chain
+# tried in order ("provider:model").
+
 marketplace:
-  mode: gigsim
+  mode: gigsim                 # gigsim | upwork_live (the Marketplace MCP server's backend)
   max_requests_per_minute: 20
 
+providers:                     # all speak the OpenAI chat API
+  ollama: {base_url_env: OLLAMA_BASE_URL, base_url_default: "http://localhost:11434", path: /v1, api_key: ollama}
+  groq: {base_url_default: "https://api.groq.com/openai/v1", api_key_env: GROQ_API_KEY}
+  openrouter: {base_url_default: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
+
 models:
-  profile: open
+  profile: open_local          # MODEL_PROFILE overrides
+  profiles:
+    # Required "open" profile, two configurations to compare (assignment: choose by measurement).
+    open_local:                # small tier on the laptop GPU (RTX 4050), strong tier hosted
+      small: ["ollama:qwen3:4b", "groq:openai/gpt-oss-20b"]
+      strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
+      critic: ["groq:openai/gpt-oss-20b"]
+    open_hosted:               # no GPU (the deployed VM): small tier hosted too
+      small: ["groq:openai/gpt-oss-20b", "ollama:qwen3:4b"]
+      strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
+      critic: ["groq:openai/gpt-oss-20b"]
+  # Per-model call options. qwen3 "thinking" adds ~800 hidden tokens per call; off for small tasks.
+  options:
+    "ollama:qwen3:4b": {reasoning_effort: none, temperature: 0}
+    "groq:openai/gpt-oss-20b": {reasoning_effort: low, temperature: 0}
+    "groq:openai/gpt-oss-120b": {reasoning_effort: medium, temperature: 0.4}
   nodes:
-    scout: qwen3-4b
-    analyst: qwen3-4b
-    risk_assessor: qwen3-4b
-    fit_matcher: qwen3-4b
-    pricing: qwen3-4b
-    writer: configure-your-model
-    critic: configure-your-model
-    client_liaison: configure-your-model
+    job_analyst: small
+    risk_assessor: small
+    fit_matcher: small
+    pricing: small             # only writes the one-line rationale; the price is computed
+    writer: strong
+    verify_claims: strong
+    critic: critic
+    compliance: small
+    client_liaison: strong
   embeddings: nomic-embed-text
   reranker: bge-reranker-v2-m3
+
+rag:
+  variant: v0_naive            # chosen by evaluation in Phase 4
+  evidence_per_requirement: 4
 
 budgets:
   max_graph_steps: 30
   max_revisions: 2
-  max_tokens_per_job: 12000
+  max_tokens_per_job: 40000
+  llm_timeout_s: 90
+  llm_retries: 2
 
 thresholds:
-  minimum_fit_score: 0.60
-  maximum_risk_score: 0.70
+  minimum_fit_score: 0.55      # below -> skip
+  watch_fit_score: 0.45        # between watch and minimum -> watch
+  maximum_risk_score: 0.70     # above -> skip
+  min_connects_reserve: 8      # never spend below this balance
+
+# Freelancer settings (per user; the UI will own these later).
+user_defaults:
+  hourly_floor: 25
+  fixed_floor: 100
+  weekly_connects_budget: 80

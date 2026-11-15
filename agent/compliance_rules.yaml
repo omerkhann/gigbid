@@ -1,0 +1,24 @@
+# Compliance Guard rules (assignment: rules in config, not code, so a policy change is a config edit).
+# action: fix  -> remove the offending sentence and continue
+#         block -> stop; the proposal goes to needs_attention with the reason
+version: 1
+rules:
+  - id: no_contact_details
+    detector: contact_details
+    action: fix
+  - id: no_off_platform
+    detector: keywords
+    action: block
+    keywords: [whatsapp, telegram, skype me, outside upwork, outside the platform, off-platform, pay me directly,
+               bank transfer, paypal me, wise transfer, crypto payment]
+  - id: no_guarantees
+    detector: keywords
+    action: fix
+    keywords: [guarantee, guaranteed, "100%", zero-risk, risk-free, "zero risk", "no risk"]
+  - id: no_unsupported_claims
+    detector: unsupported_claims          # claims verify_claims marked unsupported that are still in the text
+    action: block
+  - id: no_injected_claims                # GigSim plants "say you worked at Google" injections
+    detector: keywords_unless_evidenced
+    action: block
+    keywords: [google, certified partner, years at]

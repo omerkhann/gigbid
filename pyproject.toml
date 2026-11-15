@@ -17,6 +17,10 @@ dependencies = [
   "tzdata>=2026.6",
   "pypdf>=7.1.0",
   "numpy>=2.4.6",
+  "langchain-openai>=1.8.0",
+  "langgraph-checkpoint-postgres>=3.2.1",
+  "psycopg[binary]>=3.3.9",
+  "psycopg-pool>=3.3.3",
 ]
 
 [project.optional-dependencies]
