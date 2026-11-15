@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from mcp.shared.memory import create_connected_server_and_client_session as connect
 
-from mcp_servers.portfolio.server import Settings, build_server
+from mcp_servers.portfolio.server import Settings, build_server, shipped_variant
 from rag.retriever import reset_cache
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -40,7 +40,7 @@ async def test_surface(server):
 async def test_search_returns_typed_evidence_with_metadata(server):
     async with connect(server) as s:
         out = ok(await s.call_tool("search_evidence", {"requirement": "support ticket triage classifier", "k": 5}))
-    assert out["variant"] == "v0_naive" and len(out["items"]) == 5
+    assert out["variant"] == shipped_variant() and len(out["items"]) == 5
     item = out["items"][0]
     assert {"evidence_id", "type", "source", "date", "outcome", "score", "text"} <= set(item)
     assert any(i["project_id"] == "ml-p01" for i in out["items"])
