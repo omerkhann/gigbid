@@ -128,7 +128,11 @@ Source: `evals/results/orchestration_eval.json` (same model for all: `ollama:qwe
 
 ### Signature extension X3: portfolio builder
 
-_Not run yet: `python -m evals.runners.x3_eval`._
+Source: `evals/results/x3_eval.json` (model `ollama:qwen3:4b`).
+
+| Persona | Repos | Claims | Supported before verify | Unsupported (removed) | Named-skill recall | Implied-skill recall |
+|---|---|---|---|---|---|---|
+| ml_engineer | 7 | 77 | 0.558 | 0.299 | 0.143 | 0.762 |
 
 ### LLM-judge calibration
 

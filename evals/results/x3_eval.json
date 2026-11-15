@@ -1,0 +1,174 @@
+{
+  "model": "ollama:qwen3:4b",
+  "results": [
+    {
+      "persona": "ml_engineer",
+      "repos": 7,
+      "claims": 77,
+      "supported_rate_before": 0.558,
+      "unsupported_rate_before": 0.299,
+      "unsupported_after": 0,
+      "named_skill_recall": 0.143,
+      "implied_skill_recall": 0.762,
+      "rows": [
+        {
+          "repo": "finfast-batchapi",
+          "project_id": "ml-p07",
+          "claims": 12,
+          "supported": 7,
+          "unsupported_removed": 3,
+          "named_skill_recall": 0.25,
+          "implied_skill_recall": 1.0,
+          "implied": [
+            "FastAPI",
+            "Celery"
+          ],
+          "generated_skills": [
+            "FastAPI",
+            "Celery",
+            "Redis",
+            "Docker",
+            "AWS ECS",
+            "AWS ALB",
+            "S3",
+            "Pydantic",
+            "Celery tasks",
+            "Model inference (torch/sklearn)"
+          ]
+        },
+        {
+          "repo": "freshforecast",
+          "project_id": "ml-p04",
+          "claims": 8,
+          "supported": 4,
+          "unsupported_removed": 1,
+          "named_skill_recall": 0.25,
+          "implied_skill_recall": 1.0,
+          "implied": [
+            "ETL Pipeline"
+          ],
+          "generated_skills": [
+            "Pandas",
+            "XGBoost",
+            "Airflow",
+            "Docker",
+            "SQLite",
+            "Time-series forecasting"
+          ]
+        },
+        {
+          "repo": "lexbot",
+          "project_id": "ml-p16",
+          "claims": 11,
+          "supported": 7,
+          "unsupported_removed": 3,
+          "named_skill_recall": 0.0,
+          "implied_skill_recall": 1.0,
+          "implied": [
+            "PostgreSQL"
+          ],
+          "generated_skills": [
+            "FastAPI",
+            "PostgreSQL",
+            "OpenAI",
+            "Redis",
+            "asyncpg",
+            "pdfminer.six",
+            "docx2txt",
+            "JWT"
+          ]
+        },
+        {
+          "repo": "policy-rag",
+          "project_id": "ml-p02",
+          "claims": 14,
+          "supported": 7,
+          "unsupported_removed": 3,
+          "named_skill_recall": 0.0,
+          "implied_skill_recall": 1.0,
+          "implied": [
+            "PostgreSQL",
+            "Celery"
+          ],
+          "generated_skills": [
+            "PostgreSQL",
+            "FAISS",
+            "OpenAI embeddings",
+            "GPT-4o",
+            "Celery",
+            "Redis",
+            "FastAPI",
+            "pdfminer.six",
+            "SQLAlchemy"
+          ]
+        },
+        {
+          "repo": "pricewatcher",
+          "project_id": "ml-p09",
+          "claims": 15,
+          "supported": 8,
+          "unsupported_removed": 7,
+          "named_skill_recall": 0.0,
+          "implied_skill_recall": 0.333,
+          "implied": [
+            "Data Scraping",
+            "Web Scraping",
+            "Beautiful Soup"
+          ],
+          "generated_skills": [
+            "Python",
+            "Web Scraping",
+            "SQLite",
+            "Pandas",
+            "Concurrent Programming",
+            "Configuration Management",
+            "Anomaly Detection"
+          ]
+        },
+        {
+          "repo": "scribble-ocr",
+          "project_id": "ml-p11",
+          "claims": 6,
+          "supported": 3,
+          "unsupported_removed": 2,
+          "named_skill_recall": 0.25,
+          "implied_skill_recall": 0.0,
+          "implied": [
+            "Google Cloud Platform"
+          ],
+          "generated_skills": [
+            "TensorFlow 2.x",
+            "FastAPI",
+            "OpenCV",
+            "Google Cloud Storage",
+            "Docker Compose",
+            "CSV processing",
+            "PostgreSQL integration"
+          ]
+        },
+        {
+          "repo": "ticket-ninja",
+          "project_id": "ml-p01",
+          "claims": 11,
+          "supported": 7,
+          "unsupported_removed": 4,
+          "named_skill_recall": 0.25,
+          "implied_skill_recall": 1.0,
+          "implied": [
+            "FastAPI"
+          ],
+          "generated_skills": [
+            "FastAPI",
+            "scikit-learn",
+            "TF-IDF",
+            "LinearSVC",
+            "joblib",
+            "Pydantic",
+            "Docker",
+            "GitHub Actions"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -143,7 +143,13 @@ No change request was applied in this submission.
 
 \IfFileExists{tables/x3.tex}{\tblfit{X3 on the ml\_engineer persona's repositories.}{x3}}{}
 
-\pending{RESULTS-X3}
+\textbf{Results} (draft and verification on the local \code{qwen3:4b}; hosted models were at quota).
+\begin{itemize}
+\item \textbf{Verification is necessary.} Of 77 claims the draft model made, only 56\% were fully supported by the repository and 30\% were unsupported: invented clients, metrics or deployment details. All of them were removed before the case studies were written, so none reaches the portfolio. Without the verifier, X3 would put an invented claim into almost every case study, and the Writer would later cite it as evidence.
+\item \textbf{It finds what profiles leave out.} Implied-skill recall was 0.76: for 5 of 7 projects every skill the hand-written profile never names (Celery, PostgreSQL, FastAPI, ETL) appears in the generated case study. The misses are instructive. ``Google Cloud Platform'' appeared as ``Google Cloud Storage'', and ``Beautiful Soup'' as ``web scraping'': right capability, different name, which the hybrid retrieval of \S4 partly bridges.
+\item \textbf{Named-skill recall (0.14) mostly measures vocabulary, not quality.} Profile skills are marketplace category labels (``Natural Language Processing'', ``API Development''); case studies name concrete tools (``TF-IDF'', ``LinearSVC''). A substring metric cannot see that these agree, so this number understates coverage.
+\end{itemize}
+\textbf{Not measured:} retrieval with generated case studies \emph{replacing} hand-written ones, the natural next experiment (rerun \S4 on \code{data/processed/x3/<persona>}).
 
 %=====================================================================================================
 \section{Failure analysis}
