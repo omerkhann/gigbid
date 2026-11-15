@@ -45,7 +45,8 @@ def evaluate(persona: str) -> dict:
                      "supported": r["supported"], "unsupported_removed": r["unsupported"],
                      "named_skill_recall": round(sum(mentioned(s, text) for s in named) / len(named), 3) if named else None,
                      "implied_skill_recall": round(sum(mentioned(s, text) for s in implied) / len(implied), 3) if implied else None,
-                     "implied": implied, "generated_skills": r["skills"]})
+                     "implied": implied, "generated_skills": r["skills"],
+                     "body_before": r["body_before"], "body_after": r["body_after"]})   # what verification removed
     claims = sum(r["claims"] for r in rows)
 
     def avg(key):
