@@ -2,50 +2,4019 @@
   "embedder": "ollama:nomic-embed-text",
   "summary": [
     {
+      "variant": "v1_decompose",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.47,
+      "mrr": 0.658,
+      "ndcg10": 0.544,
+      "recall5_4plus_reqs": 0.406,
+      "latency_p50_s": 0.407,
+      "latency_p95_s": 0.546,
+      "delta_recall5_ci95_pts": null
+    },
+    {
+      "variant": "v1_v2_v3",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.49,
+      "mrr": 0.711,
+      "ndcg10": 0.544,
+      "recall5_4plus_reqs": 0.432,
+      "latency_p50_s": 16.147,
+      "latency_p95_s": 27.915,
+      "delta_recall5_ci95_pts": null
+    },
+    {
+      "variant": "v1_v2_v3-decompose",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.479,
+      "mrr": 0.722,
+      "ndcg10": 0.552,
+      "recall5_4plus_reqs": 0.443,
+      "latency_p50_s": 3.024,
+      "latency_p95_s": 3.988,
+      "delta_recall5_ci95_pts": null
+    },
+    {
+      "variant": "v1_v2_v3-hybrid",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.469,
+      "mrr": 0.716,
+      "ndcg10": 0.557,
+      "recall5_4plus_reqs": 0.405,
+      "latency_p50_s": 7.183,
+      "latency_p95_s": 11.882,
+      "delta_recall5_ci95_pts": null
+    },
+    {
+      "variant": "v1_v2_v3-rerank",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.477,
+      "mrr": 0.69,
+      "ndcg10": 0.558,
+      "recall5_4plus_reqs": 0.411,
+      "latency_p50_s": 0.421,
+      "latency_p95_s": 0.604,
+      "delta_recall5_ci95_pts": null
+    },
+    {
       "variant": "v0_naive",
       "persona": "all",
-      "jobs": 9,
-      "recall5": 0.533,
-      "mrr": 0.87,
-      "ndcg10": 0.634,
-      "recall5_4plus_reqs": 0.489,
-      "latency_p50_s": 3.363,
-      "latency_p95_s": 3.363
+      "jobs": 60,
+      "recall5": 0.497,
+      "mrr": 0.778,
+      "ndcg10": 0.581,
+      "recall5_4plus_reqs": 0.458,
+      "latency_p50_s": 0.125,
+      "latency_p95_s": 0.199
+    },
+    {
+      "variant": "v2_hybrid",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.492,
+      "mrr": 0.795,
+      "ndcg10": 0.583,
+      "recall5_4plus_reqs": 0.468,
+      "latency_p50_s": 0.114,
+      "latency_p95_s": 0.173,
+      "delta_recall5_ci95_pts": [
+        -6.4,
+        4.9
+      ]
+    },
+    {
+      "variant": "v3_rerank",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.479,
+      "mrr": 0.722,
+      "ndcg10": 0.552,
+      "recall5_4plus_reqs": 0.443,
+      "latency_p50_s": 2.472,
+      "latency_p95_s": 7.546,
+      "delta_recall5_ci95_pts": [
+        -7.6,
+        3.2
+      ]
+    },
+    {
+      "variant": "v4_outcome",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.51,
+      "mrr": 0.772,
+      "ndcg10": 0.588,
+      "recall5_4plus_reqs": 0.485,
+      "latency_p50_s": 3.829,
+      "latency_p95_s": 7.56,
+      "delta_recall5_ci95_pts": [
+        -4.6,
+        6.3
+      ]
+    },
+    {
+      "variant": "v4_outcome-hybrid",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.491,
+      "mrr": 0.704,
+      "ndcg10": 0.556,
+      "recall5_4plus_reqs": 0.458,
+      "latency_p50_s": 5.119,
+      "latency_p95_s": 10.161,
+      "delta_recall5_ci95_pts": [
+        -5.0,
+        2.8
+      ]
+    },
+    {
+      "variant": "v4_outcome-rerank",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.541,
+      "mrr": 0.821,
+      "ndcg10": 0.628,
+      "recall5_4plus_reqs": 0.528,
+      "latency_p50_s": 0.105,
+      "latency_p95_s": 0.175,
+      "delta_recall5_ci95_pts": [
+        -1.3,
+        9.5
+      ]
+    },
+    {
+      "variant": "v4_outcome-outcome",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.479,
+      "mrr": 0.722,
+      "ndcg10": 0.552,
+      "recall5_4plus_reqs": 0.443,
+      "latency_p50_s": 3.108,
+      "latency_p95_s": 4.379,
+      "delta_recall5_ci95_pts": [
+        -7.6,
+        3.2
+      ]
+    },
+    {
+      "variant": "v2_v4",
+      "persona": "all",
+      "jobs": 60,
+      "recall5": 0.541,
+      "mrr": 0.821,
+      "ndcg10": 0.628,
+      "recall5_4plus_reqs": 0.528,
+      "latency_p50_s": 0.136,
+      "latency_p95_s": 0.239,
+      "delta_recall5_ci95_pts": [
+        -1.3,
+        9.5
+      ]
     }
   ],
   "by_persona": [
     {
+      "variant": "v1_decompose",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.443,
+      "mrr": 0.57,
+      "ndcg10": 0.485,
+      "recall5_4plus_reqs": 0.317,
+      "latency_p50_s": 0.325,
+      "latency_p95_s": 0.468
+    },
+    {
+      "variant": "v1_decompose",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.446,
+      "mrr": 0.679,
+      "ndcg10": 0.585,
+      "recall5_4plus_reqs": 0.379,
+      "latency_p50_s": 0.476,
+      "latency_p95_s": 0.555
+    },
+    {
+      "variant": "v1_decompose",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.52,
+      "mrr": 0.725,
+      "ndcg10": 0.562,
+      "recall5_4plus_reqs": 0.523,
+      "latency_p50_s": 0.419,
+      "latency_p95_s": 0.615
+    },
+    {
+      "variant": "v1_v2_v3",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.483,
+      "mrr": 0.696,
+      "ndcg10": 0.501,
+      "recall5_4plus_reqs": 0.383,
+      "latency_p50_s": 14.765,
+      "latency_p95_s": 33.709
+    },
+    {
+      "variant": "v1_v2_v3",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.478,
+      "mrr": 0.704,
+      "ndcg10": 0.587,
+      "recall5_4plus_reqs": 0.404,
+      "latency_p50_s": 17.845,
+      "latency_p95_s": 23.859
+    },
+    {
+      "variant": "v1_v2_v3",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.51,
+      "mrr": 0.733,
+      "ndcg10": 0.543,
+      "recall5_4plus_reqs": 0.51,
+      "latency_p50_s": 15.83,
+      "latency_p95_s": 26.176
+    },
+    {
+      "variant": "v1_v2_v3-decompose",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.425,
+      "mrr": 0.64,
+      "ndcg10": 0.503,
+      "recall5_4plus_reqs": 0.358,
+      "latency_p50_s": 3.304,
+      "latency_p95_s": 4.763
+    },
+    {
+      "variant": "v1_v2_v3-decompose",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.499,
+      "mrr": 0.626,
+      "ndcg10": 0.559,
+      "recall5_4plus_reqs": 0.458,
+      "latency_p50_s": 4.364,
+      "latency_p95_s": 5.358
+    },
+    {
+      "variant": "v1_v2_v3-decompose",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.512,
+      "mrr": 0.9,
+      "ndcg10": 0.594,
+      "recall5_4plus_reqs": 0.513,
+      "latency_p50_s": 1.403,
+      "latency_p95_s": 1.843
+    },
+    {
+      "variant": "v1_v2_v3-hybrid",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.473,
+      "mrr": 0.677,
+      "ndcg10": 0.509,
+      "recall5_4plus_reqs": 0.35,
+      "latency_p50_s": 7.466,
+      "latency_p95_s": 12.927
+    },
+    {
+      "variant": "v1_v2_v3-hybrid",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.448,
+      "mrr": 0.725,
+      "ndcg10": 0.6,
+      "recall5_4plus_reqs": 0.354,
+      "latency_p50_s": 7.854,
+      "latency_p95_s": 14.66
+    },
+    {
+      "variant": "v1_v2_v3-hybrid",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.487,
+      "mrr": 0.746,
+      "ndcg10": 0.561,
+      "recall5_4plus_reqs": 0.51,
+      "latency_p50_s": 6.23,
+      "latency_p95_s": 8.059
+    },
+    {
+      "variant": "v1_v2_v3-rerank",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.453,
+      "mrr": 0.656,
+      "ndcg10": 0.486,
+      "recall5_4plus_reqs": 0.333,
+      "latency_p50_s": 0.3,
+      "latency_p95_s": 0.418
+    },
+    {
+      "variant": "v1_v2_v3-rerank",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.468,
+      "mrr": 0.709,
+      "ndcg10": 0.607,
+      "recall5_4plus_reqs": 0.404,
+      "latency_p50_s": 0.441,
+      "latency_p95_s": 0.599
+    },
+    {
+      "variant": "v1_v2_v3-rerank",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.51,
+      "mrr": 0.706,
+      "ndcg10": 0.58,
+      "recall5_4plus_reqs": 0.497,
+      "latency_p50_s": 0.522,
+      "latency_p95_s": 0.796
+    },
+    {
       "variant": "v0_naive",
       "persona": "ml_engineer",
-      "jobs": 3,
-      "recall5": 0.733,
-      "mrr": 0.833,
-      "ndcg10": 0.679,
-      "recall5_4plus_reqs": 0.6,
-      "latency_p50_s": 3.266,
-      "latency_p95_s": 3.266
+      "jobs": 20,
+      "recall5": 0.532,
+      "mrr": 0.812,
+      "ndcg10": 0.594,
+      "recall5_4plus_reqs": 0.442,
+      "latency_p50_s": 0.094,
+      "latency_p95_s": 0.186,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 1.0,
+          "mrr": 0.5,
+          "ndcg10": 0.6309,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6427,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.2531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.9709,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7974,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.6601,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.8855,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4413,
+          "many_reqs": false
+        }
+      ]
     },
     {
       "variant": "v0_naive",
       "persona": "fullstack_dev",
-      "jobs": 3,
-      "recall5": 0.467,
-      "mrr": 0.778,
-      "ndcg10": 0.672,
-      "recall5_4plus_reqs": 0.467,
-      "latency_p50_s": 3.396,
-      "latency_p95_s": 3.396
+      "jobs": 20,
+      "recall5": 0.479,
+      "mrr": 0.681,
+      "ndcg10": 0.583,
+      "recall5_4plus_reqs": 0.446,
+      "latency_p50_s": 0.117,
+      "latency_p95_s": 0.168,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7732,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.5208,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 0.3333,
+          "ndcg10": 0.5,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.3612,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3156,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.3348,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7295,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.7635,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.3974,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.3333,
+          "mrr": 1.0,
+          "ndcg10": 0.6364,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7756,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.4137,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.4418,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.25,
+          "mrr": 0.2,
+          "ndcg10": 0.4029,
+          "many_reqs": false
+        }
+      ]
     },
     {
       "variant": "v0_naive",
       "persona": "data_analyst",
-      "jobs": 3,
-      "recall5": 0.4,
-      "mrr": 1.0,
-      "ndcg10": 0.551,
-      "recall5_4plus_reqs": 0.4,
-      "latency_p50_s": 3.426,
-      "latency_p95_s": 3.426
+      "jobs": 20,
+      "recall5": 0.48,
+      "mrr": 0.842,
+      "ndcg10": 0.566,
+      "recall5_4plus_reqs": 0.487,
+      "latency_p50_s": 0.163,
+      "latency_p95_s": 0.242,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7608,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5856,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6367,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 0.3333,
+          "ndcg10": 0.4469,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6427,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.674,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_hybrid",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.412,
+      "mrr": 0.786,
+      "ndcg10": 0.538,
+      "recall5_4plus_reqs": 0.375,
+      "latency_p50_s": 0.101,
+      "latency_p95_s": 0.159,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.1429,
+          "ndcg10": 0.3333,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4704,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.5044,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.3348,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9558,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.327,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.1696,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 0.3333,
+          "mrr": 0.5,
+          "ndcg10": 0.6045,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.781,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.1461,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4462,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_hybrid",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.543,
+      "mrr": 0.725,
+      "ndcg10": 0.613,
+      "recall5_4plus_reqs": 0.517,
+      "latency_p50_s": 0.121,
+      "latency_p95_s": 0.183,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6317,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7608,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 0.5,
+          "ndcg10": 0.6309,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6844,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.25,
+          "ndcg10": 0.3981,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.0,
+          "mrr": 0.1667,
+          "ndcg10": 0.2339,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8841,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6504,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.1312,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.6667,
+          "mrr": 1.0,
+          "ndcg10": 0.7654,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.9068,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8052,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.4,
+          "mrr": 0.25,
+          "ndcg10": 0.3981,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.0,
+          "mrr": 0.1429,
+          "ndcg10": 0.2533,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_hybrid",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.522,
+      "mrr": 0.875,
+      "ndcg10": 0.598,
+      "recall5_4plus_reqs": 0.513,
+      "latency_p50_s": 0.12,
+      "latency_p95_s": 0.176,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5148,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6367,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8123,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.7537,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7426,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.466,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v3_rerank",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.425,
+      "mrr": 0.64,
+      "ndcg10": 0.503,
+      "recall5_4plus_reqs": 0.358,
+      "latency_p50_s": 2.16,
+      "latency_p95_s": 7.113,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.1429,
+          "ndcg10": 0.3333,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2826,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.6296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.2669,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4704,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9829,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.467,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.252,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9675,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6218,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.1461,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.0,
+          "mrr": 0.125,
+          "ndcg10": 0.2091,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v3_rerank",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.499,
+      "mrr": 0.626,
+      "ndcg10": 0.559,
+      "recall5_4plus_reqs": 0.458,
+      "latency_p50_s": 2.302,
+      "latency_p95_s": 8.634,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 0.3333,
+          "ndcg10": 0.5538,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8297,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 0.3333,
+          "ndcg10": 0.5,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 0.3333,
+          "ndcg10": 0.5,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4809,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.2443,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.883,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6504,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4731,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.0,
+          "mrr": 0.1111,
+          "ndcg10": 0.1021,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.3333,
+          "mrr": 1.0,
+          "ndcg10": 0.6364,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.9435,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.4231,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4966,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.25,
+          "mrr": 0.2,
+          "ndcg10": 0.2811,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v3_rerank",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.512,
+      "mrr": 0.9,
+      "ndcg10": 0.594,
+      "recall5_4plus_reqs": 0.513,
+      "latency_p50_s": 2.954,
+      "latency_p95_s": 6.891,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5912,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5856,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.46,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7426,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.8319,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.466,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.475,
+      "mrr": 0.734,
+      "ndcg10": 0.537,
+      "recall5_4plus_reqs": 0.425,
+      "latency_p50_s": 2.451,
+      "latency_p95_s": 7.288,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.1429,
+          "ndcg10": 0.3333,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3156,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.252,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9829,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.321,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.906,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.753,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.3348,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.533,
+      "mrr": 0.694,
+      "ndcg10": 0.631,
+      "recall5_4plus_reqs": 0.504,
+      "latency_p50_s": 4.449,
+      "latency_p95_s": 7.657,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7913,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6366,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2904,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.466,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.4,
+          "mrr": 0.25,
+          "ndcg10": 0.2773,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.8,
+          "mrr": 0.5,
+          "ndcg10": 0.7739,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8435,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.5044,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.0,
+          "mrr": 0.125,
+          "ndcg10": 0.205,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.6667,
+          "mrr": 1.0,
+          "ndcg10": 0.7654,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8954,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.4369,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5148,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.0,
+          "mrr": 0.1667,
+          "ndcg10": 0.2622,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.522,
+      "mrr": 0.887,
+      "ndcg10": 0.597,
+      "recall5_4plus_reqs": 0.527,
+      "latency_p50_s": 4.586,
+      "latency_p95_s": 7.734,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5856,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.2669,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7426,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5148,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.8048,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7372,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-hybrid",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.495,
+      "mrr": 0.693,
+      "ndcg10": 0.547,
+      "recall5_4plus_reqs": 0.442,
+      "latency_p50_s": 2.73,
+      "latency_p95_s": 10.873,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.1667,
+          "ndcg10": 0.3562,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8013,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.2382,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9829,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 0.3333,
+          "ndcg10": 0.5599,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.1696,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2904,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9675,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.327,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-hybrid",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.499,
+      "mrr": 0.637,
+      "ndcg10": 0.58,
+      "recall5_4plus_reqs": 0.446,
+      "latency_p50_s": 6.345,
+      "latency_p95_s": 11.463,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.6982,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7756,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 0.5,
+          "ndcg10": 0.6309,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.8,
+          "mrr": 0.5,
+          "ndcg10": 0.6608,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.4418,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3008,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.6174,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.9331,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.3807,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.3333,
+          "mrr": 1.0,
+          "ndcg10": 0.6364,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.82,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.3799,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5148,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.25,
+          "mrr": 0.3333,
+          "ndcg10": 0.4359,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-hybrid",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.48,
+      "mrr": 0.783,
+      "ndcg10": 0.54,
+      "recall5_4plus_reqs": 0.487,
+      "latency_p50_s": 6.282,
+      "latency_p95_s": 8.148,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6121,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6367,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3156,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6043,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3008,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6367,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5531,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4906,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-rerank",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.508,
+      "mrr": 0.775,
+      "ndcg10": 0.581,
+      "recall5_4plus_reqs": 0.475,
+      "latency_p50_s": 0.099,
+      "latency_p95_s": 0.157,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.0,
+          "ndcg10": 0.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.82,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3008,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9558,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.3787,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3156,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.3348,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 0.6667,
+          "mrr": 0.5,
+          "ndcg10": 0.6871,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8358,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5684,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-rerank",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.553,
+      "mrr": 0.77,
+      "ndcg10": 0.658,
+      "recall5_4plus_reqs": 0.529,
+      "latency_p50_s": 0.114,
+      "latency_p95_s": 0.226,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7608,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7191,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2904,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4809,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.252,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.8,
+          "mrr": 0.5,
+          "ndcg10": 0.7678,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.967,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8062,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.2443,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.6667,
+          "mrr": 1.0,
+          "ndcg10": 0.9066,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7756,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8052,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5912,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.0,
+          "mrr": 0.1667,
+          "ndcg10": 0.1391,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-rerank",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.562,
+      "mrr": 0.917,
+      "ndcg10": 0.645,
+      "recall5_4plus_reqs": 0.58,
+      "latency_p50_s": 0.102,
+      "latency_p95_s": 0.141,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8052,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5585,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.46,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8123,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.7537,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.5495,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5983,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-outcome",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.425,
+      "mrr": 0.64,
+      "ndcg10": 0.503,
+      "recall5_4plus_reqs": 0.358,
+      "latency_p50_s": 5.748,
+      "latency_p95_s": 8.593,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.1429,
+          "ndcg10": 0.3333,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2826,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.6296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.2669,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4704,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9829,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3836,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.467,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.252,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9675,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6218,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.2,
+          "mrr": 0.25,
+          "ndcg10": 0.1461,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.0,
+          "mrr": 0.125,
+          "ndcg10": 0.2091,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-outcome",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.499,
+      "mrr": 0.626,
+      "ndcg10": 0.559,
+      "recall5_4plus_reqs": 0.458,
+      "latency_p50_s": 1.941,
+      "latency_p95_s": 2.509,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 0.3333,
+          "ndcg10": 0.5538,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8297,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 0.3333,
+          "ndcg10": 0.5,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.4522,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 0.3333,
+          "ndcg10": 0.5,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4809,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.2443,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.883,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.6504,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4731,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.0,
+          "mrr": 0.1111,
+          "ndcg10": 0.1021,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.3333,
+          "mrr": 1.0,
+          "ndcg10": 0.6364,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.9435,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.4231,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4966,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.25,
+          "mrr": 0.2,
+          "ndcg10": 0.2811,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v4_outcome-outcome",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.512,
+      "mrr": 0.9,
+      "ndcg10": 0.594,
+      "recall5_4plus_reqs": 0.513,
+      "latency_p50_s": 1.636,
+      "latency_p95_s": 2.034,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.214,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5912,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5856,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3452,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.46,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7426,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7227,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.8319,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.466,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_v4",
+      "persona": "ml_engineer",
+      "jobs": 20,
+      "recall5": 0.508,
+      "mrr": 0.775,
+      "ndcg10": 0.581,
+      "recall5_4plus_reqs": 0.475,
+      "latency_p50_s": 0.142,
+      "latency_p95_s": 0.232,
+      "per_job": [
+        {
+          "job_id": "job-02a9e1095359",
+          "recall5": 0.0,
+          "mrr": 0.0,
+          "ndcg10": 0.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-02bfdd09e2f3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a621ff3d2e3",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8688,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0a73e6d0e3b3",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-14acd1ad1d95",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.6131,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-17bf7992f241",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.82,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1ccd68323590",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3008,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-26e95d886ff1",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-27ef67f494da",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 0.9558,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a924fc7bc6c",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.3787,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-32e797ad1566",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-36fa219b9682",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.3156,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-386cc6e843b7",
+          "recall5": 0.2,
+          "mrr": 0.5,
+          "ndcg10": 0.3348,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3cd201c8779c",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.3601,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4170131be2b4",
+          "recall5": 0.6667,
+          "mrr": 0.5,
+          "ndcg10": 0.6871,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-44a7ccfa97dd",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8358,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5172e27fc83d",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-557196a346d4",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.4852,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-63ac940fe044",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-68fe1e3fb4fc",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5684,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_v4",
+      "persona": "fullstack_dev",
+      "jobs": 20,
+      "recall5": 0.553,
+      "mrr": 0.77,
+      "ndcg10": 0.658,
+      "recall5_4plus_reqs": 0.529,
+      "latency_p50_s": 0.103,
+      "latency_p95_s": 0.254,
+      "per_job": [
+        {
+          "job_id": "job-01da6ed63f95",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7608,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-04125a79975f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.7191,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0710ae7883bb",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-08d4d113bf1f",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-157f48e9b7b6",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-1637ab0f782b",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-182a728e08ef",
+          "recall5": 0.2,
+          "mrr": 0.3333,
+          "ndcg10": 0.2904,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-254c69e8cd01",
+          "recall5": 1.0,
+          "mrr": 1.0,
+          "ndcg10": 1.0,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2ab6e56f78aa",
+          "recall5": 0.4,
+          "mrr": 0.5,
+          "ndcg10": 0.4809,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-33bb91fbb239",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.252,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3474d1c9b29c",
+          "recall5": 0.8,
+          "mrr": 0.5,
+          "ndcg10": 0.7678,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3a818f3cd8ad",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.967,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3b27e296df83",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8062,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3ebd01ec20c4",
+          "recall5": 0.2,
+          "mrr": 0.2,
+          "ndcg10": 0.2443,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f47c2e71b2a",
+          "recall5": 0.6667,
+          "mrr": 1.0,
+          "ndcg10": 0.9066,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3f84edc3b862",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.7756,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43a44d946ef3",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8052,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-4732033b2207",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5912,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-5b2fd92a6ab4",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-5e18b8ab43f0",
+          "recall5": 0.0,
+          "mrr": 0.1667,
+          "ndcg10": 0.1391,
+          "many_reqs": false
+        }
+      ]
+    },
+    {
+      "variant": "v2_v4",
+      "persona": "data_analyst",
+      "jobs": 20,
+      "recall5": 0.562,
+      "mrr": 0.917,
+      "ndcg10": 0.645,
+      "recall5_4plus_reqs": 0.58,
+      "latency_p50_s": 0.162,
+      "latency_p95_s": 0.23,
+      "per_job": [
+        {
+          "job_id": "job-01c6acb86f4c",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.3392,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-01d9aa88dfb6",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8052,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0b954e1ba14e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-0db2b55c92a4",
+          "recall5": 0.5,
+          "mrr": 1.0,
+          "ndcg10": 0.5585,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-22b505dffb9f",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5087,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-24da7222feb9",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-276f63f76290",
+          "recall5": 0.2,
+          "mrr": 1.0,
+          "ndcg10": 0.46,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-27d167db8b63",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.8123,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-286c2b049064",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.4913,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-2a83f4ed365c",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-2bbd7d31b158",
+          "recall5": 0.6,
+          "mrr": 0.5,
+          "ndcg10": 0.5296,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-317e8089376a",
+          "recall5": 0.75,
+          "mrr": 1.0,
+          "ndcg10": 0.7537,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-388e8232e081",
+          "recall5": 0.4,
+          "mrr": 0.3333,
+          "ndcg10": 0.5495,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-38ac9feaa924",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8304,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-3bac8d7f2c9e",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6548,
+          "many_reqs": false
+        },
+        {
+          "job_id": "job-3e8039176339",
+          "recall5": 0.8,
+          "mrr": 1.0,
+          "ndcg10": 0.8539,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-43eed4a87bde",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6164,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-44f843cace49",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6399,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-470b2a78f715",
+          "recall5": 0.6,
+          "mrr": 1.0,
+          "ndcg10": 0.6992,
+          "many_reqs": true
+        },
+        {
+          "job_id": "job-48ab12777f92",
+          "recall5": 0.4,
+          "mrr": 1.0,
+          "ndcg10": 0.5983,
+          "many_reqs": false
+        }
+      ]
     }
   ]
 }

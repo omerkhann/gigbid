@@ -60,6 +60,24 @@ def subset() -> dict:
     return json.loads(SUBSET.read_text(encoding="utf-8"))
 
 
+def stratified(job_ids: list[str], persona: str, gold: dict, limit: int | None) -> list[str]:
+    """The first `limit` jobs taking kinds in turn (bid, skip, scam, injection), so a small run still
+    contains every kind; the whole list when limit is None."""
+    if not limit:
+        return job_ids
+
+    def kind(j):
+        g = gold[(j, persona)]
+        return "injection" if g["injection"] else "scam" if g["scam"] else "bid" if g["bid"] else "skip"
+    queues = {k: [j for j in job_ids if kind(j) == k] for k in SHARES}
+    out = []
+    while len(out) < limit and any(queues.values()):
+        for k in SHARES:
+            if queues[k] and len(out) < limit:
+                out.append(queues[k].pop(0))
+    return out
+
+
 def f1(tp: int, fp: int, fn: int) -> tuple[float, float, float]:
     p = tp / (tp + fp) if tp + fp else 0.0
     r = tp / (tp + fn) if tp + fn else 0.0
@@ -116,7 +134,7 @@ async def run(limit: int | None, out_path: Path | None = None) -> dict:
         user = user_profile({"user_id": f"u-{slug}", "persona": persona, "settings": {}})
         sk = __import__("yaml").safe_load((ROOT / f"data/personas/{persona}/skeleton.yaml").read_text(encoding="utf-8"))
         user.update(hourly_floor=sk["rate_floor_hourly"], fixed_floor=sk["min_fixed_budget"], hourly_rate=sk["hourly_rate"])
-        for job_id in job_ids[:limit] if limit else job_ids:
+        for job_id in stratified(job_ids, persona, gold, limit):
             job = {k: v for k, v in jobs[job_id].items() if k not in ("source", "release_offset_h")}
             g = gold[(job_id, persona)]
             t = time.time()

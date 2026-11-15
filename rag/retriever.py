@@ -30,6 +30,7 @@ VARIANTS: dict[str, dict] = {
     "v4_outcome": {"hybrid": True, "rerank": RERANKER, "outcome": True},
     "v8_corrective": {"decompose": True, "hybrid": True, "rerank": RERANKER, "corrective": True},
     "v1_v2_v3": {"decompose": True, "hybrid": True, "rerank": RERANKER},
+    "v2_v4": {"hybrid": True, "outcome": True},   # shipped: best in the ablation (v4_outcome minus rerank)
 }
 
 

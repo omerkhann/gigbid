@@ -16,6 +16,7 @@ import argparse
 import csv
 import json
 import math
+import random
 import statistics
 import time
 from pathlib import Path
@@ -92,7 +93,7 @@ def evaluate(variant: str, limit: int | None, embedder: str) -> list[dict]:
             t = time.time()
             ranked = projects_in_order(r.impl.retrieve_job(job, k=20))
             latencies.append(time.time() - t)
-            per_job.append({"recall5": recall_at(ranked, gold, 5), "mrr": mrr(ranked, gold),
+            per_job.append({"job_id": job["job_id"], "recall5": recall_at(ranked, gold, 5), "mrr": mrr(ranked, gold),
                             "ndcg10": ndcg_at(ranked, gold, 10), "many_reqs": len(requirements(job)) >= 5})
         row = {"variant": variant, "persona": persona, "jobs": len(per_job)}
         for key in ("recall5", "mrr", "ndcg10"):
@@ -104,13 +105,28 @@ def evaluate(variant: str, limit: int | None, embedder: str) -> list[dict]:
         if opts.get("corrective"):   # refusal: no evidence returned for a job to skip
             refused = sum(1 for job in skip if not r.impl.retrieve_job(job, k=5))
             row["refusal_rate_skip_jobs"] = round(refused / len(skip), 3)
-        rows.append(row)
         print(json.dumps(row), flush=True)
+        row["per_job"] = [{k: round(v, 4) if isinstance(v, float) else v for k, v in j.items()} for j in per_job]
+        rows.append(row)
     return rows
 
 
+def paired_ci(rows: list[dict], variant: str, base: str = "v0_naive", key: str = "recall5",
+              n_boot: int = 2000, seed: int = 0) -> list[float] | None:
+    """95% paired-bootstrap interval of mean(variant - base) over the jobs both were run on, in points."""
+    def scores(v):
+        return {(r["persona"], j["job_id"]): j[key] for r in rows if r["variant"] == v for j in r.get("per_job", [])}
+    a, b = scores(variant), scores(base)
+    diffs = [a[k] - b[k] for k in a.keys() & b.keys()]
+    if len(diffs) < 10:
+        return None
+    rng = random.Random(seed)
+    means = sorted(statistics.mean(rng.choices(diffs, k=len(diffs))) for _ in range(n_boot))
+    return [round(100 * means[int(0.025 * n_boot)], 1), round(100 * means[int(0.975 * n_boot) - 1], 1)]
+
+
 def summarise(rows: list[dict]) -> list[dict]:
-    """Macro-average over personas per variant."""
+    """Macro-average over personas per variant, plus the paired 95% CI of the Recall@5 change vs V0."""
     out = []
     for v in dict.fromkeys(r["variant"] for r in rows):
         vr = [r for r in rows if r["variant"] == v]
@@ -120,6 +136,8 @@ def summarise(rows: list[dict]) -> list[dict]:
             vals = [r[key] for r in vr if r.get(key) is not None]
             if vals:
                 s[key] = round(statistics.mean(vals), 3)
+        if v != "v0_naive":
+            s["delta_recall5_ci95_pts"] = paired_ci(rows, v)
         out.append(s)
     return out
 
@@ -134,11 +152,13 @@ def main() -> None:
     ap.add_argument("--out", type=Path, default=RESULTS / "rag_eval.json", help="CI smoke runs write elsewhere")
     a = ap.parse_args()
     out = a.out
-    previous = json.loads(out.read_text(encoding="utf-8"))["by_persona"] if out.exists() else []
     names = a.variants + (ablations(a.ablate) if a.ablate else [])
-    rows = [r for r in previous if r["variant"] not in names]
+    fresh = []
     for v in names:
-        rows += evaluate(v, a.limit, a.embedder)
+        fresh += evaluate(v, a.limit, a.embedder)
+    # Read earlier rows only now, so two runs of different variants can overlap without losing rows.
+    previous = json.loads(out.read_text(encoding="utf-8"))["by_persona"] if out.exists() else []
+    rows = [r for r in previous if r["variant"] not in names] + fresh
     summary = summarise(rows)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"embedder": a.embedder, "summary": summary, "by_persona": rows}, indent=2) + "\n",
