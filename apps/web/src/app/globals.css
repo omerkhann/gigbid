@@ -13,6 +13,11 @@
 
 body {
   font-family: var(--font-sans);
+  /* Soft wash behind every page: a hint of the indigo accent at the top, plain slate below. */
+  background:
+    radial-gradient(1200px 400px at 70% -120px, rgba(99, 102, 241, 0.08), transparent 70%),
+    #f8fafc;
+  min-height: 100vh;
 }
 
 /* Visible keyboard focus everywhere. */

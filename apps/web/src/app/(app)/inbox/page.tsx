@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import useSWR from "swr";
-import { FitMeter, RiskBadge, StatusBadge, money, when } from "@/components/badges";
+import { FitMeter, RiskBadge, StatusBadge, money, statusAccent, when } from "@/components/badges";
 import { Badge, Button, Card, EmptyState, ErrorState, PageHeader, Spinner } from "@/components/ui";
 import { endpoints } from "@/lib/api/endpoints";
 import { useRunEvents } from "@/lib/events";
@@ -55,7 +55,7 @@ export default function InboxPage() {
               role="tab"
               aria-selected={filter === f.id}
               onClick={() => setFilter(f.id)}
-              className={`rounded-full px-3 py-1 text-sm ${filter === f.id ? "bg-slate-900 text-white" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100"}`}
+              className={`rounded-full px-3 py-1 text-sm ${filter === f.id ? "bg-indigo-600 text-white shadow-sm shadow-indigo-600/20" : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100"}`}
             >
               {f.label}
             </button>
@@ -80,10 +80,11 @@ export default function InboxPage() {
           const s = r.summary as { fit?: number; risk?: number; risk_flags?: string[]; decision?: string; price?: number; unit?: string; connects?: number };
           return (
             <li key={r.thread_id}>
-              <Link href={`/jobs/${r.job_id}`} className="block rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:border-slate-400 focus-visible:outline-2">
+              <Link href={`/jobs/${r.job_id}`} className="relative block overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-4 pl-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md focus-visible:outline-2">
+                <span className={`absolute inset-y-0 left-0 w-1.5 ${statusAccent(r.status)}`} aria-hidden />
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
-                    <p className="truncate font-medium text-slate-900">{r.title ?? r.job_id}</p>
+                    <p className="truncate font-semibold tracking-tight text-slate-900">{r.title ?? r.job_id}</p>
                     <p className="mt-0.5 line-clamp-1 text-xs text-slate-500">{r.status_reason}</p>
                   </div>
                   <span className="shrink-0 self-start"><StatusBadge status={r.status} /></span>

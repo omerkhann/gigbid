@@ -15,6 +15,16 @@ const STATUS: Record<string, [string, Tone]> = {
   no_action: ["Nothing new", "neutral"],
 };
 
+const ACCENT: Record<Tone, string> = {
+  accent: "bg-indigo-500", good: "bg-emerald-500", bad: "bg-rose-500", warn: "bg-amber-400", info: "bg-sky-500",
+  neutral: "bg-slate-300",
+};
+
+/** Colour of the status edge on list cards (same mapping as the status badge). */
+export function statusAccent(status?: string | null) {
+  return ACCENT[(STATUS[status ?? ""] ?? ["", "neutral"])[1] as Tone];
+}
+
 export function StatusBadge({ status }: { status?: string | null }) {
   const [label, tone] = STATUS[status ?? ""] ?? [status ?? "unknown", "neutral" as Tone];
   return <Badge tone={tone}>{label}</Badge>;

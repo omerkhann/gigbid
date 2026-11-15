@@ -8,10 +8,10 @@ export function cx(...c: (string | false | null | undefined)[]) {
 
 export function Card({ title, actions, children, className }: { title?: ReactNode; actions?: ReactNode; children: ReactNode; className?: string }) {
   return (
-    <section className={cx("rounded-xl border border-slate-200 bg-white p-4 shadow-sm", className)}>
+    <section className={cx("rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_4px_16px_-8px_rgba(15,23,42,0.08)]", className)}>
       {(title || actions) && (
         <header className="mb-3 flex items-center justify-between gap-2">
-          {title && <h2 className="text-sm font-semibold text-slate-800">{title}</h2>}
+          {title && <h2 className="text-sm font-semibold tracking-tight text-slate-900">{title}</h2>}
           {actions}
         </header>
       )}
@@ -39,8 +39,8 @@ export function Badge({ tone = "neutral", children, title }: { tone?: Tone; chil
 }
 
 const BUTTONS = {
-  primary: "bg-slate-900 text-white hover:bg-slate-700 disabled:bg-slate-400",
-  secondary: "bg-white text-slate-800 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 disabled:text-slate-400",
+  primary: "bg-indigo-600 text-white shadow-sm shadow-indigo-600/20 hover:bg-indigo-500 disabled:bg-indigo-300 disabled:shadow-none",
+  secondary: "bg-white text-slate-800 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 disabled:text-slate-400",
   danger: "bg-rose-600 text-white hover:bg-rose-500 disabled:bg-rose-300",
   good: "bg-emerald-600 text-white hover:bg-emerald-500 disabled:bg-emerald-300",
 } as const;
@@ -69,7 +69,7 @@ export function Spinner({ label = "Loading" }: { label?: string }) {
 
 export function EmptyState({ title, children }: { title: string; children?: ReactNode }) {
   return (
-    <div className="rounded-xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
+    <div className="rounded-2xl border border-dashed border-slate-300 bg-white/70 px-6 py-12 text-center">
       <p className="font-medium text-slate-800">{title}</p>
       {children && <div className="mt-2 text-sm text-slate-500">{children}</div>}
     </div>
@@ -93,10 +93,10 @@ export function ErrorState({ error, retry }: { error: unknown; retry?: () => voi
 
 export function PageHeader({ title, subtitle, actions }: { title: ReactNode; subtitle?: ReactNode; actions?: ReactNode }) {
   return (
-    <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h1 className="text-xl font-semibold text-slate-900">{title}</h1>
-        {subtitle && <p className="mt-1 text-sm text-slate-500">{subtitle}</p>}
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">{title}</h1>
+        {subtitle && <p className="mt-1.5 text-sm text-slate-500">{subtitle}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </div>
@@ -105,9 +105,10 @@ export function PageHeader({ title, subtitle, actions }: { title: ReactNode; sub
 
 export function Stat({ label, value, hint }: { label: string; value: ReactNode; hint?: string }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
+      <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 to-violet-500" aria-hidden />
       <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-1 text-2xl font-semibold text-slate-900">{value}</p>
+      <p className="mt-1 text-3xl font-bold tracking-tight text-slate-900">{value}</p>
       {hint && <p className="mt-1 text-xs text-slate-500">{hint}</p>}
     </div>
   );
