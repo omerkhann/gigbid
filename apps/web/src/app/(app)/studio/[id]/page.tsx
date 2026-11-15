@@ -9,7 +9,7 @@ import useSWR from "swr";
 import { ApprovalPanel } from "@/components/approval";
 import { RiskBadge, StatusBadge, VerdictBadge, money } from "@/components/badges";
 import { CitedText, stripCitations } from "@/components/evidence";
-import { Badge, Button, Card, EmptyState, ErrorState, PageHeader, Spinner } from "@/components/ui";
+import { Badge, Button, Card, ErrorState, PageHeader, Spinner } from "@/components/ui";
 import { endpoints } from "@/lib/api/endpoints";
 import type { BidState, Critique, ProposalApproval } from "@/lib/types";
 
@@ -29,12 +29,24 @@ export default function StudioPage() {
   if (error) return <ErrorState error={error} retry={() => mutate()} />;
   if (!data) return null;
   if (!pending) {
+    // After a decision the draft is no longer pending: show the outcome, not an empty studio.
+    const outcome: Record<string, string> = {
+      submitted: "Submitted. The client can now see your proposal.",
+      rejected: "Rejected. Nothing was sent.",
+      running: "Your decision is being processed…",
+    };
     return (
       <>
         <PageHeader title="Proposal studio" />
-        <EmptyState title="Nothing waiting for approval on this job">
-          Status: <StatusBadge status={data.status} />. <Link className="underline" href={`/jobs/${id}`}>Back to the job</Link>
-        </EmptyState>
+        <div role="status" data-testid="approval-result" className="rounded-xl border border-slate-200 bg-white p-6">
+          <p className="flex items-center gap-2 font-medium text-slate-900">
+            <StatusBadge status={data.status} /> {outcome[data.status ?? ""] ?? "Nothing waiting for approval on this job."}
+          </p>
+          <p className="mt-3 flex gap-4 text-sm">
+            <Link className="font-medium text-sky-700 hover:underline" href={`/jobs/${id}`}>Back to the job</Link>
+            {data.status === "submitted" && <Link className="font-medium text-sky-700 hover:underline" href="/pipeline">See it in the pipeline</Link>}
+          </p>
+        </div>
       </>
     );
   }
@@ -132,7 +144,7 @@ export default function StudioPage() {
               </ol>
             </Card>
           )}
-          <Card title={`Claim check: ${pending.claims.length} claims`} actions={<Badge tone={unsupportedAfter ? "bad" : "good"}>{pending.draft.unsupported_before ?? 0} unsupported removed before review</Badge>}>
+          <Card title={`Claim check: ${pending.claims.length} claim${pending.claims.length === 1 ? "" : "s"}`} actions={<Badge tone={unsupportedAfter ? "bad" : "good"}>{pending.draft.unsupported_before ?? 0} unsupported removed before review</Badge>}>
             <ul className="space-y-2">
               {pending.claims.map((c, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm">

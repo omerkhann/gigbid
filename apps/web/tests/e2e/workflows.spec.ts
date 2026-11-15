@@ -42,7 +42,7 @@ test("rejecting with a reason", async ({ page }) => {
 test("editing a draft re-runs compliance and asks again", async ({ page }) => {
   await signIn(page);
   await analyseAndOpenStudio(page, JOBS.edit);
-  await page.getByRole("button", { name: "Edit" }).click();
+  await page.getByRole("button", { name: "Edit", exact: true }).click();
   await page.getByTestId("paragraph-0").fill(
     "I have built Google Sheets calculators like this before and would start by agreeing your key inputs. 100% guaranteed.",
   );

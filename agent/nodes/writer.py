@@ -49,4 +49,4 @@ async def writer(state: dict, ctx: Ctx) -> dict:
     draft = ProposalDraft(job_id=job["job_id"], cover_letter=out.cover_letter, screening_answers=out.screening_answers,
                           evidence_ids=cited, bid_amount=state["price_quote"]["amount"],
                           version=state.get("revisions", 0) + 1)
-    return {"proposal_draft": draft.model_dump(), "_summary": f"draft v{draft.version}, {len(cited)} citations"}
+    return {"proposal_draft": draft.model_dump(), "_summary": f"draft v{draft.version}, {len(cited)} citation{'s' if len(cited) != 1 else ''}"}

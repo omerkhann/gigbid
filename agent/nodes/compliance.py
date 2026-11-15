@@ -76,4 +76,5 @@ async def compliance(state: dict, ctx: Ctx) -> dict:
         d.update(cover_letter=letter, screening_answers=answers)
     v = ComplianceVerdict(status=status, violations=sorted(fixed), fixed_cover_letter=letter if fixed else None,
                           reason="removed: " + ", ".join(sorted(fixed)) if fixed else "no issues")
-    return {"compliance_verdict": v.model_dump(), "proposal_draft": d, "_summary": f"{status} {sorted(fixed)}"}
+    return {"compliance_verdict": v.model_dump(), "proposal_draft": d,
+            "_summary": "pass: no issues" if not fixed else f"fixed: removed {', '.join(sorted(fixed))}"}

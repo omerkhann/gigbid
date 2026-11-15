@@ -86,7 +86,7 @@ export default function InboxPage() {
                     <p className="truncate font-medium text-slate-900">{r.title ?? r.job_id}</p>
                     <p className="mt-0.5 line-clamp-1 text-xs text-slate-500">{r.status_reason}</p>
                   </div>
-                  <StatusBadge status={r.status} />
+                  <span className="shrink-0 self-start"><StatusBadge status={r.status} /></span>
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">
                   <FitMeter score={s.fit} />

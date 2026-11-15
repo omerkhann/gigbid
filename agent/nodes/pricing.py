@@ -45,7 +45,9 @@ async def pricing(state: dict, ctx: Ctx) -> dict:
     stats = await ctx.tool("pricing", "marketplace", "get_market_stats", {"category": cat} if cat else {})
     bal = (await ctx.tool("pricing", "marketplace", "get_connects_balance", {}))["balance"]
     q = quote(job, stats, state["user"], bal, state["fit_report"]["score"], ctx.deps.cfg["thresholds"]["min_connects_reserve"])
-    update = {"price_quote": q.model_dump(), "_summary": f"{q.amount} {q.unit}, worth Connects: {q.worth_connects}"}
+    shown = f"${q.amount:,.0f}{'/hr' if q.unit == 'usd_per_hour' else ''}"
+    worth = "worth it" if q.worth_connects else "not worth it"
+    update = {"price_quote": q.model_dump(), "_summary": f"{shown} · {q.connects_cost} Connects, {worth}"}
     if not q.worth_connects:
         update.update(status="skipped", status_reason=f"not worth the Connects: {q.rationale}")
     return update

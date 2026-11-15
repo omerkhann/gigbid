@@ -31,7 +31,9 @@ def fixed_chunks(doc: Document, size: int = 900, overlap: int = 150) -> list[Chu
         out.append(Chunk(f"{doc.doc_id}#{i}", doc, text[start:end].strip(), i))
         if end >= len(text):
             break
-        start, i = max(end - overlap, start + 1), i + 1
+        nxt = max(end - overlap, start + 1)
+        space = text.find(" ", nxt, end)          # start the next chunk on a word boundary
+        start, i = (space + 1 if space != -1 else nxt), i + 1
     return [c for c in out if c.text]
 
 

@@ -19,7 +19,9 @@ export async function signIn(page: Page) {
 /** Analyse a job from the inbox form and open its proposal studio once it awaits approval. */
 export async function analyseAndOpenStudio(page: Page, jobId: string) {
   await page.getByLabel("Job id").fill(jobId);
-  await page.getByRole("button", { name: "Analyse" }).click();
+  await page.getByRole("button", { name: "Analyse", exact: true }).click();
+  // Wait for the API to accept the job before leaving the page (leaving aborts the request).
+  await expect(page.getByRole("status").filter({ hasText: `Analysing ${jobId}` })).toBeVisible({ timeout: 60_000 });
   await page.goto(`/jobs/${jobId}`);
   await expect(page.getByText("Needs your approval").first()).toBeVisible();
   await page.getByRole("button", { name: "Review proposal" }).click();

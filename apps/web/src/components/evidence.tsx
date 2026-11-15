@@ -29,7 +29,7 @@ export function EvidenceChip({ n, id, evidence }: { n: number; id: string; evide
         <span
           id={tip}
           role="tooltip"
-          className="absolute bottom-full left-1/2 z-20 mb-2 block w-72 max-w-[80vw] -translate-x-1/2 rounded-lg border border-slate-200 bg-white p-3 text-left text-xs font-normal text-slate-700 shadow-lg"
+          className="absolute left-1/2 top-full z-20 mt-2 block w-72 max-w-[80vw] -translate-x-1/2 rounded-lg border border-slate-200 bg-white p-3 text-left text-xs font-normal text-slate-700 shadow-lg"
         >
           {evidence ? (
             <>
@@ -39,7 +39,7 @@ export function EvidenceChip({ n, id, evidence }: { n: number; id: string; evide
                 {evidence.outcome && <Badge tone={evidence.outcome === "won" ? "good" : "neutral"}>{evidence.outcome}</Badge>}
               </span>
               <span className="block font-medium text-slate-900">{evidence.title}</span>
-              <span className="mt-1 block max-h-40 overflow-y-auto whitespace-pre-wrap">{evidence.text.slice(0, 600)}</span>
+              <span className="mt-1 block max-h-40 overflow-y-auto whitespace-pre-wrap">{plain(evidence.text).slice(0, 600)}</span>
             </>
           ) : (
             <span className="text-rose-700">Cited id {id} is not in the retrieved evidence.</span>
@@ -65,6 +65,11 @@ export function CitedText({ text, evidence, order }: { text: string; evidence: R
   }
   parts.push(text.slice(last));
   return <span className="whitespace-pre-wrap">{parts}</span>;
+}
+
+/** Evidence text is Markdown (case studies, READMEs); show it as plain text in tooltips. */
+function plain(text: string) {
+  return text.replace(/^#+\s*/gm, "").replace(/[*_`]/g, "").replace(/^\s*[-+]\s+/gm, "• ");
 }
 
 export function stripCitations(text: string) {

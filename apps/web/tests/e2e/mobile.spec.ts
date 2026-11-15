@@ -9,7 +9,8 @@ test("works on a phone screen", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Settings" })).toBeVisible();
   await page.goto("/inbox");
   await page.getByLabel("Job id").fill(JOBS.mobile);
-  await page.getByRole("button", { name: "Analyse" }).click();
+  await page.getByRole("button", { name: "Analyse", exact: true }).click();
+  await expect(page.getByRole("status").filter({ hasText: `Analysing ${JOBS.mobile}` })).toBeVisible({ timeout: 60_000 });
   await page.goto(`/studio/${JOBS.mobile}`);
   await expect(page.getByTestId("approve")).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

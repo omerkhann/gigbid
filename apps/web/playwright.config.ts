@@ -2,7 +2,8 @@ import { defineConfig, devices } from "@playwright/test";
 
 // The e2e backend (apps/api/e2e_server.py) is the real API on in-process GigSim + MCP servers with a
 // scripted LLM, so these tests are fast and repeatable. It needs Postgres (docker compose).
-const python = process.env.PYTHON ?? (process.platform === "win32" ? "..\\..\\.venv\\Scripts\\python.exe" : "../../.venv/bin/python");
+// Relative to the repo root (the e2e server command runs there).
+const python = process.env.PYTHON ?? (process.platform === "win32" ? ".venv\\Scripts\\python.exe" : ".venv/bin/python");
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -12,9 +13,15 @@ export default defineConfig({
   workers: 1,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never" }]],
-  use: { baseURL: "http://localhost:3000", trace: "retain-on-failure" },
+  // CI (Linux): Playwright's own Chromium. Windows dev: the preinstalled Edge (Chromium-based), because
+  // Playwright's Chromium download stalls there (antivirus locks chrome.dll mid-extraction).
+  use: {
+    baseURL: "http://localhost:3000",
+    trace: "retain-on-failure",
+    channel: process.env.PW_CHANNEL ?? (process.platform === "win32" && !process.env.CI ? "msedge" : "chromium"),
+  },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"] } },
+    { name: "desktop", use: { ...devices["Desktop Chrome"] }, testIgnore: /mobile.spec.ts/ },
     { name: "phone", use: { ...devices["Pixel 7"] }, testMatch: /mobile\.spec\.ts/ },
   ],
   webServer: [
@@ -26,10 +33,11 @@ export default defineConfig({
       timeout: 120_000,
     },
     {
-      command: process.env.CI ? "npm run start" : "npm run dev",
+      // Production build, not next dev: dev compiles each route on first visit, which is slower than test timeouts.
+      command: process.env.CI ? "npm run start" : "npm run build && npm run start",
       url: "http://localhost:3000/login",
       reuseExistingServer: !process.env.CI,
-      timeout: 180_000,
+      timeout: 300_000,
     },
   ],
 });

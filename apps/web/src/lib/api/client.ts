@@ -10,10 +10,10 @@ export type ApprovalIn = Schemas["ApprovalIn"];
 
 export const api = createClient<paths>({ baseUrl: "/api", credentials: "include" });
 
-// Live events go straight to the API: a dev proxy may buffer streams. Use the same hostname as the
-// page (localhost) so the session cookie is sent.
-export const EVENTS_URL =
-  process.env.NEXT_PUBLIC_EVENTS_URL ?? "http://localhost:8000/runs/stream";
+// Live events use the same origin as the page (/api is proxied to FastAPI): no CORS, no cookie or
+// host mismatch (localhost may resolve to IPv6 while the API listens on IPv4). Override with
+// NEXT_PUBLIC_EVENTS_URL if a proxy in front buffers streams.
+export const EVENTS_URL = process.env.NEXT_PUBLIC_EVENTS_URL ?? "/api/runs/stream";
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {

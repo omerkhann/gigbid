@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GigBid web app
 
-## Getting Started
+Next.js 16 (App Router) + TypeScript + Tailwind. The human stays in control here: every proposal and message is approved, edited or rejected on these screens before anything reaches a client.
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000; /api/* is proxied to the FastAPI backend (API_URL, default http://127.0.0.1:8000)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the backend first (see [docs/RUNBOOK.md](../../docs/RUNBOOK.md)). Sign in as `reviewer@gigbid.dev`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Screens
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Screen |
+|---|---|
+| `/login` | Sign in, or create an account and pick a portfolio persona |
+| `/inbox` | Analysed jobs ranked by fit, with risk badges, recommended action, price and Connects cost; filters; Run Scout; analyse a job by id |
+| `/jobs/[id]` | JobSpec, risk report, requirement-to-evidence matrix, price rationale, bid/skip reasoning, live agent steps |
+| `/studio/[id]` | Proposal studio: evidence on hover for every claim, claim checks, Critic and Compliance comments, editor, regenerate one paragraph, the dry-run preview of exactly what is sent and what it costs, approve / edit / reject |
+| `/pipeline` | Kanban: drafted, submitted, viewed, replied, interview, hired, lost |
+| `/messages`, `/messages/[id]` | Client threads with the suggested reply, scam warnings and offered interview slots; approve before sending |
+| `/runs`, `/runs/[id]` | Live node-by-node progress streamed from LangGraph, with a link to the full trace |
+| `/analytics` | Reply and hire rate by category, Connects spent vs outcomes, cost and latency, top skip reasons |
+| `/settings` | Rates, autonomy, Connects budget, saved searches, connected accounts, and the memory viewer (see and delete what GigBid learned) |
 
-## Learn More
+## Typed API contract
 
-To learn more about Next.js, take a look at the following resources:
+`src/lib/api/schema.d.ts` is generated from FastAPI's OpenAPI schema. Never edit it by hand:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run gen:api        # exports openapi.json from the backend, then regenerates the TypeScript types
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+CI fails if the generated client is out of date.
 
-## Deploy on Vercel
+## Tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint && npm run typecheck && npm run build
+npx playwright install chromium --no-shell
+npm run test:e2e
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Playwright tests start `apps/api/e2e_server.py`: the real API on in-process GigSim and MCP servers with a scripted LLM, so they are fast and repeatable (Postgres from docker compose is needed). They cover onboarding, approving a proposal (with evidence on hover), rejecting with a reason, editing a draft (Compliance re-checks it), the marketplace-unavailable banner, and the phone layout.

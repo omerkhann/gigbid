@@ -25,7 +25,7 @@ async def verify_claims(state: dict, ctx: Ctx) -> dict:
     draft.update(cover_letter=revised or draft["cover_letter"],
                  unsupported_before=len(unsupported), claims_total=len(claims))
     return {"proposal_draft": draft, "claims": [c.model_dump() for c in claims],
-            "_summary": f"{len(claims)} claims, {len(unsupported)} unsupported removed"}
+            "_summary": f"{len(claims)} claim{'s' if len(claims) != 1 else ''}, {len(unsupported)} unsupported removed"}
 
 
 @node("critic")
@@ -45,7 +45,8 @@ async def critic(state: dict, ctx: Ctx) -> dict:
     revisions = state.get("revisions", 0)
     send_back = c.verdict == "revise" and revisions < ctx.deps.cfg["budgets"]["max_revisions"]
     update = {"critiques": [c.model_dump()], "revise_requested": send_back,
-              "_summary": f"{c.verdict} {c.scores.model_dump()}" + (" -> revise" if send_back else "")}
+              "_summary": f"{c.verdict} ({', '.join(f'{k} {v}/5' for k, v in c.scores.model_dump().items())})"
+                          + (": sent back for a revision" if send_back else "")}
     if send_back:
         update["revisions"] = revisions + 1
     return update

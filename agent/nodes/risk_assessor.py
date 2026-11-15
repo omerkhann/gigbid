@@ -69,11 +69,12 @@ async def risk_assessor(state: dict, ctx: Ctx) -> dict:
     if llm.injection_attempt and "prompt_injection" not in flags:
         flags["prompt_injection"] = INJECTION[0]
     score = round(min(1.0, sum(flags.values())), 3)
-    rating = "no reviews yet" if client.get("rating") is None else f"rated {client['rating']}"
+    rating = "no reviews yet" if client.get("rating") is None else f"rated {client['rating']:.2f}"
     summary = (f"{'verified' if client.get('payment_verified') else 'unverified'} payment, "
                f"${client.get('total_spent', 0):,.0f} spent, {rating}, {client.get('country') or 'unknown country'}")
     detail = "; ".join(f"{k} (+{v})" for k, v in sorted(flags.items(), key=lambda kv: -kv[1])) or "no flags"
     report = RiskReport(score=score, flags=sorted(flags), client_summary=summary,
                         explanation=f"{llm.assessment} Flags: {detail}." +
                                     (f" Quotes: {'; '.join(llm.scam_signals[:3])}" if llm.scam_signals else ""))
-    return {"risk_report": report.model_dump(), "_summary": f"risk {score} {sorted(flags)}"}
+    flag_text = ", ".join(f.replace("_", " ") for f in sorted(flags)) or "no flags"
+    return {"risk_report": report.model_dump(), "_summary": f"risk {score:.2f}: {flag_text}"}
