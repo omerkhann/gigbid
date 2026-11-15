@@ -187,7 +187,8 @@ def failures() -> None:
         fix, worked = fixes.get(k, ("--", "--"))
         rows.append([tex(k.replace("_", " ")), str(n), r"\texttt{" + tex(ex["job_id"]) + "} " + tex(ex.get("title", ""))[:48],
                      fix, worked])
-    write("failures", "p{2.1cm}rp{3.6cm}p{4.4cm}p{3.6cm}", ["Category", "Jobs", "Example", "Fix tried", "Did it work"],
+    L = r">{\raggedright\arraybackslash}"
+    write("failures", f"{L}p{{2.2cm}}r{L}p{{3.6cm}}{L}p{{4.4cm}}{L}p{{3.6cm}}", ["Category", "Jobs", "Example", "Fix tried", "Did it work"],
           rows, r"Source: \texttt{evals/results/failure\_analysis.json} (all rows with job ids); "
                 r"categories with 0 failures omitted.")
 

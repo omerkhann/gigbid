@@ -1,0 +1,57 @@
+{
+  "summary": {
+    "variant": "v0_naive",
+    "profile": "open_local",
+    "embedder": "ollama:nomic-embed-text",
+    "jobs": 2,
+    "reached_approval": 2,
+    "submitted": 2,
+    "reply_rate": 0.0,
+    "interview_rate": 0.0,
+    "unsupported_claims_before": 2.5,
+    "unsupported_claims_after": 0,
+    "judge_score": 2,
+    "critic_revisions_avg": 2,
+    "latency_p50_s": 438.35,
+    "latency_p95_s": 490.3,
+    "tokens_per_proposal": 19802,
+    "usd_per_proposal": 0.0,
+    "usd_note": "open models on free tiers (Groq, local Ollama)"
+  },
+  "rows": [
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-74bebadeddbc",
+      "reached_approval": true,
+      "decision": "bid",
+      "status": "awaiting_approval",
+      "seconds_to_approval": 490.3,
+      "tokens": 24322,
+      "unsupported_before": 5,
+      "claims": 22,
+      "unsupported_after": 0,
+      "critic_revisions": 2,
+      "submitted": true,
+      "outcome": "ignore",
+      "submit_error": null,
+      "judge": 2
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-286c2b049064",
+      "reached_approval": true,
+      "decision": "bid",
+      "status": "awaiting_approval",
+      "seconds_to_approval": 386.4,
+      "tokens": 15282,
+      "unsupported_before": 0,
+      "claims": 1,
+      "unsupported_after": 0,
+      "critic_revisions": 2,
+      "submitted": true,
+      "outcome": "ignore",
+      "submit_error": null,
+      "judge": 2
+    }
+  ]
+}

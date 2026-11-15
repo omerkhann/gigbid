@@ -62,8 +62,8 @@ Sources: `evals/results/rag_eval.json` (retrieval), `evals/results/gigsim_outcom
 
 | Variant | Evidence Recall@5 | nDCG@10 | Unsupported claims / proposal (before → after verify) | Judge score (1-5) | GigSim reply rate | p95 latency to approval (s) | Cost / proposal (USD) |
 |---|---|---|---|---|---|---|---|
-| V0 | 0.497 | 0.581 | 2.50 → 0 | 2 | 0.000 | 386.4 | 0.00 |
-| Shipped (v2_v4) | 0.541 | 0.628 | – → – | – | – | – | – |
+| V0 | 0.497 | 0.581 | 2.50 → 0 | 2 | 0.000 | 490.3 | 0.00 |
+| Shipped (v2_v4) | 0.541 | 0.628 | 3 → 0 | 1 | 0.000 | 468.5 | 0.00 |
 
 ### Retrieval variants and ablation
 

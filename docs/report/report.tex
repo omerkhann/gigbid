@@ -104,9 +104,15 @@ A related observation from \S5: the prebuilt supervisor often answered without c
 
 \textbf{Claim verification and outcomes.} The headline table (assignment B5) compares V0 and the shipped variant end to end: proposals written, verified, judged and sent to GigSim, whose simulated client is an LLM of a different family from the Writer.
 
-\tbl{Headline (assignment B5): V0 vs shipped, end to end.}{headline}
+\tbl[\label{tab:headline}]{Headline (assignment B5): V0 vs shipped, end to end.}{headline}
 
-\pending{OUTCOME-PROSE}
+\textbf{Where better retrieval did not give a better reply rate, and why.} This run is small: two bid-worthy jobs per variant, with every model on the local \code{qwen3:4b} because the hosted quota was spent (\S1). Neither variant got a reply from GigSim's simulated client, and the judge scored the drafts 1--2 out of 5. Three observations hold even at this size:
+\begin{enumerate}
+\item \textbf{The Writer was the bottleneck, not retrieval.} A 4B model writes generic letters whatever evidence it is given. Retrieval quality only shows up in the reply rate once the Writer can use it.
+\item \textbf{Better retrieval changed a decision before it changed a letter.} With \code{v2\_v4}, the data\_analyst job received different evidence, its fit score dropped, and the graph put it on ``watch'', so one fewer proposal was sent. Retrieval feeds the bid/skip decision as well as the letter, so a retrieval change can move the funnel in either direction.
+\item \textbf{Claim verification did its job on both variants.} The drafts carried 2.5--3 unsupported claims each, and 0 survived to the sent proposal.
+\end{enumerate}
+\noindent\textbf{Next step:} the same comparison on the hosted Writer and on all 24 bid-worthy subset jobs once the daily quota resets (\code{python -m evals.runners.gigsim\_outcomes}).
 
 \textbf{LLM-judge calibration.} The judge (\code{qwen/qwen3.8-27b}, a different family from the Writer) scored 30 past proposals the author also labelled blind (Table~\ref{tab:judge}). Where they disagree the judge is mostly one point \emph{harsher} on plain-but-specific proposals (author 3, judge 2): the author rewarded a plain proposal a client could act on, the judge penalised its lack of polish. A client reading quickly would side with the author, so judge scores are read as conservative.
 \tbl[\label{tab:judge}]{Judge calibration against 30 human labels.}{judge}
@@ -179,22 +185,33 @@ Failures are collected mechanically from the result files (\code{evals/runners/f
 The hidden test runs after the deadline, so its results cannot be in this report. Measured on dev:
 \begin{itemize}
 \item \textbf{Job analysed:} tokens 4.3k--4.6k per job, inside the 8k budget. p95 latency \emph{missed} the 90\,s budget by a wide margin: 345.1\,s (hosted; Groq's 8k tokens-per-minute limit forced retries and fallbacks to the local model) and 323.7\,s (local, with the GPU shared by concurrent evaluation runs). p50 was 29--35\,s, so the tail comes from contention for rate limits and the GPU, not from the typical job. p95 is nearest-rank (\code{evals/stats.py}); an earlier index formula understated it for small samples and was corrected before these numbers were reported.
-\item \textbf{Proposal:} \pending{BUDGET-PROPOSAL}
+\item \textbf{Proposal:} tokens 15.4k--19.8k per proposal, inside the 40k cap (Table~\ref{tab:headline}). p95 latency to the approval screen \emph{missed} the 180\,s budget: 468--490\,s with every call on the local 4B model and the GPU shared with other evaluation runs. Each proposal took two Critic revisions, so roughly half of that time is the revise loop. Lowering \code{max\_revisions} to 1 is the obvious lever, at some cost in draft quality.
 \item \textbf{Cost:} \$0 per job and per proposal (free tiers and local models), at the price of the daily quota (\S1).
 \end{itemize}
 \textbf{One optimisation that helped:} running the small tier (analysis, risk, fit, intent) on the local GPU takes per-job analysis off the hosted quota entirely; and the shipped retrieval variant keeps V0's latency (0.24\,s p95) instead of the reranked variant's 7.6\,s.
 
 \appendix
 \section{Reproducing every number}
+All runners live in \code{evals/runners/}; run from the repository root with \code{python -m evals.runners.<name>}.
 {\small\begin{verbatim}
-python -m evals.runners.rag_eval --limit 20 --ablate v1_v2_v3
-python -m evals.runners.rag_eval --variants v0_naive v2_hybrid v3_rerank v4_outcome v2_v4 --ablate v4_outcome --limit 20
-python -m evals.runners.rag_breakdown
-python -m evals.runners.decision_eval --limit 6 ; MODEL_PROFILE=open_hosted python -m evals.runners.decision_eval --limit 4
-python -m evals.runners.judge_calibration score
-MODEL_PROFILE=open_local python -m evals.runners.orchestration_eval
-MODEL_PROFILE=open_local python -m evals.runners.x3_eval --personas ml_engineer
-MODEL_PROFILE=open_local python -m evals.runners.gigsim_outcomes --variant v0_naive --limit 1   # and --variant v2_v4
-python -m evals.runners.failure_analysis ; python scripts/report_tables.py ; python -m evals.make_tables
+# Retrieval (S4): variants + both ablations, then the breakdown
+rag_eval --limit 20 --ablate v1_v2_v3
+rag_eval --variants v0_naive v2_hybrid v3_rerank v4_outcome v2_v4 \
+         --ablate v4_outcome --limit 20
+rag_eval --variants v8_corrective --limit 5
+rag_breakdown
+# Decisions, two configurations (S9)
+decision_eval --limit 6
+MODEL_PROFILE=open_hosted  decision_eval --limit 4
+# R&D A, judge, R&D C, X3, end-to-end outcomes
+tool_granularity
+judge_calibration score
+MODEL_PROFILE=open_local   orchestration_eval
+MODEL_PROFILE=open_local   x3_eval --personas ml_engineer
+OUTCOME_PERSONAS=ml_engineer,data_analyst MODEL_PROFILE=open_local \
+         gigsim_outcomes --variant v0_naive --limit 1     # and v2_v4
+# Failure taxonomy and every table (README + this report)
+failure_analysis
+python scripts/report_tables.py ; python -m evals.make_tables
 \end{verbatim}}
 \end{document}
