@@ -47,7 +47,8 @@ START ─┬─► job_analyst ──┐
 
 Why each agent exists, and the alternatives considered: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/BID_GRAPH_DESIGN.md](docs/BID_GRAPH_DESIGN.md), [docs/adr/](docs/adr/).
 
-- R&D report (PDF, LaTeX source and generated tables): [docs/report/](docs/report/)
+- R&D report: [docs/report/report.pdf](docs/report/report.pdf) (LaTeX source and generated tables in [docs/report/](docs/report/))
+- Portfolio MCP server, published: [`ghcr.io/omerkhann/gigbid-portfolio-mcp`](https://github.com/users/omerkhann/packages/container/package/gigbid-portfolio-mcp) ([install and use](mcp_servers/portfolio/README.md))
 - Signature extension (X3: GitHub repos to verified case studies): [docs/EXTENSION.md](docs/EXTENSION.md)
 - Free-tier limits and how they shaped the evals: [docs/RUNBOOK.md](docs/RUNBOOK.md#free-tier-caps-measured-2026-11-15)
 
