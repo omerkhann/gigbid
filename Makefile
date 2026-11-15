@@ -1,6 +1,6 @@
 .PHONY: install api test lint eval data
 install:
-	python -m pip install -e ".[dev]"
+	uv sync --extra dev --extra data
 
 api:
 	uvicorn apps.api.main:app --reload --port 8000
