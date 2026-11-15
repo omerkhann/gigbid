@@ -28,8 +28,8 @@ fi
 
 if [ -f /etc/iptables/rules.v4 ]; then
   # Oracle Cloud Ubuntu images ship iptables rules that REJECT everything but SSH; open 80/443 above them.
-  iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
-  iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+  iptables -I INPUT 1 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+  iptables -I INPUT 1 -m state --state NEW -p tcp --dport 443 -j ACCEPT
   netfilter-persistent save
 else
   ufw allow OpenSSH && ufw allow 80/tcp && ufw allow 443/tcp && ufw --force enable

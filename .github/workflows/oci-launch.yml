@@ -1,0 +1,61 @@
+name: Launch Oracle VM
+# Keeps trying to create the Oracle Cloud Always Free ARM VM for GigBid until Oracle has capacity, so the
+# retry loop doesn't depend on anyone's laptop. Each run tries for ~10 minutes; it stops immediately if a
+# "gigbid" VM already exists (no duplicates). On first boot the VM deploys itself with
+# infra/deploy/setup_vm.sh. The URL appears in the run's summary. Disable this workflow once the VM is up.
+#
+# Repository secrets needed: OCI_CONFIG (~/.oci/config), OCI_PRIVATE_KEY (the API key .pem),
+# SSH_PUBLIC_KEY (~/.ssh/id_ed25519.pub), GROQ_API_KEY.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+concurrency:
+  group: oci-launch
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  launch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet oci
+      - name: Oracle credentials
+        env:
+          OCI_CONFIG: ${{ secrets.OCI_CONFIG }}
+          OCI_PRIVATE_KEY: ${{ secrets.OCI_PRIVATE_KEY }}
+        run: |
+          if [ -z "$OCI_CONFIG" ] || [ -z "$OCI_PRIVATE_KEY" ]; then echo "OCI secrets missing"; exit 1; fi
+          mkdir -p ~/.oci
+          printf '%s\n' "$OCI_PRIVATE_KEY" > ~/.oci/key.pem
+          # The config was written on Windows: point key_file at the runner's copy, drop CRs.
+          printf '%s\n' "$OCI_CONFIG" | tr -d '\r' | sed "s#^key_file=.*#key_file=$HOME/.oci/key.pem#" > ~/.oci/config
+          chmod 600 ~/.oci/config ~/.oci/key.pem
+      - name: First-boot script (deploys GigBid on the new VM)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          umask 077
+          cat > first_boot.sh <<EOF
+          #!/bin/bash
+          exec > /var/log/gigbid-first-boot.log 2>&1
+          for i in 1 2 3 4 5; do curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/main/infra/deploy/setup_vm.sh -o /root/setup_vm.sh && break; sleep 20; done
+          GROQ_API_KEY='$GROQ_API_KEY' REPO='https://github.com/${{ github.repository }}.git' bash /root/setup_vm.sh
+          EOF
+          sed -i 's/^          //' first_boot.sh
+      - name: Try to launch (about 10 rounds)
+        env:
+          SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+        run: |
+          set +e
+          python infra/deploy/oci_retry.py --user-data first_boot.sh --rounds 10 --every 50
+          code=$?
+          rm -f first_boot.sh
+          # 3 = no capacity this time: not a failure, the next scheduled run tries again.
+          if [ "$code" = "3" ]; then exit 0; fi
+          exit $code
