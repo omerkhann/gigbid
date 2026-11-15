@@ -19,6 +19,7 @@ from agent.handoffs import (
     Claim,
     ClaimCheckLLM,
     Critique,
+    CritiqueScores,
     FitLLM,
     ItemJudgement,
     JobSpecLLM,
@@ -91,7 +92,7 @@ class FakeLLM:
                                  revised_cover_letter=draft)
         if node == "critic":
             verdict = self.critic_verdicts.pop(0) if self.critic_verdicts else "pass"
-            return Critique(verdict=verdict, scores={"grounding": 4}, issues=["be more specific"] if verdict == "revise" else [])
+            return Critique(verdict=verdict, scores=CritiqueScores(grounding=4, personalisation=4, clarity=4, length=4), issues=["be more specific"] if verdict == "revise" else [])
         raise AssertionError(node)
 
 
@@ -257,3 +258,43 @@ async def test_step_budget(env):
 async def test_allowlist(env):
     with pytest.raises(ToolNotAllowed):
         await env["gateway"].call("writer", "marketplace", "submit_proposal", {}, "t")
+
+
+async def test_two_parallel_branches_failing_at_once(env):
+    """Regression: two branches writing `status` in the same step crashed the graph."""
+    from agent.mcp_client import MarketplaceDown
+
+    class Broken(McpGateway):
+        async def call(self, node, server, tool, args, trace_id):
+            if node == "risk_assessor":
+                raise MarketplaceDown("marketplace_unavailable", "down")
+            if node == "fit_matcher":
+                raise RuntimeError("portfolio exploded")
+            return await super().call(node, server, tool, args, trace_id)
+
+    cfg = run_cfg(env, FakeLLM())
+    cfg["configurable"]["deps"].gateway = Broken(env["gateway"].sessions)
+    out = await build_bid_graph(InMemorySaver()).ainvoke(
+        {"user": USER, "job": await job(env, bid_job()), "status": "running"}, cfg)
+    assert out["status"] == "waiting_marketplace"            # the resumable failure wins
+    assert {f["node"] for f in out["branch_failures"]} == {"risk_assessor", "fit_matcher"}
+
+
+async def test_retry_on_same_thread_starts_clean(env):
+    """A dead-lettered job retried on its thread must not see the old run's failures."""
+    from agent.graphs.bid_graph import start_input
+
+    saver, j = InMemorySaver(), await job(env, bid_job())
+
+    class Broken(McpGateway):
+        async def call(self, node, server, tool, args, trace_id):
+            if node == "fit_matcher":
+                raise RuntimeError("temporary")
+            return await super().call(node, server, tool, args, trace_id)
+
+    bad = run_cfg(env, FakeLLM(), thread="retry")
+    bad["configurable"]["deps"].gateway = Broken(env["gateway"].sessions)
+    first = await build_bid_graph(saver).ainvoke(start_input(USER, j), bad)
+    assert first["status"] == "dead_letter"
+    second = await build_bid_graph(saver).ainvoke(start_input(USER, j), run_cfg(env, FakeLLM(), thread="retry"))
+    assert "__interrupt__" in second and second["branch_failures"] == []

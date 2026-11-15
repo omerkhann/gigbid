@@ -28,6 +28,13 @@ from agent.state import GigBidState
 PARALLEL = ("job_analyst", "risk_assessor", "fit_matcher")
 
 
+def start_input(user: dict, job: dict) -> dict:
+    """Input for a new run. On an existing thread (a retry) it resets the per-run bookkeeping:
+    failures, timeline, errors, and the step and token budgets."""
+    return {"user": user, "job": job, "status": "running", "status_reason": "", "branch_failures": None,
+            "events": None, "errors": None, "steps": None, "tokens": None, "critiques": None, "revisions": 0}
+
+
 def fan_out(state: GigBidState) -> list[Send]:
     """Run the three analyses in parallel; each gets the same input state."""
     return [Send(n, state) for n in PARALLEL]

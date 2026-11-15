@@ -4,7 +4,7 @@ decision is cheap, repeatable and explainable."""
 from __future__ import annotations
 
 from agent.handoffs import BidDecision
-from agent.nodes.common import STOP, Ctx, node
+from agent.nodes.common import Ctx, node
 
 
 def decide_action(job: dict, risk: dict, fit: dict, user: dict, th: dict) -> BidDecision:
@@ -27,8 +27,12 @@ def decide_action(job: dict, risk: dict, fit: dict, user: dict, th: dict) -> Bid
 
 @node("decide")
 async def decide(state: dict, ctx: Ctx) -> dict:
-    if state.get("status") in STOP:            # a parallel branch already stopped the thread
-        return {"_summary": f"not deciding: {state['status']}"}
+    failures = state.get("branch_failures") or []
+    if failures:   # one status for the thread; a marketplace outage is resumable, so it wins
+        order = ["waiting_marketplace", "needs_attention", "dead_letter"]
+        worst = min(failures, key=lambda f: order.index(f["status"]) if f["status"] in order else 99)
+        reason = "; ".join(f["reason"] for f in failures)
+        return {"status": worst["status"], "status_reason": reason, "_summary": f"stopped: {reason[:200]}"}
     d = decide_action(state["job"], state["risk_report"], state["fit_report"], state["user"],
                       ctx.deps.cfg["thresholds"])
     status = {"skip": "skipped", "watch": "watching", "bid": "running"}[d.action]

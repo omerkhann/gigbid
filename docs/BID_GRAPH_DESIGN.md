@@ -102,3 +102,31 @@ Job posts and client messages are wrapped as quoted untrusted data in every prom
 2. Thin slice: every node in its simplest correct form, the full graph wired with `Send`, interrupt and the Postgres checkpointer; run one dev job end to end against GigSim.
 3. Crash-and-resume exactly-once test.
 4. Deepen nodes one at a time (better Fit Matcher, Critic rubric, Compliance rules), measuring on a small dev subset.
+
+## 9. First real run (2026-11-15)
+
+Command: `python -m agent.run_bid --persona data_analyst --job job-0b954e1ba14e` (real models, MCP servers over HTTP, Postgres checkpointer), then `--resume approve` from a **new process**.
+
+| Node | Time | Tokens | Result |
+|---|---|---|---|
+| job_analyst (local qwen3:4b) | 8.5 s | 679 | 3 requirements |
+| risk_assessor (rules + qwen3:4b) | 3.1 s | 457 | risk 0.0, no flags |
+| fit_matcher (Portfolio MCP + qwen3:4b) | 44.6 s | 3,124 | fit 1.0, 5 of 5 strong |
+| decide | 0 | 0 | bid |
+| pricing | 1.8 s | 0 | $30/hr, worth 6 Connects |
+| writer (gpt-oss-120b) | 2.7 s | 2,951 | draft, 2 citations |
+| verify_claims (gpt-oss-120b) | 5.6 s | 4,832 | 8 claims, 1 unsupported removed |
+| critic (gpt-oss-20b) | 0.5 s | 994 | pass, 5/5/5/5 |
+| compliance | 8 ms | 0 | pass |
+| prepare_draft | 1.9 s | 0 | draft saved, dry run 6 Connects |
+| approve → submit (new process) | 1.7 s | 0 | submitted once; balance 80 → 74 |
+
+Total about 70 s and 13k tokens to the approval screen. The Fit Matcher dominates: six Portfolio searches plus one local-model call over all the evidence. It is the first thing to optimise.
+
+**Bugs found only by the real run, now fixed and covered by tests:**
+- Two parallel branches failing in the same step both wrote `status`, which LangGraph rejects. Branches now report to `branch_failures`, and `decide` turns them into one status.
+- A retry on the same thread inherited the old run's failures, timeline and step budget. `start_input()` resets per-run bookkeeping.
+- Groq's strict JSON-schema mode rejects free-form `dict` fields (the Critic's scores). They are now explicit fields.
+- `MODEL_PROFILE=open` is the assignment's required profile name; the config now uses it.
+
+**Quality notes for Phase 4:** the letter called an Excel inventory analysis a "KPI dashboard" (verification didn't catch the stretch), and V0 retrieval surfaced the inventory project instead of the analyst's more relevant marketing-funnel project.

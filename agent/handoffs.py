@@ -132,9 +132,17 @@ class ClaimCheckLLM(BaseModel):
                                                   "the evidence shows; otherwise unchanged")
 
 
+class CritiqueScores(BaseModel):
+    """Explicit fields, not a dict: strict JSON-schema mode (Groq) rejects free-form objects."""
+    grounding: int = Field(ge=1, le=5)
+    personalisation: int = Field(ge=1, le=5)
+    clarity: int = Field(ge=1, le=5)
+    length: int = Field(ge=1, le=5)
+
+
 class Critique(BaseModel):
     verdict: Literal["pass", "revise"]
-    scores: dict[str, int] = Field(default_factory=dict, description="grounding, personalisation, clarity, length: 1-5")
+    scores: CritiqueScores
     issues: list[str] = Field(default_factory=list, description="Specific, actionable problems")
 
 

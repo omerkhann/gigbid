@@ -39,7 +39,7 @@ async def critic(state: dict, ctx: Ctx) -> dict:
     revisions = state.get("revisions", 0)
     send_back = c.verdict == "revise" and revisions < ctx.deps.cfg["budgets"]["max_revisions"]
     update = {"critiques": [c.model_dump()], "revise_requested": send_back,
-              "_summary": f"{c.verdict} {c.scores}" + (" -> revise" if send_back else "")}
+              "_summary": f"{c.verdict} {c.scores.model_dump()}" + (" -> revise" if send_back else "")}
     if send_back:
         update["revisions"] = revisions + 1
     return update

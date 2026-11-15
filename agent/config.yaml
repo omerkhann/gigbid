@@ -12,14 +12,15 @@ providers:                     # all speak the OpenAI chat API
   openrouter: {base_url_default: "https://openrouter.ai/api/v1", api_key_env: OPENROUTER_API_KEY}
 
 models:
-  profile: open_local          # MODEL_PROFILE overrides
+  profile: open                # MODEL_PROFILE overrides; "open" is the required profile name
   profiles:
-    # Required "open" profile, two configurations to compare (assignment: choose by measurement).
-    open_local:                # small tier on the laptop GPU (RTX 4050), strong tier hosted
+    # Required "open" profile (open-weight models only) and its no-GPU variant; the two configurations
+    # compared by measurement. An optional "paid" profile can be added here.
+    open:                      # small tier on the laptop GPU (RTX 4050), strong tier hosted
       small: ["ollama:qwen3:4b", "groq:openai/gpt-oss-20b"]
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
-    open_hosted:               # no GPU (the deployed VM): small tier hosted too
+    open_hosted:               # variant of "open" with no GPU (the deployed VM): small tier hosted too
       small: ["groq:openai/gpt-oss-20b", "ollama:qwen3:4b"]
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]

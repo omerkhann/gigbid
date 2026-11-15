@@ -25,6 +25,10 @@ from agent.llm import config as load_config
 from agent.llm import structured
 from agent.mcp_client import MarketplaceDown, McpGateway
 
+# The three analyses run in the same step. Two of them failing at once would write `status` twice,
+# which LangGraph rejects, so parallel nodes report failures to `branch_failures` (a list with an
+# append reducer) and the join node (decide) turns them into one status.
+PARALLEL_NODES = {"job_analyst", "risk_assessor", "fit_matcher"}
 STOP = {"skipped", "watching", "rejected", "needs_attention", "waiting_marketplace", "dead_letter", "submitted"}
 CITATION = re.compile(r"\s?\[[A-Za-z0-9_\-]+:[^\]\s]+\]")
 
@@ -62,6 +66,15 @@ def strip_citations(text: str) -> str:
     return CITATION.sub("", text)
 
 
+def _as_branch_failure(name: str, update: dict) -> dict:
+    """A parallel node must not write `status`; record the failure for the join node instead."""
+    if name not in PARALLEL_NODES or "status" not in update:
+        return update
+    rest = {k: v for k, v in update.items() if k not in ("status", "status_reason")}
+    return {**rest, "branch_failures": [{"node": name, "status": update["status"],
+                                         "reason": update.get("status_reason", "")}]}
+
+
 def node(name: str):
     def wrap(fn: Callable[[dict, Ctx], Awaitable[dict]]):
         async def run(state: dict, config: RunnableConfig) -> dict:
@@ -71,21 +84,25 @@ def node(name: str):
             ctx = Ctx(deps, trace_id=config["configurable"].get("trace_id", thread_id), thread_id=thread_id)
             base = {"steps": 1}
             if state.get("steps", 0) >= budgets["max_graph_steps"] or state.get("tokens", 0) >= budgets["max_tokens_per_job"]:
-                return {**base, "status": "needs_attention", "status_reason": f"budget exceeded before {name}",
-                        "events": [{"node": name, "summary": "budget exceeded"}]}
+                return _as_branch_failure(name, {
+                    **base, "status": "needs_attention", "status_reason": f"budget exceeded before {name}",
+                    "events": [{"node": name, "summary": "budget exceeded"}]})
             t = time.time()
             try:
                 update = await fn(state, ctx)
             except GraphBubbleUp:
                 raise
             except MarketplaceDown as exc:
-                return {**base, "status": "waiting_marketplace", "status_reason": f"{name}: {exc.detail}",
-                        "errors": [f"{name}: marketplace unavailable"],
-                        "events": [{"node": name, "summary": "marketplace unavailable"}]}
+                return _as_branch_failure(name, {
+                    **base, "status": "waiting_marketplace", "status_reason": f"{name}: {exc.detail}",
+                    "errors": [f"{name}: marketplace unavailable"],
+                    "events": [{"node": name, "summary": "marketplace unavailable"}]})
             except Exception as exc:  # noqa: BLE001 - dead-letter instead of crashing the worker
-                return {**base, "status": "dead_letter", "status_reason": f"{name}: {exc}",
-                        "errors": [f"{name}: {exc.__class__.__name__}: {str(exc)[:300]}"],
-                        "events": [{"node": name, "summary": "failed"}]}
+                return _as_branch_failure(name, {
+                    **base, "status": "dead_letter", "status_reason": f"{name}: {exc}",
+                    "errors": [f"{name}: {exc.__class__.__name__}: {str(exc)[:300]}"],
+                    "events": [{"node": name, "summary": "failed"}]})
+            update = _as_branch_failure(name, update)
             summary = update.pop("_summary", "")
             return {**base, **update, "tokens": ctx.tokens,
                     "events": [{"node": name, "summary": summary, "ms": int((time.time() - t) * 1000),
