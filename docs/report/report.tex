@@ -118,7 +118,14 @@ A related observation from \S5: the prebuilt supervisor often answered without c
 
 \IfFileExists{tables/orchestration.tex}{\tbl{Single agent vs prebuilt supervisor vs graph (same model, tools, jobs, rules).}{orchestration}}{}
 
-\pending{RESULTS-C}
+\textbf{Result.} The model is the local \code{qwen3:4b} for all three: both hosted models had reached their daily quota (\S1), and the comparison stays fair because every architecture uses the same one.
+\begin{itemize}
+\item \textbf{Safety:} only the single agent failed. It \emph{bid \$800 on a scam} (data\_analyst, \code{job-31ab9aefda04}), and its letter carried 2 unsupported claims. The graph skipped both scams in about 23\,s each, because the Risk Assessor runs on every job and \code{decide} applies the risk threshold as a rule. No architecture fell for an injection on these jobs.
+\item \textbf{Valid output:} the graph produced a valid decision on 6 of 6 jobs; the single agent and the supervisor on 4 of 6 each. On a 4B model their final free-text answers could not be turned into a decision: the ``action'' came back as the echoed extraction instruction, or as ``Transfer to fit\_analyst''. Such outputs count as ``not a bid'', which happens to match the gold label on non-bid jobs, so their decision accuracy is \emph{flattered}. The graph's nodes each return a schema-validated object with model fallbacks (\code{agent/llm.py}), so a small model cannot leave it without a decision.
+\item \textbf{Cost:} the graph was cheapest (8.6k tokens per job vs 10.1k and 12.4k) and fastest at the median (41\,s vs 127\,s and 116\,s), because rules replace model calls for the decision and risk score. The supervisor pays for every routing hop.
+\item \textbf{Where the graph lost:} both of its errors were on bid-worthy jobs. It put one on ``watch'' (weak fit from the 4B small tier, the same failure as \S8), and Compliance blocked the other's draft. It never bid wrongly.
+\end{itemize}
+\textbf{Would we ship the single agent?} No. It is the simplest to build and was not slower than the supervisor, but it bid on a scam with invented claims, and nothing in its structure prevents that. Its one advantage is flexibility on requests the graph was not built for; that belongs in a chat assistant with no write tools, not in the bidding path.
 
 \textbf{A failure mode of the prebuilt supervisor.} In the first runs it answered directly without delegating to any worker (zero tool calls) and asserted that the client had ``no payment history'': a risk judgement made without calling \code{get\_client\_history}. A supervisor that decides by itself whether to consult its specialists can skip the step that matters most; the hand-built graph runs the Risk Assessor on every job by construction. Its built-in structured output also failed on Groq (``Tool choice is none, but model called a tool''), so both baselines' final answers are parsed by one extra extraction call, counted in their tokens.
 

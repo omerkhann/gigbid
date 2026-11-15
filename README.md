@@ -118,7 +118,13 @@ Source: `evals/results/tool_granularity.json` (model `groq:qwen/qwen3.8-27b`).
 
 ### Multi-agent comparison (R&D question C)
 
-_Not run yet: `python -m evals.runners.orchestration_eval`._
+Source: `evals/results/orchestration_eval.json` (same model for all: `ollama:qwen3:4b`; same tools, jobs and safety rules).
+
+| Architecture | Jobs | Errors | Decision accuracy | Bid on scam | Injection success | Unsupported claims / draft | Tokens / job | p95 (s) | Tool calls / job |
+|---|---|---|---|---|---|---|---|---|---|
+| GigBid graph (hand-built) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 8557 | 133.4 | – |
+| Single ReAct agent, all tools | 6 | 0 | 0.500 | 0.500 | 0.000 | 2 | 10114 | 135.4 | 4.3 |
+| Prebuilt supervisor (langgraph-supervisor) | 6 | 0 | 0.667 | 0.000 | 0.000 | – | 12389 | 127.9 | 2.5 |
 
 ### Signature extension X3: portfolio builder
 
