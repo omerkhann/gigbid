@@ -1,30 +1,34 @@
-% Bid graph (agent/graphs/bid_graph.py). Solid: model or rule node; dashed border: human; grey: MCP write.
+% Bid graph (agent/graphs/bid_graph.py). Grey: rules/arithmetic; dashed: the human gate; dark: the only marketplace write.
 \begin{tikzpicture}[
-  node distance=4mm and 6mm, font=\scriptsize,
-  box/.style={draw, rounded corners=2pt, minimum height=5mm, inner sep=2pt, align=center, fill=white},
+  font=\scriptsize,
+  box/.style={draw, rounded corners=2pt, minimum height=7mm, minimum width=17mm, inner sep=3pt, align=center, fill=white},
   rule/.style={box, fill=gray!12},
   human/.style={box, dashed, thick},
   write/.style={box, fill=gray!30},
+  lab/.style={font=\tiny, fill=white, inner sep=1pt},
   >={Stealth[length=2mm]}, every edge/.style={draw, ->}]
-  \node[box] (job) {job + client\\history};
-  \node[box, right=8mm of job] (risk) {Risk Assessor\\{\tiny rules + small LLM}};
-  \node[box, above=2mm of risk] (ana) {Job Analyst\\{\tiny small LLM}};
-  \node[box, below=2mm of risk] (fit) {Fit Matcher\\{\tiny Portfolio MCP}};
-  \node[rule, right=8mm of risk] (dec) {decide\\{\tiny rules}};
-  \node[rule, right=of dec] (price) {Pricing\\{\tiny arithmetic}};
-  \node[box, right=of price] (writer) {Writer\\{\tiny strong LLM}};
-  \node[box, right=of writer] (verify) {Claim\\verification};
-  \node[box, below=6mm of verify] (critic) {Critic\\{\tiny $\le$2 revisions}};
-  \node[rule, left=of critic] (comp) {Compliance\\{\tiny rules}};
-  \node[human, left=of comp] (appr) {Approval\\{\tiny \texttt{interrupt()}}};
-  \node[write, left=11mm of appr] (sub) {Submit\\{\tiny idempotent}};
-  \node[box, above=5mm of dec] (skip) {skip / watch\\{\tiny reason recorded}};
-  \draw (job) edge node[above, font=\tiny]{Send} (ana) (job) edge (risk) (job) edge (fit);
+  % main row
+  \node[box] (job) at (0,0) {job + client\\history};
+  \node[box] (risk) at (3.0,0) {Risk Assessor\\{\tiny rules + small LLM}};
+  \node[box] (ana) at (3.0,1.25) {Job Analyst\\{\tiny small LLM}};
+  \node[box] (fit) at (3.0,-1.25) {Fit Matcher\\{\tiny Portfolio MCP}};
+  \node[rule] (dec) at (5.9,0) {decide\\{\tiny rules}};
+  \node[rule] (price) at (8.5,0) {Pricing\\{\tiny arithmetic}};
+  \node[box] (writer) at (11.1,0) {Writer\\{\tiny strong LLM}};
+  \node[box] (verify) at (13.7,0) {Claim\\verification};
+  \node[box] (skip) at (5.9,1.9) {skip / watch\\{\tiny reason recorded}};
+  % approval row
+  \node[box] (critic) at (13.7,-2.6) {Critic\\{\tiny $\le$2 revisions}};
+  \node[rule] (comp) at (11.1,-2.6) {Compliance\\{\tiny rules}};
+  \node[human] (appr) at (8.5,-2.6) {Approval\\{\tiny \texttt{interrupt()}}};
+  \node[write] (sub) at (5.9,-2.6) {Submit\\{\tiny idempotent}};
+  % edges
+  \draw (job) edge node[lab, above, sloped]{Send} (ana) (job) edge (risk) (job) edge (fit);
   \draw (ana) edge (dec) (risk) edge (dec) (fit) edge (dec);
-  \draw (dec) edge node[above, font=\tiny]{bid} (price) (price) edge (writer) (writer) edge (verify) (verify) edge (critic);
   \draw (dec) edge (skip);
-  \draw (critic) edge[bend left=35] node[left, font=\tiny, pos=0.7]{revise} (writer);
-  \draw (critic) edge node[above, font=\tiny]{ok} (comp) (comp) edge node[above, font=\tiny]{pass} (appr);
-  \draw (appr) edge node[above, font=\tiny]{approve} (sub);
-  \draw (appr) edge[bend right=40] node[below, font=\tiny]{edit: re-check} (comp);
+  \draw (dec) edge node[lab, above]{bid} (price) (price) edge (writer) (writer) edge (verify) (verify) edge (critic);
+  \draw (critic) edge node[lab, sloped, above]{revise} (writer);
+  \draw (critic) edge node[lab, above]{ok} (comp) (comp) edge node[lab, above]{pass} (appr);
+  \draw (appr) edge node[lab, above]{approve} (sub);
+  \draw (appr) edge[bend right=35] node[lab, below]{edit: re-check} (comp);
 \end{tikzpicture}

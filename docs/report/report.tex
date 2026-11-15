@@ -116,6 +116,8 @@ A related observation from \S5: the prebuilt supervisor often answered without c
 \noindent\textbf{Next step:} the same comparison on the hosted Writer and on all 24 bid-worthy subset jobs once the daily quota resets (\code{python -m evals.runners.gigsim\_outcomes}).
 
 \textbf{LLM-judge calibration.} The judge (\code{qwen/qwen3.8-27b}, a different family from the Writer) scored 30 past proposals the author also labelled blind (Table~\ref{tab:judge}). Where they disagree the judge is mostly one point \emph{harsher} on plain-but-specific proposals (author 3, judge 2): the author rewarded a plain proposal a client could act on, the judge penalised its lack of polish. A client reading quickly would side with the author, so judge scores are read as conservative.
+
+\textbf{Not done: the blind pairwise human panel} (classmates rating anonymised proposal pairs, assignment B4) was not run for this submission. Proposal quality rests on the calibrated judge and the author's 30 labels only, which is one rater; a panel is the missing check on whether the judge's preferences match clients'.
 \tbl[\label{tab:judge}]{Judge calibration against 30 human labels.}{judge}
 
 %=====================================================================================================
