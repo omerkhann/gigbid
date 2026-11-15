@@ -1,0 +1,256 @@
+{
+  "judge_node": "judge",
+  "n": 30,
+  "weighted_kappa": 0.741,
+  "exact_agreement": 0.567,
+  "within_one": 1.0,
+  "biggest_disagreements": [
+    {
+      "item_id": "ml_engineer-pp078",
+      "style": "plain_specific",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is extremely brief and lacks specific evidence relevant to the job description. While it mentions a project, it does not clearly demonstrate the required skills like communication, organization, or detail-orientation. It feels generic and does not provide a clear plan or concrete examples of how the candidate would fit into the role. The mention of a system answering 85% of questions is vague and does not directly relate to typical Python development tasks. Overall, it lacks the specificity and depth needed to stand out."
+    },
+    {
+      "item_id": "fullstack_dev-pp024",
+      "style": "strong",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is mostly generic and irrelevant. It cites unrelated projects (nonprofit CRM, physiotherapy booking) with impressive but disconnected metrics, and uses vague phrasing like 'without naming it' which looks like template filler or an attempt to obscure details. While it mentions a script to resize images, it lacks specific Shopify expertise, concrete evidence of Shopify work, or a clear plan tailored to the job. It reads like a buzzword-heavy template with little job-specific substance."
+    },
+    {
+      "item_id": "ml_engineer-pp123",
+      "style": "generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence, projects, or concrete plan. It lacks any details about the candidate's actual experience or how they would approach the specific tasks and tutoring requirements."
+    },
+    {
+      "item_id": "fullstack_dev-pp145",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence, projects, or numbers. It merely repeats the job description's keywords without offering a concrete plan or demonstrating relevant experience, making it look like spam or a copy-paste job."
+    },
+    {
+      "item_id": "data_analyst-pp143",
+      "style": "generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence of experience, no mention of the required versions (10.2.2 & 11), and no concrete plan. It lacks the specific details and proof of competence required for a technical support role."
+    }
+  ],
+  "rows": [
+    {
+      "item_id": "data_analyst-pp106",
+      "style": "strong",
+      "human": 4,
+      "judge": 4,
+      "judge_reason": "The proposal is specific to the job, providing concrete examples with metrics (0.6% conversion lift, 4% retention improvement) and a clear plan (audit, adjust code, build dashboards). It addresses the client's needs for SEO/Ads readiness and page-specific dashboards. The only minor weakness is that the examples are from different industries (D2C, mobile games) rather than management consulting, but the technical skills are directly transferable. It is concise and professional."
+    },
+    {
+      "item_id": "ml_engineer-pp078",
+      "style": "plain_specific",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is extremely brief and lacks specific evidence relevant to the job description. While it mentions a project, it does not clearly demonstrate the required skills like communication, organization, or detail-orientation. It feels generic and does not provide a clear plan or concrete examples of how the candidate would fit into the role. The mention of a system answering 85% of questions is vague and does not directly relate to typical Python development tasks. Overall, it lacks the specificity and depth needed to stand out."
+    },
+    {
+      "item_id": "data_analyst-pp098",
+      "style": "strong",
+      "human": 4,
+      "judge": 4,
+      "judge_reason": "The proposal is specific to the job, clearly outlining a plan to model the SharePoint data, create drill-down hierarchies, and add a date slicer for the timeline. It includes concrete evidence of past success (reducing report time from 3 days to 2 hours for 40 managers). The only minor weakness is that the evidence is from a different industry (sales vs. assets), but the technical skills are directly transferable."
+    },
+    {
+      "item_id": "fullstack_dev-pp024",
+      "style": "strong",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is mostly generic and irrelevant. It cites unrelated projects (nonprofit CRM, physiotherapy booking) with impressive but disconnected metrics, and uses vague phrasing like 'without naming it' which looks like template filler or an attempt to obscure details. While it mentions a script to resize images, it lacks specific Shopify expertise, concrete evidence of Shopify work, or a clear plan tailored to the job. It reads like a buzzword-heavy template with little job-specific substance."
+    },
+    {
+      "item_id": "ml_engineer-pp123",
+      "style": "generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence, projects, or concrete plan. It lacks any details about the candidate's actual experience or how they would approach the specific tasks and tutoring requirements."
+    },
+    {
+      "item_id": "ml_engineer-pp146",
+      "style": "strong",
+      "human": 4,
+      "judge": 4,
+      "judge_reason": "The proposal is specific to the job, outlining a clear plan (reverse-engineer query, parse, transform, upload) and addressing the preferred platform (Google Apps Script). It includes concrete evidence from a previous project (12,000 SKUs, 70% reduction in oversight). However, it scores a 4 instead of a 5 because the previous project used Python, which is not directly transferable to the requested Google Apps Script environment, and the proposal does not explicitly address the technical challenge of handling the specific 'getneurons' query format or the lack of documentation beyond a general 'inspect network traffic' statement."
+    },
+    {
+      "item_id": "ml_engineer-pp058",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is generic and lacks specific evidence, projects, or concrete details relevant to the job. It uses buzzwords like 'cutting-edge pattern-recognition models' and 'high-impact results' without providing any proof of experience or a clear plan. It does not mention specific technologies, metrics, or past work in anti-bot or ML, making it look like a template."
+    },
+    {
+      "item_id": "fullstack_dev-pp112",
+      "style": "strong",
+      "human": 3,
+      "judge": 3,
+      "judge_reason": "The proposal is relevant and addresses the specific needs (WooCommerce customization and PayMongo setup). However, the evidence provided (an education site and a physiotherapy booking system) is not directly related to e-commerce or WooCommerce, making the experience claims feel somewhat generic or tangential to the specific job requirements. It lacks concrete details about previous WooCommerce projects or specific PayMongo troubleshooting experience."
+    },
+    {
+      "item_id": "data_analyst-pp046",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is a generic template filled with buzzwords like 'passionate,' 'cutting-edge,' and 'pristine data.' It lacks any concrete evidence, such as specific projects, numbers, or a detailed plan for handling 'stealth' duplicates. It does not address the specific nuances of the job (e.g., how to handle slightly varying information) and offers no proof of capability."
+    },
+    {
+      "item_id": "ml_engineer-pp082",
+      "style": "plain_specific",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is mostly generic and lacks specific evidence relevant to the job. The mention of a '200-question test' is irrelevant to captcha recognition and sounds like a buzzword-filled claim rather than concrete experience with OCR or captcha solving. It does not specify which tools or libraries (e.g., Tesseract, OpenCV, or specific APIs) would be used, nor does it address the technical challenges of reading captchas from screenshots. It is too thin on evidence and plan to be considered a strong candidate."
+    },
+    {
+      "item_id": "fullstack_dev-pp021",
+      "style": "plain_specific",
+      "human": 1,
+      "judge": 1,
+      "judge_reason": "The proposal is completely irrelevant to the specific job requirements. The client needs a simple PHP/MySQL modification (adding a dropdown), but the proposal discusses migrating a front-end with 140 components, which is unrelated to the backend logic and database changes requested. It contains no mention of PHP, MySQL, or the specific task."
+    },
+    {
+      "item_id": "fullstack_dev-pp145",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence, projects, or numbers. It merely repeats the job description's keywords without offering a concrete plan or demonstrating relevant experience, making it look like spam or a copy-paste job."
+    },
+    {
+      "item_id": "data_analyst-pp143",
+      "style": "generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence of experience, no mention of the required versions (10.2.2 & 11), and no concrete plan. It lacks the specific details and proof of competence required for a technical support role."
+    },
+    {
+      "item_id": "data_analyst-pp135",
+      "style": "strong",
+      "human": 3,
+      "judge": 4,
+      "judge_reason": "The proposal is highly relevant and specific to the job, outlining a clear technical plan (ingesting data, training on lagged features, validation, deployment) and promising quantified confidence intervals. However, the concrete evidence provided (price changes in 2025, microfinance segmentation in 2023) is not directly related to load forecasting or power markets, making the evidence feel somewhat disconnected from the specific domain of the job. It lacks specific examples of past load forecasting projects or metrics (like MAPE/RMSE) for similar energy tasks."
+    },
+    {
+      "item_id": "data_analyst-pp118",
+      "style": "plain_specific",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is irrelevant and appears to be a copy-paste error or spam. It discusses a 'grocery-delivery pricing study' and 'basket margin,' which has nothing to do with Python, RASA, NLU, or AWS EBS. It fails to address the specific technical requirements of the job."
+    },
+    {
+      "item_id": "fullstack_dev-pp032",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is generic and lacks specific evidence, such as portfolio links, relevant projects, or concrete details about the approach. It uses buzzwords like 'cutting-edge design principles' and 'conversion-focused' without providing proof or a clear plan. It does not address the specific references provided in the job post with any depth or unique insight."
+    },
+    {
+      "item_id": "ml_engineer-pp149",
+      "style": "generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific evidence, technical details, or concrete plan. It lacks any mention of relevant technologies (e.g., Python, Selenium, API reverse engineering) or past projects, making it look like spam or a low-effort bid."
+    },
+    {
+      "item_id": "data_analyst-pp132",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is entirely generic and filled with buzzwords like 'sophisticated,' 'actionable insights,' and 'strategic decision-making.' It contains no concrete evidence, such as specific projects, numbers, or examples of complex models built. It reads like a template that could be sent to any data-related job, failing to demonstrate the specific expertise required for the role."
+    },
+    {
+      "item_id": "fullstack_dev-pp126",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is a generic template with buzzwords like 'deep expertise' and 'cutting-edge' but lacks any concrete evidence, specific projects, or a clear plan. It does not address the specific technical details of the job (e.g., how to handle the podcast plugin's data or WP Bakery integration) and provides no proof of capability."
+    },
+    {
+      "item_id": "data_analyst-pp009",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is generic and lacks specific evidence, projects, or concrete details relevant to the job. It uses buzzwords like 'passionate,' 'cutting-edge,' and 'end-to-end design processes' without providing any proof of expertise or specific experience with similar projects. There is no mention of specific tools beyond a vague reference to PowerBI, no numbers, and no clear plan for the one-hour conversation. It reads like a template and does not demonstrate the expertise needed to inform a client presentation."
+    },
+    {
+      "item_id": "fullstack_dev-pp025",
+      "style": "generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is extremely generic and lacks any specific evidence, concrete examples, or a clear plan. It does not address the specific issues mentioned in the job description (e.g., iHomefinder's slowness, push vs. pull data) and relies on vague claims of 'over a decade of experience' without supporting details. It reads like a template and provides no value to the client."
+    },
+    {
+      "item_id": "data_analyst-pp116",
+      "style": "plain_specific",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is too generic and lacks specific evidence relevant to the job. It mentions a D2C skincare brand, which is not a SaaS, and provides a vague claim about lifting conversion by 0.6 points without concrete details on the GA4/GTM setup. It does not address the specific need for simplifying the existing setup or the SaaS context."
+    },
+    {
+      "item_id": "fullstack_dev-pp041",
+      "style": "strong",
+      "human": 3,
+      "judge": 3,
+      "judge_reason": "The proposal is relevant to the job (Webflow, Colorado landscape, Monarch Landscape reference) but lacks concrete evidence specific to Webflow or landscape design. The cited projects (event ticketing, WordPress membership) are tangential and do not demonstrate Webflow expertise or design capability. The plan is generic (responsive, clean code, efficient assets) with no specific steps, timeline, or portfolio links. It reads like a template with minor customization, lacking the specificity and evidence needed for a 4 or 5."
+    },
+    {
+      "item_id": "fullstack_dev-pp009",
+      "style": "plain_specific",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is extremely brief and lacks specific evidence relevant to the job. It mentions a past project (education membership site) that is not directly related to travel blogging or WordPress design. It does not address the specific request for a responsive WordPress site, the timeline, or the ongoing maintenance partnership. It feels like a generic template with minor customization, lacking concrete details or a clear plan for this specific project."
+    },
+    {
+      "item_id": "ml_engineer-pp089",
+      "style": "strong",
+      "human": 3,
+      "judge": 2,
+      "judge_reason": "The proposal is mostly generic and irrelevant. The cited projects (policy document retrieval, law firm Q&A assistant) have no connection to Twitter API or MATLAB configuration. The plan is vague ('verify keys', 'adjust settings') without addressing the specific 'Forbidden' error, which typically relates to API tier limitations (e.g., Free tier restrictions on read access) or incorrect scope permissions. It lacks concrete evidence of experience with the Twitter API v2 or MATLAB's Datafeed Toolbox."
+    },
+    {
+      "item_id": "fullstack_dev-pp149",
+      "style": "generic",
+      "human": 1,
+      "judge": 1,
+      "judge_reason": "The proposal is a generic template with no specific details, evidence, or plan. It does not address the specific nature of the job (selling a Wix site) and provides no value or concrete steps, making it look like spam or a low-effort copy-paste."
+    },
+    {
+      "item_id": "ml_engineer-pp122",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is generic and lacks specific evidence, concrete details, or a clear plan. It uses buzzwords like 'cutting-edge integration techniques' and 'seamless text-based communication' without addressing the specific requirements of the job (e.g., the specific API, the one-time location link mechanism, or the freight broker context). It does not mention any relevant projects, numbers, or a clear step-by-step approach, making it look like a template. Therefore, it scores low on specificity and evidence."
+    },
+    {
+      "item_id": "ml_engineer-pp055",
+      "style": "polished_generic",
+      "human": 2,
+      "judge": 1,
+      "judge_reason": "The proposal is entirely generic buzzwords with no specific evidence, concrete plan, or acknowledgment of the job's constraints (e.g., no access to accounts, reliance on screenshots). It reads like a template and provides no value."
+    },
+    {
+      "item_id": "data_analyst-pp017",
+      "style": "generic",
+      "human": 2,
+      "judge": 2,
+      "judge_reason": "The proposal is extremely generic and lacks any specific evidence, such as relevant projects, technical details, or a clear plan. It merely restates the job requirements without demonstrating capability or offering concrete solutions, making it look like a template."
+    },
+    {
+      "item_id": "ml_engineer-pp110",
+      "style": "strong",
+      "human": 4,
+      "judge": 3,
+      "judge_reason": "The proposal is relevant and addresses the core requirements (Windows service, API listener, Epson printer, autostart). However, it lacks specific technical evidence. It claims a 'recent project' but provides no concrete details, numbers, or specific technologies (e.g., C#, Python, specific libraries like RawSocket or ESC/POS commands) to prove competence. The plan is high-level and somewhat generic ('replicate this approach'), making it feel like a template rather than a tailored, expert solution. It is better than a generic buzzword dump but lacks the concrete evidence required for a 4 or 5."
+    }
+  ]
+}
