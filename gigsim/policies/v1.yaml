@@ -1,0 +1,31 @@
+# GigSim marketplace policy, version 1.
+# Written by us from the starter kit's illustrative policy pack (no instructor pack was provided).
+# The 2 Nov "platform policy update" becomes v2.yaml; select it with GIGSIM_POLICY=v2.
+version: v1
+effective: "2026-11-01"
+
+connects:
+  weekly_grant: 80             # added at the start of every sim week
+  cost_multiplier: 1.0         # submit cost = job.connects_cost x multiplier (rounded up)
+
+limits:
+  max_submits_per_sim_day: 30
+
+# Checked on proposal submit and on every freelancer message. A match -> 422 with the rule id.
+content_rules:
+  - id: no_contact_details
+    description: No email addresses or phone numbers in proposals or messages.
+    detector: contact_details
+  - id: no_off_platform_payment
+    description: No requests to pay or be paid outside the platform.
+    detector: keywords
+    keywords: [pay outside, outside the platform, outside upwork, off-platform, off platform,
+               paypal me, pay via wise, bank transfer directly, direct payment, crypto payment,
+               western union]
+
+# Rules shown to freelancers via GET /policy, not machine-checked by GigSim.
+guidelines:
+  - Do not propose unpaid production work disguised as a trial.
+  - Never fabricate skills, clients, project outcomes, credentials or years of experience.
+  - Do not guarantee results that cannot be guaranteed.
+  - Respect rate limits and use only approved APIs.

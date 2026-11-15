@@ -1,0 +1,39 @@
+# GigSim configuration. Environment variables override the starred keys (see gigsim/config.py).
+pack: dev                      # * GIGSIM_PACK: dev | live | test (test lives in data/processed)
+policy: v1                     # * GIGSIM_POLICY: file name in gigsim/policies/
+db_path: data/processed/gigsim.sqlite3   # * GIGSIM_DB
+admin_enabled: true            # * GIGSIM_ADMIN (0 disables /admin routes)
+admin_token: dev-admin         # * GIGSIM_ADMIN_TOKEN (set a real secret when deployed)
+
+# Simulated time: sim_now = sim_start + (wall seconds since reset) * speed
+sim_start: "2026-11-01T00:00:00+00:00"
+speed: 24                      # * GIGSIM_SPEED: 24 -> one sim day per wall hour. Deploy the live pack with 1 (30 days of jobs)
+job_open_hours: 168            # a job accepts proposals for 7 sim days after release
+ignored_to_lost_hours: 72      # an ignored proposal is marked lost after this long
+
+# Freelancer accounts: token -> persona. Override in deployment with GIGSIM_ACCOUNTS (JSON).
+accounts:
+  - {token: dev-ml-engineer, freelancer_id: fl-ml-engineer, persona: ml_engineer}
+  - {token: dev-fullstack-dev, freelancer_id: fl-fullstack-dev, persona: fullstack_dev}
+  - {token: dev-data-analyst, freelancer_id: fl-data-analyst, persona: data_analyst}
+
+rate_limit:
+  requests_per_minute: 60
+  submits_per_minute: 5
+
+faults:
+  error_rate: 0.02             # share of requests that get a random 500/503
+  latency_ms: [50, 300]
+  seed: 7
+
+client:
+  mode: heuristic              # * GIGSIM_CLIENT_MODE: heuristic | llm
+  over_ceiling_tolerance: 1.15 # bids above ceiling x this are never answered
+  view_delay_hours: [1, 12]
+  reply_delay_hours: [1, 24]
+  max_freelancer_messages: 4
+  llm:
+    base_url: https://api.groq.com/openai/v1   # any OpenAI-compatible endpoint
+    api_key_env: GROQ_API_KEY
+    model: null                # chosen in build step 5; must differ from GigBid's Writer family
+    temperature: 0
