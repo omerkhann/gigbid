@@ -70,7 +70,8 @@ def build() -> dict:
                 "hourly_rate": None if pd.isna(row.hourly_rate) else float(row.hourly_rate),
                 "source": "real",
             }) + "\n")
-    (OUT_DIR / "stats.json").write_text(json.dumps(stats, indent=2), encoding="utf-8")
+    (OUT_DIR / "stats.json").write_text(json.dumps(stats, indent=2) + "\n", encoding="utf-8",
+                                        newline="\n")
 
     return {"contracts_used": len(df),
             "category_share": df["category"].value_counts(normalize=True).round(3).to_dict(),

@@ -431,7 +431,8 @@ def write_pack(spec: PackSpec, world: World) -> dict:
                     "synthetic": "scams, injections, duplicates, hidden preferences, screening "
                                  "questions, message attacks (pipelines/world_templates.py)"},
     }
-    (spec.out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (spec.out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n",
+                                                encoding="utf-8", newline="\n")
     return manifest
 
 
