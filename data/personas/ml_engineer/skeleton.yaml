@@ -1,0 +1,225 @@
+# SYNTHETIC persona skeleton. Fictional person, clients and projects.
+# Skill names use the exact tags from the Upwork 60k dataset so fit labels can be computed.
+# listed_skills: shown on the public profile. implied_skills: true skills that only show up
+# through project work (named differently or visible only in code) - the RAG traps.
+id: ml_engineer
+name: Hamza Siddiqui
+headline: Machine learning engineer - NLP, LLM apps and production ML pipelines
+location: Lahore, Pakistan
+years_experience: 6
+hourly_rate: 45
+rate_floor_hourly: 30
+min_fixed_budget: 200
+categories: [data_science, development]
+
+listed_skills:
+  - Python
+  - Machine Learning
+  - Deep Learning
+  - Natural Language Processing
+  - Artificial Intelligence
+  - PyTorch
+  - TensorFlow
+  - Python Scikit-Learn
+  - pandas
+  - Data Science
+  - Computer Vision
+  - OpenCV
+  - Chatbot
+  - Chatbot Development
+  - Machine Learning Model
+  - Model Tuning
+  - Model Optimization
+  - Neural Network
+  - Artificial Neural Network
+  - Deep Learning Modeling
+  - Keras
+  - Natural Language Generation
+  - API
+  - API Development
+  - API Integration
+  - Amazon Web Services
+  - Docker
+  - SQL
+  - Data Analysis
+  - Statistics
+  - Data Modeling
+  - Image Processing
+  - Algorithm Development
+  - Python Script
+
+implied_skills:            # used in projects, never listed on the profile
+  - FastAPI                # appears as "a small Python web service"
+  - Celery                 # appears as "a background job queue"
+  - PostgreSQL             # visible only in repo code
+  - Flask
+  - Data Scraping
+  - Web Scraping
+  - Beautiful Soup
+  - Google Cloud Platform
+  - ETL Pipeline
+  - Git
+
+projects:
+  - id: ml-p01
+    title: Support-ticket triage classifier for a SaaS helpdesk
+    year: 2025
+    client_industry: SaaS
+    skills: [Natural Language Processing, Python Scikit-Learn, Machine Learning Model, API Development]
+    implied: [FastAPI]
+    outcome: "Routed 78% of tickets automatically; first-response time down 41%"
+    rating: 5.0
+    traps: [three_descriptions]   # case study + README + past proposal describe it differently
+  - id: ml-p02
+    title: RAG assistant over 4,000 internal policy PDFs
+    year: 2025
+    client_industry: Insurance
+    skills: [Natural Language Processing, Chatbot Development, Python, API Integration]
+    implied: [PostgreSQL, Celery]
+    outcome: "Answered 85% of a 200-question test set correctly with citations"
+    rating: 5.0
+    traps: [code_only:PostgreSQL]
+  - id: ml-p03
+    title: Defect detection on a bottling line
+    year: 2024
+    client_industry: Manufacturing
+    skills: [Computer Vision, OpenCV, PyTorch, Image Processing, Deep Learning]
+    implied: []
+    outcome: "Recall 96% on cracked caps at 30 fps on an edge GPU"
+    rating: 4.9
+    traps: []
+  - id: ml-p04
+    title: Demand forecasting for a grocery chain
+    year: 2024
+    client_industry: Retail
+    skills: [Machine Learning, Statistics, pandas, Data Modeling]
+    implied: [ETL Pipeline]
+    outcome: "MAPE 11% vs 19% for the previous spreadsheet method"
+    rating: 4.8
+    traps: [three_descriptions]
+  - id: ml-p05
+    title: Fine-tuned sentiment model for Urdu-English product reviews
+    year: 2024
+    client_industry: Ecommerce
+    skills: [Natural Language Processing, Deep Learning, PyTorch, Model Tuning]
+    implied: []
+    outcome: "F1 0.88 on code-mixed reviews, up from 0.71 with an off-the-shelf model"
+    rating: 5.0
+    traps: []
+  - id: ml-p06
+    title: Lead-scoring model for a B2B sales team
+    year: 2023
+    client_industry: B2B services
+    skills: [Machine Learning Model, Python Scikit-Learn, Data Analysis, SQL]
+    implied: []
+    outcome: "Top-decile leads converted 3.2x the average"
+    rating: 4.7
+    traps: []
+  - id: ml-p07
+    title: Model-serving API with batch and real-time endpoints
+    year: 2023
+    client_industry: Fintech
+    skills: [API Development, Docker, Amazon Web Services, Python]
+    implied: [FastAPI, Celery]
+    outcome: "p95 latency 120 ms at 50 requests/s"
+    rating: 4.9
+    traps: [implied_named_differently]   # text says "small Python web service" and "background job queue"
+  - id: ml-p08
+    title: Resume parser and job-matching engine
+    year: 2023
+    client_industry: HR tech
+    skills: [Natural Language Processing, Machine Learning, Python, Algorithm Development]
+    implied: [PostgreSQL]
+    outcome: "Recruiters' shortlist time down from 2 hours to 15 minutes per role"
+    rating: 4.8
+    traps: []
+  - id: ml-p09
+    title: Price-monitoring scraper with anomaly alerts
+    year: 2022
+    client_industry: Ecommerce
+    skills: [Python Script, Data Analysis]
+    implied: [Data Scraping, Web Scraping, Beautiful Soup]
+    outcome: "Tracked 12,000 SKUs daily; flagged price errors within an hour"
+    rating: 4.6
+    traps: [implied_named_differently]
+  - id: ml-p10
+    title: Customer churn prediction for a telecom reseller
+    year: 2022
+    client_industry: Telecom
+    skills: [Machine Learning, Python Scikit-Learn, Statistics, Data Science]
+    implied: []
+    outcome: "AUC 0.84; retention campaign cut churn 9% in the targeted group"
+    rating: 4.9
+    traps: []
+  - id: ml-p11
+    title: Handwritten form digitisation (OCR) for a clinic network
+    year: 2022
+    client_industry: Healthcare
+    skills: [Computer Vision, Deep Learning, TensorFlow, Image Processing]
+    implied: [Google Cloud Platform]
+    outcome: "Character accuracy 94% on doctors' handwriting; 3 FTE of data entry removed"
+    rating: 5.0
+    traps: [code_only:Google Cloud Platform]
+  - id: ml-p12
+    title: LLM evaluation harness for a chatbot startup
+    year: 2025
+    client_industry: AI startup
+    skills: [Natural Language Processing, Python, Machine Learning Model]
+    implied: [Git]
+    outcome: "Caught 3 regressions before release; eval run time 40 minutes to 6"
+    rating: 4.9
+    traps: []
+  - id: ml-p13
+    title: Recommendation engine for an online bookstore
+    year: 2021
+    client_industry: Ecommerce
+    skills: [Machine Learning, Data Modeling, Python, SQL]
+    implied: [Flask]
+    outcome: "Click-through on recommendations up 22%"
+    rating: 4.7
+    traps: [outdated]   # 2021, older stack
+  - id: ml-p14
+    title: Speech-to-text pipeline for call-centre QA
+    year: 2024
+    client_industry: BPO
+    skills: [Deep Learning, Natural Language Processing, Python, Amazon Web Services]
+    implied: [ETL Pipeline]
+    outcome: "Transcribed 5,000 calls/day; QA coverage from 2% to 100% of calls"
+    rating: 4.8
+    traps: []
+  - id: ml-p15
+    title: Keras image classifier for plant disease (academic collaboration)
+    year: 2020
+    client_industry: Agriculture research
+    skills: [Keras, Deep Learning, Image Processing, Artificial Neural Network]
+    implied: []
+    outcome: "92% accuracy across 14 diseases; co-authored a workshop paper"
+    rating: null   # unpaid collaboration, no platform review
+    traps: [outdated]
+  - id: ml-p16
+    title: Document Q&A chatbot for a law firm
+    year: 2024
+    client_industry: Legal
+    skills: [Chatbot, Natural Language Processing, API Integration]
+    implied: [PostgreSQL]
+    outcome: "Associates' research time on routine questions down ~30% (client estimate)"
+    rating: 4.6
+    traps: [three_descriptions]
+  - id: ml-p17
+    title: Fraud-detection features for a payments startup
+    year: 2023
+    client_industry: Fintech
+    skills: [Machine Learning, Data Analysis, SQL, Statistics]
+    implied: [ETL Pipeline]
+    outcome: "Chargebacks down 18% with false positives under 1%"
+    rating: 5.0
+    traps: []
+  - id: ml-p18
+    title: Named-entity extraction from shipping invoices
+    year: 2025
+    client_industry: Logistics
+    skills: [Natural Language Processing, Python, Model Optimization]
+    implied: [FastAPI]
+    outcome: "Extraction F1 0.93; manual keying down 70%"
+    rating: 4.9
+    traps: []

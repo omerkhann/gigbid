@@ -1,0 +1,209 @@
+# SYNTHETIC persona skeleton. Fictional person, clients and projects.
+# See data/personas/ml_engineer/skeleton.yaml for field meanings.
+id: fullstack_dev
+name: Sara Malik
+headline: Full-stack developer - React, Next.js and Node/Django back ends
+location: Karachi, Pakistan
+years_experience: 5
+hourly_rate: 35
+rate_floor_hourly: 22
+min_fixed_budget: 150
+categories: [development]
+
+listed_skills:
+  - Web Development
+  - JavaScript
+  - TypeScript
+  - React
+  - Next.js
+  - Node.js
+  - ExpressJS
+  - HTML
+  - HTML5
+  - CSS
+  - CSS 3
+  - Tailwind CSS
+  - Bootstrap
+  - Responsive Design
+  - Front-End Development
+  - Web Application
+  - Website
+  - Landing Page
+  - API
+  - API Development
+  - API Integration
+  - RESTful API
+  - MongoDB
+  - PostgreSQL
+  - MySQL
+  - Database
+  - Database Design
+  - Python
+  - Django
+  - Stripe
+  - User Authentication
+  - Firebase
+  - Amazon Web Services
+  - Docker
+  - Git
+  - Figma
+  - Website Redesign
+  - Ecommerce Website
+
+implied_skills:
+  - React Native            # one project shipped a mobile app; profile never says so
+  - Shopify                 # appears as "a hosted store platform" in one case study
+  - Shopify Apps
+  - WordPress               # legacy work, visible only in an old repo
+  - PHP
+  - Vue.js
+  - Redis
+  - Elementor
+  - Webflow
+  - Ecommerce Platform Development
+
+projects:
+  - id: fs-p01
+    title: Booking platform for a chain of physiotherapy clinics
+    year: 2025
+    client_industry: Healthcare
+    skills: [Next.js, TypeScript, PostgreSQL, Stripe, User Authentication]
+    implied: [Redis]
+    outcome: "18,000 bookings in the first 6 months; no-shows down 27% with reminders"
+    rating: 5.0
+    traps: [three_descriptions]
+  - id: fs-p02
+    title: B2B ordering portal for a textile exporter
+    year: 2024
+    client_industry: Manufacturing
+    skills: [React, Node.js, ExpressJS, MongoDB, RESTful API]
+    implied: []
+    outcome: "Moved 60% of orders off email; order errors down by half"
+    rating: 4.9
+    traps: []
+  - id: fs-p03
+    title: Headless storefront with custom checkout
+    year: 2024
+    client_industry: Ecommerce
+    skills: [Next.js, Ecommerce Website, API Integration, Tailwind CSS]
+    implied: [Shopify, Shopify Apps, Ecommerce Platform Development]
+    outcome: "Mobile conversion up 34%; Lighthouse score 52 to 94"
+    rating: 5.0
+    traps: [implied_named_differently]   # text says "hosted store platform"
+  - id: fs-p04
+    title: Internal admin dashboard for a logistics startup
+    year: 2023
+    client_industry: Logistics
+    skills: [React, TypeScript, Django, PostgreSQL, Docker]
+    implied: []
+    outcome: "Ops team handled 2x shipments with the same headcount"
+    rating: 4.8
+    traps: []
+  - id: fs-p05
+    title: Companion mobile app for a fitness studio
+    year: 2023
+    client_industry: Fitness
+    skills: [JavaScript, Firebase, API Integration]
+    implied: [React Native]
+    outcome: "4.7-star rating on both stores; 3,000 monthly active users"
+    rating: 4.9
+    traps: [code_only:React Native]
+  - id: fs-p06
+    title: Marketing site redesign for an accounting firm
+    year: 2025
+    client_industry: Professional services
+    skills: [Website Redesign, Responsive Design, Next.js, Figma]
+    implied: []
+    outcome: "Contact-form leads up 2.4x in the first quarter"
+    rating: 5.0
+    traps: []
+  - id: fs-p07
+    title: Multi-tenant SaaS starter with billing
+    year: 2024
+    client_industry: SaaS
+    skills: [Next.js, Stripe, PostgreSQL, User Authentication, Amazon Web Services]
+    implied: [Redis]
+    outcome: "Client launched 3 products on it within a year"
+    rating: 4.8
+    traps: [three_descriptions]
+  - id: fs-p08
+    title: Real-time delivery tracking map
+    year: 2023
+    client_industry: Food delivery
+    skills: [React, Node.js, API Integration, MongoDB]
+    implied: []
+    outcome: "Customer 'where is my order' calls down 45%"
+    rating: 4.7
+    traps: []
+  - id: fs-p09
+    title: Legacy WordPress membership site maintenance
+    year: 2020
+    client_industry: Education
+    skills: [Website, CSS]
+    implied: [WordPress, PHP, Elementor]
+    outcome: "Kept 4,000 members' site running through two major upgrades"
+    rating: 4.5
+    traps: [outdated, code_only:PHP]
+  - id: fs-p10
+    title: Event ticketing landing pages
+    year: 2022
+    client_industry: Events
+    skills: [Landing Page, HTML5, CSS 3, JavaScript, Stripe]
+    implied: [Webflow]
+    outcome: "Sold out 3 events; page load under 1 second"
+    rating: 4.9
+    traps: []
+  - id: fs-p11
+    title: REST API and partner integrations for a travel agency
+    year: 2024
+    client_industry: Travel
+    skills: [API Development, Django, PostgreSQL, RESTful API]
+    implied: []
+    outcome: "Connected 5 supplier APIs; quote time from 2 days to 10 minutes"
+    rating: 5.0
+    traps: []
+  - id: fs-p12
+    title: Course platform with video and quizzes
+    year: 2023
+    client_industry: Education
+    skills: [Next.js, MongoDB, Amazon Web Services, User Authentication]
+    implied: []
+    outcome: "1,200 paying students in the first term"
+    rating: 4.8
+    traps: []
+  - id: fs-p13
+    title: Vue to React migration of a property listings site
+    year: 2022
+    client_industry: Real estate
+    skills: [React, JavaScript, Front-End Development]
+    implied: [Vue.js]
+    outcome: "Migrated 140 components with no downtime"
+    rating: 4.7
+    traps: [three_descriptions]
+  - id: fs-p14
+    title: Restaurant ordering web app with kitchen display
+    year: 2025
+    client_industry: Hospitality
+    skills: [Web Application, Node.js, PostgreSQL, Docker]
+    implied: [Redis]
+    outcome: "Order-to-kitchen time under 2 seconds; 4 branches live"
+    rating: 4.9
+    traps: []
+  - id: fs-p15
+    title: Bootstrap admin theme for a non-profit CRM
+    year: 2021
+    client_industry: Non-profit
+    skills: [Bootstrap, HTML, CSS, JavaScript, MySQL]
+    implied: [PHP]
+    outcome: "Volunteer onboarding from 1 week to 1 day"
+    rating: 4.6
+    traps: [outdated]
+  - id: fs-p16
+    title: Stripe subscription and invoicing integration
+    year: 2024
+    client_industry: SaaS
+    skills: [Stripe, API Integration, Node.js, TypeScript]
+    implied: []
+    outcome: "Failed-payment recovery up 31% with dunning emails"
+    rating: 5.0
+    traps: []

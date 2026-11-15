@@ -1,0 +1,600 @@
+{"budget_ceiling": 17.6, "dislikes_generic_opening": true, "job_id": "job-00356b049899", "must_have": [{"implied": true, "skill": "Data Analysis"}, {"implied": false, "skill": "SQL"}, {"implied": false, "skill": "Metabase"}]}
+{"budget_ceiling": 45.57, "dislikes_generic_opening": false, "job_id": "job-0042abd16b45", "must_have": [{"implied": false, "skill": "Microsoft Azure"}]}
+{"budget_ceiling": 49.0, "dislikes_generic_opening": false, "job_id": "job-00c31b6c9e63", "must_have": [{"implied": false, "skill": "Data Entry"}, {"implied": false, "skill": "Lead Generation"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 300.0, "dislikes_generic_opening": true, "job_id": "job-01ac963db4d3", "must_have": [{"implied": true, "skill": "Bootstrap"}, {"implied": false, "skill": "Database"}, {"implied": false, "skill": "React"}]}
+{"budget_ceiling": 71.63, "dislikes_generic_opening": true, "job_id": "job-01c6acb86f4c", "must_have": [{"implied": true, "skill": "Data Interpretation"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 70.65, "dislikes_generic_opening": false, "job_id": "job-01d375f74afa", "must_have": [{"implied": false, "skill": "Artificial Neural Network"}]}
+{"budget_ceiling": 69.39, "dislikes_generic_opening": true, "job_id": "job-01d9aa88dfb6", "must_have": [{"implied": true, "skill": "Python"}, {"implied": false, "skill": "TensorFlow"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 41.38, "dislikes_generic_opening": true, "job_id": "job-01da6ed63f95", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "AngularJS"}]}
+{"budget_ceiling": 47.64, "dislikes_generic_opening": true, "job_id": "job-027e1689bdff", "must_have": [{"implied": false, "skill": "Scrapy"}]}
+{"budget_ceiling": 47.5, "dislikes_generic_opening": false, "job_id": "job-02a9e1095359", "must_have": [{"implied": false, "skill": "Google Cloud Platform"}]}
+{"budget_ceiling": 54.52, "dislikes_generic_opening": true, "job_id": "job-02bfdd09e2f3", "must_have": [{"implied": true, "skill": "Amazon Web Services"}]}
+{"budget_ceiling": 56.38, "dislikes_generic_opening": true, "job_id": "job-037cfc4eeffb", "must_have": [{"implied": false, "skill": "Statistics"}]}
+{"budget_ceiling": 47.74, "dislikes_generic_opening": true, "job_id": "job-04125a79975f", "must_have": [{"implied": true, "skill": "Adobe XD"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 176.04, "dislikes_generic_opening": true, "job_id": "job-0460f8778136", "must_have": [{"implied": false, "skill": "Shopify Templates"}, {"implied": false, "skill": "Shopify Theme"}]}
+{"budget_ceiling": 456.92, "dislikes_generic_opening": true, "job_id": "job-048805fd5275", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 141.99, "dislikes_generic_opening": true, "job_id": "job-0499173b335d", "must_have": [{"implied": false, "skill": "Facebook Ads Manager"}]}
+{"budget_ceiling": 614.36, "dislikes_generic_opening": true, "job_id": "job-058d58965f20", "must_have": [{"implied": false, "skill": "Swift"}]}
+{"budget_ceiling": 191.74, "dislikes_generic_opening": true, "job_id": "job-0710ae7883bb", "must_have": [{"implied": false, "skill": "Elementor"}, {"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 11.73, "dislikes_generic_opening": true, "job_id": "job-07649456bf8d", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": false, "job_id": "job-077151861bd4", "must_have": [{"implied": false, "skill": "Microsoft Power BI Data Visualization"}]}
+{"budget_ceiling": 91.2, "dislikes_generic_opening": true, "job_id": "job-0800caf41535", "must_have": [{"implied": false, "skill": "Elementor"}, {"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 40.72, "dislikes_generic_opening": true, "job_id": "job-08419b11d18a", "must_have": [{"implied": false, "skill": "Automation"}]}
+{"budget_ceiling": 12.77, "dislikes_generic_opening": true, "job_id": "job-08ce7227e1ee", "must_have": [{"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 44.48, "dislikes_generic_opening": true, "job_id": "job-08d4d113bf1f", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 27.09, "dislikes_generic_opening": true, "job_id": "job-08f3ae9b5ad0", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Accuracy Verification"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 37.35, "dislikes_generic_opening": true, "job_id": "job-0a621ff3d2e3", "must_have": [{"implied": false, "skill": "CogCompNLP"}, {"implied": false, "skill": "Chatbot"}]}
+{"budget_ceiling": 3517.84, "dislikes_generic_opening": true, "job_id": "job-0a73e6d0e3b3", "must_have": [{"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 483.4, "dislikes_generic_opening": true, "job_id": "job-0a7af5c63c9c", "must_have": [{"implied": false, "skill": "Online Market Research"}, {"implied": false, "skill": "Market Research"}]}
+{"budget_ceiling": 38.26, "dislikes_generic_opening": false, "job_id": "job-0ada218b2d39", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 64.77, "dislikes_generic_opening": true, "job_id": "job-0b954e1ba14e", "must_have": [{"implied": true, "skill": "Google Sheets"}, {"implied": false, "skill": "Data Visualization"}]}
+{"budget_ceiling": 54.45, "dislikes_generic_opening": true, "job_id": "job-0b957d614ae5", "must_have": [{"implied": false, "skill": "Web Crawling"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-0c209a60aba7", "must_have": [{"implied": true, "skill": "API Development"}, {"implied": false, "skill": "Amazon Web Services"}, {"implied": false, "skill": "Python Scikit-Learn"}]}
+{"budget_ceiling": 25.98, "dislikes_generic_opening": false, "job_id": "job-0db2b55c92a4", "must_have": [{"implied": false, "skill": "Data Mining"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 43.53, "dislikes_generic_opening": true, "job_id": "job-0e4e39903140", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 191.65, "dislikes_generic_opening": true, "job_id": "job-0fa006c260fe", "must_have": [{"implied": false, "skill": "Administrative Support"}]}
+{"budget_ceiling": 275.13, "dislikes_generic_opening": true, "job_id": "job-0faaff66fbae", "must_have": [{"implied": true, "skill": "Zoho CRM"}]}
+{"budget_ceiling": 105.36, "dislikes_generic_opening": false, "job_id": "job-1180dfe675a5", "must_have": [{"implied": true, "skill": "Contact Form 7"}, {"implied": false, "skill": "Mockup"}, {"implied": false, "skill": "Website"}]}
+{"budget_ceiling": 3199.61, "dislikes_generic_opening": true, "job_id": "job-11afcad9a262", "must_have": [{"implied": true, "skill": "Web Design"}]}
+{"budget_ceiling": 25.71, "dislikes_generic_opening": true, "job_id": "job-11c3b060dd8b", "must_have": [{"implied": true, "skill": "MongoDB"}, {"implied": false, "skill": "Angular"}, {"implied": false, "skill": "CI/CD"}]}
+{"budget_ceiling": 927.22, "dislikes_generic_opening": false, "job_id": "job-11eef723a292", "must_have": [{"implied": true, "skill": "web3.js"}, {"implied": false, "skill": "Solidity"}]}
+{"budget_ceiling": 46.39, "dislikes_generic_opening": true, "job_id": "job-12322a49f9c2", "must_have": [{"implied": false, "skill": "CSS 3"}, {"implied": false, "skill": "MySQL Programming"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-129d95133ecd", "must_have": [{"implied": true, "skill": "Report"}, {"implied": false, "skill": "Tableau"}, {"implied": false, "skill": "SQL"}]}
+{"budget_ceiling": 71.08, "dislikes_generic_opening": true, "job_id": "job-137cd49319ac", "must_have": [{"implied": false, "skill": "Amazon DynamoDB"}, {"implied": false, "skill": "IVR Software"}, {"implied": false, "skill": "Salesforce Service Cloud"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-137d59807c38", "must_have": [{"implied": false, "skill": "Neural Network"}, {"implied": false, "skill": "API Development"}, {"implied": false, "skill": "Python Scikit-Learn"}]}
+{"budget_ceiling": 434.52, "dislikes_generic_opening": false, "job_id": "job-13a595ce79ed", "must_have": [{"implied": true, "skill": "3D Animation"}]}
+{"budget_ceiling": 46.24, "dislikes_generic_opening": false, "job_id": "job-13e64b461145", "must_have": [{"implied": false, "skill": "PayPal Integration"}, {"implied": false, "skill": "ClickFunnels"}, {"implied": false, "skill": "PayPal"}]}
+{"budget_ceiling": 31.73, "dislikes_generic_opening": true, "job_id": "job-14acd1ad1d95", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "API"}, {"implied": false, "skill": "Zapier"}]}
+{"budget_ceiling": 530.0, "dislikes_generic_opening": true, "job_id": "job-14ad7bcaa892", "must_have": [{"implied": false, "skill": "3D Drawing"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-14ba355e7011", "must_have": [{"implied": false, "skill": "HTML"}, {"implied": false, "skill": "Django"}]}
+{"budget_ceiling": 9.27, "dislikes_generic_opening": true, "job_id": "job-15743f827788", "must_have": [{"implied": false, "skill": "Plugin Customization"}, {"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "WordPress Plugin"}]}
+{"budget_ceiling": 143.62, "dislikes_generic_opening": false, "job_id": "job-157f48e9b7b6", "must_have": [{"implied": false, "skill": "HTML"}, {"implied": false, "skill": "MySQL"}]}
+{"budget_ceiling": 48.4, "dislikes_generic_opening": true, "job_id": "job-15dfc63bd35f", "must_have": [{"implied": false, "skill": "Web UI"}, {"implied": false, "skill": "Bubble.io"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 50.25, "dislikes_generic_opening": true, "job_id": "job-161db945b335", "must_have": [{"implied": false, "skill": "GPT-3"}]}
+{"budget_ceiling": 48.05, "dislikes_generic_opening": true, "job_id": "job-1637ab0f782b", "must_have": [{"implied": false, "skill": "AngularJS"}, {"implied": false, "skill": "Bootstrap"}, {"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 74.77, "dislikes_generic_opening": true, "job_id": "job-1767db47166a", "must_have": [{"implied": false, "skill": "Screen Recording"}]}
+{"budget_ceiling": 526.3, "dislikes_generic_opening": true, "job_id": "job-17a171d99d69", "must_have": [{"implied": false, "skill": "Construction"}]}
+{"budget_ceiling": 85.9, "dislikes_generic_opening": true, "job_id": "job-17bf7992f241", "must_have": [{"implied": false, "skill": "Deep Learning"}, {"implied": false, "skill": "TensorFlow"}]}
+{"budget_ceiling": 9.81, "dislikes_generic_opening": true, "job_id": "job-17ee78379503", "must_have": [{"implied": false, "skill": "Microsoft Excel"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 614.26, "dislikes_generic_opening": true, "job_id": "job-1815f1d1679e", "must_have": [{"implied": false, "skill": "Public Relations"}]}
+{"budget_ceiling": 39.89, "dislikes_generic_opening": false, "job_id": "job-182a728e08ef", "must_have": [{"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-18a4a5770f97", "must_have": [{"implied": false, "skill": "Image Processing"}, {"implied": false, "skill": "API Development"}]}
+{"budget_ceiling": 61.09, "dislikes_generic_opening": true, "job_id": "job-195056511ef4", "must_have": [{"implied": true, "skill": "Python"}]}
+{"budget_ceiling": 1077.34, "dislikes_generic_opening": true, "job_id": "job-195e5318e83b", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 59.54, "dislikes_generic_opening": false, "job_id": "job-19d3d05dce06", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 51.02, "dislikes_generic_opening": true, "job_id": "job-1a450861c48a", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Landing Page"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 9.27, "dislikes_generic_opening": false, "job_id": "job-1a59f3cd705b", "must_have": [{"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 38.26, "dislikes_generic_opening": true, "job_id": "job-1addc6c8ab8c", "must_have": [{"implied": false, "skill": "Telemarketing"}, {"implied": false, "skill": "Data Entry"}, {"implied": false, "skill": "Cold Calling"}]}
+{"budget_ceiling": 1603.08, "dislikes_generic_opening": true, "job_id": "job-1bffcfd88835", "must_have": [{"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Shopify Apps"}]}
+{"budget_ceiling": 32.07, "dislikes_generic_opening": false, "job_id": "job-1ccd68323590", "must_have": [{"implied": false, "skill": "Flask"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Docker"}]}
+{"budget_ceiling": 23.6, "dislikes_generic_opening": true, "job_id": "job-1dae2251890e", "must_have": [{"implied": true, "skill": "Data Mining"}]}
+{"budget_ceiling": 37.89, "dislikes_generic_opening": true, "job_id": "job-1db763ccdec4", "must_have": [{"implied": false, "skill": "Android App Development"}, {"implied": false, "skill": "iOS"}]}
+{"budget_ceiling": 36214.8, "dislikes_generic_opening": false, "job_id": "job-1f1387c7291a", "must_have": [{"implied": false, "skill": "Deep Learning"}, {"implied": false, "skill": "Artificial Intelligence"}, {"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": 30.36, "dislikes_generic_opening": true, "job_id": "job-20f44813991f", "must_have": [{"implied": true, "skill": "Machine Learning"}]}
+{"budget_ceiling": 3542.5, "dislikes_generic_opening": false, "job_id": "job-212502fd47ee", "must_have": [{"implied": false, "skill": "RF Design"}, {"implied": false, "skill": "Linux"}, {"implied": false, "skill": "5G"}]}
+{"budget_ceiling": 60.87, "dislikes_generic_opening": false, "job_id": "job-22b505dffb9f", "must_have": [{"implied": false, "skill": "Quantitative Analysis"}, {"implied": false, "skill": "Academic Writing"}, {"implied": false, "skill": "Statistics"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": true, "job_id": "job-230db210ce3b", "must_have": [{"implied": false, "skill": "RESTful API"}]}
+{"budget_ceiling": 38.34, "dislikes_generic_opening": true, "job_id": "job-234b2cb93a3e", "must_have": [{"implied": false, "skill": "Office Design"}]}
+{"budget_ceiling": 805.8, "dislikes_generic_opening": false, "job_id": "job-24da7222feb9", "must_have": [{"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 51.09, "dislikes_generic_opening": true, "job_id": "job-2511d52e914e", "must_have": [{"implied": false, "skill": "Automation"}, {"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 465.81, "dislikes_generic_opening": true, "job_id": "job-254c69e8cd01", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Website Builder"}]}
+{"budget_ceiling": 115.71, "dislikes_generic_opening": true, "job_id": "job-25a6d84ba091", "must_have": [{"implied": false, "skill": "NodeJS Framework"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 30.53, "dislikes_generic_opening": true, "job_id": "job-26e95d886ff1", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Django"}]}
+{"budget_ceiling": 1110.08, "dislikes_generic_opening": false, "job_id": "job-27484159f70e", "must_have": [{"implied": false, "skill": "Node.js"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 55.15, "dislikes_generic_opening": true, "job_id": "job-276f63f76290", "must_have": [{"implied": false, "skill": "Google Sheets"}]}
+{"budget_ceiling": 42.09, "dislikes_generic_opening": false, "job_id": "job-27d167db8b63", "must_have": [{"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "Tableau"}, {"implied": false, "skill": "Dashboard"}]}
+{"budget_ceiling": 374.69, "dislikes_generic_opening": true, "job_id": "job-27ef67f494da", "must_have": [{"implied": false, "skill": "API Development"}, {"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 109.95, "dislikes_generic_opening": true, "job_id": "job-281faada12a6", "must_have": [{"implied": true, "skill": "Web Development"}, {"implied": false, "skill": "Prototyping"}, {"implied": false, "skill": "Landing Page"}]}
+{"budget_ceiling": 550.47, "dislikes_generic_opening": false, "job_id": "job-286c2b049064", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 49.53, "dislikes_generic_opening": false, "job_id": "job-29cbe2d76fc7", "must_have": [{"implied": true, "skill": "AWS IoT Core"}]}
+{"budget_ceiling": 7101.05, "dislikes_generic_opening": false, "job_id": "job-2a83f4ed365c", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 70.58, "dislikes_generic_opening": true, "job_id": "job-2a924fc7bc6c", "must_have": [{"implied": false, "skill": "Data Modeling"}]}
+{"budget_ceiling": 85.59, "dislikes_generic_opening": true, "job_id": "job-2ab6e56f78aa", "must_have": [{"implied": false, "skill": "Graphic Design"}, {"implied": false, "skill": "PHP"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 67.99, "dislikes_generic_opening": true, "job_id": "job-2abcc4878bcd", "must_have": [{"implied": false, "skill": "Zendesk"}, {"implied": false, "skill": "Customer Service"}]}
+{"budget_ceiling": 584.16, "dislikes_generic_opening": true, "job_id": "job-2ac000c0c7d6", "must_have": [{"implied": false, "skill": "PHP"}, {"implied": false, "skill": "HTML"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 37.15, "dislikes_generic_opening": true, "job_id": "job-2b2ac585e354", "must_have": [{"implied": false, "skill": "YouTube"}]}
+{"budget_ceiling": 63.22, "dislikes_generic_opening": true, "job_id": "job-2bbd7d31b158", "must_have": [{"implied": true, "skill": "API Integration"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 122.34, "dislikes_generic_opening": true, "job_id": "job-2bd49971bc12", "must_have": [{"implied": true, "skill": "CSS"}, {"implied": false, "skill": "Graphic Design"}, {"implied": false, "skill": "Adobe Photoshop"}]}
+{"budget_ceiling": 60.07, "dislikes_generic_opening": false, "job_id": "job-2d40ef3fcc7b", "must_have": [{"implied": false, "skill": "Database Architecture"}, {"implied": false, "skill": "Linux System Administration"}]}
+{"budget_ceiling": 50.37, "dislikes_generic_opening": true, "job_id": "job-2d82100af344", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 49.33, "dislikes_generic_opening": true, "job_id": "job-2f1bff354b1d", "must_have": [{"implied": false, "skill": "Data Mining"}]}
+{"budget_ceiling": 82.2, "dislikes_generic_opening": true, "job_id": "job-317e8089376a", "must_have": [{"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": false, "job_id": "job-31ab9aefda04", "must_have": [{"implied": false, "skill": "Data Interpretation"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Statistical Analysis"}]}
+{"budget_ceiling": 9.73, "dislikes_generic_opening": false, "job_id": "job-324a330a716f", "must_have": [{"implied": true, "skill": "Retargeting"}, {"implied": false, "skill": "Sales"}]}
+{"budget_ceiling": 802.71, "dislikes_generic_opening": false, "job_id": "job-326b2fcaf6ba", "must_have": [{"implied": false, "skill": "Social Media Lead Generation"}, {"implied": false, "skill": "Retargeting"}]}
+{"budget_ceiling": 99.88, "dislikes_generic_opening": true, "job_id": "job-32e797ad1566", "must_have": [{"implied": false, "skill": "Artificial Intelligence"}, {"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": 38.97, "dislikes_generic_opening": true, "job_id": "job-32e8dab9e2b4", "must_have": [{"implied": false, "skill": "Bot Development"}]}
+{"budget_ceiling": 18.07, "dislikes_generic_opening": true, "job_id": "job-332a9c41ff01", "must_have": [{"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 540.54, "dislikes_generic_opening": true, "job_id": "job-333dd95f6d13", "must_have": [{"implied": false, "skill": "Instagram Marketing"}, {"implied": false, "skill": "Sales"}]}
+{"budget_ceiling": 34.2, "dislikes_generic_opening": true, "job_id": "job-33610f5c2010", "must_have": [{"implied": false, "skill": "WooCommerce"}, {"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Website & CMS Bug Fix"}]}
+{"budget_ceiling": 2560.82, "dislikes_generic_opening": true, "job_id": "job-33bb91fbb239", "must_have": [{"implied": true, "skill": "JavaScript"}, {"implied": false, "skill": "Node.js"}, {"implied": false, "skill": "Firebase"}]}
+{"budget_ceiling": 39.3, "dislikes_generic_opening": false, "job_id": "job-33d28721fbdb", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Amazon Listing Optimization"}, {"implied": false, "skill": "eBay Listing"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-3456dc33a42f", "must_have": [{"implied": false, "skill": "MySQL"}, {"implied": false, "skill": "Marketing Analytics"}]}
+{"budget_ceiling": 40.67, "dislikes_generic_opening": true, "job_id": "job-345707669250", "must_have": [{"implied": false, "skill": "Organizational Development"}, {"implied": false, "skill": "Wave Accounting"}]}
+{"budget_ceiling": 882.41, "dislikes_generic_opening": false, "job_id": "job-3474d1c9b29c", "must_have": [{"implied": true, "skill": "MongoDB"}, {"implied": false, "skill": "React"}, {"implied": false, "skill": "Node.js"}]}
+{"budget_ceiling": 37.21, "dislikes_generic_opening": false, "job_id": "job-347dc69df34d", "must_have": [{"implied": false, "skill": "Unity"}, {"implied": false, "skill": "Game Development"}]}
+{"budget_ceiling": 4.59, "dislikes_generic_opening": true, "job_id": "job-360da3a11e90", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Data Mining"}, {"implied": false, "skill": "LinkedIn"}]}
+{"budget_ceiling": 12.87, "dislikes_generic_opening": false, "job_id": "job-3696047f7412", "must_have": [{"implied": false, "skill": "Outbound Sales"}, {"implied": false, "skill": "Telemarketing"}, {"implied": false, "skill": "Cold Calling"}]}
+{"budget_ceiling": 58.19, "dislikes_generic_opening": true, "job_id": "job-36fa219b9682", "must_have": [{"implied": false, "skill": "Artificial Intelligence"}, {"implied": false, "skill": "C++"}, {"implied": false, "skill": "TensorFlow"}]}
+{"budget_ceiling": 3875.94, "dislikes_generic_opening": false, "job_id": "job-373b30a354fd", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 18.67, "dislikes_generic_opening": true, "job_id": "job-382c22c4ccf6", "must_have": [{"implied": false, "skill": "Android"}, {"implied": false, "skill": "iOS"}]}
+{"budget_ceiling": 65.82, "dislikes_generic_opening": true, "job_id": "job-386cc6e843b7", "must_have": [{"implied": true, "skill": "Neural Network"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 85.9, "dislikes_generic_opening": false, "job_id": "job-388e8232e081", "must_have": [{"implied": true, "skill": "Data Visualization"}, {"implied": false, "skill": "Microsoft Excel"}, {"implied": false, "skill": "Microsoft Word"}]}
+{"budget_ceiling": 36.37, "dislikes_generic_opening": true, "job_id": "job-389ea6871ba2", "must_have": [{"implied": false, "skill": "CAD"}, {"implied": false, "skill": "2D Design"}]}
+{"budget_ceiling": 45.84, "dislikes_generic_opening": true, "job_id": "job-38ac9feaa924", "must_have": [{"implied": true, "skill": "Google Data Studio"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 1630.37, "dislikes_generic_opening": true, "job_id": "job-38b62ff0ba5a", "must_have": [{"implied": false, "skill": "Deep Learning Modeling"}]}
+{"budget_ceiling": 13.12, "dislikes_generic_opening": true, "job_id": "job-38e7a7623755", "must_have": [{"implied": false, "skill": "Graphic Design"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 36.07, "dislikes_generic_opening": true, "job_id": "job-39249c14aab6", "must_have": [{"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 39.5, "dislikes_generic_opening": false, "job_id": "job-39fb3b83d459", "must_have": [{"implied": false, "skill": "Communications"}, {"implied": false, "skill": "Virtual Assistant"}, {"implied": false, "skill": "Phone Communication"}]}
+{"budget_ceiling": 176.96, "dislikes_generic_opening": true, "job_id": "job-3a2963d18b9e", "must_have": [{"implied": false, "skill": "Wireless Communication"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 84.6, "dislikes_generic_opening": true, "job_id": "job-3a6e82b796c3", "must_have": [{"implied": false, "skill": "Microsoft SQL Server"}]}
+{"budget_ceiling": 56.89, "dislikes_generic_opening": true, "job_id": "job-3a818f3cd8ad", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "HTML"}, {"implied": false, "skill": "HTML5"}]}
+{"budget_ceiling": 21.33, "dislikes_generic_opening": true, "job_id": "job-3aae86d3b7c0", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 42.06, "dislikes_generic_opening": true, "job_id": "job-3aca167ef674", "must_have": [{"implied": false, "skill": "Qt Framework"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 43.17, "dislikes_generic_opening": true, "job_id": "job-3ae221b9e4b6", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-3ae616eafdca", "must_have": [{"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 46.23, "dislikes_generic_opening": false, "job_id": "job-3aeb54d3f77d", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 37.72, "dislikes_generic_opening": true, "job_id": "job-3b27e296df83", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "SOAP"}]}
+{"budget_ceiling": 55.46, "dislikes_generic_opening": true, "job_id": "job-3bac8d7f2c9e", "must_have": [{"implied": false, "skill": "Microsoft Power BI"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 234.63, "dislikes_generic_opening": true, "job_id": "job-3c6857d5f5b2", "must_have": [{"implied": false, "skill": "Content Writing"}, {"implied": false, "skill": "YouTube Marketing"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-3cc0835b3978", "must_have": [{"implied": false, "skill": "Data Cleansing"}, {"implied": false, "skill": "Presentations"}]}
+{"budget_ceiling": 82.71, "dislikes_generic_opening": false, "job_id": "job-3cd201c8779c", "must_have": [{"implied": true, "skill": "Artificial Neural Network"}, {"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-3cd54613c73c", "must_have": [{"implied": false, "skill": "CSS 3"}, {"implied": false, "skill": "HTML"}, {"implied": false, "skill": "Website"}]}
+{"budget_ceiling": 106.24, "dislikes_generic_opening": true, "job_id": "job-3d1c52cffedf", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 1364.78, "dislikes_generic_opening": true, "job_id": "job-3d2d7edbe5f8", "must_have": [{"implied": true, "skill": "Shopify"}]}
+{"budget_ceiling": 119.59, "dislikes_generic_opening": true, "job_id": "job-3e522d9c978d", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Node.js"}]}
+{"budget_ceiling": 86.54, "dislikes_generic_opening": true, "job_id": "job-3e8039176339", "must_have": [{"implied": false, "skill": "Google Analytics"}]}
+{"budget_ceiling": 258.95, "dislikes_generic_opening": false, "job_id": "job-3ebd01ec20c4", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 46.53, "dislikes_generic_opening": true, "job_id": "job-3eed9a9de081", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 370.94, "dislikes_generic_opening": false, "job_id": "job-3f47c2e71b2a", "must_have": [{"implied": false, "skill": "Figma"}, {"implied": false, "skill": "CSS"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 55.02, "dislikes_generic_opening": true, "job_id": "job-3f84edc3b862", "must_have": [{"implied": false, "skill": "Amazon Web Services"}, {"implied": false, "skill": "HTTP"}]}
+{"budget_ceiling": 43.96, "dislikes_generic_opening": true, "job_id": "job-3f8552866028", "must_have": [{"implied": false, "skill": "Ruby"}]}
+{"budget_ceiling": 21.3, "dislikes_generic_opening": true, "job_id": "job-403d22c533cd", "must_have": [{"implied": false, "skill": "Conversion Rate Optimization"}, {"implied": false, "skill": "Google Tag Manager"}, {"implied": false, "skill": "Google Analytics"}]}
+{"budget_ceiling": 14.13, "dislikes_generic_opening": true, "job_id": "job-415324cf1fab", "must_have": [{"implied": false, "skill": "C++"}]}
+{"budget_ceiling": 41.07, "dislikes_generic_opening": true, "job_id": "job-4170131be2b4", "must_have": [{"implied": false, "skill": "Data Analysis"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 63.27, "dislikes_generic_opening": true, "job_id": "job-418ba017724a", "must_have": [{"implied": false, "skill": "Unity"}, {"implied": false, "skill": "Game Development"}]}
+{"budget_ceiling": 220.41, "dislikes_generic_opening": true, "job_id": "job-420e2c8c791f", "must_have": [{"implied": false, "skill": "Instagram"}, {"implied": false, "skill": "Facebook"}]}
+{"budget_ceiling": 6.73, "dislikes_generic_opening": true, "job_id": "job-4286bbe323a4", "must_have": [{"implied": false, "skill": "Microsoft Excel"}, {"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-42a2e8a99f30", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "PyTorch"}, {"implied": false, "skill": "Neural Network"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-42b7699398cd", "must_have": [{"implied": false, "skill": "Google Sheets"}, {"implied": false, "skill": "ETL"}, {"implied": false, "skill": "Tableau"}]}
+{"budget_ceiling": 38.27, "dislikes_generic_opening": false, "job_id": "job-430c2a1e79ee", "must_have": [{"implied": false, "skill": "Front-End Development"}, {"implied": false, "skill": "Back-End Development"}, {"implied": false, "skill": "RESTful Architecture"}]}
+{"budget_ceiling": 37.35, "dislikes_generic_opening": false, "job_id": "job-43a44d946ef3", "must_have": [{"implied": false, "skill": "pandas"}, {"implied": false, "skill": "PostgreSQL"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 476.05, "dislikes_generic_opening": true, "job_id": "job-43eed4a87bde", "must_have": [{"implied": false, "skill": "Quantitative Analysis"}, {"implied": false, "skill": "IBM SPSS"}, {"implied": false, "skill": "Statistical Analysis"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": false, "job_id": "job-44608330f500", "must_have": [{"implied": false, "skill": "Deep Learning Modeling"}]}
+{"budget_ceiling": 36.6, "dislikes_generic_opening": true, "job_id": "job-44a7ccfa97dd", "must_have": [{"implied": false, "skill": "Model Tuning"}]}
+{"budget_ceiling": 121.33, "dislikes_generic_opening": true, "job_id": "job-44f843cace49", "must_have": [{"implied": false, "skill": "Data Entry"}]}
+{"budget_ceiling": 21.21, "dislikes_generic_opening": false, "job_id": "job-4501f51f5bbd", "must_have": [{"implied": false, "skill": "Web Scraping"}]}
+{"budget_ceiling": 33.31, "dislikes_generic_opening": true, "job_id": "job-46fe465ef6f5", "must_have": [{"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": 120.38, "dislikes_generic_opening": true, "job_id": "job-470b2a78f715", "must_have": [{"implied": true, "skill": "Business Intelligence"}, {"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 83.21, "dislikes_generic_opening": true, "job_id": "job-4732033b2207", "must_have": [{"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 21.06, "dislikes_generic_opening": true, "job_id": "job-4766069a25db", "must_have": [{"implied": false, "skill": "Lead Generation"}, {"implied": false, "skill": "Campaign Management"}]}
+{"budget_ceiling": 155.02, "dislikes_generic_opening": false, "job_id": "job-477ef97feb02", "must_have": [{"implied": false, "skill": "Amazon Web Services"}]}
+{"budget_ceiling": 32.95, "dislikes_generic_opening": false, "job_id": "job-48ab12777f92", "must_have": [{"implied": false, "skill": "Statistics"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 11.64, "dislikes_generic_opening": true, "job_id": "job-48dd314e9189", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 18.21, "dislikes_generic_opening": true, "job_id": "job-4a467ce9e47a", "must_have": [{"implied": true, "skill": "Python"}, {"implied": false, "skill": "Apache Spark"}]}
+{"budget_ceiling": 20.93, "dislikes_generic_opening": true, "job_id": "job-4b4595a06803", "must_have": [{"implied": false, "skill": "Webflow"}]}
+{"budget_ceiling": 561.74, "dislikes_generic_opening": true, "job_id": "job-4bce462b17d9", "must_have": [{"implied": true, "skill": "PHP Script"}, {"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 34.79, "dislikes_generic_opening": true, "job_id": "job-4c2e75568444", "must_have": [{"implied": false, "skill": "JSON"}, {"implied": false, "skill": "Java"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 614.49, "dislikes_generic_opening": true, "job_id": "job-4c75f33322c1", "must_have": [{"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-4c7c266f3ce0", "must_have": [{"implied": false, "skill": "Neural Network"}, {"implied": false, "skill": "Keras"}]}
+{"budget_ceiling": 13.89, "dislikes_generic_opening": true, "job_id": "job-4d1f67f7741e", "must_have": [{"implied": false, "skill": "Communications"}]}
+{"budget_ceiling": 31.96, "dislikes_generic_opening": true, "job_id": "job-4e3de2b15657", "must_have": [{"implied": false, "skill": "Media Buying"}]}
+{"budget_ceiling": 48.83, "dislikes_generic_opening": false, "job_id": "job-4e68d9d71e33", "must_have": [{"implied": true, "skill": "Data Mining"}, {"implied": false, "skill": "Google Docs"}]}
+{"budget_ceiling": 103.7, "dislikes_generic_opening": true, "job_id": "job-4ec1911e9554", "must_have": [{"implied": false, "skill": "Python Script"}, {"implied": false, "skill": "Beautiful Soup"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 2096.79, "dislikes_generic_opening": true, "job_id": "job-4ee2d872b171", "must_have": [{"implied": false, "skill": "MySQL Programming"}]}
+{"budget_ceiling": 12.66, "dislikes_generic_opening": true, "job_id": "job-4ef2ed0e800a", "must_have": [{"implied": true, "skill": "SEO Performance"}]}
+{"budget_ceiling": 4.98, "dislikes_generic_opening": false, "job_id": "job-4f670008668e", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 41.84, "dislikes_generic_opening": true, "job_id": "job-4fc6f7a813c8", "must_have": [{"implied": true, "skill": "Android App Development"}]}
+{"budget_ceiling": 98.06, "dislikes_generic_opening": true, "job_id": "job-50250bc649ee", "must_have": [{"implied": false, "skill": "Magento 2"}, {"implied": false, "skill": "PHP"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 300.0, "dislikes_generic_opening": true, "job_id": "job-51138ebb440f", "must_have": [{"implied": false, "skill": "Responsive Design"}]}
+{"budget_ceiling": 46.89, "dislikes_generic_opening": true, "job_id": "job-513e0cfb348b", "must_have": [{"implied": false, "skill": "Data Analysis"}, {"implied": false, "skill": "Market Analysis"}]}
+{"budget_ceiling": 254.24, "dislikes_generic_opening": true, "job_id": "job-51497d2a7c00", "must_have": [{"implied": false, "skill": "Google Cloud Platform"}, {"implied": false, "skill": "ETL Pipeline"}]}
+{"budget_ceiling": 296.9, "dislikes_generic_opening": true, "job_id": "job-5172e27fc83d", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Google Sheets"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": true, "job_id": "job-51dc3c3bc06b", "must_have": [{"implied": false, "skill": "Data Interpretation"}, {"implied": false, "skill": "Analytics"}]}
+{"budget_ceiling": 19.02, "dislikes_generic_opening": true, "job_id": "job-52165e821c18", "must_have": [{"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Data Science Consultation"}]}
+{"budget_ceiling": 21.22, "dislikes_generic_opening": true, "job_id": "job-5250736b3058", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 51.91, "dislikes_generic_opening": false, "job_id": "job-525b7269bdea", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "Angular"}]}
+{"budget_ceiling": 36.56, "dislikes_generic_opening": false, "job_id": "job-525b944d8390", "must_have": [{"implied": false, "skill": "Copywriting"}, {"implied": false, "skill": "Ad Copy"}]}
+{"budget_ceiling": 33.91, "dislikes_generic_opening": true, "job_id": "job-526a6529338e", "must_have": [{"implied": true, "skill": "Web Design"}]}
+{"budget_ceiling": 55.08, "dislikes_generic_opening": true, "job_id": "job-52d77a870f80", "must_have": [{"implied": false, "skill": "Redis"}]}
+{"budget_ceiling": 31.12, "dislikes_generic_opening": true, "job_id": "job-52f73e9b7231", "must_have": [{"implied": false, "skill": "Bot Development"}, {"implied": false, "skill": "Chatbot Development"}]}
+{"budget_ceiling": 58.68, "dislikes_generic_opening": true, "job_id": "job-53017e556849", "must_have": [{"implied": false, "skill": "R"}, {"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": 40.36, "dislikes_generic_opening": true, "job_id": "job-5362785b2973", "must_have": [{"implied": true, "skill": "Unity"}, {"implied": false, "skill": "Mobile Game"}]}
+{"budget_ceiling": 58.47, "dislikes_generic_opening": true, "job_id": "job-5398abc0a692", "must_have": [{"implied": false, "skill": "Google Ads"}]}
+{"budget_ceiling": 10.91, "dislikes_generic_opening": true, "job_id": "job-53d5e8615e34", "must_have": [{"implied": false, "skill": "Python Script"}]}
+{"budget_ceiling": 32.12, "dislikes_generic_opening": false, "job_id": "job-5408cea68cff", "must_have": [{"implied": false, "skill": "Android"}, {"implied": false, "skill": "User Authentication"}, {"implied": false, "skill": "SQLite"}]}
+{"budget_ceiling": 46.07, "dislikes_generic_opening": true, "job_id": "job-5419229b0594", "must_have": [{"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 313.37, "dislikes_generic_opening": true, "job_id": "job-544916554845", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Researcher"}, {"implied": false, "skill": "Google Maps API"}]}
+{"budget_ceiling": 3.88, "dislikes_generic_opening": true, "job_id": "job-5459e38fdddb", "must_have": [{"implied": true, "skill": "Front-End Development"}, {"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 74.52, "dislikes_generic_opening": true, "job_id": "job-54bb7b91f172", "must_have": [{"implied": true, "skill": "Data Modeling"}, {"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-54c813b8b489", "must_have": [{"implied": false, "skill": "HTML"}, {"implied": false, "skill": "Next.js"}, {"implied": false, "skill": "Django"}]}
+{"budget_ceiling": 42.95, "dislikes_generic_opening": false, "job_id": "job-557196a346d4", "must_have": [{"implied": false, "skill": "Data Science"}, {"implied": false, "skill": "Digital Signal Processing"}]}
+{"budget_ceiling": 11.43, "dislikes_generic_opening": true, "job_id": "job-55efbf23936e", "must_have": [{"implied": true, "skill": "R"}, {"implied": false, "skill": "ETL Pipeline"}]}
+{"budget_ceiling": 317.9, "dislikes_generic_opening": false, "job_id": "job-561cc32b4632", "must_have": [{"implied": true, "skill": "RESTful API"}, {"implied": false, "skill": "SOAP"}, {"implied": false, "skill": "ServiceNow"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-56de813ebf19", "must_have": [{"implied": false, "skill": "Computer Vision"}]}
+{"budget_ceiling": 39.75, "dislikes_generic_opening": true, "job_id": "job-579190017536", "must_have": [{"implied": false, "skill": "SQL"}]}
+{"budget_ceiling": 52.44, "dislikes_generic_opening": true, "job_id": "job-58f1c33565ca", "must_have": [{"implied": true, "skill": "Bot Development"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 57.77, "dislikes_generic_opening": true, "job_id": "job-592d1b878719", "must_have": [{"implied": true, "skill": "Python"}]}
+{"budget_ceiling": 18.77, "dislikes_generic_opening": true, "job_id": "job-5949a896b3f2", "must_have": [{"implied": false, "skill": "SSL"}]}
+{"budget_ceiling": 65.51, "dislikes_generic_opening": true, "job_id": "job-59e163611d4a", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Microsoft Power BI Data Visualization"}]}
+{"budget_ceiling": 2821.02, "dislikes_generic_opening": true, "job_id": "job-5a4d171730ad", "must_have": [{"implied": false, "skill": "Product Design"}]}
+{"budget_ceiling": 36.98, "dislikes_generic_opening": true, "job_id": "job-5aedb97cf1b7", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Researcher"}, {"implied": false, "skill": "Prospect List"}]}
+{"budget_ceiling": 30.56, "dislikes_generic_opening": false, "job_id": "job-5b2fd92a6ab4", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "React"}]}
+{"budget_ceiling": 15.85, "dislikes_generic_opening": true, "job_id": "job-5b8558757099", "must_have": [{"implied": false, "skill": "R Shiny"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 26.1, "dislikes_generic_opening": true, "job_id": "job-5b8bec3b4441", "must_have": [{"implied": true, "skill": "iOS"}, {"implied": false, "skill": "React Native"}]}
+{"budget_ceiling": 8.61, "dislikes_generic_opening": true, "job_id": "job-5bca9722dcb8", "must_have": [{"implied": true, "skill": "Scrapy"}, {"implied": false, "skill": "Data Mining"}]}
+{"budget_ceiling": 40.62, "dislikes_generic_opening": true, "job_id": "job-5d12b1dd643e", "must_have": [{"implied": true, "skill": "Python"}, {"implied": false, "skill": "Data Mining"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 14.12, "dislikes_generic_opening": true, "job_id": "job-5dcf5e7fb704", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Python Script"}]}
+{"budget_ceiling": 200.51, "dislikes_generic_opening": true, "job_id": "job-5dd11bfc7df3", "must_have": [{"implied": true, "skill": "Data Analysis"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 15.46, "dislikes_generic_opening": true, "job_id": "job-5e15634be467", "must_have": [{"implied": false, "skill": "Ubuntu"}, {"implied": false, "skill": "Linux System Administration"}]}
+{"budget_ceiling": 38.56, "dislikes_generic_opening": true, "job_id": "job-5e18b8ab43f0", "must_have": [{"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 62.03, "dislikes_generic_opening": true, "job_id": "job-5ea725e4e7db", "must_have": [{"implied": true, "skill": "Statistical Analysis"}]}
+{"budget_ceiling": 42.56, "dislikes_generic_opening": true, "job_id": "job-60f080900e98", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "Tailwind CSS"}]}
+{"budget_ceiling": 72.91, "dislikes_generic_opening": true, "job_id": "job-6186f995f32c", "must_have": [{"implied": false, "skill": "Google Data Studio"}, {"implied": false, "skill": "Pixel Setup & Optimization"}]}
+{"budget_ceiling": 16.44, "dislikes_generic_opening": true, "job_id": "job-61ea1c3c9a1f", "must_have": [{"implied": false, "skill": "Node.js"}]}
+{"budget_ceiling": 42.7, "dislikes_generic_opening": true, "job_id": "job-6230ac916dc8", "must_have": [{"implied": false, "skill": "Marketing Analytics"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 916.45, "dislikes_generic_opening": true, "job_id": "job-626e2fbb5c20", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 20.99, "dislikes_generic_opening": true, "job_id": "job-627710579b15", "must_have": [{"implied": true, "skill": "Proofreading"}, {"implied": false, "skill": "Content Writing"}, {"implied": false, "skill": "Copywriting"}]}
+{"budget_ceiling": 9.58, "dislikes_generic_opening": true, "job_id": "job-62ac3445b50f", "must_have": [{"implied": false, "skill": "Analytics"}, {"implied": false, "skill": "Hypothesis Testing"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 12.41, "dislikes_generic_opening": true, "job_id": "job-62b85e692caa", "must_have": [{"implied": false, "skill": "Java"}, {"implied": false, "skill": "iOS"}, {"implied": false, "skill": "Android"}]}
+{"budget_ceiling": 75.78, "dislikes_generic_opening": true, "job_id": "job-6353e12de0f0", "must_have": [{"implied": false, "skill": "Microsoft Excel"}, {"implied": false, "skill": "Spreadsheet Software"}]}
+{"budget_ceiling": 51.36, "dislikes_generic_opening": true, "job_id": "job-63ac940fe044", "must_have": [{"implied": false, "skill": "Amazon Web Services"}]}
+{"budget_ceiling": 256.84, "dislikes_generic_opening": true, "job_id": "job-63b6b6f616ac", "must_have": [{"implied": false, "skill": "SEO Audit"}]}
+{"budget_ceiling": 113.67, "dislikes_generic_opening": true, "job_id": "job-63c7ed94f88c", "must_have": [{"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": 300.0, "dislikes_generic_opening": true, "job_id": "job-63f6ae8bd40a", "must_have": [{"implied": false, "skill": "Data Modeling"}, {"implied": false, "skill": "Statistics"}, {"implied": false, "skill": "Quantitative Analysis"}]}
+{"budget_ceiling": 434.56, "dislikes_generic_opening": false, "job_id": "job-64046db4c77c", "must_have": [{"implied": true, "skill": "Organic Traffic Growth"}, {"implied": false, "skill": "Search Engine Optimization"}, {"implied": false, "skill": "SEO Audit"}]}
+{"budget_ceiling": 31.95, "dislikes_generic_opening": true, "job_id": "job-64537f23dd2c", "must_have": [{"implied": true, "skill": "Search Engine Optimization"}, {"implied": false, "skill": "Google Tag Manager"}, {"implied": false, "skill": "Analytics"}]}
+{"budget_ceiling": 58.8, "dislikes_generic_opening": true, "job_id": "job-647f32d6faf5", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "WordPress Development"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 67.9, "dislikes_generic_opening": false, "job_id": "job-64e42cd20116", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 41.78, "dislikes_generic_opening": true, "job_id": "job-64f1a998f36b", "must_have": [{"implied": true, "skill": "JavaScript"}, {"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 123.7, "dislikes_generic_opening": false, "job_id": "job-6549724f8c88", "must_have": [{"implied": false, "skill": "GPS"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-6582b2f9cd6d", "must_have": [{"implied": true, "skill": "Microsoft Power BI"}, {"implied": false, "skill": "Analytics"}]}
+{"budget_ceiling": 67.62, "dislikes_generic_opening": true, "job_id": "job-658b6fd7f155", "must_have": [{"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 13263.64, "dislikes_generic_opening": true, "job_id": "job-66ac3f0e6e61", "must_have": [{"implied": false, "skill": "Java"}, {"implied": false, "skill": "HTML"}, {"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 11.01, "dislikes_generic_opening": false, "job_id": "job-67702f242679", "must_have": [{"implied": false, "skill": "Natural Language Processing"}]}
+{"budget_ceiling": 4.68, "dislikes_generic_opening": true, "job_id": "job-68a8cb343141", "must_have": [{"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 33.64, "dislikes_generic_opening": true, "job_id": "job-68f069fa95ce", "must_have": [{"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 65.23, "dislikes_generic_opening": true, "job_id": "job-68fe1e3fb4fc", "must_have": [{"implied": false, "skill": "Algorithm Development"}]}
+{"budget_ceiling": 1273.09, "dislikes_generic_opening": true, "job_id": "job-690b20512783", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 33.74, "dislikes_generic_opening": true, "job_id": "job-6a485688a63a", "must_have": [{"implied": false, "skill": "Google Analytics"}, {"implied": false, "skill": "Pay Per Click Advertising"}, {"implied": false, "skill": "Campaign Optimization"}]}
+{"budget_ceiling": 15.49, "dislikes_generic_opening": true, "job_id": "job-6a65090d4a37", "must_have": [{"implied": false, "skill": "API"}]}
+{"budget_ceiling": 16719.67, "dislikes_generic_opening": true, "job_id": "job-6aa5241f1f5c", "must_have": [{"implied": false, "skill": "Node.js"}, {"implied": false, "skill": "React"}]}
+{"budget_ceiling": 11098.52, "dislikes_generic_opening": true, "job_id": "job-6b6a09496939", "must_have": [{"implied": false, "skill": "Sales Call"}, {"implied": false, "skill": "Contract Negotiation"}, {"implied": false, "skill": "Search Engine Optimization"}]}
+{"budget_ceiling": 23.97, "dislikes_generic_opening": true, "job_id": "job-6b7741f1063e", "must_have": [{"implied": false, "skill": "Objective-C"}, {"implied": false, "skill": "iOS"}]}
+{"budget_ceiling": 21.12, "dislikes_generic_opening": true, "job_id": "job-6b85941fc38f", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 35.85, "dislikes_generic_opening": true, "job_id": "job-6ba78e539884", "must_have": [{"implied": true, "skill": "Dashboard"}]}
+{"budget_ceiling": 66.89, "dislikes_generic_opening": true, "job_id": "job-6bbadcf5c779", "must_have": [{"implied": false, "skill": "Natural Language Processing"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 9.13, "dislikes_generic_opening": true, "job_id": "job-6c0c8c083c81", "must_have": [{"implied": false, "skill": "SQL"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 3.48, "dislikes_generic_opening": false, "job_id": "job-6c26ba391528", "must_have": [{"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Linux"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 578.58, "dislikes_generic_opening": true, "job_id": "job-6c8ae44159a0", "must_have": [{"implied": true, "skill": "VoIP Software"}, {"implied": false, "skill": "FreePBX"}, {"implied": false, "skill": "FreeSWITCH"}]}
+{"budget_ceiling": 13.67, "dislikes_generic_opening": true, "job_id": "job-6cbe541af3da", "must_have": [{"implied": false, "skill": "Adobe XD"}, {"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Mockup"}]}
+{"budget_ceiling": 150.77, "dislikes_generic_opening": false, "job_id": "job-6d47a70c2eb9", "must_have": [{"implied": true, "skill": "Big Data"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 74.86, "dislikes_generic_opening": true, "job_id": "job-6d989bb17826", "must_have": [{"implied": false, "skill": "Website"}, {"implied": false, "skill": "Webflow"}]}
+{"budget_ceiling": 113.58, "dislikes_generic_opening": true, "job_id": "job-6db8f433caa3", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "HTML"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 171.63, "dislikes_generic_opening": true, "job_id": "job-6e74d987bf70", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 79.05, "dislikes_generic_opening": true, "job_id": "job-6e7ae74e6578", "must_have": [{"implied": false, "skill": "Node.js"}, {"implied": false, "skill": "Java"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 51.3, "dislikes_generic_opening": true, "job_id": "job-6ec4bf67d48d", "must_have": [{"implied": false, "skill": "AI Content Creation"}, {"implied": false, "skill": "TensorFlow"}]}
+{"budget_ceiling": 87.72, "dislikes_generic_opening": true, "job_id": "job-6f0b294087a9", "must_have": [{"implied": false, "skill": "Firebase"}, {"implied": false, "skill": "MySQL"}, {"implied": false, "skill": "Chat & Messaging Software"}]}
+{"budget_ceiling": 5.41, "dislikes_generic_opening": true, "job_id": "job-70a718b90ebb", "must_have": [{"implied": false, "skill": "Facebook"}, {"implied": false, "skill": "YouTube"}]}
+{"budget_ceiling": 63.52, "dislikes_generic_opening": true, "job_id": "job-7171f16c0843", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 47.55, "dislikes_generic_opening": true, "job_id": "job-72792710d55e", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": 61.27, "dislikes_generic_opening": true, "job_id": "job-73be7c252492", "must_have": [{"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 80.09, "dislikes_generic_opening": true, "job_id": "job-7459535447be", "must_have": [{"implied": true, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 544.98, "dislikes_generic_opening": true, "job_id": "job-74bebadeddbc", "must_have": [{"implied": false, "skill": "API"}]}
+{"budget_ceiling": 7.52, "dislikes_generic_opening": true, "job_id": "job-752ca16e080d", "must_have": [{"implied": true, "skill": "Direct Marketing"}, {"implied": false, "skill": "Content Marketing"}]}
+{"budget_ceiling": 45.77, "dislikes_generic_opening": true, "job_id": "job-75ac88e2c37f", "must_have": [{"implied": false, "skill": "Dashboard"}, {"implied": false, "skill": "Business Intelligence"}, {"implied": false, "skill": "Data Interpretation"}]}
+{"budget_ceiling": 58.75, "dislikes_generic_opening": true, "job_id": "job-75f67047851d", "must_have": [{"implied": true, "skill": "AWS Lambda"}]}
+{"budget_ceiling": 20.11, "dislikes_generic_opening": true, "job_id": "job-775cfaff9179", "must_have": [{"implied": false, "skill": "User Authentication"}, {"implied": false, "skill": "Swift"}]}
+{"budget_ceiling": 84.79, "dislikes_generic_opening": true, "job_id": "job-7767bd548ebb", "must_have": [{"implied": false, "skill": "Responsive Design"}, {"implied": false, "skill": "Data Science"}, {"implied": false, "skill": "Writing"}]}
+{"budget_ceiling": 24.7, "dislikes_generic_opening": true, "job_id": "job-77fb536d4005", "must_have": [{"implied": false, "skill": "Social Media Management"}]}
+{"budget_ceiling": 61.84, "dislikes_generic_opening": true, "job_id": "job-7846b3cdd5c1", "must_have": [{"implied": false, "skill": "Firebase"}, {"implied": false, "skill": "Google Cloud Platform"}]}
+{"budget_ceiling": 576.31, "dislikes_generic_opening": true, "job_id": "job-78d1f43d8e53", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 12.89, "dislikes_generic_opening": false, "job_id": "job-78d46e5bf358", "must_have": [{"implied": false, "skill": "phpMyAdmin"}, {"implied": false, "skill": "Database Administration"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 42.58, "dislikes_generic_opening": false, "job_id": "job-78da78312443", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 64.27, "dislikes_generic_opening": true, "job_id": "job-7921a03172fe", "must_have": [{"implied": false, "skill": "Data Extraction"}, {"implied": false, "skill": "R"}]}
+{"budget_ceiling": 112.68, "dislikes_generic_opening": true, "job_id": "job-792955d286d3", "must_have": [{"implied": false, "skill": "Big Data"}]}
+{"budget_ceiling": 87.53, "dislikes_generic_opening": false, "job_id": "job-7933741cc26f", "must_have": [{"implied": false, "skill": "Chatbot Development"}]}
+{"budget_ceiling": 3163.58, "dislikes_generic_opening": true, "job_id": "job-79f2e4fdf5fe", "must_have": [{"implied": true, "skill": "API Integration"}]}
+{"budget_ceiling": 47.52, "dislikes_generic_opening": true, "job_id": "job-79f7a2b92306", "must_have": [{"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "SQL"}, {"implied": false, "skill": "Business Intelligence"}]}
+{"budget_ceiling": 65.2, "dislikes_generic_opening": true, "job_id": "job-7a6e211af350", "must_have": [{"implied": true, "skill": "Data Interpretation"}, {"implied": false, "skill": "Data Extraction"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-7aadb43e0b5a", "must_have": [{"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 12.55, "dislikes_generic_opening": true, "job_id": "job-7b95eb972f33", "must_have": [{"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 1718.74, "dislikes_generic_opening": true, "job_id": "job-7bda2ba0d8c4", "must_have": [{"implied": false, "skill": "Model Optimization"}, {"implied": false, "skill": "Deep Learning Modeling"}]}
+{"budget_ceiling": 88.5, "dislikes_generic_opening": true, "job_id": "job-7c06e12bf17c", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Computer Vision"}]}
+{"budget_ceiling": 37.96, "dislikes_generic_opening": true, "job_id": "job-7c1e66257dea", "must_have": [{"implied": true, "skill": "Business Intelligence"}, {"implied": false, "skill": "Microsoft Power BI Development"}, {"implied": false, "skill": "Power Query"}]}
+{"budget_ceiling": 31.81, "dislikes_generic_opening": true, "job_id": "job-7c99f0d29c9b", "must_have": [{"implied": false, "skill": "MySQL"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 57.26, "dislikes_generic_opening": true, "job_id": "job-7ce9616e74ce", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 37.73, "dislikes_generic_opening": true, "job_id": "job-7d8f49a896d8", "must_have": [{"implied": false, "skill": "Financial Analysis"}, {"implied": false, "skill": "Dashboard"}]}
+{"budget_ceiling": 575.96, "dislikes_generic_opening": true, "job_id": "job-7d96b91b2329", "must_have": [{"implied": false, "skill": "Booking Management System"}]}
+{"budget_ceiling": 139.68, "dislikes_generic_opening": false, "job_id": "job-7dacda4583c2", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 51.52, "dislikes_generic_opening": true, "job_id": "job-7dd953e44847", "must_have": [{"implied": false, "skill": "NestJS"}, {"implied": false, "skill": "Node.js"}]}
+{"budget_ceiling": 47.08, "dislikes_generic_opening": true, "job_id": "job-7e19e0359a6c", "must_have": [{"implied": false, "skill": "iOS"}]}
+{"budget_ceiling": 80.31, "dislikes_generic_opening": true, "job_id": "job-7e58ec0c18a4", "must_have": [{"implied": false, "skill": "PostgreSQL"}, {"implied": false, "skill": "Database"}, {"implied": false, "skill": "Software Architecture & Design"}]}
+{"budget_ceiling": 45.5, "dislikes_generic_opening": true, "job_id": "job-7f20802de109", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Android App Development"}, {"implied": false, "skill": "CMS Development"}]}
+{"budget_ceiling": 48.23, "dislikes_generic_opening": true, "job_id": "job-7f77af75580b", "must_have": [{"implied": false, "skill": "Hotjar"}]}
+{"budget_ceiling": 190.42, "dislikes_generic_opening": true, "job_id": "job-807e8de42df7", "must_have": [{"implied": false, "skill": "WordPress Plugin"}, {"implied": false, "skill": "Landing Page"}, {"implied": false, "skill": "Website"}]}
+{"budget_ceiling": 55.81, "dislikes_generic_opening": true, "job_id": "job-8085456a8fe1", "must_have": [{"implied": false, "skill": "Microsoft Azure"}, {"implied": false, "skill": "ETL Pipeline"}]}
+{"budget_ceiling": 32.6, "dislikes_generic_opening": true, "job_id": "job-8243d70dc8ad", "must_have": [{"implied": false, "skill": "Desktop Application"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 17.86, "dislikes_generic_opening": true, "job_id": "job-832f88e2b57e", "must_have": [{"implied": false, "skill": "Social Media Audit"}]}
+{"budget_ceiling": 300.0, "dislikes_generic_opening": true, "job_id": "job-83442efdbc3e", "must_have": [{"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Deep Learning"}, {"implied": false, "skill": "Model Optimization"}]}
+{"budget_ceiling": 17.38, "dislikes_generic_opening": true, "job_id": "job-834f4ab5d587", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Scrapy"}, {"implied": false, "skill": "Data Entry"}]}
+{"budget_ceiling": 23.36, "dislikes_generic_opening": false, "job_id": "job-839a608be383", "must_have": [{"implied": false, "skill": "Google Analytics"}, {"implied": false, "skill": "Google Ads"}, {"implied": false, "skill": "Pay Per Click Advertising"}]}
+{"budget_ceiling": 764.52, "dislikes_generic_opening": false, "job_id": "job-83e0fa67d2fe", "must_have": [{"implied": true, "skill": "WordPress"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 30.71, "dislikes_generic_opening": false, "job_id": "job-8406455db247", "must_have": [{"implied": false, "skill": "Animation"}, {"implied": false, "skill": "Illustration"}, {"implied": false, "skill": "Procreate"}]}
+{"budget_ceiling": 67.82, "dislikes_generic_opening": true, "job_id": "job-84c7173abe20", "must_have": [{"implied": false, "skill": "R"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 311.74, "dislikes_generic_opening": true, "job_id": "job-85d1822df91d", "must_have": [{"implied": false, "skill": "ASP.NET MVC"}, {"implied": false, "skill": "AngularJS"}]}
+{"budget_ceiling": 758.56, "dislikes_generic_opening": false, "job_id": "job-868cd705582f", "must_have": [{"implied": false, "skill": "Android"}, {"implied": false, "skill": "Desktop Application"}, {"implied": false, "skill": "iOS Development"}]}
+{"budget_ceiling": 236.29, "dislikes_generic_opening": true, "job_id": "job-878a73bb351a", "must_have": [{"implied": false, "skill": "Microsoft SQL Server"}, {"implied": false, "skill": "Back-End Development"}]}
+{"budget_ceiling": 31.05, "dislikes_generic_opening": true, "job_id": "job-87c980603f3f", "must_have": [{"implied": false, "skill": "Software Architecture & Design"}, {"implied": false, "skill": "Angular"}, {"implied": false, "skill": "CI/CD"}]}
+{"budget_ceiling": 36.2, "dislikes_generic_opening": true, "job_id": "job-87cbea378229", "must_have": [{"implied": false, "skill": "Autodesk AutoCAD"}]}
+{"budget_ceiling": 4052.24, "dislikes_generic_opening": true, "job_id": "job-886a32f46dbb", "must_have": [{"implied": false, "skill": "Django"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 222.29, "dislikes_generic_opening": true, "job_id": "job-896537276e05", "must_have": [{"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "Data Mining"}, {"implied": false, "skill": "List Building"}]}
+{"budget_ceiling": 36.5, "dislikes_generic_opening": false, "job_id": "job-899db3b62167", "must_have": [{"implied": false, "skill": "CSS 3"}, {"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 48.3, "dislikes_generic_opening": true, "job_id": "job-89e514226106", "must_have": [{"implied": false, "skill": "Home Design"}, {"implied": false, "skill": "2D Design"}]}
+{"budget_ceiling": 308.3, "dislikes_generic_opening": false, "job_id": "job-89f9a765e55a", "must_have": [{"implied": true, "skill": "CSS"}]}
+{"budget_ceiling": 518.8, "dislikes_generic_opening": true, "job_id": "job-8a755545e596", "must_have": [{"implied": false, "skill": "Golang"}, {"implied": false, "skill": "Selenium"}]}
+{"budget_ceiling": 49.97, "dislikes_generic_opening": true, "job_id": "job-8a8cff18d03f", "must_have": [{"implied": true, "skill": "Android App Development"}, {"implied": false, "skill": "Flutter"}]}
+{"budget_ceiling": 23.3, "dislikes_generic_opening": true, "job_id": "job-8c7dbf409a96", "must_have": [{"implied": false, "skill": "Android App Development"}, {"implied": false, "skill": "Flutter"}]}
+{"budget_ceiling": 12.92, "dislikes_generic_opening": true, "job_id": "job-8ca979a002e6", "must_have": [{"implied": true, "skill": "Unity"}, {"implied": false, "skill": "iOS"}]}
+{"budget_ceiling": 59.06, "dislikes_generic_opening": true, "job_id": "job-8cee9a1b5853", "must_have": [{"implied": false, "skill": "Data Science"}, {"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 44.87, "dislikes_generic_opening": true, "job_id": "job-8cf33ea1d07c", "must_have": [{"implied": false, "skill": "iBeacon"}, {"implied": false, "skill": "Internet of Things"}]}
+{"budget_ceiling": 51.28, "dislikes_generic_opening": true, "job_id": "job-8e430cc0eb18", "must_have": [{"implied": false, "skill": "RESTful API"}, {"implied": false, "skill": "Node.js"}]}
+{"budget_ceiling": 34.32, "dislikes_generic_opening": true, "job_id": "job-8e81f5e2111a", "must_have": [{"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 89.86, "dislikes_generic_opening": true, "job_id": "job-8f0632011ba9", "must_have": [{"implied": false, "skill": "Google Ads"}]}
+{"budget_ceiling": 50.65, "dislikes_generic_opening": true, "job_id": "job-8f40e701c7f3", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Finance"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 13.55, "dislikes_generic_opening": false, "job_id": "job-8f68b518a001", "must_have": [{"implied": true, "skill": "Social Media Account Setup"}]}
+{"budget_ceiling": 88.14, "dislikes_generic_opening": true, "job_id": "job-8f8c9596667c", "must_have": [{"implied": false, "skill": "Statistics"}, {"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 110.33, "dislikes_generic_opening": true, "job_id": "job-8fc90c02ea14", "must_have": [{"implied": true, "skill": "Deep Learning"}]}
+{"budget_ceiling": 1262.05, "dislikes_generic_opening": false, "job_id": "job-8fdf3ee5190b", "must_have": [{"implied": true, "skill": "API"}, {"implied": false, "skill": "Chatbot Development"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 42.99, "dislikes_generic_opening": false, "job_id": "job-9030134bb5a2", "must_have": [{"implied": false, "skill": "Artificial Neural Network"}]}
+{"budget_ceiling": 56.11, "dislikes_generic_opening": true, "job_id": "job-90a4476a7ced", "must_have": [{"implied": false, "skill": "Economics"}]}
+{"budget_ceiling": 1500.0, "dislikes_generic_opening": true, "job_id": "job-925203a05f61", "must_have": [{"implied": true, "skill": "CSS"}, {"implied": false, "skill": "Tailwind CSS"}, {"implied": false, "skill": "RESTful API"}]}
+{"budget_ceiling": 37.7, "dislikes_generic_opening": true, "job_id": "job-9311cc4e7e22", "must_have": [{"implied": true, "skill": "3D Rendering"}]}
+{"budget_ceiling": 308.73, "dislikes_generic_opening": true, "job_id": "job-9334d2e71726", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "RESTful API"}, {"implied": false, "skill": "AWS Lambda"}]}
+{"budget_ceiling": 574.58, "dislikes_generic_opening": true, "job_id": "job-9338dff67b8e", "must_have": [{"implied": false, "skill": "Media Buying"}, {"implied": false, "skill": "Facebook Advertising"}, {"implied": false, "skill": "Lead Generation"}]}
+{"budget_ceiling": 40.78, "dislikes_generic_opening": false, "job_id": "job-93807f089816", "must_have": [{"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": 42.35, "dislikes_generic_opening": true, "job_id": "job-93e888cf3bad", "must_have": [{"implied": true, "skill": "Data Visualization"}, {"implied": false, "skill": "Dashboard"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 58.62, "dislikes_generic_opening": false, "job_id": "job-94dc511247d9", "must_have": [{"implied": true, "skill": "API Integration"}]}
+{"budget_ceiling": 43.69, "dislikes_generic_opening": false, "job_id": "job-94fa1fbab11d", "must_have": [{"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 31.76, "dislikes_generic_opening": true, "job_id": "job-9566f5fd241b", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 203.84, "dislikes_generic_opening": true, "job_id": "job-96b222358b4a", "must_have": [{"implied": true, "skill": "B2C Marketing"}, {"implied": false, "skill": "Lead Generation"}]}
+{"budget_ceiling": 25.16, "dislikes_generic_opening": true, "job_id": "job-96e2a635e493", "must_have": [{"implied": true, "skill": "Email Communication"}, {"implied": false, "skill": "Virtual Assistant"}, {"implied": false, "skill": "Customer Service"}]}
+{"budget_ceiling": 38.07, "dislikes_generic_opening": true, "job_id": "job-96f1e3d12b21", "must_have": [{"implied": false, "skill": "Affiliate Marketing"}, {"implied": false, "skill": "Affiliate Marketing Website"}]}
+{"budget_ceiling": 41.39, "dislikes_generic_opening": true, "job_id": "job-970e7d9ea12f", "must_have": [{"implied": false, "skill": "React"}]}
+{"budget_ceiling": 51.11, "dislikes_generic_opening": true, "job_id": "job-977e798412b7", "must_have": [{"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 21.22, "dislikes_generic_opening": true, "job_id": "job-97ab5226f2e5", "must_have": [{"implied": false, "skill": "Data Entry"}]}
+{"budget_ceiling": 120.13, "dislikes_generic_opening": true, "job_id": "job-9870b48e491b", "must_have": [{"implied": true, "skill": "Data Science"}]}
+{"budget_ceiling": 4566.91, "dislikes_generic_opening": true, "job_id": "job-98c67301b189", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 42.44, "dislikes_generic_opening": true, "job_id": "job-9930394d02ea", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 62.29, "dislikes_generic_opening": true, "job_id": "job-993717d48ab0", "must_have": [{"implied": false, "skill": "Data Analysis"}, {"implied": false, "skill": "Stata"}]}
+{"budget_ceiling": 49.46, "dislikes_generic_opening": true, "job_id": "job-99b54d6a54c7", "must_have": [{"implied": false, "skill": "Image Processing"}, {"implied": false, "skill": "Computer Vision"}]}
+{"budget_ceiling": 40.2, "dislikes_generic_opening": false, "job_id": "job-99dbe4a1ff20", "must_have": [{"implied": false, "skill": "Quantitative Analysis"}]}
+{"budget_ceiling": 91.85, "dislikes_generic_opening": false, "job_id": "job-99fe0159face", "must_have": [{"implied": false, "skill": "Landing Page Design"}]}
+{"budget_ceiling": 525.17, "dislikes_generic_opening": true, "job_id": "job-9a3d19cc99ea", "must_have": [{"implied": false, "skill": "MATLAB"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "Java"}]}
+{"budget_ceiling": 14.03, "dislikes_generic_opening": true, "job_id": "job-9c2541b227b3", "must_have": [{"implied": true, "skill": "Machine Learning"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 500.0, "dislikes_generic_opening": true, "job_id": "job-9c520c0ac42b", "must_have": [{"implied": true, "skill": "Google Analytics"}]}
+{"budget_ceiling": 63.98, "dislikes_generic_opening": true, "job_id": "job-9d25448b76f5", "must_have": [{"implied": true, "skill": "Google Analytics"}, {"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "Google Data Studio"}]}
+{"budget_ceiling": 10.2, "dislikes_generic_opening": true, "job_id": "job-9d2bef901a04", "must_have": [{"implied": false, "skill": "Ages 12+"}, {"implied": false, "skill": "Card Game"}]}
+{"budget_ceiling": 14.16, "dislikes_generic_opening": true, "job_id": "job-9d4ee59d899b", "must_have": [{"implied": false, "skill": "YouTube"}, {"implied": false, "skill": "Instagram"}, {"implied": false, "skill": "LinkedIn"}]}
+{"budget_ceiling": 22.64, "dislikes_generic_opening": true, "job_id": "job-9d527f69ebce", "must_have": [{"implied": false, "skill": "Data Extraction"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 36.8, "dislikes_generic_opening": true, "job_id": "job-9e1364e197ca", "must_have": [{"implied": false, "skill": "Android App Development"}, {"implied": false, "skill": "User Authentication"}]}
+{"budget_ceiling": 41.56, "dislikes_generic_opening": true, "job_id": "job-9e21c1a4054d", "must_have": [{"implied": false, "skill": "Java"}, {"implied": false, "skill": "Swift"}, {"implied": false, "skill": "Image Processing"}]}
+{"budget_ceiling": 207.74, "dislikes_generic_opening": true, "job_id": "job-9e8a6baf5b66", "must_have": [{"implied": false, "skill": "Google Cloud Platform"}, {"implied": false, "skill": "SQL"}, {"implied": false, "skill": "BigQuery"}]}
+{"budget_ceiling": 47.55, "dislikes_generic_opening": false, "job_id": "job-9efbaa4edcc4", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Web3"}]}
+{"budget_ceiling": 178.36, "dislikes_generic_opening": false, "job_id": "job-9f83dc2b1ba7", "must_have": [{"implied": false, "skill": "Quantitative Analysis"}, {"implied": false, "skill": "Data Analysis"}, {"implied": false, "skill": "Statistics"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-9fa4cafa541f", "must_have": [{"implied": false, "skill": "Website"}, {"implied": false, "skill": "ExpressJS"}, {"implied": false, "skill": "Django"}]}
+{"budget_ceiling": 27.34, "dislikes_generic_opening": true, "job_id": "job-9fb3309f5c7e", "must_have": [{"implied": false, "skill": "Display Ad"}, {"implied": false, "skill": "Facebook Advertising"}]}
+{"budget_ceiling": 23.96, "dislikes_generic_opening": true, "job_id": "job-a0004b4ccbf7", "must_have": [{"implied": false, "skill": "IT Recruiting"}, {"implied": false, "skill": "Boolean Search"}]}
+{"budget_ceiling": 245.22, "dislikes_generic_opening": true, "job_id": "job-a0718d094c1f", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 41.13, "dislikes_generic_opening": true, "job_id": "job-a08d2f3167d0", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 458.88, "dislikes_generic_opening": true, "job_id": "job-a1232710f9ca", "must_have": [{"implied": true, "skill": "WordPress"}]}
+{"budget_ceiling": 18.04, "dislikes_generic_opening": true, "job_id": "job-a1af7aeceb0d", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 138.55, "dislikes_generic_opening": false, "job_id": "job-a306104d1b80", "must_have": [{"implied": false, "skill": "API Integration"}, {"implied": false, "skill": "ExpressJS"}, {"implied": false, "skill": "Web Scraping"}]}
+{"budget_ceiling": 227.17, "dislikes_generic_opening": true, "job_id": "job-a31a7ce5b81b", "must_have": [{"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 31.41, "dislikes_generic_opening": false, "job_id": "job-a3d094717bad", "must_have": [{"implied": false, "skill": "Flutter"}]}
+{"budget_ceiling": 1500.0, "dislikes_generic_opening": true, "job_id": "job-a430e585b3bb", "must_have": [{"implied": true, "skill": "Responsive Design"}, {"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "MySQL"}]}
+{"budget_ceiling": 39.17, "dislikes_generic_opening": true, "job_id": "job-a44f71870ab7", "must_have": [{"implied": false, "skill": "Social Media Advertising"}]}
+{"budget_ceiling": 49.06, "dislikes_generic_opening": false, "job_id": "job-a4d4e08d98a7", "must_have": [{"implied": false, "skill": "Communications"}, {"implied": false, "skill": "List Building"}, {"implied": false, "skill": "Lead Generation"}]}
+{"budget_ceiling": 544.49, "dislikes_generic_opening": true, "job_id": "job-a58ee60a40ce", "must_have": [{"implied": false, "skill": "Spreadsheet Software"}, {"implied": false, "skill": "Automation"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 265.74, "dislikes_generic_opening": true, "job_id": "job-a73e85da22a3", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 1968.75, "dislikes_generic_opening": true, "job_id": "job-a76260810d6a", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 40.51, "dislikes_generic_opening": true, "job_id": "job-a76ea2e16f88", "must_have": [{"implied": false, "skill": "CSS"}]}
+{"budget_ceiling": 76.74, "dislikes_generic_opening": true, "job_id": "job-a7ef10032c39", "must_have": [{"implied": false, "skill": "3D Design"}, {"implied": false, "skill": "Sketching"}]}
+{"budget_ceiling": 79.2, "dislikes_generic_opening": true, "job_id": "job-a7f46d0b3358", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 44.55, "dislikes_generic_opening": true, "job_id": "job-a8d22e7084c5", "must_have": [{"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": 45.05, "dislikes_generic_opening": true, "job_id": "job-a960bb32f4f7", "must_have": [{"implied": true, "skill": "Media Kit"}]}
+{"budget_ceiling": 35.3, "dislikes_generic_opening": false, "job_id": "job-ac10078dfd50", "must_have": [{"implied": false, "skill": "ChatGPT"}]}
+{"budget_ceiling": 35.44, "dislikes_generic_opening": true, "job_id": "job-ac5e9b925add", "must_have": [{"implied": false, "skill": "Amazon PPC"}, {"implied": false, "skill": "SEO Keyword Research"}, {"implied": false, "skill": "PPC Campaign Setup & Management"}]}
+{"budget_ceiling": 50.74, "dislikes_generic_opening": true, "job_id": "job-ac7c0507a833", "must_have": [{"implied": false, "skill": "Economics"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": true, "job_id": "job-acb22605fc8f", "must_have": [{"implied": false, "skill": "OpenCV"}, {"implied": false, "skill": "Python Scikit-Learn"}]}
+{"budget_ceiling": 17.35, "dislikes_generic_opening": true, "job_id": "job-ad26bfbf66f8", "must_have": [{"implied": false, "skill": "AI Content Creation"}, {"implied": false, "skill": "OpenAI Codex"}, {"implied": false, "skill": "GPT-3"}]}
+{"budget_ceiling": 1363.81, "dislikes_generic_opening": true, "job_id": "job-adf268ce8603", "must_have": [{"implied": true, "skill": "Tableau"}, {"implied": false, "skill": "ETL"}, {"implied": false, "skill": "Microsoft Power BI"}]}
+{"budget_ceiling": 54.88, "dislikes_generic_opening": true, "job_id": "job-adf2ac763c69", "must_have": [{"implied": true, "skill": "PHP"}]}
+{"budget_ceiling": 86.36, "dislikes_generic_opening": true, "job_id": "job-ae68591e74a8", "must_have": [{"implied": false, "skill": "Natural Language Processing"}]}
+{"budget_ceiling": 300.75, "dislikes_generic_opening": true, "job_id": "job-ae83a6386384", "must_have": [{"implied": false, "skill": "Digital Signal Processing"}]}
+{"budget_ceiling": 4.51, "dislikes_generic_opening": true, "job_id": "job-afcc0d860e94", "must_have": [{"implied": false, "skill": "Ecommerce Website"}, {"implied": false, "skill": "Odoo"}]}
+{"budget_ceiling": 18.03, "dislikes_generic_opening": true, "job_id": "job-b012b02166e1", "must_have": [{"implied": false, "skill": "Data Mining"}, {"implied": false, "skill": "Microsoft Excel"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 44.91, "dislikes_generic_opening": true, "job_id": "job-b012e61799be", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Mobile App Development"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 68.27, "dislikes_generic_opening": true, "job_id": "job-b0b22174d59a", "must_have": [{"implied": true, "skill": "Android"}]}
+{"budget_ceiling": 465.92, "dislikes_generic_opening": true, "job_id": "job-b0d30182d27e", "must_have": [{"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 16.09, "dislikes_generic_opening": true, "job_id": "job-b0ec9ef179a7", "must_have": [{"implied": false, "skill": "Lead Generation"}]}
+{"budget_ceiling": 37.21, "dislikes_generic_opening": true, "job_id": "job-b25f65be1b20", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 321.9, "dislikes_generic_opening": false, "job_id": "job-b29a145ce015", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Website"}]}
+{"budget_ceiling": 68.35, "dislikes_generic_opening": true, "job_id": "job-b2f070a234d6", "must_have": [{"implied": false, "skill": "A/B Testing"}]}
+{"budget_ceiling": 4.69, "dislikes_generic_opening": true, "job_id": "job-b36ca3da1f6a", "must_have": [{"implied": true, "skill": "WooCommerce"}, {"implied": false, "skill": "Ecommerce Website"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 205.77, "dislikes_generic_opening": true, "job_id": "job-b37793ac1dc5", "must_have": [{"implied": false, "skill": "Shopify"}, {"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Ecommerce Website"}]}
+{"budget_ceiling": 56.08, "dislikes_generic_opening": true, "job_id": "job-b39dc7d4e87e", "must_have": [{"implied": true, "skill": "Data Science"}]}
+{"budget_ceiling": 1244.81, "dislikes_generic_opening": true, "job_id": "job-b3ae20d3544e", "must_have": [{"implied": false, "skill": "Social Media Advertising"}, {"implied": false, "skill": "Marketing Strategy"}, {"implied": false, "skill": "Social Media Marketing"}]}
+{"budget_ceiling": 575.91, "dislikes_generic_opening": true, "job_id": "job-b51cffc52bf9", "must_have": [{"implied": true, "skill": "Concept Artistry"}]}
+{"budget_ceiling": 11.04, "dislikes_generic_opening": true, "job_id": "job-b59c8f21e3f6", "must_have": [{"implied": false, "skill": "API"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-b5a2e0c1dec4", "must_have": [{"implied": false, "skill": "Algorithm Development"}, {"implied": false, "skill": "Neural Network"}, {"implied": false, "skill": "Natural Language Processing"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-b5b329d133c8", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 41.2, "dislikes_generic_opening": true, "job_id": "job-b62649ff5f67", "must_have": [{"implied": false, "skill": "PHP"}, {"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 12.96, "dislikes_generic_opening": true, "job_id": "job-b6538dd98702", "must_have": [{"implied": false, "skill": "Web Scraping"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 94.88, "dislikes_generic_opening": true, "job_id": "job-b654f3ac5b52", "must_have": [{"implied": true, "skill": "Machine Learning"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "TensorFlow"}]}
+{"budget_ceiling": 4.75, "dislikes_generic_opening": false, "job_id": "job-b7fa1a9ba0ca", "must_have": [{"implied": false, "skill": "Android App Development"}, {"implied": false, "skill": "Android"}, {"implied": false, "skill": "Mobile App Development"}]}
+{"budget_ceiling": 41.06, "dislikes_generic_opening": true, "job_id": "job-b7fb7dfde29e", "must_have": [{"implied": false, "skill": "Data Entry"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": true, "job_id": "job-b8873076153f", "must_have": [{"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 49.28, "dislikes_generic_opening": false, "job_id": "job-b90a9117e410", "must_have": [{"implied": true, "skill": "Landing Page"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 470.11, "dislikes_generic_opening": true, "job_id": "job-b952bf54afa4", "must_have": [{"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 107.93, "dislikes_generic_opening": true, "job_id": "job-b96ed14c71f5", "must_have": [{"implied": false, "skill": "Desktop Application"}]}
+{"budget_ceiling": 63.4, "dislikes_generic_opening": true, "job_id": "job-ba99234f51ec", "must_have": [{"implied": false, "skill": "Flutter"}]}
+{"budget_ceiling": 96.41, "dislikes_generic_opening": true, "job_id": "job-baa65e902469", "must_have": [{"implied": false, "skill": "Tableau"}]}
+{"budget_ceiling": 36.39, "dislikes_generic_opening": true, "job_id": "job-bce410467f0c", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 70.94, "dislikes_generic_opening": true, "job_id": "job-be9b2f61ba08", "must_have": [{"implied": false, "skill": "Spreadsheet Software"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 57.69, "dislikes_generic_opening": true, "job_id": "job-bf5fdd561519", "must_have": [{"implied": true, "skill": "Machine Learning"}, {"implied": false, "skill": "Bot Development"}]}
+{"budget_ceiling": 188.35, "dislikes_generic_opening": false, "job_id": "job-bfa458dab2e3", "must_have": [{"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 50.51, "dislikes_generic_opening": true, "job_id": "job-bface9eabeba", "must_have": [{"implied": false, "skill": "Chatbot Integration"}, {"implied": false, "skill": "Chatbot"}, {"implied": false, "skill": "ChatGPT"}]}
+{"budget_ceiling": 40.0, "dislikes_generic_opening": true, "job_id": "job-bfdd350708a3", "must_have": [{"implied": false, "skill": "Natural Language Processing"}, {"implied": false, "skill": "Artificial Neural Network"}]}
+{"budget_ceiling": 300.0, "dislikes_generic_opening": true, "job_id": "job-bfe7d1813d15", "must_have": [{"implied": false, "skill": "User Authentication"}]}
+{"budget_ceiling": 48.67, "dislikes_generic_opening": true, "job_id": "job-c06bed058e6f", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "Cryptocurrency"}]}
+{"budget_ceiling": 46.11, "dislikes_generic_opening": false, "job_id": "job-c07078825519", "must_have": [{"implied": false, "skill": "Web Scraping"}]}
+{"budget_ceiling": 18.82, "dislikes_generic_opening": true, "job_id": "job-c0beb9201300", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "three.js"}]}
+{"budget_ceiling": 26.34, "dislikes_generic_opening": true, "job_id": "job-c1bf0dbeb2cb", "must_have": [{"implied": false, "skill": "Data Processing"}, {"implied": false, "skill": "Regex Writing"}]}
+{"budget_ceiling": 17.33, "dislikes_generic_opening": true, "job_id": "job-c2898030c96f", "must_have": [{"implied": true, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 21.86, "dislikes_generic_opening": true, "job_id": "job-c2cd153b3531", "must_have": [{"implied": false, "skill": "Researcher"}, {"implied": false, "skill": "Data Entry"}]}
+{"budget_ceiling": 56.85, "dislikes_generic_opening": true, "job_id": "job-c2f5152a9c4b", "must_have": [{"implied": false, "skill": "Salesforce Service Cloud"}, {"implied": false, "skill": "System Monitoring"}]}
+{"budget_ceiling": 800.0, "dislikes_generic_opening": true, "job_id": "job-c3c4cd7a8336", "must_have": [{"implied": false, "skill": "pandas"}]}
+{"budget_ceiling": 8.62, "dislikes_generic_opening": true, "job_id": "job-c432da6c22c8", "must_have": [{"implied": true, "skill": "Communications"}, {"implied": false, "skill": "Prospect List"}, {"implied": false, "skill": "Email Communication"}]}
+{"budget_ceiling": 24.4, "dislikes_generic_opening": true, "job_id": "job-c44a10c0dcdc", "must_have": [{"implied": false, "skill": "R"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 71.34, "dislikes_generic_opening": true, "job_id": "job-c49d2e235fa0", "must_have": [{"implied": false, "skill": "Adobe Photoshop"}, {"implied": false, "skill": "Data Entry"}, {"implied": false, "skill": "C#"}]}
+{"budget_ceiling": 60.7, "dislikes_generic_opening": true, "job_id": "job-c50ea9fb3d23", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "Python"}, {"implied": false, "skill": "LinkedIn"}]}
+{"budget_ceiling": 25.44, "dislikes_generic_opening": true, "job_id": "job-c5afc953cfbd", "must_have": [{"implied": false, "skill": "SEO Backlinking"}, {"implied": false, "skill": "Search Engine Optimization"}, {"implied": false, "skill": "SEO Audit"}]}
+{"budget_ceiling": 52.53, "dislikes_generic_opening": true, "job_id": "job-c60321133935", "must_have": [{"implied": true, "skill": "Web Development"}]}
+{"budget_ceiling": 72.83, "dislikes_generic_opening": true, "job_id": "job-c6399277062a", "must_have": [{"implied": false, "skill": "Google Analytics"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-c6dcc55b1099", "must_have": [{"implied": false, "skill": "Model Optimization"}, {"implied": false, "skill": "Computer Vision"}, {"implied": false, "skill": "Deep Learning Modeling"}]}
+{"budget_ceiling": 75.96, "dislikes_generic_opening": false, "job_id": "job-c75f07769bac", "must_have": [{"implied": true, "skill": "OpenCV"}, {"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Model Tuning"}]}
+{"budget_ceiling": 5.68, "dislikes_generic_opening": true, "job_id": "job-c79a56827464", "must_have": [{"implied": false, "skill": "React"}, {"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-c7e593a04828", "must_have": [{"implied": false, "skill": "Data Analytics"}, {"implied": false, "skill": "Google Analytics"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 218.02, "dislikes_generic_opening": false, "job_id": "job-c7f686ff10c1", "must_have": [{"implied": false, "skill": "Outbound Sales"}, {"implied": false, "skill": "Telemarketing"}, {"implied": false, "skill": "Cold Calling"}]}
+{"budget_ceiling": 19.33, "dislikes_generic_opening": false, "job_id": "job-c8acbf52ee12", "must_have": [{"implied": false, "skill": "Database Architecture"}]}
+{"budget_ceiling": 63.0, "dislikes_generic_opening": true, "job_id": "job-c8b31bdd19f3", "must_have": [{"implied": true, "skill": "Data Scraping"}]}
+{"budget_ceiling": 5.37, "dislikes_generic_opening": true, "job_id": "job-c8bd96af6320", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "ChatGPT"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 321.49, "dislikes_generic_opening": true, "job_id": "job-c91f6e991dc6", "must_have": [{"implied": true, "skill": "Automation"}, {"implied": false, "skill": "Data Scraping"}, {"implied": false, "skill": "API Integration"}]}
+{"budget_ceiling": 29.93, "dislikes_generic_opening": true, "job_id": "job-c925e7643665", "must_have": [{"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 244.96, "dislikes_generic_opening": true, "job_id": "job-c95beaff2809", "must_have": [{"implied": false, "skill": "Marketing Strategy"}]}
+{"budget_ceiling": 45.43, "dislikes_generic_opening": false, "job_id": "job-ca16ecb6ac29", "must_have": [{"implied": false, "skill": "Solidity"}]}
+{"budget_ceiling": 594.68, "dislikes_generic_opening": true, "job_id": "job-cb603b0da984", "must_have": [{"implied": false, "skill": "three.js"}, {"implied": false, "skill": "React"}]}
+{"budget_ceiling": 1021.38, "dislikes_generic_opening": true, "job_id": "job-cba95314611e", "must_have": [{"implied": false, "skill": "Data Analysis"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 81.21, "dislikes_generic_opening": true, "job_id": "job-cbbc14ddd679", "must_have": [{"implied": true, "skill": "Natural Language Processing"}, {"implied": false, "skill": "Computer Vision"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 31.59, "dislikes_generic_opening": true, "job_id": "job-cc0a39c7b3a4", "must_have": [{"implied": true, "skill": "Python"}]}
+{"budget_ceiling": 1500.0, "dislikes_generic_opening": true, "job_id": "job-cc92281dfdad", "must_have": [{"implied": false, "skill": "Analytics"}, {"implied": false, "skill": "Dashboard"}]}
+{"budget_ceiling": 30.03, "dislikes_generic_opening": true, "job_id": "job-cc992192a60a", "must_have": [{"implied": false, "skill": "Java"}]}
+{"budget_ceiling": 27.12, "dislikes_generic_opening": true, "job_id": "job-cca2014dea4a", "must_have": [{"implied": true, "skill": "Content Writing"}]}
+{"budget_ceiling": 500.0, "dislikes_generic_opening": true, "job_id": "job-cdc6759851a1", "must_have": [{"implied": false, "skill": "Chatbot"}]}
+{"budget_ceiling": 42.2, "dislikes_generic_opening": true, "job_id": "job-cde9bb174fae", "must_have": [{"implied": false, "skill": "Digital Transformation"}, {"implied": false, "skill": "Amazon S3"}, {"implied": false, "skill": "BigQuery"}]}
+{"budget_ceiling": 11.05, "dislikes_generic_opening": true, "job_id": "job-ce2063e5ebbe", "must_have": [{"implied": false, "skill": "SQL"}, {"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 16.0, "dislikes_generic_opening": false, "job_id": "job-cfa2e6033b45", "must_have": [{"implied": true, "skill": "Statistical Analysis"}, {"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "Statistics"}]}
+{"budget_ceiling": 82.1, "dislikes_generic_opening": true, "job_id": "job-cfec906ab760", "must_have": [{"implied": false, "skill": "Automation"}]}
+{"budget_ceiling": 11.0, "dislikes_generic_opening": true, "job_id": "job-d0413b8e5f41", "must_have": [{"implied": false, "skill": "Lead Generation Strategy"}]}
+{"budget_ceiling": 41.22, "dislikes_generic_opening": true, "job_id": "job-d059c3c184d6", "must_have": [{"implied": false, "skill": "User Flow"}]}
+{"budget_ceiling": 41.0, "dislikes_generic_opening": true, "job_id": "job-d07e3670a6ec", "must_have": [{"implied": false, "skill": "3D Rendering"}, {"implied": false, "skill": "Architectural Rendering"}]}
+{"budget_ceiling": 560.2, "dislikes_generic_opening": false, "job_id": "job-d13c7361125c", "must_have": [{"implied": false, "skill": "Laravel"}, {"implied": false, "skill": "PHP"}, {"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 56.45, "dislikes_generic_opening": true, "job_id": "job-d1f2d455b4ac", "must_have": [{"implied": true, "skill": "ExpressJS"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-d256e6fcd3a1", "must_have": [{"implied": false, "skill": "Django"}, {"implied": false, "skill": "API"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 65.67, "dislikes_generic_opening": true, "job_id": "job-d2745736bb4f", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Scrapy"}, {"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 312.76, "dislikes_generic_opening": true, "job_id": "job-d2ae1ed75dea", "must_have": [{"implied": false, "skill": "Amazon Seller Central"}]}
+{"budget_ceiling": 54.11, "dislikes_generic_opening": true, "job_id": "job-d2c1065c8f2c", "must_have": [{"implied": true, "skill": "Web Design"}, {"implied": false, "skill": "HTML5"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-d32761e1ca22", "must_have": [{"implied": true, "skill": "API Development"}, {"implied": false, "skill": "Front-End Development"}, {"implied": false, "skill": "Stripe"}]}
+{"budget_ceiling": 33.18, "dislikes_generic_opening": false, "job_id": "job-d368656064fd", "must_have": [{"implied": false, "skill": "Data Visualization"}]}
+{"budget_ceiling": 75.87, "dislikes_generic_opening": true, "job_id": "job-d3efa72d14ab", "must_have": [{"implied": false, "skill": "Data Visualization"}, {"implied": false, "skill": "Microsoft Power BI"}, {"implied": false, "skill": "Business Intelligence"}]}
+{"budget_ceiling": 112.35, "dislikes_generic_opening": true, "job_id": "job-d3f94383fcbe", "must_have": [{"implied": true, "skill": "Scheduling"}, {"implied": false, "skill": "Customer Service"}]}
+{"budget_ceiling": 40.54, "dislikes_generic_opening": true, "job_id": "job-d5066e529a45", "must_have": [{"implied": false, "skill": "Landing Page"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 294.04, "dislikes_generic_opening": true, "job_id": "job-d5ac665e3b07", "must_have": [{"implied": true, "skill": "Web Development"}, {"implied": false, "skill": "SEO Keyword Research"}, {"implied": false, "skill": "Competitive Analysis"}]}
+{"budget_ceiling": 249.25, "dislikes_generic_opening": false, "job_id": "job-d5cfb243d11d", "must_have": [{"implied": false, "skill": "Android"}]}
+{"budget_ceiling": 38.11, "dislikes_generic_opening": true, "job_id": "job-d62655ffa3f2", "must_have": [{"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": 10.46, "dislikes_generic_opening": true, "job_id": "job-d69467990679", "must_have": [{"implied": true, "skill": "API Integration"}]}
+{"budget_ceiling": 24.85, "dislikes_generic_opening": true, "job_id": "job-d71484f980b6", "must_have": [{"implied": false, "skill": "HTML"}, {"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 43.12, "dislikes_generic_opening": false, "job_id": "job-d7c090af2f73", "must_have": [{"implied": false, "skill": "C++"}, {"implied": false, "skill": "Android"}]}
+{"budget_ceiling": 1500.0, "dislikes_generic_opening": true, "job_id": "job-d80484cd5e2f", "must_have": [{"implied": false, "skill": "Stripe"}, {"implied": false, "skill": "Database"}, {"implied": false, "skill": "Website"}]}
+{"budget_ceiling": 81.37, "dislikes_generic_opening": true, "job_id": "job-d82e3649e7ad", "must_have": [{"implied": false, "skill": "React"}]}
+{"budget_ceiling": 41.99, "dislikes_generic_opening": true, "job_id": "job-d887cbafb1c2", "must_have": [{"implied": true, "skill": "Video Production"}]}
+{"budget_ceiling": 137.44, "dislikes_generic_opening": true, "job_id": "job-d9012b05d601", "must_have": [{"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 25.47, "dislikes_generic_opening": true, "job_id": "job-d973cb1345b2", "must_have": [{"implied": false, "skill": "AWS Application"}]}
+{"budget_ceiling": 40.72, "dislikes_generic_opening": true, "job_id": "job-d9c27958c66a", "must_have": [{"implied": false, "skill": "Android"}]}
+{"budget_ceiling": 46.38, "dislikes_generic_opening": false, "job_id": "job-da5f102bba5a", "must_have": [{"implied": false, "skill": "Landing Page"}]}
+{"budget_ceiling": 495.18, "dislikes_generic_opening": true, "job_id": "job-da93c473e0a2", "must_have": [{"implied": true, "skill": "Social Media Marketing"}, {"implied": false, "skill": "On-Page SEO"}, {"implied": false, "skill": "Article Writing"}]}
+{"budget_ceiling": 119.93, "dislikes_generic_opening": true, "job_id": "job-db2082579277", "must_have": [{"implied": false, "skill": "Data Visualization"}]}
+{"budget_ceiling": 380.53, "dislikes_generic_opening": false, "job_id": "job-dbd03dc3ecde", "must_have": [{"implied": false, "skill": "Quasar Framework"}, {"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "TypeScript"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-dc2ae3cc3222", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Docker"}, {"implied": false, "skill": "User Authentication"}]}
+{"budget_ceiling": 56.17, "dislikes_generic_opening": true, "job_id": "job-dc83a5c4cbfe", "must_have": [{"implied": false, "skill": "Data Extraction"}, {"implied": false, "skill": "Google Cloud Platform"}]}
+{"budget_ceiling": 2197.81, "dislikes_generic_opening": true, "job_id": "job-dcdf137eeec2", "must_have": [{"implied": false, "skill": "Facebook"}]}
+{"budget_ceiling": 485.03, "dislikes_generic_opening": true, "job_id": "job-dcfd6d8b126a", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Google Analytics"}]}
+{"budget_ceiling": 1728.69, "dislikes_generic_opening": false, "job_id": "job-dd131ec53219", "must_have": [{"implied": false, "skill": "Marketing Analytics"}, {"implied": false, "skill": "Google Tag Manager"}]}
+{"budget_ceiling": 22.98, "dislikes_generic_opening": true, "job_id": "job-dd1fbcc51311", "must_have": [{"implied": true, "skill": "API"}, {"implied": false, "skill": "API Development"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": false, "job_id": "job-dda73284ccac", "must_have": [{"implied": false, "skill": "Statistics"}, {"implied": false, "skill": "Chatbot Development"}, {"implied": false, "skill": "Python Scikit-Learn"}]}
+{"budget_ceiling": 1240.83, "dislikes_generic_opening": false, "job_id": "job-deec4600127d", "must_have": [{"implied": false, "skill": "MySQL"}, {"implied": false, "skill": "Software Development"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 30300.08, "dislikes_generic_opening": true, "job_id": "job-dfad6574f97d", "must_have": [{"implied": false, "skill": "Machine Learning"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-e07321a144ef", "must_have": [{"implied": false, "skill": "Artificial Neural Network"}]}
+{"budget_ceiling": 36.71, "dislikes_generic_opening": true, "job_id": "job-e0bfccfe12c0", "must_have": [{"implied": true, "skill": "Ecommerce Website"}, {"implied": false, "skill": "Website Redesign"}]}
+{"budget_ceiling": 122.75, "dislikes_generic_opening": false, "job_id": "job-e11dd7beeabd", "must_have": [{"implied": true, "skill": "Spring Boot"}, {"implied": false, "skill": "Java"}, {"implied": false, "skill": "MySQL"}]}
+{"budget_ceiling": 63.1, "dislikes_generic_opening": true, "job_id": "job-e14441ea42ed", "must_have": [{"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 21.47, "dislikes_generic_opening": true, "job_id": "job-e2705bd8f9b4", "must_have": [{"implied": false, "skill": "Lead Generation"}, {"implied": false, "skill": "List Building"}, {"implied": false, "skill": "Prospect List"}]}
+{"budget_ceiling": 55.98, "dislikes_generic_opening": true, "job_id": "job-e2f167974bdc", "must_have": [{"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 263.62, "dislikes_generic_opening": true, "job_id": "job-e33cdd4c0bbc", "must_have": [{"implied": false, "skill": "Craft CMS"}]}
+{"budget_ceiling": 43.21, "dislikes_generic_opening": true, "job_id": "job-e3e238010e3b", "must_have": [{"implied": false, "skill": "Writing"}, {"implied": false, "skill": "Turkish"}, {"implied": false, "skill": "Copywriting"}]}
+{"budget_ceiling": 2317.62, "dislikes_generic_opening": false, "job_id": "job-e56dc3285fc5", "must_have": [{"implied": false, "skill": "Content Writing"}, {"implied": false, "skill": "Landing Page"}]}
+{"budget_ceiling": 16.17, "dislikes_generic_opening": true, "job_id": "job-e5caddc2b3a4", "must_have": [{"implied": true, "skill": "JavaScript"}, {"implied": false, "skill": "React Native"}, {"implied": false, "skill": "Android"}]}
+{"budget_ceiling": 58.06, "dislikes_generic_opening": true, "job_id": "job-e628bc2b94a1", "must_have": [{"implied": true, "skill": "Psychology"}]}
+{"budget_ceiling": 118.55, "dislikes_generic_opening": false, "job_id": "job-e6d3791d93ef", "must_have": [{"implied": false, "skill": "JavaScript"}, {"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "Web Application"}]}
+{"budget_ceiling": 48.42, "dislikes_generic_opening": true, "job_id": "job-e743ab1ba3c3", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Web3"}]}
+{"budget_ceiling": 596.27, "dislikes_generic_opening": true, "job_id": "job-e773b94e108d", "must_have": [{"implied": true, "skill": "Web Service"}, {"implied": false, "skill": "Spreadsheet Software"}, {"implied": false, "skill": "Data Extraction"}]}
+{"budget_ceiling": 26.42, "dislikes_generic_opening": false, "job_id": "job-e78463520464", "must_have": [{"implied": false, "skill": "Data Modeling"}]}
+{"budget_ceiling": 926.47, "dislikes_generic_opening": true, "job_id": "job-e8430241ee2b", "must_have": [{"implied": false, "skill": "Node.js"}, {"implied": false, "skill": "API"}]}
+{"budget_ceiling": 3880.05, "dislikes_generic_opening": false, "job_id": "job-e8c58118f973", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 24.66, "dislikes_generic_opening": true, "job_id": "job-e8e71ed9e909", "must_have": [{"implied": false, "skill": "API"}, {"implied": false, "skill": "C#"}]}
+{"budget_ceiling": 44.0, "dislikes_generic_opening": true, "job_id": "job-e9805a6a21c6", "must_have": [{"implied": false, "skill": "3D Animation"}]}
+{"budget_ceiling": 67.23, "dislikes_generic_opening": false, "job_id": "job-e9827e5b953f", "must_have": [{"implied": true, "skill": "Data Analysis"}]}
+{"budget_ceiling": 98.63, "dislikes_generic_opening": true, "job_id": "job-ea0607918688", "must_have": [{"implied": true, "skill": "Neural Network"}]}
+{"budget_ceiling": 65.95, "dislikes_generic_opening": true, "job_id": "job-eaa507506a79", "must_have": [{"implied": true, "skill": "Machine Learning"}, {"implied": false, "skill": "Deep Learning"}, {"implied": false, "skill": "Cadence Platform"}]}
+{"budget_ceiling": 122.08, "dislikes_generic_opening": true, "job_id": "job-eda11f40a6e1", "must_have": [{"implied": true, "skill": "WordPress"}, {"implied": false, "skill": "Landing Page"}]}
+{"budget_ceiling": 1878.19, "dislikes_generic_opening": false, "job_id": "job-ee21d898d717", "must_have": [{"implied": true, "skill": "JavaScript"}, {"implied": false, "skill": "React"}]}
+{"budget_ceiling": null, "dislikes_generic_opening": true, "job_id": "job-eecd61cf95d2", "must_have": [{"implied": false, "skill": "Database"}]}
+{"budget_ceiling": 69.8, "dislikes_generic_opening": true, "job_id": "job-eefc987eb2e7", "must_have": [{"implied": false, "skill": "3D Rendering"}]}
+{"budget_ceiling": 78.42, "dislikes_generic_opening": false, "job_id": "job-ef10e0f39a99", "must_have": [{"implied": false, "skill": "Technical SEO"}, {"implied": false, "skill": "SEO Strategy"}]}
+{"budget_ceiling": 97.58, "dislikes_generic_opening": false, "job_id": "job-ef161747daab", "must_have": [{"implied": false, "skill": "Microsoft Dynamics Development"}, {"implied": false, "skill": "Microsoft Dynamics 365"}]}
+{"budget_ceiling": 88.99, "dislikes_generic_opening": true, "job_id": "job-ef28ae4b3adf", "must_have": [{"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 169.75, "dislikes_generic_opening": true, "job_id": "job-ef3a74ba3d57", "must_have": [{"implied": false, "skill": "MariaDB"}, {"implied": false, "skill": "Google Data Studio"}, {"implied": false, "skill": "Data Visualization"}]}
+{"budget_ceiling": 68.9, "dislikes_generic_opening": true, "job_id": "job-ef6155b033b8", "must_have": [{"implied": true, "skill": "Technical Documentation"}]}
+{"budget_ceiling": 19.98, "dislikes_generic_opening": true, "job_id": "job-efc34baee1ab", "must_have": [{"implied": true, "skill": "HTML"}, {"implied": false, "skill": "Web Design"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 43.97, "dislikes_generic_opening": true, "job_id": "job-f0aca7062616", "must_have": [{"implied": false, "skill": "Social Media Content"}]}
+{"budget_ceiling": 917.23, "dislikes_generic_opening": false, "job_id": "job-f0c4dfec705f", "must_have": [{"implied": false, "skill": "Social Media Marketing"}]}
+{"budget_ceiling": 1485.88, "dislikes_generic_opening": true, "job_id": "job-f0e379ca86fb", "must_have": [{"implied": false, "skill": "Data Entry"}, {"implied": false, "skill": "Writing"}]}
+{"budget_ceiling": 10.96, "dislikes_generic_opening": true, "job_id": "job-f108643b6ca3", "must_have": [{"implied": false, "skill": "WordPress"}, {"implied": false, "skill": "Page Speed Optimization"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 94.43, "dislikes_generic_opening": true, "job_id": "job-f15204d740e5", "must_have": [{"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 257.49, "dislikes_generic_opening": true, "job_id": "job-f20107ce2baa", "must_have": [{"implied": false, "skill": "SQLite"}, {"implied": false, "skill": "Database"}, {"implied": false, "skill": "PHP"}]}
+{"budget_ceiling": 81361.24, "dislikes_generic_opening": true, "job_id": "job-f29bfe236e9e", "must_have": [{"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 42.79, "dislikes_generic_opening": false, "job_id": "job-f2e36585c835", "must_have": [{"implied": false, "skill": "CSS"}, {"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 10.98, "dislikes_generic_opening": false, "job_id": "job-f3462528d5b9", "must_have": [{"implied": false, "skill": "ETL"}, {"implied": false, "skill": "SQL"}, {"implied": false, "skill": "ETL Pipeline"}]}
+{"budget_ceiling": 25.78, "dislikes_generic_opening": true, "job_id": "job-f3ccc941ef61", "must_have": [{"implied": false, "skill": "Plotly"}]}
+{"budget_ceiling": 1225.69, "dislikes_generic_opening": false, "job_id": "job-f4ea30a2b3c2", "must_have": [{"implied": false, "skill": "Natural Language Processing"}]}
+{"budget_ceiling": 155.41, "dislikes_generic_opening": true, "job_id": "job-f4f4a374929a", "must_have": [{"implied": true, "skill": "Instagram"}]}
+{"budget_ceiling": 316.91, "dislikes_generic_opening": false, "job_id": "job-f505c7d32a87", "must_have": [{"implied": false, "skill": "Python"}, {"implied": false, "skill": "Finite Element Analysis"}]}
+{"budget_ceiling": 42.05, "dislikes_generic_opening": true, "job_id": "job-f5171cfe7155", "must_have": [{"implied": false, "skill": "R"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 11.61, "dislikes_generic_opening": false, "job_id": "job-f5523f6a4ba7", "must_have": [{"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 38.19, "dislikes_generic_opening": true, "job_id": "job-f55b7e24cad3", "must_have": [{"implied": true, "skill": "Web Design"}, {"implied": false, "skill": "Shopify"}]}
+{"budget_ceiling": 104.61, "dislikes_generic_opening": true, "job_id": "job-f6b2f37da641", "must_have": [{"implied": false, "skill": "Squarespace"}, {"implied": false, "skill": "Web Development"}]}
+{"budget_ceiling": 22.99, "dislikes_generic_opening": true, "job_id": "job-f6d0bbde4dcc", "must_have": [{"implied": false, "skill": "WordPress"}]}
+{"budget_ceiling": 110.93, "dislikes_generic_opening": true, "job_id": "job-f72a7926d78d", "must_have": [{"implied": false, "skill": "Shopify"}, {"implied": false, "skill": "Shopify Templates"}]}
+{"budget_ceiling": 14.82, "dislikes_generic_opening": true, "job_id": "job-f7365807308a", "must_have": [{"implied": true, "skill": "SQL"}, {"implied": false, "skill": "ETL"}]}
+{"budget_ceiling": 99.64, "dislikes_generic_opening": true, "job_id": "job-f7d0fa2da572", "must_have": [{"implied": true, "skill": "Project Management"}, {"implied": false, "skill": "Procurement"}]}
+{"budget_ceiling": 103.74, "dislikes_generic_opening": true, "job_id": "job-f7eb903c3734", "must_have": [{"implied": true, "skill": "Python"}, {"implied": false, "skill": "Artificial Intelligence"}]}
+{"budget_ceiling": 500.0, "dislikes_generic_opening": false, "job_id": "job-f8daea8b2531", "must_have": [{"implied": true, "skill": "ETL"}, {"implied": false, "skill": "Tableau"}, {"implied": false, "skill": "Business Intelligence"}]}
+{"budget_ceiling": 48.39, "dislikes_generic_opening": true, "job_id": "job-f94fc452573e", "must_have": [{"implied": false, "skill": "Deep Learning"}, {"implied": false, "skill": "Machine Learning"}, {"implied": false, "skill": "Data Science"}]}
+{"budget_ceiling": 49.61, "dislikes_generic_opening": true, "job_id": "job-fa272b7686e2", "must_have": [{"implied": false, "skill": "R"}, {"implied": false, "skill": "Data Analysis"}]}
+{"budget_ceiling": 389.85, "dislikes_generic_opening": true, "job_id": "job-fa8aef1ec297", "must_have": [{"implied": false, "skill": "PHP"}, {"implied": false, "skill": "API Development"}]}
+{"budget_ceiling": 1188.49, "dislikes_generic_opening": true, "job_id": "job-face51088967", "must_have": [{"implied": false, "skill": "Databricks"}]}
+{"budget_ceiling": 355.94, "dislikes_generic_opening": true, "job_id": "job-fb5d49573e10", "must_have": [{"implied": false, "skill": "Kubernetes"}, {"implied": false, "skill": "DevOps"}, {"implied": false, "skill": "Python"}]}
+{"budget_ceiling": 68.64, "dislikes_generic_opening": true, "job_id": "job-fbbc1a3d07a6", "must_have": [{"implied": false, "skill": "Data Annotation"}]}
+{"budget_ceiling": 1500.0, "dislikes_generic_opening": true, "job_id": "job-fbe86699d405", "must_have": [{"implied": false, "skill": "Google Data Studio"}, {"implied": false, "skill": "pandas"}, {"implied": false, "skill": "Spreadsheet Software"}]}
+{"budget_ceiling": 4.73, "dislikes_generic_opening": true, "job_id": "job-fc0cb040aa22", "must_have": [{"implied": false, "skill": "Webflow"}, {"implied": false, "skill": "Web Design"}]}
+{"budget_ceiling": 11.03, "dislikes_generic_opening": true, "job_id": "job-fc52f441ca0a", "must_have": [{"implied": true, "skill": "iOS"}]}
+{"budget_ceiling": 2490.82, "dislikes_generic_opening": false, "job_id": "job-fdb7d78d1cca", "must_have": [{"implied": false, "skill": "Deployment Automation"}, {"implied": false, "skill": "JavaScript"}]}
+{"budget_ceiling": 4.32, "dislikes_generic_opening": true, "job_id": "job-fdcf22d875ef", "must_have": [{"implied": false, "skill": "Odoo"}]}
+{"budget_ceiling": 40.28, "dislikes_generic_opening": true, "job_id": "job-fdd73fb97d75", "must_have": [{"implied": false, "skill": "Web Development"}, {"implied": false, "skill": "HTML"}]}
+{"budget_ceiling": 123.82, "dislikes_generic_opening": true, "job_id": "job-fddb236d336e", "must_have": [{"implied": false, "skill": "Android"}, {"implied": false, "skill": "OpenGL ES"}]}
+{"budget_ceiling": 41.13, "dislikes_generic_opening": true, "job_id": "job-fe10cf81f4ec", "must_have": [{"implied": false, "skill": "HTML5"}]}
+{"budget_ceiling": 58.21, "dislikes_generic_opening": true, "job_id": "job-fe871aa9b818", "must_have": [{"implied": true, "skill": "Image Processing"}, {"implied": false, "skill": "Illustration"}]}
+{"budget_ceiling": 70.09, "dislikes_generic_opening": true, "job_id": "job-feb86ed9f460", "must_have": [{"implied": false, "skill": "Google Sheets"}, {"implied": false, "skill": "Microsoft Excel"}]}
+{"budget_ceiling": 31.24, "dislikes_generic_opening": true, "job_id": "job-ffd13d0c6961", "must_have": [{"implied": false, "skill": "Data Scraping"}]}
+{"budget_ceiling": 52.88, "dislikes_generic_opening": true, "job_id": "job-ffe08ec0c615", "must_have": [{"implied": false, "skill": "Social Media Management"}, {"implied": false, "skill": "Facebook Advertising"}]}

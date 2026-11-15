@@ -1,0 +1,191 @@
+# SYNTHETIC persona skeleton. Fictional person, clients and projects.
+# See data/personas/ml_engineer/skeleton.yaml for field meanings.
+id: data_analyst
+name: Bilal Ahmed
+headline: Data analyst - Power BI, SQL and Excel reporting that people actually use
+location: Islamabad, Pakistan
+years_experience: 4
+hourly_rate: 28
+rate_floor_hourly: 18
+min_fixed_budget: 80
+categories: [data_science]
+
+listed_skills:
+  - Data Analysis
+  - Data Analytics
+  - Data Visualization
+  - Microsoft Power BI
+  - Microsoft Power BI Data Visualization
+  - Microsoft Power BI Development
+  - Dashboard
+  - Business Intelligence
+  - SQL
+  - MySQL
+  - Microsoft SQL Server
+  - Microsoft Excel
+  - Google Sheets
+  - Spreadsheet Software
+  - Tableau
+  - Google Data Studio
+  - Statistics
+  - Statistical Analysis
+  - Data Cleansing
+  - Data Interpretation
+  - Report
+  - Presentations
+  - Python
+  - pandas
+  - Data Modeling
+  - ETL
+  - Marketing Analytics
+  - Google Analytics
+  - Quantitative Analysis
+  - Analytics
+
+implied_skills:
+  - Visual Basic for Applications   # "Excel macros" in case studies
+  - BigQuery                        # visible only in a SQL repo
+  - Data Extraction
+  - Data Entry
+  - Google Tag Manager
+  - A/B Testing
+  - Growth Analytics
+  - Data Integration
+  - ETL Pipeline
+
+projects:
+  - id: da-p01
+    title: Sales performance dashboard for a pharma distributor
+    year: 2025
+    client_industry: Pharmaceuticals
+    skills: [Microsoft Power BI, SQL, Data Modeling, Dashboard]
+    implied: []
+    outcome: "Monthly reporting from 3 days to 2 hours; used by 40 area managers"
+    rating: 5.0
+    traps: [three_descriptions]
+  - id: da-p02
+    title: Inventory ageing analysis for an apparel brand
+    year: 2024
+    client_industry: Retail
+    skills: [Microsoft Excel, Data Analysis, Data Visualization]
+    implied: [Visual Basic for Applications]
+    outcome: "Identified $180k of slow stock; markdown plan cleared 70% in a quarter"
+    rating: 4.9
+    traps: [implied_named_differently]   # "Excel macros", never "VBA"
+  - id: da-p03
+    title: Marketing funnel analytics for a D2C skincare brand
+    year: 2024
+    client_industry: Ecommerce
+    skills: [Google Analytics, Marketing Analytics, Google Data Studio]
+    implied: [Google Tag Manager, A/B Testing]
+    outcome: "Found a checkout drop-off; fix lifted conversion 0.6 points"
+    rating: 4.8
+    traps: []
+  - id: da-p04
+    title: Customer segmentation for a microfinance lender
+    year: 2023
+    client_industry: Financial services
+    skills: [Python, pandas, Statistical Analysis, Data Interpretation]
+    implied: []
+    outcome: "5 segments; repayment-risk segment had 3x the default rate"
+    rating: 4.9
+    traps: []
+  - id: da-p05
+    title: Hospital bed-occupancy reporting in Tableau
+    year: 2023
+    client_industry: Healthcare
+    skills: [Tableau, SQL, Microsoft SQL Server, Dashboard]
+    implied: []
+    outcome: "Daily occupancy view replaced 6 manual spreadsheets"
+    rating: 4.7
+    traps: []
+  - id: da-p06
+    title: Survey analysis for an NGO education programme
+    year: 2022
+    client_industry: Non-profit
+    skills: [Statistics, Data Cleansing, Report, Presentations]
+    implied: [Data Entry]
+    outcome: "Analysed 2,400 responses; findings used in a donor renewal"
+    rating: 5.0
+    traps: []
+  - id: da-p07
+    title: Website event tracking and GA4 migration
+    year: 2023
+    client_industry: SaaS
+    skills: [Google Analytics, Analytics, Data Analysis]
+    implied: [Google Tag Manager]
+    outcome: "Migrated 45 events with no reporting gap"
+    rating: 4.8
+    traps: [three_descriptions]
+  - id: da-p08
+    title: Restaurant chain P&L dashboard in Google Sheets
+    year: 2022
+    client_industry: Hospitality
+    skills: [Google Sheets, Spreadsheet Software, Data Visualization]
+    implied: [Data Integration]
+    outcome: "Weekly P&L for 9 branches, refreshed automatically"
+    rating: 4.9
+    traps: []
+  - id: da-p09
+    title: Warehouse SQL model for a subscription box company
+    year: 2024
+    client_industry: Ecommerce
+    skills: [SQL, Data Modeling, ETL, Business Intelligence]
+    implied: [BigQuery, ETL Pipeline]
+    outcome: "One source of truth for churn; finance and marketing numbers finally agreed"
+    rating: 5.0
+    traps: [code_only:BigQuery]
+  - id: da-p10
+    title: Price-elasticity study for a grocery delivery app
+    year: 2025
+    client_industry: Retail
+    skills: [Quantitative Analysis, Python, Statistical Analysis]
+    implied: [A/B Testing]
+    outcome: "Recommended 4 price changes; basket margin up 2.1%"
+    rating: 4.8
+    traps: []
+  - id: da-p11
+    title: Board-pack automation for a property developer
+    year: 2021
+    client_industry: Real estate
+    skills: [Microsoft Excel, Presentations, Report]
+    implied: [Visual Basic for Applications]
+    outcome: "Monthly board pack from 2 days to 20 minutes"
+    rating: 4.6
+    traps: [outdated]
+  - id: da-p12
+    title: HR attrition analysis for a call centre
+    year: 2023
+    client_industry: BPO
+    skills: [Microsoft Power BI, Data Analysis, Statistics]
+    implied: []
+    outcome: "Found that night-shift agents left 2.3x faster; shift policy changed"
+    rating: 4.9
+    traps: [three_descriptions]
+  - id: da-p13
+    title: Data cleaning of a 300k-row CRM export
+    year: 2022
+    client_industry: B2B services
+    skills: [Data Cleansing, Microsoft Excel, Python]
+    implied: [Data Extraction]
+    outcome: "Removed 38k duplicates; email bounce rate from 14% to 3%"
+    rating: 4.7
+    traps: []
+  - id: da-p14
+    title: KPI dashboard for a solar installer's field teams
+    year: 2025
+    client_industry: Energy
+    skills: [Microsoft Power BI Development, Dashboard, SQL]
+    implied: []
+    outcome: "Install backlog visible per team; average install time down 1.5 days"
+    rating: 5.0
+    traps: []
+  - id: da-p15
+    title: Cohort retention report for a mobile game
+    year: 2024
+    client_industry: Gaming
+    skills: [SQL, Data Analytics, Data Visualization]
+    implied: [Growth Analytics, BigQuery]
+    outcome: "Day-7 retention analysis drove a tutorial change; D7 up 4 points"
+    rating: 4.8
+    traps: []

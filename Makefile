@@ -19,3 +19,4 @@ data:
 	python -m pipelines.clean_jobs
 	python -m pipelines.clean_contracts
 	python -m pipelines.build_market
+	python -m pipelines.build_world
