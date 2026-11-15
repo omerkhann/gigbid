@@ -21,7 +21,7 @@ from pathlib import Path
 import oci
 
 SHAPE = "VM.Standard.A1.Flex"
-SHAPES = [(4, 24), (2, 12), (1, 6)]          # (OCPUs, GB): all within the Always Free allowance
+SHAPES = [(1, 6), (2, 12), (4, 24)]          # (OCPUs, GB), smallest first: most often available
 RETRYABLE = ("out of host capacity", "out of capacity", "toomanyrequests", "internalerror")
 
 
@@ -73,7 +73,7 @@ def main() -> None:
     while True:
         attempt += 1
         for ad in ads:
-            for ocpus, gb in SHAPES:
+            for ocpus, gb in [SHAPES[(attempt - 1) % len(SHAPES)]]:   # one shape per round: Oracle 429s bursts
                 details = oci.core.models.LaunchInstanceDetails(
                     availability_domain=ad, compartment_id=compartment, display_name="gigbid", shape=SHAPE,
                     shape_config=oci.core.models.LaunchInstanceShapeConfigDetails(ocpus=ocpus, memory_in_gbs=gb),
