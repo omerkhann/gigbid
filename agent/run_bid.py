@@ -37,6 +37,10 @@ def user_for(persona: str) -> dict:
 async def main(args) -> None:
     from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 
+    from agent.tracing import setup_tracing
+
+    setup_tracing("cli")
+
     from agent.graphs.bid_graph import build_bid_graph, start_input
     from agent.mcp_client import McpGateway, http_session_factory
     from agent.nodes.common import Deps

@@ -298,3 +298,18 @@ async def test_retry_on_same_thread_starts_clean(env):
     assert first["status"] == "dead_letter"
     second = await build_bid_graph(saver).ainvoke(start_input(USER, j), run_cfg(env, FakeLLM(), thread="retry"))
     assert "__interrupt__" in second and second["branch_failures"] == []
+
+
+async def test_critic_failure_does_not_kill_the_job(env):
+    class CriticDown(FakeLLM):
+        def __call__(self, node, schema):
+            if node == "critic":
+                def fail(messages):
+                    raise RuntimeError("All models failed for critic: Failed to validate JSON")
+                return fail
+            return super().__call__(node, schema)
+
+    out = await build_bid_graph(InMemorySaver()).ainvoke(
+        {"user": USER, "job": await job(env, bid_job()), "status": "running"}, run_cfg(env, CriticDown()))
+    assert "__interrupt__" in out                                   # still reaches approval
+    assert out["critiques"][-1]["verdict"] == "unavailable"          # and the gap is visible

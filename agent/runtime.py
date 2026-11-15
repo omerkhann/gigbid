@@ -23,6 +23,7 @@ from agent.graphs.bid_graph import build_bid_graph, start_input
 from agent.graphs.conversation_graph import build_conversation_graph, start_conversation_input
 from agent.mcp_client import McpGateway, http_session_factory
 from agent.nodes.common import Deps
+from agent.tracing import run_attributes
 
 ROOT = Path(__file__).resolve().parents[1]
 Publish = Callable[[dict], Awaitable[None]]
@@ -80,15 +81,17 @@ class Runtime:
 
     async def _stream(self, graph, inp: Any, cfg: dict, publish: Publish) -> dict:
         thread = cfg["configurable"]["thread_id"]
+        user_id = thread.split(":")[1] if thread.count(":") >= 2 else "unknown"
         t = time.time()
-        async for chunk in graph.astream(inp, cfg, stream_mode="updates"):
-            for node, update in chunk.items():
-                if node == "__interrupt__":
-                    await publish({"thread_id": thread, "type": "awaiting_approval"})
-                    continue
-                for e in (update or {}).get("events") or []:
-                    await publish({"thread_id": thread, "type": "node", **e,
-                                   "status": (update or {}).get("status")})
+        with run_attributes(thread, cfg["configurable"]["trace_id"], user_id):
+            async for chunk in graph.astream(inp, cfg, stream_mode="updates"):
+                for node, update in chunk.items():
+                    if node == "__interrupt__":
+                        await publish({"thread_id": thread, "type": "awaiting_approval"})
+                        continue
+                    for e in (update or {}).get("events") or []:
+                        await publish({"thread_id": thread, "type": "node", **e,
+                                       "status": (update or {}).get("status")})
         snap = await graph.aget_state(cfg)
         values = dict(snap.values)
         if snap.interrupts:

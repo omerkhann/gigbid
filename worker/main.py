@@ -31,6 +31,9 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 
 async def startup(ctx: dict) -> None:
     from agent.runtime import Runtime
+    from agent.tracing import setup_tracing
+
+    setup_tracing("worker")
 
     ctx["db"] = await Db().open()
     ctx["runtime"] = await Runtime().__aenter__()

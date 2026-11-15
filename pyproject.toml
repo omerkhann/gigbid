@@ -23,6 +23,8 @@ dependencies = [
   "psycopg-pool>=3.3.3",
   "arq>=0.28.0",
   "cryptography>=50.0.2",
+  "arize-phoenix-otel>=0.17.3",
+  "openinference-instrumentation-langchain>=0.1.86",
 ]
 
 [project.optional-dependencies]

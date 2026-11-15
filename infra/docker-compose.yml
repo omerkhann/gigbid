@@ -26,5 +26,13 @@ services:
       timeout: 3s
       retries: 20
 
+  phoenix:                     # tracing UI + OTLP collector: http://localhost:6006
+    image: arizephoenix/phoenix:version-12.3.0
+    ports: ["6006:6006", "4317:4317"]
+    environment:
+      PHOENIX_WORKING_DIR: /data
+    volumes: [phoenixdata:/data]
+
 volumes:
   pgdata:
+  phoenixdata:

@@ -32,10 +32,16 @@ async def verify_claims(state: dict, ctx: Ctx) -> dict:
 async def critic(state: dict, ctx: Ctx) -> dict:
     d = state["proposal_draft"]
     answers = "\n".join(f"{i + 1}. {a}" for i, a in enumerate(d["screening_answers"])) or "none"
-    c: Critique = ctx.ask("critic", Critique, [
-        SystemMessage(prompt("critic")),
-        HumanMessage(f"{untrusted('job_post', job_text(state['job']))}\n\nCOVER LETTER:\n{d['cover_letter']}\n\n"
-                     f"SCREENING ANSWERS:\n{answers}")])
+    try:
+        c: Critique = ctx.ask("critic", Critique, [
+            SystemMessage(prompt("critic")),
+            HumanMessage(f"{untrusted('job_post', job_text(state['job']))}\n\nCOVER LETTER:\n{d['cover_letter']}\n\n"
+                         f"SCREENING ANSWERS:\n{answers}")])
+    except RuntimeError as exc:
+        # The Critic is a quality step, not a safety gate: if every model fails, the draft still goes
+        # through compliance and human approval, with the gap shown to the user.
+        note = {"verdict": "unavailable", "scores": None, "issues": [f"Critic unavailable: {str(exc)[:200]}"]}
+        return {"critiques": [note], "revise_requested": False, "_summary": "critic unavailable; continuing"}
     revisions = state.get("revisions", 0)
     send_back = c.verdict == "revise" and revisions < ctx.deps.cfg["budgets"]["max_revisions"]
     update = {"critiques": [c.model_dump()], "revise_requested": send_back,

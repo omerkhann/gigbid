@@ -8,6 +8,7 @@ import json
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import StreamingResponse
 
+from agent.tracing import trace_link
 from apps.api.deps import Services, User
 from apps.api.schemas import RunDetail, RunRow
 
@@ -26,7 +27,7 @@ async def run_detail(svc, user: dict, thread_id: str) -> RunDetail:
     values = await svc.runtime.state(row["kind"], thread_id)
     pending = (values.pop("__interrupt__", None) or [None])[0]
     return RunDetail(thread_id=thread_id, kind=row["kind"], status=row["status"], status_reason=row["status_reason"],
-                     trace_id=row["trace_id"], events=values.pop("events", []) or [],
+                     trace_id=row["trace_id"], trace_url=trace_link(thread_id), events=values.pop("events", []) or [],
                      state={k: v for k, v in values.items() if k not in HIDDEN_STATE}, pending_approval=pending)
 
 

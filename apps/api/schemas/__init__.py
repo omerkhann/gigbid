@@ -81,6 +81,7 @@ class RunDetail(BaseModel):
     status: str | None
     status_reason: str | None
     trace_id: str | None
+    trace_url: str | None = None
     events: list[dict[str, Any]]
     state: dict[str, Any]
     pending_approval: dict[str, Any] | None

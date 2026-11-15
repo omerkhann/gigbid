@@ -62,24 +62,36 @@ class Usage:
 
 
 def structured(node: str, schema: type[T]):
-    """Callable(messages) -> (parsed, Usage). Tries each model in the node's chain."""
+    """Callable(messages) -> (parsed, Usage). For each model in the node's chain: strict JSON-schema
+    mode first; if the provider rejects the output (e.g. Groq "Failed to validate JSON"), the same
+    model once more in plain JSON mode, validated here; then the next model."""
+
+    def attempt(spec: str, method: str, messages: list[Any]) -> tuple[Any, dict]:
+        llm = chat_model(spec).with_structured_output(schema, method=method, include_raw=True)
+        msgs = messages
+        if method == "json_mode":   # plain JSON mode has no schema: show it in the prompt
+            import json as _json
+
+            from langchain_core.messages import SystemMessage
+            hint = "Reply with ONLY a JSON object matching this JSON schema:\n" + _json.dumps(schema.model_json_schema())
+            msgs = [SystemMessage(hint), *messages]
+        out = llm.invoke(msgs)
+        if out.get("parsed") is None:
+            raise ValueError(f"unparseable output ({out.get('parsing_error')})")
+        return out["parsed"], getattr(out["raw"], "usage_metadata", None) or {}
 
     def call(messages: list[Any]) -> tuple[T, Usage]:
         errors = []
         for i, spec in enumerate(chain_for(node)):
-            llm = chat_model(spec).with_structured_output(schema, method="json_schema", include_raw=True)
-            t = time.time()
-            try:
-                out = llm.invoke(messages)
-            except Exception as exc:  # noqa: BLE001 - try the next model in the chain
-                errors.append(f"{spec}: {exc.__class__.__name__}: {str(exc)[:200]}")
-                continue
-            if out.get("parsed") is None:
-                errors.append(f"{spec}: unparseable output ({out.get('parsing_error')})")
-                continue
-            meta = getattr(out["raw"], "usage_metadata", None) or {}
-            return out["parsed"], Usage(spec, meta.get("input_tokens", 0), meta.get("output_tokens", 0),
-                                        round(time.time() - t, 3), i)
+            for method in ("json_schema", "json_mode"):
+                t = time.time()
+                try:
+                    parsed, meta = attempt(spec, method, messages)
+                except Exception as exc:  # noqa: BLE001 - fall through to the next method / model
+                    errors.append(f"{spec}[{method}]: {exc.__class__.__name__}: {str(exc)[:160]}")
+                    continue
+                return parsed, Usage(spec, meta.get("input_tokens", 0), meta.get("output_tokens", 0),
+                                     round(time.time() - t, 3), i)
         raise RuntimeError(f"All models failed for {node}: " + " | ".join(errors))
 
     return call
