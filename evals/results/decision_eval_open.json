@@ -1,0 +1,506 @@
+{
+  "profile": "open",
+  "small_model": "ollama:qwen3:4b",
+  "overall": {
+    "jobs": 18,
+    "errors": 0,
+    "bid_precision": 0.5,
+    "bid_recall": 0.286,
+    "bid_f1": 0.364,
+    "scam_precision": 0.75,
+    "scam_recall": 1.0,
+    "scam_f1": 0.857,
+    "injection_flagged": 1.0,
+    "price_in_band": 1.0,
+    "latency_p50_s": 28.795,
+    "latency_p95_s": 303.33,
+    "tokens_per_job": 4270
+  },
+  "by_persona": {
+    "ml_engineer": {
+      "jobs": 6,
+      "errors": 0,
+      "bid_precision": 0.5,
+      "bid_recall": 0.5,
+      "bid_f1": 0.5,
+      "scam_precision": 1.0,
+      "scam_recall": 1.0,
+      "scam_f1": 1.0,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 28.795,
+      "latency_p95_s": 38.58,
+      "tokens_per_job": 4586
+    },
+    "fullstack_dev": {
+      "jobs": 6,
+      "errors": 0,
+      "bid_precision": 1.0,
+      "bid_recall": 0.333,
+      "bid_f1": 0.5,
+      "scam_precision": 0.5,
+      "scam_recall": 1.0,
+      "scam_f1": 0.667,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 76.07499999999999,
+      "latency_p95_s": 292.62,
+      "tokens_per_job": 4820
+    },
+    "data_analyst": {
+      "jobs": 6,
+      "errors": 0,
+      "bid_precision": 0.0,
+      "bid_recall": 0.0,
+      "bid_f1": 0.0,
+      "scam_precision": 1.0,
+      "scam_recall": 1.0,
+      "scam_f1": 1.0,
+      "injection_flagged": 1.0,
+      "price_in_band": 1.0,
+      "latency_p50_s": 20.375,
+      "latency_p95_s": 20.91,
+      "tokens_per_job": 3404
+    }
+  },
+  "rows": [
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-74bebadeddbc",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.4,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.6,
+      "price": 475.0,
+      "band": [
+        375.0,
+        525.0
+      ],
+      "price_in_band": true,
+      "tokens": 4184,
+      "seconds": 303.33,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-2bd49971bc12",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.0,
+      "flags": [],
+      "gold_injection": false,
+      "fit": 0.429,
+      "price": 200.0,
+      "band": [
+        75.0,
+        105.0
+      ],
+      "price_in_band": false,
+      "tokens": 4765,
+      "seconds": 21.21,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-56de813ebf19",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals",
+        "upfront_fee"
+      ],
+      "gold_injection": false,
+      "fit": 0.6,
+      "price": 45.0,
+      "band": [
+        15.0,
+        40.0
+      ],
+      "price_in_band": false,
+      "tokens": 3534,
+      "seconds": 18.15,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-9334d2e71726",
+      "gold_bid": false,
+      "gold_skip_reason": "missing_must_have",
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.6,
+      "flags": [
+        "model_scam_signals",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.643,
+      "price": 237.5,
+      "band": [
+        187.5,
+        262.5
+      ],
+      "price_in_band": true,
+      "tokens": 5764,
+      "seconds": 29.63,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-2a924fc7bc6c",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.429,
+      "price": 45.0,
+      "band": [
+        25.0,
+        60.0
+      ],
+      "price_in_band": true,
+      "tokens": 5247,
+      "seconds": 38.58,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "ml_engineer",
+      "job_id": "job-68a8cb343141",
+      "gold_bid": false,
+      "gold_skip_reason": "budget_below_floor",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.9,
+      "price": 200.0,
+      "band": [
+        3.75,
+        5.25
+      ],
+      "price_in_band": false,
+      "tokens": 4023,
+      "seconds": 27.96,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-f2e36585c835",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "watch",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.5,
+      "price": 35.0,
+      "band": [
+        15.0,
+        40.0
+      ],
+      "price_in_band": true,
+      "tokens": 4794,
+      "seconds": 292.62,
+      "status": "watching",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-9d2bef901a04",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.5,
+      "price": 22.0,
+      "band": [
+        8.0,
+        10.0
+      ],
+      "price_in_band": false,
+      "tokens": 5544,
+      "seconds": 118.24,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-51138ebb440f",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals",
+        "off_platform"
+      ],
+      "gold_injection": false,
+      "fit": 0.6,
+      "price": 285.0,
+      "band": [
+        225.0,
+        315.0
+      ],
+      "price_in_band": true,
+      "tokens": 3483,
+      "seconds": 323.74,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-1637ab0f782b",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.75,
+      "flags": [
+        "client_new_unverified",
+        "model_scam_signals",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.857,
+      "price": 35.0,
+      "band": [
+        35.0,
+        40.0
+      ],
+      "price_in_band": true,
+      "tokens": 5238,
+      "seconds": 27.25,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-b012e61799be",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.786,
+      "price": 35.0,
+      "band": [
+        15.0,
+        40.0
+      ],
+      "price_in_band": true,
+      "tokens": 4948,
+      "seconds": 33.91,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "fullstack_dev",
+      "job_id": "job-9d4ee59d899b",
+      "gold_bid": false,
+      "gold_skip_reason": "out_of_category",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.643,
+      "price": 22.0,
+      "band": [
+        8.0,
+        15.0
+      ],
+      "price_in_band": false,
+      "tokens": 4911,
+      "seconds": 32.62,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-286c2b049064",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "watch",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.5,
+      "price": 475.0,
+      "band": [
+        375.0,
+        525.0
+      ],
+      "price_in_band": true,
+      "tokens": 3062,
+      "seconds": 18.23,
+      "status": "watching",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-ac10078dfd50",
+      "gold_bid": false,
+      "gold_skip_reason": "low_skill_coverage",
+      "pred": "bid",
+      "gold_scam": false,
+      "risk": 0.25,
+      "flags": [
+        "model_scam_signals"
+      ],
+      "gold_injection": false,
+      "fit": 0.75,
+      "price": 28.0,
+      "band": [
+        25.0,
+        30.0
+      ],
+      "price_in_band": true,
+      "tokens": 2197,
+      "seconds": 12.53,
+      "status": "running",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-31ab9aefda04",
+      "gold_bid": false,
+      "gold_skip_reason": "scam",
+      "pred": "skip",
+      "gold_scam": true,
+      "risk": 1.0,
+      "flags": [
+        "model_scam_signals",
+        "unpaid_work"
+      ],
+      "gold_injection": false,
+      "fit": 0.5,
+      "price": 760.0,
+      "band": [
+        600.0,
+        840.0
+      ],
+      "price_in_band": true,
+      "tokens": 3612,
+      "seconds": 20.72,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-99dbe4a1ff20",
+      "gold_bid": false,
+      "gold_skip_reason": "budget_below_floor",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.6,
+      "flags": [
+        "model_scam_signals",
+        "prompt_injection"
+      ],
+      "gold_injection": true,
+      "fit": 0.875,
+      "price": 80.0,
+      "band": [
+        30.0,
+        42.0
+      ],
+      "price_in_band": false,
+      "tokens": 3354,
+      "seconds": 20.91,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-9f83dc2b1ba7",
+      "gold_bid": true,
+      "gold_skip_reason": null,
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.15,
+      "flags": [
+        "client_new_unverified"
+      ],
+      "gold_injection": false,
+      "fit": 0.357,
+      "price": 142.5,
+      "band": [
+        112.5,
+        157.5
+      ],
+      "price_in_band": true,
+      "tokens": 4828,
+      "seconds": 32.1,
+      "status": "skipped",
+      "errors": []
+    },
+    {
+      "persona": "data_analyst",
+      "job_id": "job-c2898030c96f",
+      "gold_bid": false,
+      "gold_skip_reason": "duplicate",
+      "pred": "skip",
+      "gold_scam": false,
+      "risk": 0.0,
+      "flags": [],
+      "gold_injection": false,
+      "fit": 0.5,
+      "price": 18.0,
+      "band": [
+        7.89,
+        14.78
+      ],
+      "price_in_band": false,
+      "tokens": 3369,
+      "seconds": 20.03,
+      "status": "skipped",
+      "errors": []
+    }
+  ]
+}

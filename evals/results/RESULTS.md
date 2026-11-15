@@ -46,6 +46,7 @@ Source: `evals/results/decision_eval_<profile>.json` (fixed 60-job subset `evals
 
 | Profile | Jobs | Errors | Bid F1 | Scam precision | Scam recall | Injections flagged | Price in fair band | p50 (s) | p95 (s) | Tokens / job |
 |---|---|---|---|---|---|---|---|---|---|---|
+| `open` (small tier: `ollama:qwen3:4b`) | 18 | 0 | 0.364 | 0.750 | 1.000 | 1.000 | 1.000 | 28.8 | 303.3 | 4270 |
 | `open_hosted` (small tier: `groq:openai/gpt-oss-20b`) | 12 | 0 | 0.857 | 1.000 | 1.000 | 1.000 | 1.000 | 34.9 | 140.8 | 4559 |
 
 ### Multi-agent comparison (R&D question C)

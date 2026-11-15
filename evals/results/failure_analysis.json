@@ -1,11 +1,101 @@
 {
   "counts": {
     "missed_evidence": 9,
-    "wrong_skip": 1
+    "wrong_skip": 6,
+    "wrong_bid": 2
   },
-  "total": 10,
+  "total": 17,
   "failures": {
+    "wrong_bid": [
+      {
+        "source": "decision_eval_open.json",
+        "persona": "ml_engineer",
+        "job_id": "job-9334d2e71726",
+        "title": "Seeking a Skilled AWS Lambda Developer for API That Crawls Data from Public API ",
+        "fit": 0.643,
+        "risk": 0.6,
+        "flags": [
+          "model_scam_signals",
+          "prompt_injection"
+        ],
+        "detail": "bid on a job to skip (missing_must_have)"
+      },
+      {
+        "source": "decision_eval_open.json",
+        "persona": "data_analyst",
+        "job_id": "job-ac10078dfd50",
+        "title": "ChatGPT/OpenAI coder to create a Landing page creator",
+        "fit": 0.75,
+        "risk": 0.25,
+        "flags": [
+          "model_scam_signals"
+        ],
+        "detail": "bid on a job to skip (low_skill_coverage)"
+      }
+    ],
     "wrong_skip": [
+      {
+        "source": "decision_eval_open.json",
+        "persona": "ml_engineer",
+        "job_id": "job-2a924fc7bc6c",
+        "title": "Website",
+        "fit": 0.429,
+        "risk": 0.15,
+        "flags": [
+          "client_new_unverified"
+        ],
+        "detail": "predicted skip on a bid-worthy job"
+      },
+      {
+        "source": "decision_eval_open.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-f2e36585c835",
+        "title": "Shopify CODING Expert!",
+        "fit": 0.5,
+        "risk": 0.25,
+        "flags": [
+          "model_scam_signals"
+        ],
+        "detail": "predicted watch on a bid-worthy job"
+      },
+      {
+        "source": "decision_eval_open.json",
+        "persona": "fullstack_dev",
+        "job_id": "job-1637ab0f782b",
+        "title": "Convert a Webflow site into a NextJs app with a CMS",
+        "fit": 0.857,
+        "risk": 0.75,
+        "flags": [
+          "client_new_unverified",
+          "model_scam_signals",
+          "prompt_injection"
+        ],
+        "detail": "predicted skip on a bid-worthy job"
+      },
+      {
+        "source": "decision_eval_open.json",
+        "persona": "data_analyst",
+        "job_id": "job-286c2b049064",
+        "title": "Python expert to help with data wrangling for research",
+        "fit": 0.5,
+        "risk": 0.15,
+        "flags": [
+          "client_new_unverified"
+        ],
+        "detail": "predicted watch on a bid-worthy job"
+      },
+      {
+        "source": "decision_eval_open.json",
+        "persona": "data_analyst",
+        "job_id": "job-9f83dc2b1ba7",
+        "title": "Tutor for SPSS",
+        "fit": 0.357,
+        "risk": 0.15,
+        "flags": [
+          "client_new_unverified"
+        ],
+        "detail": "predicted skip on a bid-worthy job"
+      },
       {
         "source": "decision_eval_open_hosted.json",
         "persona": "fullstack_dev",
