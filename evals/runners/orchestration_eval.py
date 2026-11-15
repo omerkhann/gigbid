@@ -34,7 +34,7 @@ from pydantic import BaseModel, Field
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "evals/results/orchestration_eval.json"
-SHARES = {"bid": 2, "skip": 1, "scam": 1, "injection": 1}
+SHARES = {"bid": 1, "scam": 1, "injection": 1}   # small on purpose: Groq free-tier daily cap
 CONTACT = re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+|\+?\d[\d\s().-]{8,}\d")
 
 
@@ -103,7 +103,7 @@ def job_message(job: dict, user: dict) -> str:
             f"fixed.\nJob facts: {json.dumps(facts)}\n\n" + untrusted("job_post", job.get("description", "")))
 
 
-async def run(arms: list[str], scale: int) -> dict:
+async def run(arms: list[str], scale: int, personas: list[str]) -> list[dict]:
     from langchain_core.callbacks import UsageMetadataCallbackHandler
     from langchain_core.messages import HumanMessage
     from langchain_mcp_adapters.tools import load_mcp_tools
@@ -147,6 +147,8 @@ async def run(arms: list[str], scale: int) -> dict:
     rows = []
     by_persona: dict[str, list[str]] = {}
     for persona, job_id in pick_jobs(scale):
+        if persona not in personas:
+            continue
         by_persona.setdefault(persona, []).append(job_id)
 
     for persona, job_ids in by_persona.items():
@@ -196,7 +198,7 @@ async def run(arms: list[str], scale: int) -> dict:
                             if arm == "single":
                                 agent = create_react_agent(model, pick("get_client_history", "get_market_stats",
                                                                        "get_connects_balance", "search_evidence"),
-                                                           prompt=prompt("single_agent"), response_format=Decision)
+                                                           prompt=prompt("single_agent"))
                             else:
                                 team = [create_react_agent(model, pick(*ts), prompt=prompt(p), name=n) for n, p, ts in (
                                     ("risk_analyst", "sup_risk", ["get_client_history"]),
@@ -204,9 +206,15 @@ async def run(arms: list[str], scale: int) -> dict:
                                     ("pricer", "sup_pricer", ["get_market_stats", "get_connects_balance"]),
                                     ("writer", "sup_writer", ["search_evidence"]))]
                                 agent = create_supervisor(team, model=model, prompt=prompt("supervisor"),
-                                                          response_format=Decision, output_mode="full_history").compile()
+                                                          output_mode="full_history").compile()
                             res = await agent.ainvoke(msg, cfg)
-                            d = res["structured_response"].model_dump()
+                            # Both baselines answer in text; one extraction call turns the final message
+                            # into the Decision schema. (Their built-in response_format failed on Groq:
+                            # "Tool choice is none, but model called a tool".) Its tokens are counted.
+                            parsed = await model.with_structured_output(Decision).ainvoke(
+                                [HumanMessage("Extract the decision from this text:\n" + str(res["messages"][-1].content))],
+                                cfg)
+                            d = parsed.model_dump()
                             evidence = evidence_from_messages(res["messages"])
                             tool_calls = sum(getattr(m, "type", "") == "tool" for m in res["messages"])
                     except Exception as exc:  # noqa: BLE001 - a failed run is a data point, not a crash
@@ -258,9 +266,10 @@ if __name__ == "__main__":
     load_dotenv(ROOT / ".env")
     ap = argparse.ArgumentParser()
     ap.add_argument("--arms", nargs="+", default=["graph", "single", "supervisor"])
-    ap.add_argument("--per-persona", type=int, default=1, help="multiplier on 2 bid / 1 skip / 1 scam / 1 injection")
+    ap.add_argument("--per-persona", type=int, default=1, help="multiplier on 1 bid / 1 scam / 1 injection")
+    ap.add_argument("--personas", nargs="+", default=["ml_engineer", "data_analyst"])
     a = ap.parse_args()
-    coro = run(a.arms, a.per_persona)
+    coro = run(a.arms, a.per_persona, a.personas)
     fresh = asyncio.run(coro, loop_factory=asyncio.SelectorEventLoop) if sys.platform == "win32" else asyncio.run(coro)
     old = json.loads(OUT.read_text(encoding="utf-8"))["rows"] if OUT.exists() else []
     rows = [r for r in old if r["arch"] not in a.arms] + fresh

@@ -26,6 +26,11 @@ models:
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
       judge: ["groq:qwen/qwen3.8-27b"]
+    open_lite:                 # one model everywhere (R&D C): used after gpt-oss-120b hit Groq's free
+      small: ["groq:openai/gpt-oss-20b"]   # daily cap; see docs/RUNBOOK.md "Free-tier caps"
+      strong: ["groq:openai/gpt-oss-20b"]
+      critic: ["groq:openai/gpt-oss-20b"]
+      judge: ["groq:qwen/qwen3.8-27b"]
   # Per-model call options. qwen3 "thinking" adds ~800 hidden tokens per call; off for small tasks.
   options:
     "ollama:qwen3:4b": {reasoning_effort: none, temperature: 0}
@@ -44,6 +49,7 @@ models:
     client_liaison: strong
     intent: small
     rag_grader: small
+    portfolio_builder: strong  # X3: case studies from repos (verified by verify_claims)
     judge: judge                 # eval-only LLM judge: a different family from the Writer
   embeddings: nomic-embed-text
   reranker: bge-reranker-v2-m3
