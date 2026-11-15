@@ -1,15 +1,42 @@
-# GigBid services. Grows phase by phase; `docker compose -f infra/docker-compose.yml up -d` from the repo root.
-# Today: Postgres (LangGraph checkpointer + store, later pgvector) and Redis (later: Arq worker queue).
+# GigBid services. From the repo root:
+#   docker compose -f infra/docker-compose.yml up -d                       # infra only (local development)
+#   docker compose -f infra/docker-compose.yml --profile app up -d --build # the whole product
+# The whole product: UI http://localhost:3000 (reviewer@gigbid.dev / gigbid-review), API :8000/docs,
+# GigSim :8100, Phoenix traces :6006. Secrets come from the repo's .env (GROQ_API_KEY, APP_SECRET_KEY).
+# Containers default to the open_hosted model profile and the fastembed embedder, so they need
+# neither a GPU nor Ollama (set MODEL_PROFILE=open to use Ollama on the host instead).
 name: gigbid
+
+x-py: &py
+  image: gigbid-py
+  profiles: [app]
+  restart: unless-stopped
+  env_file: [{path: ../.env, required: false}]
+  environment: &pyenv
+    APP_ENV: ${APP_ENV:-production}
+    DATABASE_URL: postgresql://gigbid:gigbid@postgres:5432/gigbid
+    REDIS_URL: redis://redis:6379/0
+    MODEL_PROFILE: ${MODEL_PROFILE:-open_hosted}
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL_DOCKER:-http://host.docker.internal:11434}
+    PHOENIX_COLLECTOR_ENDPOINT: http://phoenix:6006/v1/traces
+    PHOENIX_UI_URL: ${PHOENIX_UI_URL:-http://localhost:6006}
+    GIGSIM_BASE_URL: http://gigsim:8100
+    MARKETPLACE_MCP_URL: http://mcp-marketplace:8201/mcp
+    WORKSPACE_MCP_URL: http://mcp-workspace:8202/mcp
+    PORTFOLIO_MCP_URL: http://mcp-portfolio:8203/mcp
+    PORTFOLIO_EMBEDDER: ${PORTFOLIO_EMBEDDER:-fastembed:BAAI/bge-small-en-v1.5}
+  extra_hosts: ["host.docker.internal:host-gateway"]
+  volumes: [appdata:/app/data/processed]
 
 services:
   postgres:
     image: pgvector/pgvector:pg17
+    restart: unless-stopped
     environment:
       POSTGRES_USER: gigbid
       POSTGRES_PASSWORD: gigbid          # dev only; deployments override via env
       POSTGRES_DB: gigbid
-    ports: ["5433:5432"]   # 5433 on the host: a native Windows Postgres already uses 5432
+    ports: ["127.0.0.1:5433:5432"]   # 5433 on the host: a native Windows Postgres already uses 5432
     volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U gigbid -d gigbid"]
@@ -19,7 +46,8 @@ services:
 
   redis:
     image: redis:7-alpine
-    ports: ["6379:6379"]
+    restart: unless-stopped
+    ports: ["127.0.0.1:6379:6379"]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -28,11 +56,89 @@ services:
 
   phoenix:                     # tracing UI + OTLP collector: http://localhost:6006
     image: arizephoenix/phoenix:version-12.3.0
-    ports: ["6006:6006", "4317:4317"]
+    restart: unless-stopped
+    ports: ["127.0.0.1:6006:6006", "127.0.0.1:4317:4317"]
     environment:
       PHOENIX_WORKING_DIR: /data
     volumes: [phoenixdata:/data]
 
+  # --- the product (profile "app") ------------------------------------------------------------
+
+  gigsim:
+    <<: *py
+    build: {context: .., dockerfile: infra/docker/python.Dockerfile}   # builds gigsim-py once for all
+    command: ["uvicorn", "gigsim.app:create_app", "--factory", "--host", "0.0.0.0", "--port", "8100"]
+    environment:
+      <<: *pyenv
+      GIGSIM_DB: /app/data/processed/gigsim.sqlite3
+    ports: ["127.0.0.1:8100:8100"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8100/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mcp-marketplace:
+    <<: *py
+    command: ["python", "-m", "mcp_servers.marketplace.server"]
+    environment:
+      <<: *pyenv
+      MARKETPLACE_HOST: 0.0.0.0
+      MARKETPLACE_DB: /app/data/processed/marketplace_mcp.sqlite3
+    depends_on: {gigsim: {condition: service_healthy}}
+
+  mcp-workspace:
+    <<: *py
+    command: ["python", "-m", "mcp_servers.workspace.server"]
+    environment:
+      <<: *pyenv
+      WORKSPACE_HOST: 0.0.0.0
+      WORKSPACE_DB: /app/data/processed/workspace_mcp.sqlite3
+
+  mcp-portfolio:
+    <<: *py
+    command: ["python", "-m", "mcp_servers.portfolio.server"]
+    environment:
+      <<: *pyenv
+      PORTFOLIO_HOST: 0.0.0.0
+      PORTFOLIO_DB: /app/data/processed/portfolio_mcp.sqlite3
+
+  worker:
+    <<: *py
+    command: ["python", "-m", "worker.main"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      gigsim: {condition: service_healthy}
+
+  api:
+    <<: *py
+    command: ["python", "-m", "apps.api.serve", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      <<: *pyenv
+      WEB_ORIGINS: ${WEB_ORIGINS:-http://localhost:3000}
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  web:
+    image: gigbid-web
+    profiles: [app]
+    restart: unless-stopped
+    build:
+      context: ..
+      dockerfile: infra/docker/web.Dockerfile
+      args: {API_URL: http://api:8000}
+    ports: ["${WEB_PORT:-3000}:3000"]
+    depends_on: {api: {condition: service_healthy}}
+
 volumes:
   pgdata:
   phoenixdata:
+  appdata:
