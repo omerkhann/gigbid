@@ -21,10 +21,11 @@ models:
       strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
       critic: ["groq:openai/gpt-oss-20b"]
       judge: ["groq:qwen/qwen3.8-27b"]
-    open_hosted:               # variant of "open" with no GPU (the deployed VM): small tier hosted too
-      small: ["groq:openai/gpt-oss-20b", "ollama:qwen3:4b"]
-      strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b"]
-      critic: ["groq:openai/gpt-oss-20b"]
+    open_hosted:               # variant of "open" with no GPU (the deployed VM): small tier hosted too.
+      # Last fallback: OpenRouter's free Gemma, for when Groq's free daily cap is reached (RUNBOOK).
+      small: ["groq:openai/gpt-oss-20b", "ollama:qwen3:4b", "openrouter:google/gemma-4-31b-it:free"]
+      strong: ["groq:openai/gpt-oss-120b", "groq:openai/gpt-oss-20b", "openrouter:google/gemma-4-31b-it:free"]
+      critic: ["groq:openai/gpt-oss-20b", "openrouter:google/gemma-4-31b-it:free"]
       judge: ["groq:qwen/qwen3.8-27b"]
     open_lite:                 # one model everywhere (R&D C): used after gpt-oss-120b hit Groq's free
       small: ["groq:openai/gpt-oss-20b"]   # daily cap; see docs/RUNBOOK.md "Free-tier caps"

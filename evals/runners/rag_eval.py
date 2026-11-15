@@ -117,7 +117,7 @@ def paired_ci(rows: list[dict], variant: str, base: str = "v0_naive", key: str =
     def scores(v):
         return {(r["persona"], j["job_id"]): j[key] for r in rows if r["variant"] == v for j in r.get("per_job", [])}
     a, b = scores(variant), scores(base)
-    diffs = [a[k] - b[k] for k in a.keys() & b.keys()]
+    diffs = [a[k] - b[k] for k in sorted(a.keys() & b.keys())]   # sorted: set order varies per process
     if len(diffs) < 10:
         return None
     rng = random.Random(seed)

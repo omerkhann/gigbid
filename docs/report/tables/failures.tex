@@ -1,0 +1,9 @@
+\begin{tabular}{p{2.1cm}rp{3.6cm}p{4.4cm}p{3.6cm}}
+\toprule
+Category & Jobs & Example & Fix tried & Did it work \\
+\midrule
+missed evidence & 9 & \texttt{job-02a9e1095359} Google Cloud Data Catalog Expert for Proof-of-Co & Hybrid BM25 + outcome boost (shipped \texttt{v2\_v4}); chunks start on word boundaries & Partly: $+7.3$ pts R@5 on 5+-requirement jobs; these jobs still miss \\
+wrong skip & 6 & \texttt{job-2a924fc7bc6c} Website & Hosted 20B small tier instead of local 4B for fit judging (\texttt{open\_hosted}) & Yes on the hosted profile: bid recall 0.29 $\to$ 0.75 \\
+wrong bid & 2 & \texttt{job-9334d2e71726} Seeking a Skilled AWS Lambda Developer for API T & Fit threshold and budget floor in \texttt{decide} & Not yet: needs threshold tuning on dev \\
+\bottomrule
+\end{tabular}

@@ -84,7 +84,7 @@
       "latency_p95_s": 0.173,
       "delta_recall5_ci95_pts": [
         -6.4,
-        4.9
+        4.8
       ]
     },
     {
@@ -98,8 +98,8 @@
       "latency_p50_s": 2.472,
       "latency_p95_s": 7.546,
       "delta_recall5_ci95_pts": [
-        -7.6,
-        3.2
+        -7.4,
+        3.5
       ]
     },
     {
@@ -113,8 +113,8 @@
       "latency_p50_s": 3.829,
       "latency_p95_s": 7.56,
       "delta_recall5_ci95_pts": [
-        -4.6,
-        6.3
+        -4.3,
+        6.5
       ]
     },
     {
@@ -128,8 +128,8 @@
       "latency_p50_s": 5.119,
       "latency_p95_s": 10.161,
       "delta_recall5_ci95_pts": [
-        -5.0,
-        2.8
+        -4.9,
+        3.0
       ]
     },
     {
@@ -158,8 +158,8 @@
       "latency_p50_s": 3.108,
       "latency_p95_s": 4.379,
       "delta_recall5_ci95_pts": [
-        -7.6,
-        3.2
+        -7.4,
+        3.5
       ]
     },
     {

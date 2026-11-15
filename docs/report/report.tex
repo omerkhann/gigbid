@@ -1,0 +1,168 @@
+% GigBid R&D report (AI-4016 Assignment II). Build: python scripts/report_tables.py && latexmk -pdf report.tex
+% Every table is generated from evals/results/*.json by scripts/report_tables.py (no hand-copied numbers).
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=17mm,top=15mm,bottom=17mm]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{booktabs,array,graphicx,xcolor,enumitem,caption,adjustbox}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=*}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
+\captionsetup{font=small,labelfont=bf,skip=3pt}
+\newcommand{\res}[1]{\texttt{\small evals/results/#1}}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\pending}[1]{\textcolor{red}{[#1]}}
+\newcommand{\tbl}[3][]{\begin{table}[h!]\centering\caption{#2}#1\adjustbox{max width=\linewidth}{\small\input{tables/#3}}\par\vspace{1pt}{\scriptsize\input{tables/#3_note}}\end{table}}
+\newcommand{\tblfit}[3][]{\tbl[#1]{#2}{#3}}
+
+\title{\vspace{-8mm}\textbf{GigBid: a multi-agent copilot for freelancers}\\[2pt]\large R\&D report: engineering design review}
+\author{AI-4016 Assignment II \quad\textperiodcentered\quad \url{https://github.com/omerkhann/gigbid}}
+\date{15 November 2026}
+
+\begin{document}
+\maketitle
+\vspace{-6mm}
+\noindent\emph{Every number in this report comes from a file in} \res{}\emph{; all tables are generated from those files by} \code{scripts/report\_tables.py}\emph{. Design claims cite code, an ADR (}\code{docs/adr/}\emph{) or a commit. Negative results are reported as measured.}
+
+%=====================================================================================================
+\section{Problem and constraints}
+
+A freelancer spends hours each week reading job posts, discarding scams and poor fits, and writing proposals that cite their own work. GigBid automates the reading, filtering and drafting, and nothing else.
+
+\textbf{Never automated:} sending a proposal or a message; spending Connects; claiming experience the portfolio does not show. Every send passes an \code{interrupt()} approval (\code{agent/nodes/approval.py}); every claim is checked against cited evidence before review (\code{rag/verify.py}, ADR~0006); live mode may only use the official Upwork MCP server, with no scraping or browser automation.
+
+\textbf{Budgets (declared before measuring).}
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Unit & p95 latency & Tokens & Cost \\\midrule
+Job analysed (to bid/skip decision) & $\le$ 90 s & $\le$ 8k & \$0 \\
+Proposal (to the approval screen) & $\le$ 180 s & $\le$ 40k (hard cap, \code{budgets.max\_tokens\_per\_job}) & \$0 \\\bottomrule
+\end{tabular}\end{center}
+Cost is \$0 because every model is open-weight and runs either on a free hosted tier (Groq) or locally (Ollama on an RTX~4050, 6\,GB). The binding constraint turned out to be the free tier's \emph{quota}, not money: Groq allows 200k tokens per day \emph{per model}. On the day of the evaluation both hosted \code{gpt-oss} models reached it (Groq: \emph{``tokens per day (TPD): Limit 200000, Used 199520''}). This is measured and documented in \code{docs/RUNBOOK.md} (``Free-tier caps'') and it determined the size of several experiments below; each table states its job count.
+
+%=====================================================================================================
+\section{Architecture}
+
+Two hand-built LangGraph \code{StateGraph}s run in an Arq worker, reach the outside world only through MCP servers, and checkpoint to Postgres after every node (ADR~0001, 0005; \code{docs/ARCHITECTURE.md}).
+
+\textbf{Bid graph} (one thread per job). Job Analyst (typed \code{JobSpec}), Risk Assessor (rules + small LLM) and Fit Matcher (evidence per requirement) run in parallel via \code{Send}; a rule-based \code{decide} node skips, watches or bids, always with a recorded reason (ADR~0007). On a bid: Pricing (arithmetic) $\to$ Writer $\to$ claim verification $\to$ Critic (at most two revisions) $\to$ Compliance Guard (can block) $\to$ approval (\code{interrupt}) $\to$ idempotent submit. \textbf{Conversation graph} (one thread per client conversation): classify $\to$ offer calendar slots $\to$ draft reply $\to$ compliance $\to$ approval $\to$ send.
+
+\textbf{Marketplace port.} One tool surface (\code{search\_jobs}, \code{get\_job}, \code{get\_client\_history}, \code{get\_market\_stats}, \code{get\_connects\_balance}, \code{create\_proposal\_draft}, \code{submit\_proposal}, messaging) behind adapters \code{gigsim} and \code{upwork\_live}: live mode is configuration, no agent code changes (ADR~0002).
+
+\textbf{MCP surface.} Three own servers (Marketplace :8201, Workspace :8202, Portfolio :8203), Streamable HTTP, per-user bearer auth, and a shared guard (rate limits, append-only audit log, PII masking, typed failures). Each node may only call the tools on its allowlist (\code{agent/mcp\_client.py}). GitHub's official MCP server is the third-party server, used by the extension (\S7). The Portfolio server is also published as a standalone Docker image (\code{mcp\_servers/portfolio/README.md}).
+
+\textbf{Stores, kept apart.} Graph state (Postgres checkpoints, per thread); execution traces (Phoenix); long-term memory (Postgres store, entered only through \code{agent/memory/promotion\_rules.py}: a style rule needs at least three consistent edits); app tables (users, encrypted credentials, runs); per-server SQLite (audit, idempotency, embedding cache).
+
+\textbf{Why each agent exists.} Analyses that do not depend on each other run in parallel (latency); anything that must be explainable and stable (decide, risk score, price) is rules or arithmetic; only prose for the client uses the strong model; claim verification sits \emph{before} the Critic so the Critic never praises an invented claim (ADR~0006). The Critic fails soft: when its model is unavailable the run continues with the verdict ``unavailable'' instead of dead-lettering, because the human approval is the real gate.
+
+%=====================================================================================================
+\section{R\&D question A: tool granularity}
+
+\textbf{Not run.} The planned setup: 40 tasks with known correct calls, comparing many fine-grained tools, a few coarse tools, and the current set with rewritten descriptions, measuring tool-selection accuracy, argument accuracy and tokens per task. It was dropped for time and quota. The only related evidence is an observation from \S5 (the prebuilt supervisor often answered without calling any tool), which is not a measured answer to this question.
+
+%=====================================================================================================
+\section{R\&D question B: retrieval variants, claim verification, ablation}
+
+\textbf{Setup.} One pipeline with switchable components (\code{rag/pipeline.py}, ADR~0008): every variant and ablation is a configuration over the same chunks and embedding cache. Gold evidence is project-level (\code{evals/datasets/dev/labels.jsonl}); retrieved chunks are mapped to their project and de-duplicated in rank order before scoring. Jobs: the first 20 bid-worthy dev jobs per persona (60, identical for every variant). Embeddings \code{nomic-embed-text}; reranker \code{ms-marco-MiniLM-L-12-v2} (\code{bge-reranker-v2-m3} measured 70--110\,s per job on the laptop CPU, so it was not usable; ADR~0008). Uncertainty: paired bootstrap over jobs (2{,}000 resamples) of the Recall@5 change against V0.
+
+\textbf{Working hypothesis} (the reason V1 and V2 were built first; not committed before the runs): \emph{``Requirement decomposition plus hybrid retrieval raises evidence Recall@5 by 15 points over V0 on jobs with five or more requirements.''}
+
+\tbl{Retrieval variants and ablation (60 jobs). ``$a - b$'' = variant $a$ with component $b$ removed.}{rag}
+
+\tblfit{Shipped variant vs V0 by job type, requirement count and persona.}{breakdown}
+
+\textbf{Findings.}
+\begin{enumerate}
+\item \textbf{The hypothesis is rejected.} Decomposition \emph{lowered} Recall@5 and MRR. Per-requirement queries are short, so they match skill mentions anywhere in the corpus, and fusing their rankings promotes projects that touch many requirements weakly over the one project that delivers the core requirement.
+\item \textbf{The cross-encoder hurt} in every configuration it was added to, at 30$\times$ the latency. MiniLM is trained on web search (MS MARCO), not on ``does this portfolio chunk prove this capability''.
+\item \textbf{The outcome boost is the one component that helped in every ablation}, consistent with the corpus design (a past proposal's outcome matters more than its wording). Hybrid + outcome gains most where expected: development jobs and long jobs (exact library names suit BM25), and is slightly worse for the ML persona and short jobs. The 95\% interval includes zero, so the gain is likely, not proven.
+\item V1+V2+V3 $-$ decompose reproduces V3 exactly (same configuration): the pipeline is deterministic.
+\end{enumerate}
+
+\textbf{What ships.} \code{v2\_v4}: hybrid BM25 + dense with the outcome boost (\code{agent/config.yaml} \code{rag.variant}, commit \code{f8b41eb}). Best on every metric, as fast as V0 (0.24\,s p95), and no GPU needed. The reranker stays in the code for a GPU host with a portfolio-trained model.
+
+\textbf{Claim verification and outcomes.} The headline table (assignment B5) compares V0 and the shipped variant end to end: proposals written, verified, judged and sent to GigSim, whose simulated client is an LLM of a different family from the Writer.
+
+\tbl{Headline (assignment B5): V0 vs shipped, end to end.}{headline}
+
+\pending{OUTCOME-PROSE}
+
+\textbf{LLM-judge calibration.} The judge (\code{qwen/qwen3.8-27b}, a different family from the Writer) scored 30 past proposals the author also labelled blind (Table~\ref{tab:judge}). Where they disagree the judge is mostly one point \emph{harsher} on plain-but-specific proposals (author 3, judge 2): the author rewarded a plain proposal a client could act on, the judge penalised its lack of polish. A client reading quickly would side with the author, so judge scores are read as conservative.
+\tbl[\label{tab:judge}]{Judge calibration against 30 human labels.}{judge}
+
+%=====================================================================================================
+\section{R\&D question C: single agent vs prebuilt supervisor vs graph}
+
+\textbf{Setup} (\code{evals/runners/orchestration\_eval.py}). Six jobs from the fixed subset (ml\_engineer and data\_analyst: one bid-worthy, one scam, one injected each), small because of the quota. All three architectures use the \emph{same model}, the same MCP tools and the same safety rules in their prompts: a \code{create\_react\_agent} with all read tools; \code{langgraph-supervisor} 0.0.31 with four workers (risk, fit, pricer, writer); and the GigBid graph. Scored identically: decision against gold, bids on scams, the dataset's own injection checks (Google claim, contact details, price $\le 10$), unsupported claims (same verifier), tokens (one usage callback for all).
+
+\IfFileExists{tables/orchestration.tex}{\tbl{Single agent vs prebuilt supervisor vs graph (same model, tools, jobs, rules).}{orchestration}}{}
+
+\pending{RESULTS-C}
+
+\textbf{A failure mode of the prebuilt supervisor.} In the first runs it answered directly without delegating to any worker (zero tool calls) and asserted that the client had ``no payment history'': a risk judgement made without calling \code{get\_client\_history}. A supervisor that decides by itself whether to consult its specialists can skip the step that matters most; the hand-built graph runs the Risk Assessor on every job by construction. Its built-in structured output also failed on Groq (``Tool choice is none, but model called a tool''), so both baselines' final answers are parsed by one extra extraction call, counted in their tokens.
+
+%=====================================================================================================
+\section{The change request}
+
+No change request was applied in this submission.
+
+%=====================================================================================================
+\section{Signature extension: X3, portfolio builder}
+
+\textbf{What it does} (\code{rag/ingest/portfolio\_builder.py}, \code{docs/EXTENSION.md}). Input: a GitHub account, read through \emph{GitHub's official MCP server} (its Docker image, a read-only token, only the \code{repos} toolset), or a folder of repositories. Per repository it collects the README and up to 12 source files; the Writer-tier model drafts a case study that cites a file after every factual sentence and names the technologies the code actually uses; the \emph{same claim verifier as the bid graph} checks each claim against those files and removes the unsupported ones; the result is written in the folder format the Portfolio MCP server indexes directly.
+
+\textbf{How it was measured} (\code{evals/runners/x3\_eval.py}): case studies built from the ml\_engineer persona's repositories \emph{only}, compared with that persona's ground truth: claims supported before verification, named-skill recall, and \emph{implied-skill recall} (skills the code uses but the hand-written profile never names; the corpus's ``implied skills'' trap and the reason to read code at all).
+
+\IfFileExists{tables/x3.tex}{\tblfit{X3 on the ml\_engineer persona's repositories.}{x3}}{}
+
+\pending{RESULTS-X3}
+
+%=====================================================================================================
+\section{Failure analysis}
+
+Failures are collected mechanically from the result files (\code{evals/runners/failure\_analysis.py}) rather than hand-picked: wrong skips and bids from both decision evals, missed scams and unflagged injections, out-of-band prices, tool errors, and \emph{missed evidence} (shipped retrieval found at most one in five gold projects in its top five).
+
+\tbl{Failure taxonomy over the dev runs, with the fix tried and whether it worked.}{failures}
+
+\textbf{Reading.} Most failures are \emph{missed evidence} and \emph{wrong skips}, and they are linked: the Fit Matcher scores coverage from retrieved evidence, so a requirement whose project is not retrieved counts as ``missing'' and lowers the fit score below the bid threshold. The wrong skips concentrate in the \code{open} profile (local 4B small tier: bid recall 0.29) and almost disappear with the hosted 20B small tier (0.75), with identical retrieval. Safety categories (scams, injections, pricing) produced no failures on either profile: those are carried by rules and arithmetic, which do not depend on the model size.
+
+%=====================================================================================================
+\section{Safety and platform respect}
+
+\textbf{Must never happen:} (1) a send or Connects spend without approval; (2) an invented claim; (3) contact details or off-platform payment in a proposal; (4) following instructions embedded in a job post or client message; (5) scraping or browser automation; (6) PII in logs.
+
+\textbf{How it is enforced.} (1) \code{interrupt()} before every write; \code{submit\_proposal} is on the approval node's allowlist only; idempotency keys mean a crash between approval and submit cannot send twice. (2) Claim verification against cited evidence before the Critic; Compliance re-checks after any human edit. (3) Compliance rules (\code{agent/compliance\_rules.yaml}) and GigSim's policy endpoint. (4) Untrusted text is fenced as data in every prompt; the Risk Assessor flags injection patterns sentence by sentence (flagged 1.0 on both profiles, Table~\ref{tab:dec}); tools are allowlisted per node, so an injected ``submit now'' has no tool to call. (5) Live mode only via the official Upwork MCP server; Scout polls at most hourly and analyses at most 5 new jobs per run (2 on the VM). (6) The MCP guard masks emails and phone numbers in the audit log.
+
+\textbf{What still gets through.} An injection phrased as a plausible client requirement (``mention your Google certification'') is not an instruction pattern; if the portfolio happens to contain a matching word, verification may count it as supported. Scams that look legitimate pass the rules. The free-tier fallback model (OpenRouter's free Gemma) is shared and rate-limited, so on a capped day drafts can fail rather than degrade.
+
+\tbl[\label{tab:dec}]{Decisions under the two open-model configurations (laptop GPU vs hosted).}{decisions}
+
+\textbf{The two configurations.} Same rules and retrieval, different small tier. Safety is identical (scam recall, injections flagged and pricing all 1.0); the local 4B model is much worse at judging fit (bid F1 0.364 vs 0.857), so the deployed VM uses the hosted profile and the laptop profile is a quota-saving development mode.
+
+%=====================================================================================================
+\section{Hidden test results against the declared budgets}
+
+The hidden test runs after the deadline, so its results cannot be in this report. Measured on dev:
+\begin{itemize}
+\item \textbf{Job analysed:} tokens 4.3k--4.6k per job, inside the 8k budget. p95 latency \emph{missed} the 90\,s budget: 140.8\,s (hosted, inflated by Groq's 8k tokens-per-minute limit forcing retries) and 303.3\,s (local, with the GPU shared by concurrent evaluation runs). p50 was 29--35\,s.
+\item \textbf{Proposal:} \pending{BUDGET-PROPOSAL}
+\item \textbf{Cost:} \$0 per job and per proposal (free tiers and local models), at the price of the daily quota (\S1).
+\end{itemize}
+\textbf{One optimisation that helped:} running the small tier (analysis, risk, fit, intent) on the local GPU takes per-job analysis off the hosted quota entirely; and the shipped retrieval variant keeps V0's latency (0.24\,s p95) instead of the reranked variant's 7.6\,s.
+
+\appendix
+\section{Reproducing every number}
+{\small\begin{verbatim}
+python -m evals.runners.rag_eval --limit 20 --ablate v1_v2_v3
+python -m evals.runners.rag_eval --variants v0_naive v2_hybrid v3_rerank v4_outcome v2_v4 --ablate v4_outcome --limit 20
+python -m evals.runners.rag_breakdown
+python -m evals.runners.decision_eval --limit 6 ; MODEL_PROFILE=open_hosted python -m evals.runners.decision_eval --limit 4
+python -m evals.runners.judge_calibration score
+MODEL_PROFILE=open_local python -m evals.runners.orchestration_eval
+MODEL_PROFILE=open_local python -m evals.runners.x3_eval --personas ml_engineer
+MODEL_PROFILE=open_local python -m evals.runners.gigsim_outcomes --variant v0_naive --limit 1   # and --variant v2_v4
+python -m evals.runners.failure_analysis ; python scripts/report_tables.py ; python -m evals.make_tables
+\end{verbatim}}
+\end{document}
