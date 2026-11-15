@@ -1,0 +1,11 @@
+<!-- project_id: da-p06 | synthetic -->
+# Survey analysis for an NGO education programme
+
+## Context
+In 2022 an international non‑profit organization launched an education programme aimed at improving school attendance in rural communities. To gauge the impact and to strengthen their case for continued funding, they commissioned a large‑scale survey of participants, teachers and parents. The questionnaire generated 2,400 individual responses, each containing a mix of multiple‑choice answers, open‑ended comments and numeric ratings. The NGO needed a clear, trustworthy analysis that could be turned into a concise report for their donor renewal meeting. The data arrived in raw spreadsheet files, with inconsistencies, duplicate entries and occasional missing fields that required careful cleaning before any meaningful insight could be extracted.
+
+## What I built
+I began by organizing the raw files into a single, tidy dataset, manually checking each record for accuracy and correcting entry errors without mentioning the specific software used. I applied statistical techniques to validate the sample size and to ensure that the responses were representative of the target population. After the data was cleaned, I performed descriptive and inferential analysis to uncover trends such as attendance improvements, satisfaction levels, and barriers to learning. The findings were visualized in a series of clear, colour‑coded charts and tables that highlighted key metrics at a glance. To make the results actionable, I compiled a slide deck that combined the visualizations with concise narrative explanations, and I prepared a written report that summarized the methodology, key insights, and recommendations for the programme’s next phase.
+
+## Results
+The final analysis covered all 2,400 responses and delivered a set of findings that directly informed the NGO’s donor renewal pitch. The donor committee cited the clear, data‑driven story as a decisive factor in approving continued funding. The NGO also reported that the visual report was used internally to adjust programme delivery, leading to a measurable increase in attendance in the following quarter. The project demonstrated how rigorous data cleansing, statistical analysis, and well‑crafted presentations can turn raw survey responses into strategic assets for non‑profit organisations.

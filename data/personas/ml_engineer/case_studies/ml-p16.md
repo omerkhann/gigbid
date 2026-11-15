@@ -1,0 +1,11 @@
+<!-- project_id: ml-p16 | synthetic -->
+# Intelligent Document Q&A Assistant for a Law Firm
+
+## Context
+A mid‑size law firm was spending a significant amount of time answering routine queries from associates who needed quick references to internal policy documents, case briefs, and regulatory filings. The manual process involved searching through scattered PDFs and Word files, often leading to duplicated effort and delayed responses. The firm wanted a solution that could understand natural language questions and retrieve precise excerpts from their document repository, while also being easy to integrate with their existing case‑management tools.
+
+## What I built
+I designed and delivered a conversational assistant that lets users type or speak a question and receive a concise answer drawn directly from the firm’s document library. The core of the system is a language‑understanding model fine‑tuned on legal text, enabling it to interpret the nuances of legal terminology and context. When a query is received, the assistant first processes the request to identify key concepts, then searches a structured store of pre‑indexed document fragments. The search layer is backed by a robust relational data store that holds the indexed text, metadata, and reference pointers, ensuring fast and reliable retrieval without exposing the underlying technology name. The retrieved passages are then passed through a summarisation component that extracts the most relevant sentences and formats them as a clear answer. The whole workflow is exposed through a clean API, allowing the firm’s internal tools to embed the chatbot directly into their workflow, and the system also supports a web‑based chat interface for ad‑hoc use.
+
+## Results
+After deployment, the firm reported a roughly 30 % reduction in the time associates spent on routine document research, as estimated by the client. The assistant handled thousands of queries in the first month, consistently delivering accurate excerpts and freeing up attorneys to focus on higher‑value tasks. The solution also proved scalable, handling peak loads during busy filing periods without degradation, and it required minimal maintenance thanks to the automated indexing pipeline that keeps the knowledge base up‑to‑date as new documents are added.

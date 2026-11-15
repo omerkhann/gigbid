@@ -1,0 +1,25 @@
+-- Power BI DAX Measures for Attrition Analysis
+
+// Total Attrition Count
+Total Attrition Count = SUM('AgentData'[Attrition])
+
+// Total Agents
+Total Agents = DISTINCTCOUNT('AgentData'[AgentID])
+
+// Attrition Rate
+Attrition Rate = DIVIDE([Total Attrition Count],[Total Agents])
+
+// Shift Attrition Rate
+Shift Attrition Rate = CALCULATE([Attrition Rate],ALLEXCEPT('AgentData','AgentData'[Shift]))
+
+// Night Shift Attrition Multiplier
+Night Shift Attrition Multiplier = DIVIDE(
+    [Shift Attrition Rate] ,
+    AVERAGEX(
+        FILTER(ALL('AgentData'), 'AgentData'[Shift] <> "Night"),
+        [Shift Attrition Rate]
+    )
+)
+
+// Visual Title
+Report Title = "HR Attrition Analysis – Call Centre"

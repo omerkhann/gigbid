@@ -169,6 +169,7 @@ class Task:
     system: str
     user: str
     forbidden: list[str] = field(default_factory=list)   # words that must not appear in the output
+    expect_ids: list[str] = field(default_factory=list)  # proposal ids the answer must contain
 
 
 def _facts(p: dict) -> str:
@@ -257,7 +258,8 @@ def tasks_for(pid: str, sk: dict, pl: dict) -> list[Task]:
             "certifications, years or results. Reply in JSON.",
             "Write one proposal for each item below, in the requested style and length.\n\n"
             + "\n\n---\n\n".join(items)
-            + '\n\nReturn {"proposals": [{"id": "...", "text": "..."}]}', sorted(set(forbidden))))
+            + '\n\nReturn {"proposals": [{"id": "...", "text": "..."}]}', sorted(set(forbidden)),
+            [pp["proposal_id"] for pp in batch]))
     return out
 
 
@@ -307,6 +309,9 @@ class Runner:
             else:
                 out = self.call(task, nonce)
                 path.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+            got = {x.get("id") for x in out.get("proposals", []) if isinstance(x, dict)}
+            if task.expect_ids and not set(task.expect_ids) <= got:
+                continue  # incomplete batch: try a variant
             if not _violations(out, task.forbidden):
                 return out
         with self.lock:
@@ -402,7 +407,12 @@ def assemble(pid: str, sk: dict, pl: dict, results: dict[str, dict], log: list[s
         rd = d / "repos" / name
         rd.mkdir(parents=True, exist_ok=True)
         (rd / "README.md").write_text(readme["readme"].strip() + "\n", encoding="utf-8", newline="\n")
-        for f in (code or {}).get("files", []):
+        files = (code or {}).get("files", [])
+        if isinstance(files, dict):  # some answers use {"path": "content"} instead of a list
+            files = [{"path": p, "content": c} for p, c in files.items()]
+        for f in files:
+            if not isinstance(f, dict) or "path" not in f or "content" not in f:
+                continue
             rel = Path(*[part for part in Path(f["path"]).parts if part not in ("..", "/", "\\")])
             (rd / rel).parent.mkdir(parents=True, exist_ok=True)
             (rd / rel).write_text(f["content"].rstrip() + "\n", encoding="utf-8", newline="\n")

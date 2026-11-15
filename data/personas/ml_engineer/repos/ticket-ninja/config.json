@@ -1,0 +1,1 @@
+{\n  \"api_key\": \"YOUR_API_KEY\",\n  \"model_path\": \"models/triage_model.pkl\",\n  \"vectorizer_path\": \"models/vectorizer.pkl\",\n  \"max_queue_size\": 1000\n}\n

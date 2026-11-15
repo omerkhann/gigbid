@@ -1,0 +1,11 @@
+<!-- project_id: fs-p13 | synthetic -->
+# Modernizing a Property Listings Platform
+
+## Context
+Sara Malik was engaged by a real‑estate client to overhaul the front‑end of their property listings website. The existing site was built with an older JavaScript framework that had become difficult to maintain and limited the team's ability to implement new features quickly. The client needed a seamless transition to a more widely adopted library that would improve developer productivity, enhance performance, and ensure a smooth user experience without interrupting the live service. The project timeline was tight, and the migration had to be performed without any downtime, as the site was a critical sales channel for the business.
+
+## What I built
+Sara led the effort to replace the entire component library with a modern, component‑based approach. She systematically rewrote 140 user interface components, translating the original logic and visual design into a new, declarative syntax that leverages reusable building blocks. By adopting a virtual DOM strategy and client‑side routing, she created a faster, more responsive interface while preserving all existing functionality. Throughout the migration, Sara set up a parallel development environment, allowing the old and new codebases to run side‑by‑side. She implemented automated testing suites to verify that each component behaved identically after the rewrite, and used incremental deployment techniques to push updates to production in small, controlled batches. This careful approach ensured that users never experienced interruptions, and the team could quickly roll back any issue if needed.
+
+## Results
+The migration was completed on schedule, with all 140 components successfully transitioned and no downtime recorded during the switch‑over. The new front‑end delivered noticeably faster page loads and smoother interactions, leading to higher user engagement metrics. The client’s development team reported a significant reduction in the time required to add or modify features, thanks to the clearer component structure and modern tooling. Overall, the project demonstrated how a disciplined, incremental rewrite can modernize a legacy system while maintaining continuous availability, positioning the real‑estate platform for future growth and innovation.

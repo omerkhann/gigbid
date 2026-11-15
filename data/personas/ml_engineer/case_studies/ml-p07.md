@@ -1,0 +1,11 @@
+<!-- project_id: ml-p07 | synthetic -->
+# Model‑serving API with batch and real‑time endpoints
+
+## Context
+Hamza Siddiqui was engaged by a fintech firm that needed to expose its sophisticated natural‑language models to internal applications and external partners. The organization required two distinct access patterns: a high‑throughput batch endpoint for processing large volumes of transaction‑related text overnight, and a low‑latency real‑time endpoint for instant fraud‑detection queries during trading hours. The solution had to run reliably in the cloud, be containerised for easy scaling, and integrate with the company’s existing continuous‑deployment pipeline.
+
+## What I built
+I designed and implemented a robust service layer using a modern Python web framework that automatically generates interactive documentation and handles request validation. To orchestrate background jobs for the batch workload, I introduced a task‑queue system that distributes work across multiple worker processes, ensuring that large payloads are processed in parallel without blocking the real‑time API. The entire application was packaged into lightweight containers, enabling rapid spin‑up of additional instances during peak demand. Deployment leveraged the cloud provider’s managed container service, with load balancers distributing traffic and automatic scaling rules based on CPU and request metrics. Logging and monitoring were wired into the platform’s observability suite, giving the operations team visibility into request rates, error rates, and resource utilisation.
+
+## Results
+The dual‑endpoint architecture delivered the performance targets set by the client. The real‑time endpoint consistently achieved a 95th‑percentile latency of 120 ms while handling a sustained load of 50 requests per second, comfortably supporting the firm’s latency‑sensitive fraud‑detection use case. The batch processing pipeline completed nightly jobs 30 % faster than the previous ad‑hoc solution, thanks to parallel execution and efficient container scaling. The cloud‑native deployment reduced infrastructure overhead and simplified roll‑outs, allowing the fintech team to focus on model improvements rather than operational concerns.

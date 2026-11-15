@@ -1,0 +1,61 @@
+{
+  "persona": "ml_engineer",
+  "synthetic": true,
+  "seed": 404,
+  "models": {
+    "long_form": "openai/gpt-oss-120b",
+    "short_form": "openai/gpt-oss-20b"
+  },
+  "counts": {
+    "case_studies": 18,
+    "repos": 7,
+    "reviews": 17,
+    "past_proposals": 150
+  },
+  "outcomes": {
+    "ignored": 97,
+    "replied": 36,
+    "won": 17
+  },
+  "repos": {
+    "ml-p01": "ticket-ninja",
+    "ml-p02": "policy-rag",
+    "ml-p04": "freshforecast",
+    "ml-p07": "finfast-batchapi",
+    "ml-p09": "pricewatcher",
+    "ml-p11": "scribble-ocr",
+    "ml-p16": "lexbot"
+  },
+  "checks": [
+    {
+      "check": "ml-p01 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "ml-p02 case study omits ['PostgreSQL']",
+      "ok": true
+    },
+    {
+      "check": "ml-p02 code shows ['PostgreSQL']",
+      "ok": true
+    },
+    {
+      "check": "ml-p04 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "ml-p11 case study omits ['Google Cloud Platform']",
+      "ok": true
+    },
+    {
+      "check": "ml-p11 code shows ['Google Cloud Platform']",
+      "ok": true
+    },
+    {
+      "check": "ml-p16 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    }
+  ],
+  "checks_passed": "7/7",
+  "generation_log": []
+}

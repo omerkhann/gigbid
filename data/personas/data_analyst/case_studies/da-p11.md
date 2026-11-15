@@ -1,0 +1,11 @@
+<!-- project_id: da-p11 | synthetic -->
+# Board‑pack automation for a property developer
+
+## Context
+The client is a fast‑growing property development firm that relied on a manual, two‑day process each month to assemble a board‑pack. Data from multiple sources—sales, construction progress, financials, and market trends—had to be pulled, cleaned, and formatted before it could be presented to senior leadership. The existing workflow involved copying spreadsheets, reconciling figures, and building presentation slides by hand, which was time‑consuming, error‑prone, and left little room for deeper analysis. The client needed a reliable, repeatable solution that would deliver a polished board‑pack quickly, allowing the team to focus on strategic insights rather than data wrangling.
+
+## What I built
+I designed an end‑to‑end automation pipeline that brought together the client’s Excel workbooks, database queries, and presentation templates. First, I created a set of dynamic Excel models that pulled the latest data directly from the company’s databases, applying the necessary calculations and consolidations. To replace the repetitive copy‑paste steps, I wrote custom automation scripts that orchestrated the flow of data between spreadsheets, performed validation checks, and generated the final figures in a single, consistent format. These scripts also populated a pre‑designed slide deck with tables, charts, and key metrics, ensuring that the visual style matched the company’s branding. Throughout the project I used my expertise in Excel, SQL querying, and presentation design to make the solution intuitive for the client’s staff, providing clear documentation and a short training session.
+
+## Results
+The new automated process reduced the time required to produce the monthly board‑pack from two full days to roughly twenty minutes—a 96% time saving. The client reported dramatically fewer data errors and a more professional, consistent look to each board‑pack. Because the workflow is fully repeatable, the team can now allocate the saved time to deeper analysis and strategic planning, directly supporting the firm’s growth objectives. The solution has become a core part of the company’s monthly reporting cycle and is praised for its reliability and ease of use.

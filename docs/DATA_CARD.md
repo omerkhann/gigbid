@@ -7,8 +7,8 @@ GigBid runs against **GigSim**, a marketplace simulator we build ourselves (conf
 | Job posts and client signals | Real | Kaggle: Upwork freelance jobs (+60k) | Cleaned |
 | Contract prices and outcomes | Real | Kaggle: Freelance Contracts Dataset (1.3M) | Cleaned |
 | Persona skeletons (skills, projects, rates) | **Synthetic** | Hand-written by us, fictional people | Built (`data/personas/*/skeleton.yaml`) |
-| Persona corpus (CV, case studies, READMEs, reviews) | **Synthetic** | LLM-written from the skeletons | Not yet built |
-| Past proposals with won / replied / ignored labels | **Synthetic** | LLM-written, labelled by GigSim's client | Not yet built |
+| Persona corpus (CV, case studies, READMEs, code, reviews) | **Synthetic** | gpt-oss-120b / gpt-oss-20b from the skeletons | Built ([PERSONA_CORPUS.md](PERSONA_CORPUS.md)) |
+| Past proposals with won / replied / ignored labels | **Synthetic** | LLM-written text; outcomes from style rules + seeded draw | Built, 150 per persona |
 | Client hidden preferences, screening questions | **Synthetic** | Seeded random draws from each real job | Built (section 6) |
 | Client replies and conversations | **Synthetic** | GigSim's LLM client at run time | Built (section 6) |
 | Scams, prompt injections, duplicates, message attacks | **Synthetic** | Templates in `pipelines/world_templates.py` | Built (section 6) |

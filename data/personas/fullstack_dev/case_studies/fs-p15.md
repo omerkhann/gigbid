@@ -1,0 +1,11 @@
+<!-- project_id: fs-p15 | synthetic -->
+# Bootstrap Admin Theme for a Non‑Profit CRM
+
+## Context
+Sara Malik was engaged by a non‑profit organization that relied on a custom CRM to manage its volunteers, donors, and program participants. The existing admin interface was built years earlier and suffered from slow load times, a cluttered layout, and an onboarding process that took roughly a week for new volunteers to become productive. The organization needed a modern, responsive admin theme that could be deployed quickly, improve usability, and dramatically shorten the time it took to bring new volunteers up to speed. The project was slated for 2021, and the primary goal was to streamline the volunteer onboarding workflow while keeping the underlying data structures intact.
+
+## What I built
+Sara took charge of redesigning the entire admin dashboard using a popular front‑end framework that provides a grid system, pre‑styled components, and utilities for rapid layout creation. She crafted clean, semantic markup and applied custom styling rules to ensure the interface matched the non‑profit’s branding guidelines. Interactive elements were powered by lightweight scripting to enable dynamic tables, collapsible panels, and real‑time form validation without overwhelming the browser. To support the existing data, she integrated the new front‑end with the organization’s relational database, writing server‑side logic that fetched, filtered, and updated records efficiently. All data interactions were handled through secure endpoints, preserving the integrity of volunteer records and program information.
+
+## Results
+The revamped admin theme delivered a dramatic improvement in user experience. Volunteers could now navigate the system intuitively, completing the onboarding checklist in a single day instead of a full week—a reduction of 85 %. The responsive design meant staff could manage the CRM from any device, increasing accessibility for remote coordinators. Load times dropped noticeably, and the cleaner codebase reduced maintenance overhead for the organization’s IT team. Overall, the project not only accelerated volunteer readiness but also positioned the non‑profit to scale its operations with a modern, maintainable admin interface.

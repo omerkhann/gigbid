@@ -26,6 +26,7 @@ data = [
 ]
 
 [tool.ruff]
+extend-exclude = ["data"]  # generated persona repos are synthetic portfolio code, not project code
 line-length = 100
 
 [tool.pytest.ini_options]

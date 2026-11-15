@@ -1,0 +1,76 @@
+{
+  "persona": "fullstack_dev",
+  "synthetic": true,
+  "seed": 404,
+  "models": {
+    "long_form": "openai/gpt-oss-120b",
+    "short_form": "openai/gpt-oss-20b"
+  },
+  "counts": {
+    "case_studies": 16,
+    "repos": 6,
+    "reviews": 16,
+    "past_proposals": 150
+  },
+  "outcomes": {
+    "ignored": 106,
+    "replied": 26,
+    "won": 18
+  },
+  "repos": {
+    "fs-p01": "physiohub",
+    "fs-p03": "nebula-checkout",
+    "fs-p05": "fitpulse",
+    "fs-p07": "nebula-billing",
+    "fs-p09": "scholarforge",
+    "fs-p13": "nestleaf-migration"
+  },
+  "checks": [
+    {
+      "check": "fs-p01 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "fs-p05 case study omits ['React Native']",
+      "ok": true
+    },
+    {
+      "check": "fs-p05 code shows ['React Native']",
+      "ok": true
+    },
+    {
+      "check": "fs-p07 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "fs-p09 case study omits ['PHP']",
+      "ok": true
+    },
+    {
+      "check": "fs-p09 code shows ['PHP']",
+      "ok": true
+    },
+    {
+      "check": "fs-p13 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    }
+  ],
+  "checks_passed": "7/7",
+  "generation_log": [
+    "fullstack_dev:proposals:01: forbidden words remain after 3 tries ['Shopify', 'WordPress']",
+    "fullstack_dev:proposals:03: forbidden words remain after 3 tries ['Webflow', 'WordPress']",
+    "fullstack_dev:proposals:07: forbidden words remain after 3 tries ['Webflow', 'WordPress']",
+    "fullstack_dev:proposals:09: forbidden words remain after 3 tries ['Shopify']",
+    "fullstack_dev:proposals:13: forbidden words remain after 3 tries ['Elementor', 'PHP', 'WordPress']",
+    "fullstack_dev:proposals:15: forbidden words remain after 3 tries ['React Native']",
+    "fullstack_dev:proposals:17: forbidden words remain after 3 tries ['WordPress']",
+    "fullstack_dev:proposals:19: forbidden words remain after 3 tries ['WordPress']",
+    "fullstack_dev:proposals:02: forbidden words remain after 3 tries ['Shopify']",
+    "fullstack_dev:proposals:04: forbidden words remain after 3 tries ['WordPress']",
+    "fullstack_dev:proposals:06: forbidden words remain after 3 tries ['Shopify', 'Webflow', 'WordPress']",
+    "fullstack_dev:proposals:12: forbidden words remain after 3 tries ['PHP', 'Redis']",
+    "fullstack_dev:proposals:14: forbidden words remain after 3 tries ['Shopify']",
+    "fullstack_dev:proposals:18: forbidden words remain after 3 tries ['PHP', 'WordPress']",
+    "fullstack_dev:proposals:24: forbidden words remain after 3 tries ['Shopify']"
+  ]
+}

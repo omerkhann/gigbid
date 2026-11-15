@@ -1,0 +1,16 @@
+{
+  "gtmId": "GTM-XXXXXX",
+  "gtmAuth": "authToken",
+  "gtmPreview": "env-1",
+  "gtmDebug": true,
+  "ga4MeasurementId": "G-YYYYYY",
+  "dataLayerName": "dataLayer",
+  "eventMappings": {
+    "legacy_signup": "sign_up",
+    "legacy_purchase": "purchase",
+    "legacy_login": "login",
+    "legacy_pageview": "page_view",
+    "legacy_video_start": "video_start",
+    "legacy_video_complete": "video_complete"
+  }
+}

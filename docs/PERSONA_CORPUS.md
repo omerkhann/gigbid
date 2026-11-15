@@ -56,3 +56,27 @@ Each record: `proposal_id`, `date`, `job_title`, `job_excerpt`, `category`, `bid
 - **Checks after generation:** forbidden words absent (implied skills not named in prose, `code_only` skills absent from case studies), each `three_descriptions` project has its case study, README and at least two proposals, and counts per persona.
 
 Command: `python -m pipelines.build_personas` (add `--plan-only` to print the plan without calling any model).
+
+## 5. Results (generated 2026-11-15)
+
+| Persona | Case studies | Repos | Reviews | Past proposals | Won / replied / ignored | Trap checks |
+|---|---|---|---|---|---|---|
+| ml_engineer | 18 | 7 | 17 (one project unrated) | 150 | 17 / 36 / 97 | 7/7 |
+| fullstack_dev | 16 | 6 | 16 | 150 | 18 / 26 / 106 | 7/7 |
+| data_analyst | 15 | 5 | 15 | 150 | 23 / 25 / 102 | 5/5 |
+
+Trap checks: each `code_only` skill is absent from its case study and present in its repo's code; each `three_descriptions` project has a case study, a README under a code name and at least two citing proposals. Each persona's `manifest.json` lists every check.
+
+**Spot check (ml-p01, three ways):** case study "Automated Support-Ticket Triage for a SaaS Helpdesk", repo `ticket-ninja`, and a proposal describing "a support-ticket triage system that routed 78% of tickets". PostgreSQL for ml-p02 appears only in `repos/policy-rag/app/celery_tasks.py`.
+
+**Known leak, accepted:** case studies and READMEs never name implied skills. Some *past proposals* do:
+
+| Persona | Proposals naming an implied skill | Of those, because the job itself names it |
+|---|---|---|
+| ml_engineer | 4 / 150 | 4 |
+| fullstack_dev | 51 / 150 | 45 (mostly "Shopify" or "WordPress" jobs) |
+| data_analyst | 20 / 150 | 7 (the rest are everyday phrases like "A/B testing") |
+
+A freelancer answering a Shopify job naturally writes "Shopify", so we keep these rather than force awkward wording. The implied-skill trap is about the persona's *evidence* (case studies, repos), and there it holds. Past proposals are also realistic in their flaws: a few make claims a Compliance Guard would reject (for example "zero-risk"), which is useful for learning what not to repeat.
+
+Generation notes: 163 LLM tasks; 19 proposal batches still contained a hidden skill name after 3 attempts (logged in the manifests); one incomplete batch was regenerated.

@@ -1,0 +1,56 @@
+{
+  "persona": "data_analyst",
+  "synthetic": true,
+  "seed": 404,
+  "models": {
+    "long_form": "openai/gpt-oss-120b",
+    "short_form": "openai/gpt-oss-20b"
+  },
+  "counts": {
+    "case_studies": 15,
+    "repos": 5,
+    "reviews": 15,
+    "past_proposals": 150
+  },
+  "outcomes": {
+    "ignored": 102,
+    "replied": 25,
+    "won": 23
+  },
+  "repos": {
+    "da-p01": "pharma-dashboard",
+    "da-p02": "threadloom",
+    "da-p07": "event-migrate-gtm",
+    "da-p09": "boxwarehouse",
+    "da-p12": "nightshift-attrition"
+  },
+  "checks": [
+    {
+      "check": "da-p01 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "da-p07 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    },
+    {
+      "check": "da-p09 case study omits ['BigQuery']",
+      "ok": true
+    },
+    {
+      "check": "da-p09 code shows ['BigQuery']",
+      "ok": true
+    },
+    {
+      "check": "da-p12 described three ways (case study, README, >=2 proposals)",
+      "ok": true
+    }
+  ],
+  "checks_passed": "5/5",
+  "generation_log": [
+    "data_analyst:proposals:11: forbidden words remain after 3 tries ['Data Extraction']",
+    "data_analyst:proposals:13: forbidden words remain after 3 tries ['Growth Analytics']",
+    "data_analyst:proposals:18: forbidden words remain after 3 tries ['A/B Testing']",
+    "data_analyst:proposals:20: forbidden words remain after 3 tries ['Data Extraction']"
+  ]
+}
