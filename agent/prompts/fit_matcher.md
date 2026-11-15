@@ -11,3 +11,5 @@ For the requirement, read the evidence items (each has an id, a type and text) a
 
 Return the ids of the items that support your judgement (empty for missing) and one short reason.
 Judge only from the evidence shown. Skill names alone are not proof; delivered work is.
+
+Judge every requirement below; return one item per requirement with its index.

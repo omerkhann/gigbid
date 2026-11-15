@@ -45,8 +45,7 @@ async def fit_matcher(state: dict, ctx: Ctx) -> dict:
         items = "\n".join(f"  - id={e['evidence_id']} type={e['type']}: {e['text'][:400]}" for e in found[i]) or "  (none)"
         blocks.append(f"Requirement {i}: {req}\nEvidence:\n{items}")
     out: FitLLM = ctx.ask("fit_matcher", FitLLM, [
-        SystemMessage(prompt("fit_matcher") + "\n\nJudge every requirement below; return one item per requirement "
-                                              "with its index."),
+        SystemMessage(prompt("fit_matcher")),
         HumanMessage("\n\n".join(blocks))])
     judged = {j.index: j for j in out.items if 0 <= j.index < len(reqs)}
     results = []

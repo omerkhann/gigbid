@@ -15,11 +15,7 @@ from collections.abc import Callable
 from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field
 
-GRADE_PROMPT = ("You check whether portfolio evidence proves a freelancer can meet ONE job requirement. "
-                "For each numbered item answer relevant=true only if it shows this capability was actually "
-                "used or delivered (a skill merely mentioned in passing does not count).")
-REWRITE_PROMPT = ("Rewrite the job requirement as a search query for a freelancer's portfolio: name the "
-                  "underlying capability and 2-3 common tools or synonyms for it. One line.")
+from agent.llm import prompt
 
 
 class Grade(BaseModel):
@@ -37,11 +33,11 @@ class Rewrite(BaseModel):
 
 def grade(ask: Callable, requirement: str, items: list[tuple[str, str]]) -> set[str]:
     listing = "\n".join(f"{i}. {text[:500]}" for i, (_, text) in enumerate(items))
-    out: Grades = ask("grade", Grades)([SystemMessage(GRADE_PROMPT),
+    out: Grades = ask("grade", Grades)([SystemMessage(prompt("rag_grade")),
                                         HumanMessage(f"REQUIREMENT: {requirement}\n\nEVIDENCE:\n{listing}")])
     return {items[g.index][0] for g in out.grades if g.relevant and 0 <= g.index < len(items)}
 
 
 def rewrite(ask: Callable, requirement: str) -> str:
-    out: Rewrite = ask("rewrite", Rewrite)([SystemMessage(REWRITE_PROMPT), HumanMessage(requirement)])
+    out: Rewrite = ask("rewrite", Rewrite)([SystemMessage(prompt("rag_rewrite")), HumanMessage(requirement)])
     return out.query

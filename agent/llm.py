@@ -73,7 +73,7 @@ def structured(node: str, schema: type[T]):
             import json as _json
 
             from langchain_core.messages import SystemMessage
-            hint = "Reply with ONLY a JSON object matching this JSON schema:\n" + _json.dumps(schema.model_json_schema())
+            hint = prompt("json_mode") + "\n" + _json.dumps(schema.model_json_schema())
             msgs = [SystemMessage(hint), *messages]
         out = llm.invoke(msgs)
         if out.get("parsed") is None:
