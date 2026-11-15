@@ -7,6 +7,8 @@
 \usepackage{microtype}
 \usepackage{booktabs,array,graphicx,xcolor,enumitem,caption,adjustbox}
 \usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
 \setlist{itemsep=1pt,topsep=2pt,parsep=0pt,leftmargin=*}
 \setlength{\parskip}{3pt}
 \setlength{\parindent}{0pt}
@@ -46,6 +48,11 @@ Cost is \$0 because every model is open-weight and runs either on a free hosted 
 \section{Architecture}
 
 Two hand-built LangGraph \code{StateGraph}s run in an Arq worker, reach the outside world only through MCP servers, and checkpoint to Postgres after every node (ADR~0001, 0005; \code{docs/ARCHITECTURE.md}).
+
+\begin{figure}[h!]\centering
+\adjustbox{max width=\linewidth}{\input{bidgraph}}
+\caption{Bid graph (\code{agent/graphs/bid\_graph.py}). Grey: rules or arithmetic, no model; dashed: the human gate; dark: the only marketplace write. The three analyses run in parallel; every stop records its reason.}
+\end{figure}
 
 \textbf{Bid graph} (one thread per job). Job Analyst (typed \code{JobSpec}), Risk Assessor (rules + small LLM) and Fit Matcher (evidence per requirement) run in parallel via \code{Send}; a rule-based \code{decide} node skips, watches or bids, always with a recorded reason (ADR~0007). On a bid: Pricing (arithmetic) $\to$ Writer $\to$ claim verification $\to$ Critic (at most two revisions) $\to$ Compliance Guard (can block) $\to$ approval (\code{interrupt}) $\to$ idempotent submit. \textbf{Conversation graph} (one thread per client conversation): classify $\to$ offer calendar slots $\to$ draft reply $\to$ compliance $\to$ approval $\to$ send.
 

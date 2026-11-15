@@ -70,7 +70,10 @@ async def run(variant: str, limit: int | None, embedder: str) -> dict:
         return open_session
 
     rows = []
+    wanted = [p for p in os.environ.get("OUTCOME_PERSONAS", "").split(",") if p]   # time-boxed runs
     for persona, job_ids in subset().items():
+        if wanted and persona not in wanted:
+            continue
         slug = persona.replace("_", "-")
         market = build_marketplace(MSettings(db_path=tmp / f"m-{persona}.sqlite3", local_user=f"u-{slug}",
                                              limits={"read": 10**6, "submit": 10**6, "write": 10**6}),
