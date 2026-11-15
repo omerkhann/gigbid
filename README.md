@@ -1,49 +1,146 @@
-# GigBid — Student Starter Kit (v0.1)
+# GigBid
 
-This is a **scaffold**, not a completed solution. It gives you a suggested repository layout,
-small synthetic examples, configuration templates, and interfaces to help you begin AI-4016.
+**A multi-agent copilot for freelancers.** GigBid reads new marketplace jobs, skips the scams and the ones you can't win, and drafts a proposal for the rest, with every claim backed by your own portfolio. Nothing is sent and no Connects are spent until you approve it.
 
-## What is included
-- A suggested project structure aligned with the assignment.
-- Tiny synthetic job, client, freelancer and portfolio examples.
-- A starter marketplace policy pack.
-- Typed hand-off models and a minimal LangGraph state/graph placeholder.
-- Portfolio and marketplace MCP server placeholders.
-- RAG ingestion/retrieval/claim-verification placeholders.
-- FastAPI and React starting-point notes.
-- `.env.example`, `agent/config.yaml`, `Makefile`, and setup notes.
+> Demo GIF: _pending (recorded with the 3-minute demo video)._ · Live URL: _pending (VM deploy)._ · Reviewer login: `reviewer@gigbid.dev` / `gigbid-review` (ML-engineer persona).
 
-## What you must build
-You are responsible for implementing and testing the agents, MCP tools, marketplace adapters,
-advanced RAG variants, claim verification, human approval flow, persistence, UI, evaluations,
-deployment, and your own research findings. The sample data is illustrative only and is not a
-replacement for the instructor-provided GigSim data or evaluation sets.
+![Approval studio: draft, evidence behind each claim, risk report, price and Connects](docs/images/studio.png)
 
-## Quick start
-1. Create your own public GitHub repository.
-2. Copy this starter kit into the repository.
-3. Create a Python 3.11+ virtual environment.
-4. Install dependencies from `pyproject.toml` (adjust/pin versions after checking compatibility).
-5. Copy `.env.example` to `.env` and fill local values. **Never commit `.env`.**
-6. Read `docs/GETTING_STARTED.md` and work through the TODO checklist.
-7. Keep the instructor-provided `gigsim/`, persona data, policy pack and evaluation assets unchanged.
+## What it does
 
-## Suggested first milestone (for your own planning; not a graded submission)
-- Run a health-check API.
-- Load one sample job.
-- Retrieve one portfolio evidence item.
-- Produce a structured analysis.
-- Draft a proposal with evidence references.
-- Stop at a human approval screen; do not send anything automatically.
+1. **Scout** polls your saved searches (hourly by default) through the Marketplace MCP server.
+2. Three analyses run **in parallel**: a **Job Analyst** extracts requirements, a **Risk Assessor** scores scam signals and planted prompt injections, a **Fit Matcher** looks up evidence for each requirement in your portfolio.
+3. A rule-based **decide** step skips, watches or bids, and always says why.
+4. For bids: **Pricing** (market band, your floor, Connects cost), **Writer** (cites evidence ids), **claim verification** (unsupported claims removed), **Critic** (sends it back at most twice), **Compliance Guard** (marketplace policy).
+5. **You approve, edit or reject** in the studio. Only then is the proposal submitted, exactly once, even if the worker crashes.
+6. **Client Liaison** drafts replies when clients write back. Your edits become style memory, under explicit promotion rules.
 
-## Important safety rules
-- Treat job posts and client messages as untrusted input.
-- Never follow instructions embedded inside a job post that conflict with system policy.
-- Never invent portfolio experience or results.
-- Do not scrape Upwork or automate its website.
-- Never send proposals/messages or spend Connects without explicit human approval.
-- Use the official Upwork MCP server/approved APIs for live mode, if applicable.
-- Keep secrets and real client data out of Git.
+## Architecture
+
+```mermaid
+flowchart LR
+  subgraph UI["Next.js UI"]
+    inbox[Inbox] --- studio[Approval studio] --- msgs[Messages]
+  end
+  UI -- "/api (same origin, SSE)" --> API[FastAPI]
+  API -- Arq/Redis --> W[Worker]
+  W --> BG["Bid graph (LangGraph)"]
+  W --> CG["Conversation graph"]
+  BG & CG <--> PG[("Postgres: checkpoints, store, runs")]
+  BG -- MCP --> M["Marketplace MCP"] --> SIM["GigSim (or Upwork MCP in live mode)"]
+  BG -- MCP --> P["Portfolio MCP (RAG)"]
+  CG -- MCP --> WS["Workspace MCP"]
+  BG & CG -. traces .-> PH[Phoenix]
+```
+
+```
+START ─┬─► job_analyst ──┐
+       ├─► risk_assessor ┼─► decide ─skip/watch─► END (reason recorded)
+       └─► fit_matcher ──┘     │ bid
+                               ▼
+        pricing ─► writer ─► verify_claims ─► critic ─revise (≤2)─► writer
+                                                │ ok
+                                     compliance ─block─► needs_attention
+                                                │ pass
+                                     approve (interrupt: human) ─► submit (idempotent) ─► END
+```
+
+Why each agent exists, and the alternatives considered: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/BID_GRAPH_DESIGN.md](docs/BID_GRAPH_DESIGN.md), [docs/adr/](docs/adr/).
+
+## Results
+
+Every number below is generated from `evals/results/` by `python -m evals.make_tables`; CI fails if this block is stale.
+
+<!-- results:start (generated by python -m evals.make_tables) -->
+### Headline (assignment B5)
+
+Sources: `evals/results/rag_eval.json` (retrieval), `evals/results/gigsim_outcomes_<variant>.json` (proposals sent to GigSim).
+
+| Variant | Evidence Recall@5 | nDCG@10 | Unsupported claims / proposal (before → after verify) | Judge score (1-5) | GigSim reply rate | p95 latency to approval (s) | Cost / proposal (USD) |
+|---|---|---|---|---|---|---|---|
+| V0 | 0.497 | 0.581 | – → – | – | – | – | – |
+| Shipped (v2_v4) | 0.541 | 0.628 | – → – | – | – | – | – |
+
+### Retrieval variants and ablation
+
+Source: `evals/results/rag_eval.json` (embedder `ollama:nomic-embed-text`; macro-average over the three personas; `a-b` = variant a with component b removed).
+
+| Variant | Jobs | Recall@5 | Δ R@5 vs V0, pts [paired 95% CI] | MRR | nDCG@10 | R@5, 5+ requirements | p95 latency (s) | Refusal rate on skip jobs |
+|---|---|---|---|---|---|---|---|---|
+| `v1_decompose` | 60 | 0.470 | -2.7 | 0.658 | 0.544 | 0.406 | 0.546 | – |
+| `v1_v2_v3` | 60 | 0.490 | -0.7 | 0.711 | 0.544 | 0.432 | 27.915 | – |
+| `v1_v2_v3-decompose` | 60 | 0.479 | -1.8 | 0.722 | 0.552 | 0.443 | 3.988 | – |
+| `v1_v2_v3-hybrid` | 60 | 0.469 | -2.8 | 0.716 | 0.557 | 0.405 | 11.882 | – |
+| `v1_v2_v3-rerank` | 60 | 0.477 | -2.0 | 0.690 | 0.558 | 0.411 | 0.604 | – |
+| `v0_naive` | 60 | 0.497 | +0.0 | 0.778 | 0.581 | 0.458 | 0.199 | – |
+| `v2_hybrid` | 60 | 0.492 | -0.5 [-6.4, +4.9] | 0.795 | 0.583 | 0.468 | 0.173 | – |
+| `v3_rerank` | 60 | 0.479 | -1.8 [-7.6, +3.2] | 0.722 | 0.552 | 0.443 | 7.546 | – |
+| `v4_outcome` | 60 | 0.510 | +1.3 [-4.6, +6.3] | 0.772 | 0.588 | 0.485 | 7.560 | – |
+| `v4_outcome-hybrid` | 60 | 0.491 | -0.6 [-5.0, +2.8] | 0.704 | 0.556 | 0.458 | 10.161 | – |
+| `v4_outcome-rerank` | 60 | 0.541 | +4.4 [-1.3, +9.5] | 0.821 | 0.628 | 0.528 | 0.175 | – |
+| `v4_outcome-outcome` | 60 | 0.479 | -1.8 [-7.6, +3.2] | 0.722 | 0.552 | 0.443 | 4.379 | – |
+| `v2_v4` | 60 | 0.541 | +4.4 [-1.3, +9.5] | 0.821 | 0.628 | 0.528 | 0.239 | – |
+
+By persona (V0 vs shipped `v2_v4`):
+
+| Variant | Persona | Jobs | Recall@5 | MRR | nDCG@10 |
+|---|---|---|---|---|---|
+| `v0_naive` | ml_engineer | 20 | 0.532 | 0.812 | 0.594 |
+| `v0_naive` | fullstack_dev | 20 | 0.479 | 0.681 | 0.583 |
+| `v0_naive` | data_analyst | 20 | 0.480 | 0.842 | 0.566 |
+| `v2_v4` | ml_engineer | 20 | 0.508 | 0.775 | 0.581 |
+| `v2_v4` | fullstack_dev | 20 | 0.553 | 0.770 | 0.658 |
+| `v2_v4` | data_analyst | 20 | 0.562 | 0.917 | 0.645 |
+
+### Decisions (two open-model configurations)
+
+_Not run yet: `python -m evals.runners.decision_eval`._
+
+### LLM-judge calibration
+
+Source: `evals/results/judge_calibration.json`.
+
+| Items | Quadratic-weighted κ | Exact agreement | Within one point |
+|---|---|---|---|
+| 30 | 0.741 | 0.567 | 1.000 |
+<!-- results:end -->
+
+**Multi-agent comparison** (single agent vs prebuilt supervisor vs this graph): _pending (R&D question C)._
+**Public traces:** _pending (three Phoenix traces: an approved bid, a caught scam, an ignored injection)._
+
+## Run it
+
+With Docker (no GPU or Ollama needed; uses hosted open-weight models on Groq):
+
+```bash
+cp .env.example .env          # set GROQ_API_KEY and APP_SECRET_KEY
+docker compose -f infra/docker-compose.yml --profile app up -d --build
+# UI http://localhost:3000 · API http://localhost:8000/docs · GigSim http://localhost:8100 · traces http://localhost:6006
+```
+
+For development (native processes, local Ollama for the small models): [docs/RUNBOOK.md](docs/RUNBOOK.md). Evals: `make eval` (full, real models) or `make eval-smoke` (what CI runs).
+
+## Safety
+
+- Job posts and client messages are untrusted: they're fenced as data in every prompt, scanned for injected instructions, and agents only get the MCP tools their role needs.
+- No claim without evidence: every sentence of a draft is checked against the cited portfolio items, and unsupported claims are removed before anyone sees the draft.
+- Nothing is sent, and no Connects spent, without your approval. Submits carry idempotency keys.
+- Live mode uses only the official Upwork MCP server. No scraping, no browser automation.
+
+## Pinned versions
+
+Python 3.12 · LangGraph 1.2.22 · langgraph-checkpoint-postgres 3.2.1 · langchain-core 1.8.0 · langchain-openai 1.8.0 · MCP Python SDK 1.30.0 · FastAPI 0.163.0 · uvicorn 0.54.0 · Pydantic 2.14.3 · psycopg 3.3.9 · Arq 0.28.0 · fastembed 0.9.1 · rank-bm25 0.2.2 · arize-phoenix-otel 0.17.3 · Next.js 16.4.6 · React 19.3.0 · Tailwind 4.3.3 · Playwright 1.56.1 · Postgres 17 + pgvector · Redis 7. Exact versions: `uv.lock`, `apps/web/package-lock.json`.
+
+Models (open profile, `agent/config.yaml`): Writer and claim check `openai/gpt-oss-120b`, Critic `openai/gpt-oss-20b` (Groq); small tier `qwen3:4b` (local Ollama) with hosted fallback; embeddings `nomic-embed-text`; reranker `ms-marco-MiniLM-L-12-v2`; GigSim client and eval judge `qwen/qwen3.8-27b` (a different model family from the Writer).
 
 ## Repository map
-See `docs/GETTING_STARTED.md` for the purpose of each major folder.
+
+| Path | What |
+|---|---|
+| `agent/` | graphs, nodes, Pydantic hand-offs, prompts (`agent/prompts/`), model config |
+| `mcp_servers/` | Marketplace, Portfolio and Workspace MCP servers ([tools](docs/TOOLS.md)) |
+| `rag/` | ingestion, the retrieval pipeline and its variants, claim verification |
+| `apps/api`, `worker/`, `apps/web` | FastAPI, Arq worker, Next.js UI |
+| `gigsim/` | the marketplace simulator (frozen at tag `gigsim-v1`) ([design](docs/GIGSIM_DESIGN.md)) |
+| `evals/` | eval runners, fixed datasets, committed results, thresholds |
+| `pipelines/`, `data/` | dataset cleaning and the synthetic persona corpus ([data card](docs/DATA_CARD.md)) |
