@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import uuid
 from datetime import UTC, datetime, timedelta
 
@@ -20,7 +21,9 @@ from agent.runtime import run_summary
 from apps.api.auth.security import decrypt
 from pipelines.parsing import normalise_for_dedup
 
-MAX_NEW_JOBS_PER_SCOUT = 5         # budget guard: analyse at most this many new jobs per scheduled run
+# Budget guard: analyse at most this many new jobs per scheduled run (env override; the VM sets 2 so
+# hourly scouting stays inside the hosted free-tier daily quota, docs/RUNBOOK.md "Free-tier caps").
+MAX_NEW_JOBS_PER_SCOUT = int(os.environ.get("MAX_NEW_JOBS_PER_SCOUT", "5"))
 PROVIDERS = {"marketplace": "marketplace_mcp", "portfolio": "portfolio_mcp", "workspace": "workspace_mcp"}
 
 

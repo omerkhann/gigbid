@@ -1,0 +1,59 @@
+{
+  "shipped": "v2_v4",
+  "jobs": 60,
+  "by_job_type": [
+    {
+      "group": "data_science",
+      "jobs": 32,
+      "v0_recall5": 0.525,
+      "v2_v4_recall5": 0.535,
+      "delta_pts": 1.0
+    },
+    {
+      "group": "development",
+      "jobs": 28,
+      "v0_recall5": 0.465,
+      "v2_v4_recall5": 0.549,
+      "delta_pts": 8.3
+    }
+  ],
+  "by_requirement_count": [
+    {
+      "group": "5+ requirements",
+      "jobs": 43,
+      "v0_recall5": 0.459,
+      "v2_v4_recall5": 0.532,
+      "delta_pts": 7.3
+    },
+    {
+      "group": "under 5",
+      "jobs": 17,
+      "v0_recall5": 0.594,
+      "v2_v4_recall5": 0.566,
+      "delta_pts": -2.8
+    }
+  ],
+  "by_persona": [
+    {
+      "group": "fullstack_dev",
+      "jobs": 20,
+      "v0_recall5": 0.479,
+      "v2_v4_recall5": 0.553,
+      "delta_pts": 7.4
+    },
+    {
+      "group": "ml_engineer",
+      "jobs": 20,
+      "v0_recall5": 0.532,
+      "v2_v4_recall5": 0.508,
+      "delta_pts": -2.4
+    },
+    {
+      "group": "data_analyst",
+      "jobs": 20,
+      "v0_recall5": 0.48,
+      "v2_v4_recall5": 0.562,
+      "delta_pts": 8.3
+    }
+  ]
+}
