@@ -49,7 +49,7 @@ def chat_model(spec: str) -> ChatOpenAI:
     opts = dict(config()["models"].get("options", {}).get(spec, {}))
     b = config()["budgets"]
     return ChatOpenAI(model=model, base_url=_base_url(provider), api_key=key or "missing",
-                      timeout=b["llm_timeout_s"], max_retries=b["llm_retries"], **opts)
+                      timeout=b["llm_timeout_s"], max_retries=int(os.environ.get("LLM_RETRIES", b["llm_retries"])), **opts)
 
 
 @dataclass

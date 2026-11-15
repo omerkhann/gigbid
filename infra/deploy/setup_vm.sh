@@ -14,7 +14,7 @@ DIR=${DIR:-/opt/gigbid}
 : "${GROQ_API_KEY:?set GROQ_API_KEY in the environment}"
 
 apt-get update -y
-apt-get install -y ca-certificates curl git ufw
+apt-get install -y ca-certificates curl git ufw iptables-persistent || apt-get install -y ca-certificates curl git ufw
 if ! command -v docker >/dev/null; then
   curl -fsSL https://get.docker.com | sh
 fi
@@ -25,7 +25,14 @@ if ! swapon --show | grep -q /swapfile; then
   echo "/swapfile none swap sw 0 0" >> /etc/fstab
 fi
 
-ufw allow OpenSSH && ufw allow 80/tcp && ufw allow 443/tcp && ufw --force enable
+if [ -f /etc/iptables/rules.v4 ]; then
+  # Oracle Cloud Ubuntu images ship iptables rules that REJECT everything but SSH; open 80/443 above them.
+  iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+  iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+  netfilter-persistent save
+else
+  ufw allow OpenSSH && ufw allow 80/tcp && ufw allow 443/tcp && ufw --force enable
+fi
 
 if [ -d "$DIR/.git" ]; then git -C "$DIR" pull --ff-only; else git clone "$REPO" "$DIR"; fi
 cd "$DIR"
