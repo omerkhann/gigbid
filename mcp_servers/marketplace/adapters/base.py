@@ -1,0 +1,39 @@
+"""The marketplace backend interface. The MCP server talks only to this, so switching between
+GigSim and live Upwork is a config change (assignment R1), invisible to the agents."""
+
+from __future__ import annotations
+
+from typing import Any, Protocol
+
+
+class MarketplaceError(Exception):
+    """A definite answer from the marketplace (e.g. policy violation, not found)."""
+
+    def __init__(self, code: str, detail: str, status: int | None = None, extra: dict | None = None):
+        super().__init__(f"{code}: {detail}")
+        self.code, self.detail, self.status, self.extra = code, detail, status, extra or {}
+
+
+class MarketplaceUnavailable(MarketplaceError):
+    """The marketplace did not answer after bounded retries. Callers should degrade, not crash."""
+
+    def __init__(self, detail: str):
+        super().__init__("marketplace_unavailable", detail, 503)
+
+
+class MarketplaceBackend(Protocol):
+    """`cred` is the calling user's marketplace credential; `trace` is the trace id to forward."""
+
+    async def search_jobs(self, cred: str, trace: str, **filters: Any) -> dict: ...
+    async def get_job(self, cred: str, trace: str, job_id: str) -> dict: ...
+    async def get_client(self, cred: str, trace: str, client_id: str) -> dict: ...
+    async def get_connects(self, cred: str, trace: str) -> dict: ...
+    async def get_market_stats(self, cred: str, trace: str, category: str) -> dict: ...
+    async def get_policy(self, cred: str, trace: str) -> dict: ...
+    async def list_proposals(self, cred: str, trace: str, status: str | None) -> dict: ...
+    async def list_threads(self, cred: str, trace: str) -> dict: ...
+    async def get_thread(self, cred: str, trace: str, thread_id: str) -> dict: ...
+    async def create_draft(self, cred: str, trace: str, key: str, job_id: str, cover_letter: str,
+                           bid_amount: float, screening_answers: list[str]) -> dict: ...
+    async def submit(self, cred: str, trace: str, key: str | None, proposal_id: str, dry_run: bool) -> dict: ...
+    async def send_message(self, cred: str, trace: str, key: str, thread_id: str, body: str) -> dict: ...
