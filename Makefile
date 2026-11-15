@@ -18,3 +18,4 @@ eval:
 data:
 	python -m pipelines.clean_jobs
 	python -m pipelines.clean_contracts
+	python -m pipelines.build_market
