@@ -10,8 +10,6 @@ node_modules/
 dist/
 build/
 data/processed/
-evals/results/*
-!evals/results/.gitkeep
 
 # Raw downloaded datasets (Kaggle); see docs/DATA_CARD.md for sources
 data/raw/

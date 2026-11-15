@@ -5,9 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history + tags, for the GigSim freeze check
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"
+      # Assignment rule: nothing under gigsim/ may change after it is frozen.
+      - name: GigSim is unchanged since its freeze tag
+        run: |
+          tag=$(git tag --list 'gigsim-v*' --sort=-v:refname | head -n1)
+          if [ -z "$tag" ]; then echo "No gigsim tag yet"; exit 0; fi
+          echo "Comparing gigsim/ against $tag"
+          git diff --exit-code --stat "$tag" HEAD -- gigsim/
       # uv installs from uv.lock and doesn't build the repo as a package
       # (pip -e failed on the multi-folder flat layout).
       - run: uv sync --locked --extra dev

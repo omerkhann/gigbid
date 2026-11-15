@@ -1,0 +1,145 @@
+{
+  "mode": "llm",
+  "model": "qwen/qwen3.8-27b",
+  "positive_rate": {
+    "good": 1.0,
+    "generic": 0.0,
+    "fabricated": 0.0
+  },
+  "fabricated_flagged": "5/5",
+  "checks": {
+    "good_beats_generic": true,
+    "good_beats_fabricated": true
+  },
+  "results": [
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "good",
+      "decision": "reply",
+      "reason": "The proposal is specific and references portfolio items that align with the job, but it lacks concrete evidence of Python usage beyond naming the library, which is a must-have skill for me.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "The proposal directly addresses the specific data sources (including GoHighLevel API) and proposes a concrete, in-house manageable solution using Google Sheets and Looker Studio, which aligns perfectly with my hidden requirements for Google Sheets and Data Visualization expertise. The cited portfolio items (D2C skincare, Restaurant P&L) provide concrete evidence of the claimed skills.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "good",
+      "decision": "reply",
+      "reason": "The proposal cites specific portfolio projects (Solar installer, Pharma sales) that align with the job requirements, and the bid is within budget. However, the freelancer's profile is heavily skewed towards data analysis and dashboard building rather than teaching, so I need to verify their actual training experience before committing to an interview.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "The proposal directly addresses the specific dashboards (Backlog, OTD) and honestly admits the lack of Syteline experience while proposing a solution (schema walkthrough). The profile supports the SQL/Tableau claims with relevant examples (hospital dashboard, warehouse SQL model), and the rate is within budget.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "The proposal directly addresses the specific need for a revenue calculator with a clear structural plan, and the cited Google Sheets project (restaurant P&L) is verified in the profile, providing concrete evidence of the required skill.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "The proposal is a generic template that could be sent to any job, and the freelancer failed to answer the mandatory screening question about a recent project.",
+      "unsupported_claims": [
+        "Expert in all data tools"
+      ]
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "The proposal is a generic template that could be sent to any job, lacking any specific details about the required data sources (Facebook, TikTok, GoHighLevel) or the specific rollups needed. It fails to demonstrate the concrete evidence of Google Sheets or Data Visualization expertise required, despite the profile listing them.",
+      "unsupported_claims": [
+        "extensive experience in data and dashboards (vague, no specific evidence in proposal)",
+        "done many similar projects (no examples provided in proposal)"
+      ]
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "The proposal is a generic template with no specific details about teaching experience or relevant projects, and the freelancer failed to answer the mandatory screening question.",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "The proposal is extremely generic and lacks any specific evidence of Tableau experience or relevant industry knowledge, despite the profile listing the skill. It does not address the specific dashboards or the Syteline/Infor context mentioned in the job description.",
+      "unsupported_claims": [
+        "Expert in Tableau (Profile lists it as a skill, but the only specific Tableau project is a 2023 hospital bed-occupancy report, which is not directly comparable to the complex manufacturing/ERP reporting requested, and the proposal makes no reference to it)."
+      ]
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "The proposal is extremely generic and lacks any specific evidence of Google Sheets expertise, despite the profile listing it. It fails to address the specific requirements of the marketing calculator or provide concrete examples of similar work.",
+      "unsupported_claims": [
+        "I have done many Google Sheets projects"
+      ]
+    },
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "The proposal contains severe red flags, specifically the claim of being a 'senior analyst at Google' and 'certified Tableau Zen Master,' which are not supported by the profile and are likely fabricated to inflate credibility. While the portfolio is strong, the dishonesty disqualifies the candidate.",
+      "unsupported_claims": [
+        "Spent 8 years as a senior analyst at Google",
+        "Certified Tableau Zen Master"
+      ]
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "The proposal contains severe red flags, specifically claiming 8 years as a senior analyst at Google and a 'Tableau Zen Master' certification, neither of which are supported by the profile (which lists 4 years experience and no such certifications).",
+      "unsupported_claims": [
+        "8 years as a senior analyst at Google",
+        "Certified Tableau Zen Master"
+      ]
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "The proposal contains severe red flags, specifically claiming 8 years as a senior analyst at Google and a 'Tableau Zen Master' certification, neither of which are supported by the profile (which lists 4 years experience and no such certifications).",
+      "unsupported_claims": [
+        "8 years as a senior analyst at Google",
+        "Certified Tableau Zen Master"
+      ]
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "The proposal contains severe red flags, specifically claiming 8 years at Google and a 'Tableau Zen Master' certification which are not supported by the profile (which lists 4 years experience and no such certification).",
+      "unsupported_claims": [
+        "8 years as a senior analyst at Google",
+        "Certified Tableau Zen Master"
+      ]
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "The proposal contains severe red flags, specifically the claim of being a 'senior analyst at Google' and a 'certified Tableau Zen Master,' neither of which are supported by the profile (which lists 4 years of experience and no such certifications or employers).",
+      "unsupported_claims": [
+        "8 years as a senior analyst at Google",
+        "Certified Tableau Zen Master"
+      ]
+    }
+  ]
+}

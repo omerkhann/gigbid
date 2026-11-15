@@ -1,0 +1,127 @@
+{
+  "mode": "heuristic",
+  "model": null,
+  "positive_rate": {
+    "good": 0.8,
+    "generic": 0.2,
+    "fabricated": 0.8
+  },
+  "fabricated_flagged": "1/5",
+  "checks": {
+    "good_beats_generic": true,
+    "good_beats_fabricated": false
+  },
+  "results": [
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "good",
+      "decision": "reply",
+      "reason": "must-haves shown: 1/2; specific opening; concrete numbers; screening answered; claims not backed by profile: R",
+      "unsupported_claims": [
+        "R"
+      ]
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "must-haves shown: 1/2; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "good",
+      "decision": "ignore",
+      "reason": "must-haves shown: 0/1; generic opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "must-haves shown: 2/3; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "good",
+      "decision": "interview",
+      "reason": "must-haves shown: 1/1; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "must-haves shown: 0/2; specific opening; no concrete results; screening questions unanswered; claims not backed by profile: R",
+      "unsupported_claims": [
+        "R"
+      ]
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "must-haves shown: 0/2; specific opening; no concrete results; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "must-haves shown: 0/1; specific opening; no concrete results; screening questions unanswered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "generic",
+      "decision": "reply",
+      "reason": "must-haves shown: 2/3; specific opening; no concrete results; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "generic",
+      "decision": "ignore",
+      "reason": "must-haves shown: 1/1; generic opening; no concrete results; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-01c6acb86f4c",
+      "variant": "fabricated",
+      "decision": "reply",
+      "reason": "must-haves shown: 1/2; specific opening; concrete numbers; screening answered; claims not backed by profile: R",
+      "unsupported_claims": [
+        "R"
+      ]
+    },
+    {
+      "job_id": "job-0b954e1ba14e",
+      "variant": "fabricated",
+      "decision": "interview",
+      "reason": "must-haves shown: 1/2; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-24da7222feb9",
+      "variant": "fabricated",
+      "decision": "ignore",
+      "reason": "must-haves shown: 0/1; generic opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-27d167db8b63",
+      "variant": "fabricated",
+      "decision": "interview",
+      "reason": "must-haves shown: 2/3; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    },
+    {
+      "job_id": "job-276f63f76290",
+      "variant": "fabricated",
+      "decision": "interview",
+      "reason": "must-haves shown: 1/1; specific opening; concrete numbers; screening answered",
+      "unsupported_claims": []
+    }
+  ]
+}
