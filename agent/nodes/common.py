@@ -29,7 +29,8 @@ from agent.mcp_client import MarketplaceDown, McpGateway
 # which LangGraph rejects, so parallel nodes report failures to `branch_failures` (a list with an
 # append reducer) and the join node (decide) turns them into one status.
 PARALLEL_NODES = {"job_analyst", "risk_assessor", "fit_matcher"}
-STOP = {"skipped", "watching", "rejected", "needs_attention", "waiting_marketplace", "dead_letter", "submitted"}
+STOP = {"skipped", "watching", "rejected", "needs_attention", "waiting_marketplace", "dead_letter", "submitted",
+        "sent", "no_action"}
 CITATION = re.compile(r"\s?\[[A-Za-z0-9_\-]+:[^\]\s]+\]")
 
 
@@ -38,6 +39,7 @@ class Deps:
     gateway: McpGateway
     llm: Callable = structured                 # (node, schema) -> callable(messages) -> (parsed, usage)
     cfg: dict = field(default_factory=load_config)
+    store: Any = None                          # LangGraph BaseStore for long-term memory (style, outcomes)
 
 
 @dataclass

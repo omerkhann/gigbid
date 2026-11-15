@@ -39,6 +39,7 @@ models:
     critic: critic
     compliance: small
     client_liaison: strong
+    intent: small
   embeddings: nomic-embed-text
   reranker: bge-reranker-v2-m3
 

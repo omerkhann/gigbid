@@ -19,6 +19,7 @@ import json
 from langgraph.types import interrupt
 
 from agent.handoffs import ApprovalDecision
+from agent.memory.store import record_edit
 from agent.nodes.common import Ctx, node, strip_citations
 
 
@@ -76,6 +77,9 @@ async def approve(state: dict, ctx: Ctx) -> dict:
                 "status_reason": decision.reason or "rejected by user", "_summary": "rejected"}
     if decision.action == "edit":
         d = dict(state["proposal_draft"])
+        if ctx.deps.store is not None and decision.cover_letter:   # learn from the edit
+            record_edit(ctx.deps.store, state["user"]["user_id"], strip_citations(d["cover_letter"]),
+                        decision.cover_letter, f"proposal:{state['job']['job_id']}:v{d.get('version', 1)}")
         d.update({k: v for k, v in {"cover_letter": decision.cover_letter, "screening_answers": decision.screening_answers,
                                      "bid_amount": decision.bid_amount}.items() if v is not None})
         d["version"] = d.get("version", 1) + 1

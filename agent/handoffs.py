@@ -159,3 +159,23 @@ class ApprovalDecision(BaseModel):
     screening_answers: list[str] | None = None
     bid_amount: float | None = None
     reason: str | None = None
+
+
+# --- Client Liaison (conversation graph) ------------------------------------------------------
+
+class IntentLLM(BaseModel):
+    intent: Literal["question", "negotiation", "interview_request", "scam_signal", "other"]
+    wants_call: bool = Field(description="True if the client asks for a call, meeting or interview")
+    summary: str = Field(description="What the client wants, in one sentence")
+
+
+class ReplyLLM(BaseModel):
+    reply: str = Field(description="The message to send to the client")
+
+
+class ReplyDraft(BaseModel):
+    thread_id: str
+    body: str
+    intent: str
+    offered_slots: list[dict] = Field(default_factory=list)
+    version: int = 1

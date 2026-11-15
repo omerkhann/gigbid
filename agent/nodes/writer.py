@@ -10,6 +10,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 from agent.handoffs import ProposalDraft, ProposalLLM
 from agent.llm import prompt
+from agent.memory.store import style_rules
 from agent.nodes.analyst import job_text
 from agent.nodes.common import Ctx, node, untrusted
 
@@ -39,8 +40,11 @@ async def writer(state: dict, ctx: Ctx) -> dict:
     user_msg = (f"{untrusted('job_post', job_text(job))}\n\nRequirements: {'; '.join(spec.get('requirements', []))}\n"
                 f"Hidden needs: {'; '.join(spec.get('hidden_needs', [])) or 'none'}\n\nEVIDENCE (cite by id):\n{ev}"
                 f"{revision}")
-    out: ProposalLLM = ctx.ask("writer", ProposalLLM, [
-        SystemMessage(prompt("writer").format(name=name, headline=headline)), HumanMessage(user_msg)])
+    system = prompt("writer").format(name=name, headline=headline)
+    rules = style_rules(ctx.deps.store, state["user"]["user_id"])
+    if rules:   # promoted from the user's own edits (agent/memory/promotion_rules.py)
+        system += "\n\nThe user's own style rules (learned from their edits):\n" + "\n".join(f"- {r}" for r in rules)
+    out: ProposalLLM = ctx.ask("writer", ProposalLLM, [SystemMessage(system), HumanMessage(user_msg)])
     cited = sorted(set(CITED.findall(out.cover_letter + " ".join(out.screening_answers))) & set(state.get("evidence", {})))
     draft = ProposalDraft(job_id=job["job_id"], cover_letter=out.cover_letter, screening_answers=out.screening_answers,
                           evidence_ids=cited, bid_amount=state["price_quote"]["amount"],
