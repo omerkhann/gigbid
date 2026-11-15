@@ -19,7 +19,7 @@ from agent.runtime import run_summary
 from apps.api.auth.security import decrypt
 from pipelines.parsing import normalise_for_dedup
 
-MAX_NEW_JOBS_PER_SCOUT = 10        # budget guard: analyse at most this many new jobs per scheduled run
+MAX_NEW_JOBS_PER_SCOUT = 5         # budget guard: analyse at most this many new jobs per scheduled run
 PROVIDERS = {"marketplace": "marketplace_mcp", "portfolio": "portfolio_mcp", "workspace": "workspace_mcp"}
 
 

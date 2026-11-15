@@ -137,7 +137,7 @@ async def test_scout_queues_new_jobs_once(api):
     assert first == []
     await c.post("/scout/run", headers=h)
     scout1 = [d for d in api["queue"].done if d[0] == "scout"][-1][2]
-    assert 0 < len(scout1["queued"]) <= 10
+    assert 0 < len(scout1["queued"]) <= 5
     await c.post("/scout/run", headers=h)
     scout2 = [d for d in api["queue"].done if d[0] == "scout"][-1][2]
     assert not set(scout2["queued"]) & set(scout1["queued"])          # never re-analyses a seen job

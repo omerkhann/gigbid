@@ -46,7 +46,8 @@ class Services:
     queue: Any
     events: Any
 
-    async def create_user(self, user_id: str, email: str, name: str, password: str, persona: str) -> None:
+    async def create_user(self, user_id: str, email: str, name: str, password: str, persona: str,
+                          saved_search: bool = True) -> None:
         settings = {**DEFAULT_SETTINGS[persona], "autonomy": "approve_everything", "weekly_connects_budget": 80}
         await self.db.run("INSERT INTO users (user_id, email, name, password, persona, settings) VALUES (%s,%s,%s,%s,%s,%s)",
                           user_id, email, name, hash_password(password), persona, json.dumps(settings))
@@ -54,8 +55,9 @@ class Services:
             await self.db.run("INSERT INTO credentials (user_id, provider, ciphertext) VALUES (%s,%s,%s) "
                               "ON CONFLICT (user_id, provider) DO UPDATE SET ciphertext = EXCLUDED.ciphertext",
                               user_id, provider, encrypt(token))
-        await self.db.run("INSERT INTO saved_searches (search_id, user_id, query, every_minutes) VALUES (%s,%s,%s,60)",
-                          f"s-{uuid.uuid4().hex[:10]}", user_id, json.dumps(DEFAULT_SEARCH[persona]))
+        if saved_search:
+            await self.db.run("INSERT INTO saved_searches (search_id, user_id, query, every_minutes) VALUES (%s,%s,%s,60)",
+                              f"s-{uuid.uuid4().hex[:10]}", user_id, json.dumps(DEFAULT_SEARCH[persona]))
 
     async def tokens(self, user_id: str) -> dict[str, str]:
         from worker.tasks import load_user
@@ -80,8 +82,10 @@ async def seed(svc: Services) -> None:
     await svc.create_user("u-reviewer", os.environ.get("REVIEWER_EMAIL", "reviewer@gigbid.dev"), "Reviewer",
                           reviewer_pw, "data_analyst")
     for persona in DEV_PERSONA_TOKENS:
+        # Persona demo accounts get no saved search: scheduled scouting for every account would
+        # spend the free-tier model budget in minutes. Each user adds searches in Settings.
         await svc.create_user(f"u-{persona.replace('_', '-')}", f"{persona}@gigbid.dev", persona.replace("_", " ").title(),
-                              reviewer_pw, persona)
+                              reviewer_pw, persona, saved_search=False)
 
 
 def create_app(services: Services | None = None) -> FastAPI:

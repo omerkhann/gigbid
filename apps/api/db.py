@@ -107,7 +107,8 @@ class Db:
             "trace_id, tokens, latency_ms) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
             "ON CONFLICT (thread_id) DO UPDATE SET status = EXCLUDED.status, status_reason = EXCLUDED.status_reason, "
             "summary = EXCLUDED.summary, title = COALESCE(EXCLUDED.title, runs.title), trace_id = EXCLUDED.trace_id, "
-            "tokens = runs.tokens + EXCLUDED.tokens, latency_ms = runs.latency_ms + EXCLUDED.latency_ms, updated_at = now()",
+            "tokens = GREATEST(runs.tokens, EXCLUDED.tokens), "   # state tokens are already cumulative per run
+            "latency_ms = runs.latency_ms + EXCLUDED.latency_ms, updated_at = now()",  # each resume measures its part
             row["thread_id"], row["user_id"], row["kind"], row.get("job_id"), row.get("conversation_id"), row.get("title"),
             row["status"], row.get("status_reason"), json.dumps(row.get("summary", {})), row.get("trace_id"),
             row.get("tokens", 0), row.get("latency_ms", 0))

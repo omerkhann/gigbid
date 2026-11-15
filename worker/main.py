@@ -9,6 +9,7 @@ Schedules (assignment E1, justified in docs/RUNBOOK.md):
 from __future__ import annotations
 
 import asyncio
+import logging
 import os
 import sys
 from typing import ClassVar
@@ -25,6 +26,7 @@ if sys.platform == "win32":   # psycopg's async mode needs the selector event lo
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 load_dotenv()
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
 
 async def startup(ctx: dict) -> None:
